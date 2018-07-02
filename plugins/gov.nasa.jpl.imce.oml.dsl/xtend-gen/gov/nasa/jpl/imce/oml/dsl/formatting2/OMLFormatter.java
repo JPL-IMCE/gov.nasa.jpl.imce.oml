@@ -30,7 +30,6 @@ import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleStatement;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
-import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions;
@@ -50,6 +49,9 @@ import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
@@ -109,8 +111,8 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.noSpace();
     };
     document.<Extent>prepend(extent, _function);
-    final Module lastM = IterableExtensions.<Module>last(extent.getModules());
-    final Consumer<Module> _function_1 = (Module m) -> {
+    final gov.nasa.jpl.imce.oml.model.common.Module lastM = IterableExtensions.<gov.nasa.jpl.imce.oml.model.common.Module>last(extent.getModules());
+    final Consumer<gov.nasa.jpl.imce.oml.model.common.Module> _function_1 = (gov.nasa.jpl.imce.oml.model.common.Module m) -> {
       final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
         int _xifexpression = (int) 0;
         boolean _equals = Objects.equal(lastM, m);
@@ -121,7 +123,7 @@ public class OMLFormatter extends AbstractFormatter2 {
         }
         it.setNewLines(_xifexpression);
       };
-      document.<Module>append(document.<Module>format(m), _function_2);
+      document.<gov.nasa.jpl.imce.oml.model.common.Module>append(document.<gov.nasa.jpl.imce.oml.model.common.Module>format(m), _function_2);
     };
     extent.getModules().forEach(_function_1);
   }
@@ -399,6 +401,36 @@ public class OMLFormatter extends AbstractFormatter2 {
     document.append(this.textRegionExtensions.regionFor(aspect).keyword("aspect"), _function_1);
   }
   
+  protected void _format(final CardinalityRestrictedAspect aspect, @Extension final IFormattableDocument document) {
+    final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(1);
+      };
+      document.<AnnotationPropertyValue>append(document.<AnnotationPropertyValue>format(it), _function_1);
+    };
+    aspect.getAnnotations().forEach(_function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.append(this.textRegionExtensions.regionFor(aspect).keyword("aspect"), _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(aspect).keyword("<="), _function_2);
+    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(aspect).keyword(">="), _function_3);
+    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(aspect).keyword("=="), _function_4);
+    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(aspect).keyword("."), _function_5);
+  }
+  
   protected void _format(final Concept concept, @Extension final IFormattableDocument document) {
     final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue it) -> {
       final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it_1) -> {
@@ -411,6 +443,36 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.oneSpace();
     };
     document.append(this.textRegionExtensions.regionFor(concept).keyword("concept"), _function_1);
+  }
+  
+  protected void _format(final CardinalityRestrictedConcept concept, @Extension final IFormattableDocument document) {
+    final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(1);
+      };
+      document.<AnnotationPropertyValue>append(document.<AnnotationPropertyValue>format(it), _function_1);
+    };
+    concept.getAnnotations().forEach(_function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.append(this.textRegionExtensions.regionFor(concept).keyword("concept"), _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(concept).keyword("<="), _function_2);
+    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(concept).keyword(">="), _function_3);
+    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(concept).keyword("=="), _function_4);
+    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(concept).keyword("."), _function_5);
   }
   
   protected void _format(final ReifiedRelationship rr, @Extension final IFormattableDocument document) {
@@ -531,6 +593,36 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.newLine();
     };
     document.prepend(this.textRegionExtensions.regionFor(prr).keyword("target"), _function_6);
+  }
+  
+  protected void _format(final CardinalityRestrictedReifiedRelationship rr, @Extension final IFormattableDocument document) {
+    final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(1);
+      };
+      document.<AnnotationPropertyValue>append(document.<AnnotationPropertyValue>format(it), _function_1);
+    };
+    rr.getAnnotations().forEach(_function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.append(this.textRegionExtensions.regionFor(rr).keyword("reifiedRelationship"), _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(rr).keyword("<="), _function_2);
+    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(rr).keyword(">="), _function_3);
+    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(rr).keyword("=="), _function_4);
+    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(rr).keyword("."), _function_5);
   }
   
   protected void _format(final UnreifiedRelationship ur, @Extension final IFormattableDocument document) {
@@ -2153,6 +2245,15 @@ public class OMLFormatter extends AbstractFormatter2 {
     } else if (t instanceof BinaryScalarRestriction) {
       _format((BinaryScalarRestriction)t, document);
       return;
+    } else if (t instanceof CardinalityRestrictedConcept) {
+      _format((CardinalityRestrictedConcept)t, document);
+      return;
+    } else if (t instanceof CardinalityRestrictedReifiedRelationship) {
+      _format((CardinalityRestrictedReifiedRelationship)t, document);
+      return;
+    } else if (t instanceof Concept) {
+      _format((Concept)t, document);
+      return;
     } else if (t instanceof IRIScalarRestriction) {
       _format((IRIScalarRestriction)t, document);
       return;
@@ -2183,8 +2284,11 @@ public class OMLFormatter extends AbstractFormatter2 {
     } else if (t instanceof UnreifiedRelationship) {
       _format((UnreifiedRelationship)t, document);
       return;
-    } else if (t instanceof Concept) {
-      _format((Concept)t, document);
+    } else if (t instanceof Aspect) {
+      _format((Aspect)t, document);
+      return;
+    } else if (t instanceof CardinalityRestrictedAspect) {
+      _format((CardinalityRestrictedAspect)t, document);
       return;
     } else if (t instanceof Scalar) {
       _format((Scalar)t, document);
@@ -2197,9 +2301,6 @@ public class OMLFormatter extends AbstractFormatter2 {
       return;
     } else if (t instanceof TerminologyNestingAxiom) {
       _format((TerminologyNestingAxiom)t, document);
-      return;
-    } else if (t instanceof Aspect) {
-      _format((Aspect)t, document);
       return;
     } else if (t instanceof AspectSpecializationAxiom) {
       _format((AspectSpecializationAxiom)t, document);

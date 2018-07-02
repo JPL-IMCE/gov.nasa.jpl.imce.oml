@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: gov.nasa.jpl.imce.oml.uuid;singleton:=true
-Bundle-Version: 0.9.5.3
+Bundle-Version: 0.9.6.0
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
 Bundle-ClassPath: lib/java-uuid-generator-3.1.4.jar,
@@ -13,3 +13,4 @@ Export-Package: com.fasterxml.uuid,
 Bundle-Vendor: %providerName
 Require-Bundle: org.apache.xml.resolver;bundle-version="[1.2.0,2.0.0)";visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: gov.nasa.jpl.imce.oml.uuid

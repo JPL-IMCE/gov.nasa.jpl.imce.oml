@@ -42,7 +42,6 @@ import gov.nasa.jpl.imce.oml.model.common.LiteralString;
 import gov.nasa.jpl.imce.oml.model.common.LiteralURI;
 import gov.nasa.jpl.imce.oml.model.common.LiteralUUID;
 import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
-import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue;
@@ -73,6 +72,10 @@ import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictionKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
@@ -148,7 +151,7 @@ public class OMLTables {
     List<AnnotationProperty> _xblockexpression = null;
     {
       final ArrayList<AnnotationProperty> result = new ArrayList<AnnotationProperty>();
-      final Consumer<Module> _function = (Module m) -> {
+      final Consumer<gov.nasa.jpl.imce.oml.model.common.Module> _function = (gov.nasa.jpl.imce.oml.model.common.Module m) -> {
         result.addAll(m.getAnnotationProperties());
       };
       e.getModules().forEach(_function);
@@ -298,6 +301,19 @@ public class OMLTables {
     return _xblockexpression;
   }
   
+  public static List<CardinalityRestrictedAspect> cardinalityRestrictedAspects(final Extent e) {
+    List<CardinalityRestrictedAspect> _xblockexpression = null;
+    {
+      final List<CardinalityRestrictedAspect> result = new ArrayList<CardinalityRestrictedAspect>();
+      final Consumer<TerminologyBox> _function = (TerminologyBox tbox) -> {
+        Iterables.<CardinalityRestrictedAspect>addAll(result, Iterables.<CardinalityRestrictedAspect>filter(tbox.getBoxStatements(), CardinalityRestrictedAspect.class));
+      };
+      OMLTables.terminologies(e).forEach(_function);
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<CardinalityRestrictedAspect>crossReferencabilityComparator()).collect(Collectors.<CardinalityRestrictedAspect>toList());
+    }
+    return _xblockexpression;
+  }
+  
   public static List<Concept> concepts(final Extent e) {
     List<Concept> _xblockexpression = null;
     {
@@ -311,6 +327,19 @@ public class OMLTables {
     return _xblockexpression;
   }
   
+  public static List<CardinalityRestrictedConcept> cardinalityRestrictedConcepts(final Extent e) {
+    List<CardinalityRestrictedConcept> _xblockexpression = null;
+    {
+      final List<CardinalityRestrictedConcept> result = new ArrayList<CardinalityRestrictedConcept>();
+      final Consumer<TerminologyBox> _function = (TerminologyBox tbox) -> {
+        Iterables.<CardinalityRestrictedConcept>addAll(result, Iterables.<CardinalityRestrictedConcept>filter(tbox.getBoxStatements(), CardinalityRestrictedConcept.class));
+      };
+      OMLTables.terminologies(e).forEach(_function);
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<CardinalityRestrictedConcept>crossReferencabilityComparator()).collect(Collectors.<CardinalityRestrictedConcept>toList());
+    }
+    return _xblockexpression;
+  }
+  
   public static List<ReifiedRelationshipRestriction> reifiedRelationshipRestrictions(final Extent e) {
     List<ReifiedRelationshipRestriction> _xblockexpression = null;
     {
@@ -320,6 +349,19 @@ public class OMLTables {
       };
       OMLTables.terminologies(e).forEach(_function);
       _xblockexpression = result.parallelStream().sorted(OMLTables.<ReifiedRelationshipRestriction>crossReferencabilityComparator()).collect(Collectors.<ReifiedRelationshipRestriction>toList());
+    }
+    return _xblockexpression;
+  }
+  
+  public static List<CardinalityRestrictedReifiedRelationship> cardinalityRestrictedReifiedRelationships(final Extent e) {
+    List<CardinalityRestrictedReifiedRelationship> _xblockexpression = null;
+    {
+      final List<CardinalityRestrictedReifiedRelationship> result = new ArrayList<CardinalityRestrictedReifiedRelationship>();
+      final Consumer<TerminologyBox> _function = (TerminologyBox tbox) -> {
+        Iterables.<CardinalityRestrictedReifiedRelationship>addAll(result, Iterables.<CardinalityRestrictedReifiedRelationship>filter(tbox.getBoxStatements(), CardinalityRestrictedReifiedRelationship.class));
+      };
+      OMLTables.terminologies(e).forEach(_function);
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<CardinalityRestrictedReifiedRelationship>crossReferencabilityComparator()).collect(Collectors.<CardinalityRestrictedReifiedRelationship>toList());
     }
     return _xblockexpression;
   }
@@ -1696,6 +1738,23 @@ public class OMLTables {
       }
     } else {
       throw new IllegalArgumentException((value + " is not a legal TerminologyKind"));
+    }
+  }
+  
+  public static CardinalityRestrictionKind toCardinalityRestrictionKind(final String value) {
+    if (value != null) {
+      switch (value) {
+        case "<=":
+          return CardinalityRestrictionKind.MIN;
+        case ">=":
+          return CardinalityRestrictionKind.MAX;
+        case "==":
+          return CardinalityRestrictionKind.EXACT;
+        default:
+          throw new IllegalArgumentException((value + " is not a legal CardinalityRestrictionKind"));
+      }
+    } else {
+      throw new IllegalArgumentException((value + " is not a legal CardinalityRestrictionKind"));
     }
   }
   

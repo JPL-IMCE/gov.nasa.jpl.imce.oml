@@ -22,7 +22,6 @@ import gov.nasa.jpl.imce.oml.model.bundles.Bundle;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
-import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
@@ -134,7 +133,7 @@ public class OMLLabelProvider extends DefaultEObjectLabelProvider {
     String _kind = OMLExtensions.kind(e);
     String _plus = (_kind + "(");
     String _elvis = null;
-    Module _sourceModule = e.sourceModule();
+    gov.nasa.jpl.imce.oml.model.common.Module _sourceModule = e.sourceModule();
     String _nsPrefix = null;
     if (_sourceModule!=null) {
       _nsPrefix=_sourceModule.nsPrefix();
@@ -147,7 +146,7 @@ public class OMLLabelProvider extends DefaultEObjectLabelProvider {
     String _plus_1 = (_plus + _elvis);
     String _plus_2 = (_plus_1 + "->");
     String _elvis_1 = null;
-    Module _targetModule = e.targetModule();
+    gov.nasa.jpl.imce.oml.model.common.Module _targetModule = e.targetModule();
     String _nsPrefix_1 = null;
     if (_targetModule!=null) {
       _nsPrefix_1=_targetModule.nsPrefix();

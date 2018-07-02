@@ -20,7 +20,7 @@ package gov.nasa.jpl.imce.oml.model.descriptions;
 
 import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 
-import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity;
 
 import org.eclipse.emf.common.util.EList;
@@ -84,12 +84,12 @@ public interface ConceptInstance extends ConceptualEntitySingletonInstance {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Singleton Concept Classifier</em>' reference.
-	 * @see #setSingletonConceptClassifier(Concept)
+	 * @see #setSingletonConceptClassifier(ConceptKind)
 	 * @see gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage#getConceptInstance_SingletonConceptClassifier()
 	 * @model required="true"
 	 * @generated
 	 */
-	Concept getSingletonConceptClassifier();
+	ConceptKind getSingletonConceptClassifier();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance#getSingletonConceptClassifier <em>Singleton Concept Classifier</em>}' reference.
@@ -99,7 +99,7 @@ public interface ConceptInstance extends ConceptualEntitySingletonInstance {
 	 * @see #getSingletonConceptClassifier()
 	 * @generated
 	 */
-	void setSingletonConceptClassifier(Concept value);
+	void setSingletonConceptClassifier(ConceptKind value);
 
 	/**
 	 * <!-- begin-user-doc -->

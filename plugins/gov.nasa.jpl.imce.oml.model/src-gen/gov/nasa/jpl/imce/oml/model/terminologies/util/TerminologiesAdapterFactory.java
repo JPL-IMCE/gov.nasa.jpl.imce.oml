@@ -141,12 +141,28 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 				return createConceptualEntityAdapter();
 			}
 			@Override
+			public Adapter caseAspectKind(AspectKind object) {
+				return createAspectKindAdapter();
+			}
+			@Override
 			public Adapter caseAspect(Aspect object) {
 				return createAspectAdapter();
 			}
 			@Override
+			public Adapter caseCardinalityRestrictedAspect(CardinalityRestrictedAspect object) {
+				return createCardinalityRestrictedAspectAdapter();
+			}
+			@Override
+			public Adapter caseConceptKind(ConceptKind object) {
+				return createConceptKindAdapter();
+			}
+			@Override
 			public Adapter caseConcept(Concept object) {
 				return createConceptAdapter();
+			}
+			@Override
+			public Adapter caseCardinalityRestrictedConcept(CardinalityRestrictedConcept object) {
+				return createCardinalityRestrictedConceptAdapter();
 			}
 			@Override
 			public Adapter caseEntityRelationship(EntityRelationship object) {
@@ -179,6 +195,10 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseReifiedRelationshipRestriction(ReifiedRelationshipRestriction object) {
 				return createReifiedRelationshipRestrictionAdapter();
+			}
+			@Override
+			public Adapter caseCardinalityRestrictedReifiedRelationship(CardinalityRestrictedReifiedRelationship object) {
+				return createCardinalityRestrictedReifiedRelationshipAdapter();
 			}
 			@Override
 			public Adapter caseUnreifiedRelationship(UnreifiedRelationship object) {
@@ -603,6 +623,20 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.AspectKind <em>Aspect Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.AspectKind
+	 * @generated
+	 */
+	public Adapter createAspectKindAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.Aspect <em>Aspect</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -617,6 +651,34 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect <em>Cardinality Restricted Aspect</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect
+	 * @generated
+	 */
+	public Adapter createCardinalityRestrictedAspectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind <em>Concept Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind
+	 * @generated
+	 */
+	public Adapter createConceptKindAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.Concept <em>Concept</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -627,6 +689,20 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConceptAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept <em>Cardinality Restricted Concept</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept
+	 * @generated
+	 */
+	public Adapter createCardinalityRestrictedConceptAdapter() {
 		return null;
 	}
 
@@ -739,6 +815,20 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createReifiedRelationshipRestrictionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship <em>Cardinality Restricted Reified Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship
+	 * @generated
+	 */
+	public Adapter createCardinalityRestrictedReifiedRelationshipAdapter() {
 		return null;
 	}
 

@@ -47,7 +47,6 @@ import gov.nasa.jpl.imce.oml.model.common.LiteralURI;
 import gov.nasa.jpl.imce.oml.model.common.LiteralUUID;
 import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
 import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
-import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
 import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance;
@@ -71,10 +70,15 @@ import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
+import gov.nasa.jpl.imce.oml.model.terminologies.AspectKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship;
@@ -301,7 +305,6 @@ public class OMLExtensions {
         return c;
       } catch (final Throwable _t) {
         if (_t instanceof IOException) {
-          final IOException ex = (IOException)_t;
           current = current.trimSegments(1);
         } else {
           throw Exceptions.sneakyThrow(_t);
@@ -516,7 +519,7 @@ public class OMLExtensions {
     return _xblockexpression;
   }
   
-  public static String getModuleNsURI(final Module it) {
+  public static String getModuleNsURI(final gov.nasa.jpl.imce.oml.model.common.Module it) {
     String _elvis = null;
     final Function1<AnnotationPropertyValue, Boolean> _function = (AnnotationPropertyValue a) -> {
       String _iri = a.getProperty().iri();
@@ -544,7 +547,7 @@ public class OMLExtensions {
     return _elvis;
   }
   
-  public static String getModuleNsPrefix(final Module it) {
+  public static String getModuleNsPrefix(final gov.nasa.jpl.imce.oml.model.common.Module it) {
     String _elvis = null;
     final Function1<AnnotationPropertyValue, Boolean> _function = (AnnotationPropertyValue a) -> {
       String _iri = a.getProperty().iri();
@@ -589,7 +592,7 @@ public class OMLExtensions {
   }
   
   public void phasedResolveAll(final Extent it) {
-    final Consumer<Module> _function = (Module it_1) -> {
+    final Consumer<gov.nasa.jpl.imce.oml.model.common.Module> _function = (gov.nasa.jpl.imce.oml.model.common.Module it_1) -> {
       final Consumer<ModuleEdge> _function_1 = (ModuleEdge it_2) -> {
         EcoreUtil.resolveAll(it_2.targetModule());
       };
@@ -611,13 +614,13 @@ public class OMLExtensions {
       }
       final TerminologyBox tbox = IterableExtensions.<TerminologyBox>head(queue);
       queue.remove(tbox);
-      final Function1<ModuleEdge, Module> _function = (ModuleEdge it) -> {
+      final Function1<ModuleEdge, gov.nasa.jpl.imce.oml.model.common.Module> _function = (ModuleEdge it) -> {
         return it.targetModule();
       };
       final Function1<TerminologyBox, Boolean> _function_1 = (TerminologyBox it) -> {
         return Boolean.valueOf(visited.contains(it));
       };
-      final Iterable<TerminologyBox> inc = IterableExtensions.<TerminologyBox>reject(Iterables.<TerminologyBox>filter(IterableExtensions.<Module>filterNull(ListExtensions.<ModuleEdge, Module>map(tbox.moduleEdges(), _function)), TerminologyBox.class), _function_1);
+      final Iterable<TerminologyBox> inc = IterableExtensions.<TerminologyBox>reject(Iterables.<TerminologyBox>filter(IterableExtensions.<gov.nasa.jpl.imce.oml.model.common.Module>filterNull(ListExtensions.<ModuleEdge, gov.nasa.jpl.imce.oml.model.common.Module>map(tbox.moduleEdges(), _function)), TerminologyBox.class), _function_1);
       Iterables.<TerminologyBox>addAll(queue, inc);
       Iterables.<TerminologyBox>addAll(acc, inc);
       Iterables.<TerminologyBox>addAll(visited, inc);
@@ -626,29 +629,29 @@ public class OMLExtensions {
     return _xblockexpression;
   }
   
-  public Iterable<Module> allImportedModules(final Module it) {
-    return this.collectAllImportedModules(Lists.<Module>newArrayList(it), Lists.<Module>newArrayList(it), Sets.<Module>newHashSet(it));
+  public Iterable<gov.nasa.jpl.imce.oml.model.common.Module> allImportedModules(final gov.nasa.jpl.imce.oml.model.common.Module it) {
+    return this.collectAllImportedModules(Lists.<gov.nasa.jpl.imce.oml.model.common.Module>newArrayList(it), Lists.<gov.nasa.jpl.imce.oml.model.common.Module>newArrayList(it), Sets.<gov.nasa.jpl.imce.oml.model.common.Module>newHashSet(it));
   }
   
-  public final Iterable<Module> collectAllImportedModules(final ArrayList<Module> queue, final ArrayList<Module> acc, final HashSet<Module> visited) {
-    Iterable<Module> _xblockexpression = null;
+  public final Iterable<gov.nasa.jpl.imce.oml.model.common.Module> collectAllImportedModules(final ArrayList<gov.nasa.jpl.imce.oml.model.common.Module> queue, final ArrayList<gov.nasa.jpl.imce.oml.model.common.Module> acc, final HashSet<gov.nasa.jpl.imce.oml.model.common.Module> visited) {
+    Iterable<gov.nasa.jpl.imce.oml.model.common.Module> _xblockexpression = null;
     {
       boolean _isEmpty = queue.isEmpty();
       if (_isEmpty) {
         return acc;
       }
-      final Module m = IterableExtensions.<Module>head(queue);
+      final gov.nasa.jpl.imce.oml.model.common.Module m = IterableExtensions.<gov.nasa.jpl.imce.oml.model.common.Module>head(queue);
       queue.remove(m);
-      final Function1<ModuleEdge, Module> _function = (ModuleEdge it) -> {
+      final Function1<ModuleEdge, gov.nasa.jpl.imce.oml.model.common.Module> _function = (ModuleEdge it) -> {
         return it.targetModule();
       };
-      final Function1<Module, Boolean> _function_1 = (Module it) -> {
+      final Function1<gov.nasa.jpl.imce.oml.model.common.Module, Boolean> _function_1 = (gov.nasa.jpl.imce.oml.model.common.Module it) -> {
         return Boolean.valueOf(visited.contains(it));
       };
-      final Iterable<Module> inc = IterableExtensions.<Module>reject(IterableExtensions.<Module>filterNull(ListExtensions.<ModuleEdge, Module>map(m.moduleEdges(), _function)), _function_1);
-      Iterables.<Module>addAll(queue, inc);
-      Iterables.<Module>addAll(acc, inc);
-      Iterables.<Module>addAll(visited, inc);
+      final Iterable<gov.nasa.jpl.imce.oml.model.common.Module> inc = IterableExtensions.<gov.nasa.jpl.imce.oml.model.common.Module>reject(IterableExtensions.<gov.nasa.jpl.imce.oml.model.common.Module>filterNull(ListExtensions.<ModuleEdge, gov.nasa.jpl.imce.oml.model.common.Module>map(m.moduleEdges(), _function)), _function_1);
+      Iterables.<gov.nasa.jpl.imce.oml.model.common.Module>addAll(queue, inc);
+      Iterables.<gov.nasa.jpl.imce.oml.model.common.Module>addAll(acc, inc);
+      Iterables.<gov.nasa.jpl.imce.oml.model.common.Module>addAll(visited, inc);
       _xblockexpression = this.collectAllImportedModules(queue, acc, visited);
     }
     return _xblockexpression;
@@ -680,30 +683,30 @@ public class OMLExtensions {
     return Iterables.<ConceptualEntity>concat(_localConceptualEntities, _flatten);
   }
   
-  public Iterable<Aspect> localAspects(final TerminologyBox it) {
-    return Iterables.<Aspect>filter(it.getBoxStatements(), Aspect.class);
+  public Iterable<AspectKind> localAspects(final TerminologyBox it) {
+    return Iterables.<AspectKind>filter(it.getBoxStatements(), AspectKind.class);
   }
   
-  public Iterable<Aspect> allAspects(final TerminologyBox it) {
-    Iterable<Aspect> _localAspects = this.localAspects(it);
-    final Function1<TerminologyBox, Iterable<Aspect>> _function = (TerminologyBox it_1) -> {
+  public Iterable<AspectKind> allAspects(final TerminologyBox it) {
+    Iterable<AspectKind> _localAspects = this.localAspects(it);
+    final Function1<TerminologyBox, Iterable<AspectKind>> _function = (TerminologyBox it_1) -> {
       return this.localAspects(it_1);
     };
-    Iterable<Aspect> _flatten = Iterables.<Aspect>concat(IterableExtensions.<TerminologyBox, Iterable<Aspect>>map(OMLExtensions.allImportedTerminologies(it), _function));
-    return Iterables.<Aspect>concat(_localAspects, _flatten);
+    Iterable<AspectKind> _flatten = Iterables.<AspectKind>concat(IterableExtensions.<TerminologyBox, Iterable<AspectKind>>map(OMLExtensions.allImportedTerminologies(it), _function));
+    return Iterables.<AspectKind>concat(_localAspects, _flatten);
   }
   
-  public Iterable<Concept> localConcepts(final TerminologyBox it) {
-    return Iterables.<Concept>filter(it.getBoxStatements(), Concept.class);
+  public Iterable<ConceptKind> localConcepts(final TerminologyBox it) {
+    return Iterables.<ConceptKind>filter(it.getBoxStatements(), ConceptKind.class);
   }
   
-  public Iterable<Concept> allConcepts(final TerminologyBox it) {
-    Iterable<Concept> _localConcepts = this.localConcepts(it);
-    final Function1<TerminologyBox, Iterable<Concept>> _function = (TerminologyBox it_1) -> {
+  public Iterable<ConceptKind> allConcepts(final TerminologyBox it) {
+    Iterable<ConceptKind> _localConcepts = this.localConcepts(it);
+    final Function1<TerminologyBox, Iterable<ConceptKind>> _function = (TerminologyBox it_1) -> {
       return this.localConcepts(it_1);
     };
-    Iterable<Concept> _flatten = Iterables.<Concept>concat(IterableExtensions.<TerminologyBox, Iterable<Concept>>map(OMLExtensions.allImportedTerminologies(it), _function));
-    return Iterables.<Concept>concat(_localConcepts, _flatten);
+    Iterable<ConceptKind> _flatten = Iterables.<ConceptKind>concat(IterableExtensions.<TerminologyBox, Iterable<ConceptKind>>map(OMLExtensions.allImportedTerminologies(it), _function));
+    return Iterables.<ConceptKind>concat(_localConcepts, _flatten);
   }
   
   public Iterable<ConceptualRelationship> localConceptualRelationships(final TerminologyBox it) {
@@ -714,21 +717,21 @@ public class OMLExtensions {
     return Iterables.<ReifiedRelationshipRestriction>filter(it.getBoxStatements(), ReifiedRelationshipRestriction.class);
   }
   
-  public Iterable<ReifiedRelationship> localReifiedRelationships(final TerminologyBox it) {
-    return Iterables.<ReifiedRelationship>filter(it.getBoxStatements(), ReifiedRelationship.class);
+  public Iterable<ConceptualRelationship> localReifiedRelationships(final TerminologyBox it) {
+    return Iterables.<ConceptualRelationship>filter(it.getBoxStatements(), ConceptualRelationship.class);
   }
   
   public Iterable<UnreifiedRelationship> localUnreifiedRelationships(final TerminologyBox it) {
     return Iterables.<UnreifiedRelationship>filter(it.getBoxStatements(), UnreifiedRelationship.class);
   }
   
-  public Iterable<ReifiedRelationship> allReifiedRelationships(final TerminologyBox it) {
-    Iterable<ReifiedRelationship> _localReifiedRelationships = this.localReifiedRelationships(it);
-    final Function1<TerminologyBox, Iterable<ReifiedRelationship>> _function = (TerminologyBox it_1) -> {
+  public Iterable<ConceptualRelationship> allReifiedRelationships(final TerminologyBox it) {
+    Iterable<ConceptualRelationship> _localReifiedRelationships = this.localReifiedRelationships(it);
+    final Function1<TerminologyBox, Iterable<ConceptualRelationship>> _function = (TerminologyBox it_1) -> {
       return this.localReifiedRelationships(it_1);
     };
-    Iterable<ReifiedRelationship> _flatten = Iterables.<ReifiedRelationship>concat(IterableExtensions.<TerminologyBox, Iterable<ReifiedRelationship>>map(OMLExtensions.allImportedTerminologies(it), _function));
-    return Iterables.<ReifiedRelationship>concat(_localReifiedRelationships, _flatten);
+    Iterable<ConceptualRelationship> _flatten = Iterables.<ConceptualRelationship>concat(IterableExtensions.<TerminologyBox, Iterable<ConceptualRelationship>>map(OMLExtensions.allImportedTerminologies(it), _function));
+    return Iterables.<ConceptualRelationship>concat(_localReifiedRelationships, _flatten);
   }
   
   public Iterable<EntityRelationship> localEntityRelationships(final TerminologyBox it) {
@@ -739,9 +742,13 @@ public class OMLExtensions {
     Iterable<Predicate> _xblockexpression = null;
     {
       final ArrayList<Predicate> result = new ArrayList<Predicate>();
-      final Consumer<ReifiedRelationship> _function = (ReifiedRelationship rr) -> {
-        result.add(rr.getForwardProperty());
-        result.add(rr.getInverseProperty());
+      final Consumer<ConceptualRelationship> _function = (ConceptualRelationship rr) -> {
+        boolean _matched = false;
+        if (rr instanceof ReifiedRelationship) {
+          _matched=true;
+          result.add(((ReifiedRelationship)rr).getForwardProperty());
+          result.add(((ReifiedRelationship)rr).getInverseProperty());
+        }
       };
       this.localReifiedRelationships(it).forEach(_function);
       Iterables.<Predicate>addAll(result, this.localUnreifiedRelationships(it));
@@ -752,26 +759,48 @@ public class OMLExtensions {
   }
   
   public Iterable<ForwardProperty> localForwardProperties(final TerminologyBox it) {
-    final Function1<ReifiedRelationship, ForwardProperty> _function = (ReifiedRelationship it_1) -> {
-      return it_1.getForwardProperty();
+    final Function1<ConceptualRelationship, ForwardProperty> _function = (ConceptualRelationship rr) -> {
+      ForwardProperty _switchResult = null;
+      boolean _matched = false;
+      if (rr instanceof ReifiedRelationship) {
+        _matched=true;
+        _switchResult = ((ReifiedRelationship)rr).getForwardProperty();
+      }
+      if (!_matched) {
+        _switchResult = null;
+      }
+      return _switchResult;
     };
-    return IterableExtensions.<ForwardProperty>filterNull(IterableExtensions.<ReifiedRelationship, ForwardProperty>map(this.localReifiedRelationships(it), _function));
+    return IterableExtensions.<ForwardProperty>filterNull(IterableExtensions.<ConceptualRelationship, ForwardProperty>map(this.localReifiedRelationships(it), _function));
   }
   
   public Iterable<InverseProperty> localInverseProperties(final TerminologyBox it) {
-    final Function1<ReifiedRelationship, InverseProperty> _function = (ReifiedRelationship it_1) -> {
-      return it_1.getInverseProperty();
+    final Function1<ConceptualRelationship, InverseProperty> _function = (ConceptualRelationship rr) -> {
+      InverseProperty _switchResult = null;
+      boolean _matched = false;
+      if (rr instanceof ReifiedRelationship) {
+        _matched=true;
+        _switchResult = ((ReifiedRelationship)rr).getInverseProperty();
+      }
+      if (!_matched) {
+        _switchResult = null;
+      }
+      return _switchResult;
     };
-    return IterableExtensions.<InverseProperty>filterNull(IterableExtensions.<ReifiedRelationship, InverseProperty>map(this.localReifiedRelationships(it), _function));
+    return IterableExtensions.<InverseProperty>filterNull(IterableExtensions.<ConceptualRelationship, InverseProperty>map(this.localReifiedRelationships(it), _function));
   }
   
   public Iterable<RestrictableRelationship> localRestrictableRelationships(final TerminologyBox it) {
     Iterable<RestrictableRelationship> _xblockexpression = null;
     {
       final ArrayList<RestrictableRelationship> result = new ArrayList<RestrictableRelationship>();
-      final Consumer<ReifiedRelationship> _function = (ReifiedRelationship rr) -> {
-        result.add(rr.getForwardProperty());
-        result.add(rr.getInverseProperty());
+      final Consumer<ConceptualRelationship> _function = (ConceptualRelationship rr) -> {
+        boolean _matched = false;
+        if (rr instanceof ReifiedRelationship) {
+          _matched=true;
+          result.add(((ReifiedRelationship)rr).getForwardProperty());
+          result.add(((ReifiedRelationship)rr).getInverseProperty());
+        }
       };
       this.localReifiedRelationships(it).forEach(_function);
       Iterables.<RestrictableRelationship>addAll(result, this.localUnreifiedRelationships(it));
@@ -983,6 +1012,12 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
+      if (e instanceof CardinalityRestrictedAspect) {
+        _matched=true;
+        _switchResult = "CardinalityRestrictedAspect";
+      }
+    }
+    if (!_matched) {
       if (e instanceof AspectSpecializationAxiom) {
         _matched=true;
         _switchResult = "AspectSpecializationAxiom";
@@ -1016,6 +1051,12 @@ public class OMLExtensions {
       if (e instanceof Concept) {
         _matched=true;
         _switchResult = "Concept";
+      }
+    }
+    if (!_matched) {
+      if (e instanceof CardinalityRestrictedConcept) {
+        _matched=true;
+        _switchResult = "CardinalityRestrictedConcept";
       }
     }
     if (!_matched) {
@@ -1124,6 +1165,12 @@ public class OMLExtensions {
       if (e instanceof ReifiedRelationship) {
         _matched=true;
         _switchResult = "ReifiedRelationship";
+      }
+    }
+    if (!_matched) {
+      if (e instanceof CardinalityRestrictedReifiedRelationship) {
+        _matched=true;
+        _switchResult = "CardinalityRestrictedReifiedRelationship";
       }
     }
     if (!_matched) {
@@ -1320,15 +1367,27 @@ public class OMLExtensions {
       _switchResult = 10000;
     }
     if (!_matched) {
+      if (e instanceof CardinalityRestrictedAspect) {
+        _matched=true;
+        _switchResult = 10001;
+      }
+    }
+    if (!_matched) {
       if (e instanceof Concept) {
         _matched=true;
         _switchResult = 10020;
       }
     }
     if (!_matched) {
-      if (e instanceof ConceptSpecializationAxiom) {
+      if (e instanceof CardinalityRestrictedConcept) {
         _matched=true;
         _switchResult = 10021;
+      }
+    }
+    if (!_matched) {
+      if (e instanceof ConceptSpecializationAxiom) {
+        _matched=true;
+        _switchResult = 10022;
       }
     }
     if (!_matched) {
@@ -1338,15 +1397,21 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
-      if (e instanceof ReifiedRelationshipRestriction) {
+      if (e instanceof CardinalityRestrictedReifiedRelationship) {
         _matched=true;
         _switchResult = 10031;
       }
     }
     if (!_matched) {
-      if (e instanceof ReifiedRelationshipSpecializationAxiom) {
+      if (e instanceof ReifiedRelationshipRestriction) {
         _matched=true;
         _switchResult = 10032;
+      }
+    }
+    if (!_matched) {
+      if (e instanceof ReifiedRelationshipSpecializationAxiom) {
+        _matched=true;
+        _switchResult = 10033;
       }
     }
     if (!_matched) {
@@ -1582,15 +1647,33 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
+      if (e instanceof CardinalityRestrictedAspect) {
+        _matched=true;
+        _switchResult = "00010+";
+      }
+    }
+    if (!_matched) {
       if (e instanceof Concept) {
         _matched=true;
         _switchResult = "00011-";
       }
     }
     if (!_matched) {
+      if (e instanceof CardinalityRestrictedConcept) {
+        _matched=true;
+        _switchResult = "00011+";
+      }
+    }
+    if (!_matched) {
       if (e instanceof ReifiedRelationship) {
         _matched=true;
         _switchResult = "00012-";
+      }
+    }
+    if (!_matched) {
+      if (e instanceof CardinalityRestrictedReifiedRelationship) {
+        _matched=true;
+        _switchResult = "00012+";
       }
     }
     if (!_matched) {
@@ -1869,11 +1952,11 @@ public class OMLExtensions {
   protected static void _normalize(final Extent ext) {
     final ArrayList<EObject> queue = new ArrayList<EObject>();
     queue.add(ext);
-    final Function1<Module, String> _function = (Module it) -> {
+    final Function1<gov.nasa.jpl.imce.oml.model.common.Module, String> _function = (gov.nasa.jpl.imce.oml.model.common.Module it) -> {
       return it.abbrevIRI();
     };
-    OMLExtensions.<Module, String>sortInplaceBy(ext.getModules(), _function);
-    final Consumer<Module> _function_1 = (Module m) -> {
+    OMLExtensions.<gov.nasa.jpl.imce.oml.model.common.Module, String>sortInplaceBy(ext.getModules(), _function);
+    final Consumer<gov.nasa.jpl.imce.oml.model.common.Module> _function_1 = (gov.nasa.jpl.imce.oml.model.common.Module m) -> {
       OMLExtensions.normalize(m);
     };
     ext.getModules().forEach(_function_1);
@@ -2158,15 +2241,15 @@ public class OMLExtensions {
     {
       String _switchResult = null;
       boolean _matched = false;
-      if (e instanceof Module) {
+      if (e instanceof gov.nasa.jpl.imce.oml.model.common.Module) {
         _matched=true;
-        _switchResult = ((Module)e).abbrevIRI();
+        _switchResult = ((gov.nasa.jpl.imce.oml.model.common.Module)e).abbrevIRI();
       }
       if (!_matched) {
         if (e instanceof ModuleEdge) {
           _matched=true;
           String _elvis = null;
-          Module _sourceModule = ((ModuleEdge)e).sourceModule();
+          gov.nasa.jpl.imce.oml.model.common.Module _sourceModule = ((ModuleEdge)e).sourceModule();
           String _abbrevIRI = null;
           if (_sourceModule!=null) {
             _abbrevIRI=_sourceModule.abbrevIRI();
@@ -2179,7 +2262,7 @@ public class OMLExtensions {
           }
           String _plus = (_elvis + ".");
           String _elvis_1 = null;
-          Module _targetModule = null;
+          gov.nasa.jpl.imce.oml.model.common.Module _targetModule = null;
           if (((ModuleEdge)e)!=null) {
             _targetModule=((ModuleEdge)e).targetModule();
           }
@@ -2203,7 +2286,7 @@ public class OMLExtensions {
         if (e instanceof RootConceptTaxonomyAxiom) {
           _matched=true;
           String _elvis = null;
-          Concept _root = ((RootConceptTaxonomyAxiom)e).getRoot();
+          ConceptKind _root = ((RootConceptTaxonomyAxiom)e).getRoot();
           String _abbrevIRI = null;
           if (_root!=null) {
             _abbrevIRI=_root.abbrevIRI();
@@ -2221,7 +2304,7 @@ public class OMLExtensions {
         if (e instanceof SpecificDisjointConceptAxiom) {
           _matched=true;
           String _elvis = null;
-          Concept _disjointLeaf = ((SpecificDisjointConceptAxiom)e).getDisjointLeaf();
+          ConceptKind _disjointLeaf = ((SpecificDisjointConceptAxiom)e).getDisjointLeaf();
           String _abbrevIRI = null;
           if (_disjointLeaf!=null) {
             _abbrevIRI=_disjointLeaf.abbrevIRI();

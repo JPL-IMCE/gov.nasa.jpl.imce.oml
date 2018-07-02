@@ -20,7 +20,6 @@ package gov.nasa.jpl.imce.oml.zip;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
-import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.extensions.CatalogURIConverter;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
@@ -76,7 +75,7 @@ public class OMLZipResource extends ResourceImpl {
             boolean _matched = false;
             if (e instanceof Extent) {
               _matched=true;
-              final Consumer<Module> _function_2 = (Module m) -> {
+              final Consumer<gov.nasa.jpl.imce.oml.model.common.Module> _function_2 = (gov.nasa.jpl.imce.oml.model.common.Module m) -> {
                 tables.queueModule(m);
               };
               ((Extent)e).getModules().forEach(_function_2);

@@ -18,7 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.graphs;
 
-import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxAxiom;
 
@@ -83,12 +83,12 @@ public interface TerminologyNestingAxiom extends TerminologyBoxAxiom {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Nesting Context</em>' reference.
-	 * @see #setNestingContext(Concept)
+	 * @see #setNestingContext(ConceptKind)
 	 * @see gov.nasa.jpl.imce.oml.model.graphs.GraphsPackage#getTerminologyNestingAxiom_NestingContext()
 	 * @model required="true"
 	 * @generated
 	 */
-	Concept getNestingContext();
+	ConceptKind getNestingContext();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom#getNestingContext <em>Nesting Context</em>}' reference.
@@ -98,7 +98,7 @@ public interface TerminologyNestingAxiom extends TerminologyBoxAxiom {
 	 * @see #getNestingContext()
 	 * @generated
 	 */
-	void setNestingContext(Concept value);
+	void setNestingContext(ConceptKind value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -139,7 +139,7 @@ public interface TerminologyNestingAxiom extends TerminologyBoxAxiom {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model dataType="gov.nasa.jpl.imce.oml.model.common.UUID" unique="false" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.lang.String%&gt; _string = this.getTbox().uuid().toString();\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"tbox\", _string);\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.Concept%&gt; _nestingContext = this.getNestingContext();\n&lt;%java.lang.String%&gt; _uuid = null;\nif (_nestingContext!=null)\n{\n\t_uuid=_nestingContext.uuid();\n}\n&lt;%java.lang.String%&gt; _string_1 = null;\nif (_uuid!=null)\n{\n\t_string_1=_uuid.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_1 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"nestingContext\", _string_1);\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox%&gt; _nestingTerminology = this.getNestingTerminology();\n&lt;%java.lang.String%&gt; _uuid_1 = null;\nif (_nestingTerminology!=null)\n{\n\t_uuid_1=_nestingTerminology.uuid();\n}\n&lt;%java.lang.String%&gt; _string_2 = null;\nif (_uuid_1!=null)\n{\n\t_string_2=_uuid_1.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_2 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"nestingTerminology\", _string_2);\n&lt;%java.util.UUID%&gt; _derivedUUID = &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.derivedUUID(\n\t\"TerminologyNestingAxiom\", _mappedTo, _mappedTo_1, _mappedTo_2);\n&lt;%java.lang.String%&gt; _string_3 = null;\nif (_derivedUUID!=null)\n{\n\t_string_3=_derivedUUID.toString();\n}\nreturn _string_3;'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.lang.String%&gt; _string = this.getTbox().uuid().toString();\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"tbox\", _string);\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind%&gt; _nestingContext = this.getNestingContext();\n&lt;%java.lang.String%&gt; _uuid = null;\nif (_nestingContext!=null)\n{\n\t_uuid=_nestingContext.uuid();\n}\n&lt;%java.lang.String%&gt; _string_1 = null;\nif (_uuid!=null)\n{\n\t_string_1=_uuid.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_1 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"nestingContext\", _string_1);\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox%&gt; _nestingTerminology = this.getNestingTerminology();\n&lt;%java.lang.String%&gt; _uuid_1 = null;\nif (_nestingTerminology!=null)\n{\n\t_uuid_1=_nestingTerminology.uuid();\n}\n&lt;%java.lang.String%&gt; _string_2 = null;\nif (_uuid_1!=null)\n{\n\t_string_2=_uuid_1.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_2 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"nestingTerminology\", _string_2);\n&lt;%java.util.UUID%&gt; _derivedUUID = &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.derivedUUID(\n\t\"TerminologyNestingAxiom\", _mappedTo, _mappedTo_1, _mappedTo_2);\n&lt;%java.lang.String%&gt; _string_3 = null;\nif (_derivedUUID!=null)\n{\n\t_string_3=_derivedUUID.toString();\n}\nreturn _string_3;'"
 	 * @generated
 	 */
 	String uuid();

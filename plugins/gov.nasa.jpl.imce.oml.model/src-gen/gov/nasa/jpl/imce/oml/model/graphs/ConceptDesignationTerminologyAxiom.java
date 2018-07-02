@@ -18,7 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.graphs;
 
-import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxAxiom;
 
@@ -83,12 +83,12 @@ public interface ConceptDesignationTerminologyAxiom extends TerminologyBoxAxiom 
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Designated Concept</em>' reference.
-	 * @see #setDesignatedConcept(Concept)
+	 * @see #setDesignatedConcept(ConceptKind)
 	 * @see gov.nasa.jpl.imce.oml.model.graphs.GraphsPackage#getConceptDesignationTerminologyAxiom_DesignatedConcept()
 	 * @model required="true"
 	 * @generated
 	 */
-	Concept getDesignatedConcept();
+	ConceptKind getDesignatedConcept();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom#getDesignatedConcept <em>Designated Concept</em>}' reference.
@@ -98,7 +98,7 @@ public interface ConceptDesignationTerminologyAxiom extends TerminologyBoxAxiom 
 	 * @see #getDesignatedConcept()
 	 * @generated
 	 */
-	void setDesignatedConcept(Concept value);
+	void setDesignatedConcept(ConceptKind value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -139,7 +139,7 @@ public interface ConceptDesignationTerminologyAxiom extends TerminologyBoxAxiom 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model dataType="gov.nasa.jpl.imce.oml.model.common.UUID" unique="false" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.lang.String%&gt; _string = this.getTbox().uuid().toString();\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"tbox\", _string);\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.Concept%&gt; _designatedConcept = this.getDesignatedConcept();\n&lt;%java.lang.String%&gt; _uuid = null;\nif (_designatedConcept!=null)\n{\n\t_uuid=_designatedConcept.uuid();\n}\n&lt;%java.lang.String%&gt; _string_1 = null;\nif (_uuid!=null)\n{\n\t_string_1=_uuid.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_1 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"designatedConcept\", _string_1);\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox%&gt; _designatedTerminology = this.getDesignatedTerminology();\n&lt;%java.lang.String%&gt; _uuid_1 = null;\nif (_designatedTerminology!=null)\n{\n\t_uuid_1=_designatedTerminology.uuid();\n}\n&lt;%java.lang.String%&gt; _string_2 = null;\nif (_uuid_1!=null)\n{\n\t_string_2=_uuid_1.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_2 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"designatedTerminology\", _string_2);\n&lt;%java.util.UUID%&gt; _derivedUUID = &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.derivedUUID(\n\t\"ConceptDesignationTerminologyAxiom\", _mappedTo, _mappedTo_1, _mappedTo_2);\n&lt;%java.lang.String%&gt; _string_3 = null;\nif (_derivedUUID!=null)\n{\n\t_string_3=_derivedUUID.toString();\n}\nreturn _string_3;'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.lang.String%&gt; _string = this.getTbox().uuid().toString();\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"tbox\", _string);\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind%&gt; _designatedConcept = this.getDesignatedConcept();\n&lt;%java.lang.String%&gt; _uuid = null;\nif (_designatedConcept!=null)\n{\n\t_uuid=_designatedConcept.uuid();\n}\n&lt;%java.lang.String%&gt; _string_1 = null;\nif (_uuid!=null)\n{\n\t_string_1=_uuid.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_1 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"designatedConcept\", _string_1);\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox%&gt; _designatedTerminology = this.getDesignatedTerminology();\n&lt;%java.lang.String%&gt; _uuid_1 = null;\nif (_designatedTerminology!=null)\n{\n\t_uuid_1=_designatedTerminology.uuid();\n}\n&lt;%java.lang.String%&gt; _string_2 = null;\nif (_uuid_1!=null)\n{\n\t_string_2=_uuid_1.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_2 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"designatedTerminology\", _string_2);\n&lt;%java.util.UUID%&gt; _derivedUUID = &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.derivedUUID(\n\t\"ConceptDesignationTerminologyAxiom\", _mappedTo, _mappedTo_1, _mappedTo_2);\n&lt;%java.lang.String%&gt; _string_3 = null;\nif (_derivedUUID!=null)\n{\n\t_string_3=_derivedUUID.toString();\n}\nreturn _string_3;'"
 	 * @generated
 	 */
 	String uuid();

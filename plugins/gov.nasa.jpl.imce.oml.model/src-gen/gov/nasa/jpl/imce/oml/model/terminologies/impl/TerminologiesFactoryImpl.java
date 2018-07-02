@@ -75,11 +75,14 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 		switch (eClass.getClassifierID()) {
 			case TerminologiesPackage.TERMINOLOGY_EXTENSION_AXIOM: return createTerminologyExtensionAxiom();
 			case TerminologiesPackage.ASPECT: return createAspect();
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT: return createCardinalityRestrictedAspect();
 			case TerminologiesPackage.CONCEPT: return createConcept();
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT: return createCardinalityRestrictedConcept();
 			case TerminologiesPackage.FORWARD_PROPERTY: return createForwardProperty();
 			case TerminologiesPackage.INVERSE_PROPERTY: return createInverseProperty();
 			case TerminologiesPackage.REIFIED_RELATIONSHIP: return createReifiedRelationship();
 			case TerminologiesPackage.REIFIED_RELATIONSHIP_RESTRICTION: return createReifiedRelationshipRestriction();
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP: return createCardinalityRestrictedReifiedRelationship();
 			case TerminologiesPackage.UNREIFIED_RELATIONSHIP: return createUnreifiedRelationship();
 			case TerminologiesPackage.SCALAR: return createScalar();
 			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY: return createEntityStructuredDataProperty();
@@ -127,6 +130,8 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 		switch (eDataType.getClassifierID()) {
 			case TerminologiesPackage.TERMINOLOGY_KIND:
 				return createTerminologyKindFromString(eDataType, initialValue);
+			case TerminologiesPackage.CARDINALITY_RESTRICTION_KIND:
+				return createCardinalityRestrictionKindFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -142,6 +147,8 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 		switch (eDataType.getClassifierID()) {
 			case TerminologiesPackage.TERMINOLOGY_KIND:
 				return convertTerminologyKindToString(eDataType, instanceValue);
+			case TerminologiesPackage.CARDINALITY_RESTRICTION_KIND:
+				return convertCardinalityRestrictionKindToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -172,9 +179,29 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public CardinalityRestrictedAspect createCardinalityRestrictedAspect() {
+		CardinalityRestrictedAspectImpl cardinalityRestrictedAspect = new CardinalityRestrictedAspectImpl();
+		return cardinalityRestrictedAspect;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Concept createConcept() {
 		ConceptImpl concept = new ConceptImpl();
 		return concept;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CardinalityRestrictedConcept createCardinalityRestrictedConcept() {
+		CardinalityRestrictedConceptImpl cardinalityRestrictedConcept = new CardinalityRestrictedConceptImpl();
+		return cardinalityRestrictedConcept;
 	}
 
 	/**
@@ -215,6 +242,16 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 	public ReifiedRelationshipRestriction createReifiedRelationshipRestriction() {
 		ReifiedRelationshipRestrictionImpl reifiedRelationshipRestriction = new ReifiedRelationshipRestrictionImpl();
 		return reifiedRelationshipRestriction;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CardinalityRestrictedReifiedRelationship createCardinalityRestrictedReifiedRelationship() {
+		CardinalityRestrictedReifiedRelationshipImpl cardinalityRestrictedReifiedRelationship = new CardinalityRestrictedReifiedRelationshipImpl();
+		return cardinalityRestrictedReifiedRelationship;
 	}
 
 	/**
@@ -554,6 +591,26 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 	 * @generated
 	 */
 	public String convertTerminologyKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CardinalityRestrictionKind createCardinalityRestrictionKindFromString(EDataType eDataType, String initialValue) {
+		CardinalityRestrictionKind result = CardinalityRestrictionKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertCardinalityRestrictionKindToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

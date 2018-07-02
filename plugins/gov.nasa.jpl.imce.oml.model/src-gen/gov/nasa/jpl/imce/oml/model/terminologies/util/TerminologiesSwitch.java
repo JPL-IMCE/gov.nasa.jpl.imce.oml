@@ -249,9 +249,28 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TerminologiesPackage.ASPECT_KIND: {
+				AspectKind aspectKind = (AspectKind)theEObject;
+				T result = caseAspectKind(aspectKind);
+				if (result == null) result = caseEntity(aspectKind);
+				if (result == null) result = caseUnaryTermKind(aspectKind);
+				if (result == null) result = caseTerm(aspectKind);
+				if (result == null) result = casePredicate(aspectKind);
+				if (result == null) result = caseTerminologyBoxStatement(aspectKind);
+				if (result == null) result = caseResource(aspectKind);
+				if (result == null) result = caseModuleElement(aspectKind);
+				if (result == null) result = caseIntrinsicIdentityKind(aspectKind);
+				if (result == null) result = caseLogicalElement(aspectKind);
+				if (result == null) result = caseCrossReferencableKind(aspectKind);
+				if (result == null) result = caseIdentityKind(aspectKind);
+				if (result == null) result = caseCrossReferencabilityKind(aspectKind);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case TerminologiesPackage.ASPECT: {
 				Aspect aspect = (Aspect)theEObject;
 				T result = caseAspect(aspect);
+				if (result == null) result = caseAspectKind(aspect);
 				if (result == null) result = caseEntity(aspect);
 				if (result == null) result = caseUnaryTermKind(aspect);
 				if (result == null) result = caseTerm(aspect);
@@ -267,9 +286,48 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT: {
+				CardinalityRestrictedAspect cardinalityRestrictedAspect = (CardinalityRestrictedAspect)theEObject;
+				T result = caseCardinalityRestrictedAspect(cardinalityRestrictedAspect);
+				if (result == null) result = caseAspectKind(cardinalityRestrictedAspect);
+				if (result == null) result = caseEntity(cardinalityRestrictedAspect);
+				if (result == null) result = caseUnaryTermKind(cardinalityRestrictedAspect);
+				if (result == null) result = caseTerm(cardinalityRestrictedAspect);
+				if (result == null) result = casePredicate(cardinalityRestrictedAspect);
+				if (result == null) result = caseTerminologyBoxStatement(cardinalityRestrictedAspect);
+				if (result == null) result = caseResource(cardinalityRestrictedAspect);
+				if (result == null) result = caseModuleElement(cardinalityRestrictedAspect);
+				if (result == null) result = caseIntrinsicIdentityKind(cardinalityRestrictedAspect);
+				if (result == null) result = caseLogicalElement(cardinalityRestrictedAspect);
+				if (result == null) result = caseCrossReferencableKind(cardinalityRestrictedAspect);
+				if (result == null) result = caseIdentityKind(cardinalityRestrictedAspect);
+				if (result == null) result = caseCrossReferencabilityKind(cardinalityRestrictedAspect);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.CONCEPT_KIND: {
+				ConceptKind conceptKind = (ConceptKind)theEObject;
+				T result = caseConceptKind(conceptKind);
+				if (result == null) result = caseConceptualEntity(conceptKind);
+				if (result == null) result = caseUnaryTermKind(conceptKind);
+				if (result == null) result = caseEntity(conceptKind);
+				if (result == null) result = caseTerm(conceptKind);
+				if (result == null) result = casePredicate(conceptKind);
+				if (result == null) result = caseTerminologyBoxStatement(conceptKind);
+				if (result == null) result = caseResource(conceptKind);
+				if (result == null) result = caseModuleElement(conceptKind);
+				if (result == null) result = caseIntrinsicIdentityKind(conceptKind);
+				if (result == null) result = caseLogicalElement(conceptKind);
+				if (result == null) result = caseCrossReferencableKind(conceptKind);
+				if (result == null) result = caseIdentityKind(conceptKind);
+				if (result == null) result = caseCrossReferencabilityKind(conceptKind);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case TerminologiesPackage.CONCEPT: {
 				Concept concept = (Concept)theEObject;
 				T result = caseConcept(concept);
+				if (result == null) result = caseConceptKind(concept);
 				if (result == null) result = caseConceptualEntity(concept);
 				if (result == null) result = caseUnaryTermKind(concept);
 				if (result == null) result = caseEntity(concept);
@@ -283,6 +341,26 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				if (result == null) result = caseCrossReferencableKind(concept);
 				if (result == null) result = caseIdentityKind(concept);
 				if (result == null) result = caseCrossReferencabilityKind(concept);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT: {
+				CardinalityRestrictedConcept cardinalityRestrictedConcept = (CardinalityRestrictedConcept)theEObject;
+				T result = caseCardinalityRestrictedConcept(cardinalityRestrictedConcept);
+				if (result == null) result = caseConceptKind(cardinalityRestrictedConcept);
+				if (result == null) result = caseConceptualEntity(cardinalityRestrictedConcept);
+				if (result == null) result = caseUnaryTermKind(cardinalityRestrictedConcept);
+				if (result == null) result = caseEntity(cardinalityRestrictedConcept);
+				if (result == null) result = caseTerm(cardinalityRestrictedConcept);
+				if (result == null) result = casePredicate(cardinalityRestrictedConcept);
+				if (result == null) result = caseTerminologyBoxStatement(cardinalityRestrictedConcept);
+				if (result == null) result = caseResource(cardinalityRestrictedConcept);
+				if (result == null) result = caseModuleElement(cardinalityRestrictedConcept);
+				if (result == null) result = caseIntrinsicIdentityKind(cardinalityRestrictedConcept);
+				if (result == null) result = caseLogicalElement(cardinalityRestrictedConcept);
+				if (result == null) result = caseCrossReferencableKind(cardinalityRestrictedConcept);
+				if (result == null) result = caseIdentityKind(cardinalityRestrictedConcept);
+				if (result == null) result = caseCrossReferencabilityKind(cardinalityRestrictedConcept);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -420,6 +498,27 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				if (result == null) result = caseCrossReferencableKind(reifiedRelationshipRestriction);
 				if (result == null) result = caseIdentityKind(reifiedRelationshipRestriction);
 				if (result == null) result = caseCrossReferencabilityKind(reifiedRelationshipRestriction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP: {
+				CardinalityRestrictedReifiedRelationship cardinalityRestrictedReifiedRelationship = (CardinalityRestrictedReifiedRelationship)theEObject;
+				T result = caseCardinalityRestrictedReifiedRelationship(cardinalityRestrictedReifiedRelationship);
+				if (result == null) result = caseConceptualRelationship(cardinalityRestrictedReifiedRelationship);
+				if (result == null) result = caseConceptualEntity(cardinalityRestrictedReifiedRelationship);
+				if (result == null) result = caseEntityRelationship(cardinalityRestrictedReifiedRelationship);
+				if (result == null) result = caseEntity(cardinalityRestrictedReifiedRelationship);
+				if (result == null) result = caseDirectedBinaryRelationshipKind(cardinalityRestrictedReifiedRelationship);
+				if (result == null) result = caseTerm(cardinalityRestrictedReifiedRelationship);
+				if (result == null) result = casePredicate(cardinalityRestrictedReifiedRelationship);
+				if (result == null) result = caseTerminologyBoxStatement(cardinalityRestrictedReifiedRelationship);
+				if (result == null) result = caseResource(cardinalityRestrictedReifiedRelationship);
+				if (result == null) result = caseModuleElement(cardinalityRestrictedReifiedRelationship);
+				if (result == null) result = caseIntrinsicIdentityKind(cardinalityRestrictedReifiedRelationship);
+				if (result == null) result = caseLogicalElement(cardinalityRestrictedReifiedRelationship);
+				if (result == null) result = caseCrossReferencableKind(cardinalityRestrictedReifiedRelationship);
+				if (result == null) result = caseIdentityKind(cardinalityRestrictedReifiedRelationship);
+				if (result == null) result = caseCrossReferencabilityKind(cardinalityRestrictedReifiedRelationship);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1399,6 +1498,21 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Aspect Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Aspect Kind</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAspectKind(AspectKind object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Aspect</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1414,6 +1528,36 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Cardinality Restricted Aspect</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cardinality Restricted Aspect</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCardinalityRestrictedAspect(CardinalityRestrictedAspect object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Concept Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Concept Kind</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConceptKind(ConceptKind object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Concept</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1425,6 +1569,21 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseConcept(Concept object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Cardinality Restricted Concept</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cardinality Restricted Concept</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCardinalityRestrictedConcept(CardinalityRestrictedConcept object) {
 		return null;
 	}
 
@@ -1545,6 +1704,21 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseReifiedRelationshipRestriction(ReifiedRelationshipRestriction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Cardinality Restricted Reified Relationship</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cardinality Restricted Reified Relationship</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCardinalityRestrictedReifiedRelationship(CardinalityRestrictedReifiedRelationship object) {
 		return null;
 	}
 

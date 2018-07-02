@@ -1400,11 +1400,29 @@ ruleAtomicEntity returns [EObject current=null]
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getAtomicEntityAccess().getConceptParserRuleCall_1());
+			newCompositeNode(grammarAccess.getAtomicEntityAccess().getCardinalityRestrictedAspectParserRuleCall_1());
 		}
-		this_Concept_1=ruleConcept
+		this_CardinalityRestrictedAspect_1=ruleCardinalityRestrictedAspect
 		{
-			$current = $this_Concept_1.current;
+			$current = $this_CardinalityRestrictedAspect_1.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getAtomicEntityAccess().getConceptParserRuleCall_2());
+		}
+		this_Concept_2=ruleConcept
+		{
+			$current = $this_Concept_2.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getAtomicEntityAccess().getCardinalityRestrictedConceptParserRuleCall_3());
+		}
+		this_CardinalityRestrictedConcept_3=ruleCardinalityRestrictedConcept
+		{
+			$current = $this_CardinalityRestrictedConcept_3.current;
 			afterParserOrEnumRuleCall();
 		}
 	)
@@ -1445,11 +1463,20 @@ ruleEntityRelationship returns [EObject current=null]
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getEntityRelationshipAccess().getUnreifiedRelationshipParserRuleCall_2());
+			newCompositeNode(grammarAccess.getEntityRelationshipAccess().getCardinalityRestrictedReifiedRelationshipParserRuleCall_2());
 		}
-		this_UnreifiedRelationship_2=ruleUnreifiedRelationship
+		this_CardinalityRestrictedReifiedRelationship_2=ruleCardinalityRestrictedReifiedRelationship
 		{
-			$current = $this_UnreifiedRelationship_2.current;
+			$current = $this_CardinalityRestrictedReifiedRelationship_2.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getEntityRelationshipAccess().getUnreifiedRelationshipParserRuleCall_3());
+		}
+		this_UnreifiedRelationship_3=ruleUnreifiedRelationship
+		{
+			$current = $this_UnreifiedRelationship_3.current;
 			afterParserOrEnumRuleCall();
 		}
 	)
@@ -2049,6 +2076,142 @@ ruleAspect returns [EObject current=null]
 	)
 ;
 
+// Entry rule entryRuleCardinalityRestrictedAspect
+entryRuleCardinalityRestrictedAspect returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getCardinalityRestrictedAspectRule()); }
+	iv_ruleCardinalityRestrictedAspect=ruleCardinalityRestrictedAspect
+	{ $current=$iv_ruleCardinalityRestrictedAspect.current; }
+	EOF;
+
+// Rule CardinalityRestrictedAspect
+ruleCardinalityRestrictedAspect returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCardinalityRestrictedAspectAccess().getAnnotationsAnnotationPropertyValueParserRuleCall_0_0());
+				}
+				lv_annotations_0_0=ruleAnnotationPropertyValue
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCardinalityRestrictedAspectRule());
+					}
+					add(
+						$current,
+						"annotations",
+						lv_annotations_0_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.AnnotationPropertyValue");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		otherlv_1='aspect'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getCardinalityRestrictedAspectAccess().getAspectKeyword_1());
+		}
+		(
+			(
+				lv_name_2_0=RULE_ID
+				{
+					newLeafNode(lv_name_2_0, grammarAccess.getCardinalityRestrictedAspectAccess().getNameIDTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getCardinalityRestrictedAspectRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_2_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.ID");
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCardinalityRestrictedAspectAccess().getRestrictionKindCardinalityRestrictionKindEnumRuleCall_3_0());
+				}
+				lv_restrictionKind_3_0=ruleCardinalityRestrictionKind
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCardinalityRestrictedAspectRule());
+					}
+					set(
+						$current,
+						"restrictionKind",
+						lv_restrictionKind_3_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.CardinalityRestrictionKind");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCardinalityRestrictedAspectAccess().getRestrictedCardinalityPositiveIntegerLiteralParserRuleCall_4_0());
+				}
+				lv_restrictedCardinality_4_0=rulePositiveIntegerLiteral
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCardinalityRestrictedAspectRule());
+					}
+					set(
+						$current,
+						"restrictedCardinality",
+						lv_restrictedCardinality_4_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.PositiveIntegerLiteral");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getCardinalityRestrictedAspectRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getCardinalityRestrictedAspectAccess().getRestrictedRelationshipRestrictableRelationshipCrossReference_5_0());
+				}
+				ruleReference
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_6='.'
+			{
+				newLeafNode(otherlv_6, grammarAccess.getCardinalityRestrictedAspectAccess().getFullStopKeyword_6_0());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getCardinalityRestrictedAspectRule());
+						}
+					}
+					{
+						newCompositeNode(grammarAccess.getCardinalityRestrictedAspectAccess().getRestrictedRangeEntityCrossReference_6_1_0());
+					}
+					ruleReference
+					{
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+	)
+;
+
 // Entry rule entryRuleConcept
 entryRuleConcept returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getConceptRule()); }
@@ -2106,6 +2269,142 @@ ruleConcept returns [EObject current=null]
 				}
 			)
 		)
+	)
+;
+
+// Entry rule entryRuleCardinalityRestrictedConcept
+entryRuleCardinalityRestrictedConcept returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getCardinalityRestrictedConceptRule()); }
+	iv_ruleCardinalityRestrictedConcept=ruleCardinalityRestrictedConcept
+	{ $current=$iv_ruleCardinalityRestrictedConcept.current; }
+	EOF;
+
+// Rule CardinalityRestrictedConcept
+ruleCardinalityRestrictedConcept returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCardinalityRestrictedConceptAccess().getAnnotationsAnnotationPropertyValueParserRuleCall_0_0());
+				}
+				lv_annotations_0_0=ruleAnnotationPropertyValue
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCardinalityRestrictedConceptRule());
+					}
+					add(
+						$current,
+						"annotations",
+						lv_annotations_0_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.AnnotationPropertyValue");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		otherlv_1='concept'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getCardinalityRestrictedConceptAccess().getConceptKeyword_1());
+		}
+		(
+			(
+				lv_name_2_0=RULE_ID
+				{
+					newLeafNode(lv_name_2_0, grammarAccess.getCardinalityRestrictedConceptAccess().getNameIDTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getCardinalityRestrictedConceptRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_2_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.ID");
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCardinalityRestrictedConceptAccess().getRestrictionKindCardinalityRestrictionKindEnumRuleCall_3_0());
+				}
+				lv_restrictionKind_3_0=ruleCardinalityRestrictionKind
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCardinalityRestrictedConceptRule());
+					}
+					set(
+						$current,
+						"restrictionKind",
+						lv_restrictionKind_3_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.CardinalityRestrictionKind");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCardinalityRestrictedConceptAccess().getRestrictedCardinalityPositiveIntegerLiteralParserRuleCall_4_0());
+				}
+				lv_restrictedCardinality_4_0=rulePositiveIntegerLiteral
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCardinalityRestrictedConceptRule());
+					}
+					set(
+						$current,
+						"restrictedCardinality",
+						lv_restrictedCardinality_4_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.PositiveIntegerLiteral");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getCardinalityRestrictedConceptRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getCardinalityRestrictedConceptAccess().getRestrictedRelationshipRestrictableRelationshipCrossReference_5_0());
+				}
+				ruleReference
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_6='.'
+			{
+				newLeafNode(otherlv_6, grammarAccess.getCardinalityRestrictedConceptAccess().getFullStopKeyword_6_0());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getCardinalityRestrictedConceptRule());
+						}
+					}
+					{
+						newCompositeNode(grammarAccess.getCardinalityRestrictedConceptAccess().getRestrictedRangeEntityCrossReference_6_1_0());
+					}
+					ruleReference
+					{
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
 	)
 ;
 
@@ -2685,6 +2984,142 @@ ruleReifiedRelationshipRestriction returns [EObject current=null]
 		{
 			newLeafNode(otherlv_10, grammarAccess.getReifiedRelationshipRestrictionAccess().getRightCurlyBracketKeyword_10());
 		}
+	)
+;
+
+// Entry rule entryRuleCardinalityRestrictedReifiedRelationship
+entryRuleCardinalityRestrictedReifiedRelationship returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getCardinalityRestrictedReifiedRelationshipRule()); }
+	iv_ruleCardinalityRestrictedReifiedRelationship=ruleCardinalityRestrictedReifiedRelationship
+	{ $current=$iv_ruleCardinalityRestrictedReifiedRelationship.current; }
+	EOF;
+
+// Rule CardinalityRestrictedReifiedRelationship
+ruleCardinalityRestrictedReifiedRelationship returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCardinalityRestrictedReifiedRelationshipAccess().getAnnotationsAnnotationPropertyValueParserRuleCall_0_0());
+				}
+				lv_annotations_0_0=ruleAnnotationPropertyValue
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCardinalityRestrictedReifiedRelationshipRule());
+					}
+					add(
+						$current,
+						"annotations",
+						lv_annotations_0_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.AnnotationPropertyValue");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		otherlv_1='reifiedRelationship'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getCardinalityRestrictedReifiedRelationshipAccess().getReifiedRelationshipKeyword_1());
+		}
+		(
+			(
+				lv_name_2_0=RULE_ID
+				{
+					newLeafNode(lv_name_2_0, grammarAccess.getCardinalityRestrictedReifiedRelationshipAccess().getNameIDTerminalRuleCall_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getCardinalityRestrictedReifiedRelationshipRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_2_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.ID");
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCardinalityRestrictedReifiedRelationshipAccess().getRestrictionKindCardinalityRestrictionKindEnumRuleCall_3_0());
+				}
+				lv_restrictionKind_3_0=ruleCardinalityRestrictionKind
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCardinalityRestrictedReifiedRelationshipRule());
+					}
+					set(
+						$current,
+						"restrictionKind",
+						lv_restrictionKind_3_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.CardinalityRestrictionKind");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getCardinalityRestrictedReifiedRelationshipAccess().getRestrictedCardinalityPositiveIntegerLiteralParserRuleCall_4_0());
+				}
+				lv_restrictedCardinality_4_0=rulePositiveIntegerLiteral
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getCardinalityRestrictedReifiedRelationshipRule());
+					}
+					set(
+						$current,
+						"restrictedCardinality",
+						lv_restrictedCardinality_4_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.PositiveIntegerLiteral");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getCardinalityRestrictedReifiedRelationshipRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getCardinalityRestrictedReifiedRelationshipAccess().getRestrictedRelationshipRestrictableRelationshipCrossReference_5_0());
+				}
+				ruleReference
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			otherlv_6='.'
+			{
+				newLeafNode(otherlv_6, grammarAccess.getCardinalityRestrictedReifiedRelationshipAccess().getFullStopKeyword_6_0());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getCardinalityRestrictedReifiedRelationshipRule());
+						}
+					}
+					{
+						newCompositeNode(grammarAccess.getCardinalityRestrictedReifiedRelationshipAccess().getRestrictedRangeEntityCrossReference_6_1_0());
+					}
+					ruleReference
+					{
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
 	)
 ;
 
@@ -9091,6 +9526,41 @@ ruleTerminologyKind returns [Enumerator current=null]
 			{
 				$current = grammarAccess.getTerminologyKindAccess().getClosedWorldDesignationsEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
 				newLeafNode(enumLiteral_1, grammarAccess.getTerminologyKindAccess().getClosedWorldDesignationsEnumLiteralDeclaration_1());
+			}
+		)
+	)
+;
+
+// Rule CardinalityRestrictionKind
+ruleCardinalityRestrictionKind returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='<='
+			{
+				$current = grammarAccess.getCardinalityRestrictionKindAccess().getMinEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getCardinalityRestrictionKindAccess().getMinEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='>='
+			{
+				$current = grammarAccess.getCardinalityRestrictionKindAccess().getMaxEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getCardinalityRestrictionKindAccess().getMaxEnumLiteralDeclaration_1());
+			}
+		)
+		    |
+		(
+			enumLiteral_2='=='
+			{
+				$current = grammarAccess.getCardinalityRestrictionKindAccess().getExactEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getCardinalityRestrictionKindAccess().getExactEnumLiteralDeclaration_2());
 			}
 		)
 	)

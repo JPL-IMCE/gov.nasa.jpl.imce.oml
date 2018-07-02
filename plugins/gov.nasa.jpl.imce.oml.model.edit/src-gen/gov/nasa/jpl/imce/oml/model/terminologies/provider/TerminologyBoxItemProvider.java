@@ -188,7 +188,17 @@ public class TerminologyBoxItemProvider extends ModuleItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(TerminologiesPackage.Literals.TERMINOLOGY_BOX__BOX_STATEMENTS,
+				 TerminologiesFactory.eINSTANCE.createCardinalityRestrictedAspect()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.TERMINOLOGY_BOX__BOX_STATEMENTS,
 				 TerminologiesFactory.eINSTANCE.createConcept()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.TERMINOLOGY_BOX__BOX_STATEMENTS,
+				 TerminologiesFactory.eINSTANCE.createCardinalityRestrictedConcept()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -199,6 +209,11 @@ public class TerminologyBoxItemProvider extends ModuleItemProvider {
 			(createChildParameter
 				(TerminologiesPackage.Literals.TERMINOLOGY_BOX__BOX_STATEMENTS,
 				 TerminologiesFactory.eINSTANCE.createReifiedRelationshipRestriction()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.TERMINOLOGY_BOX__BOX_STATEMENTS,
+				 TerminologiesFactory.eINSTANCE.createCardinalityRestrictedReifiedRelationship()));
 
 		newChildDescriptors.add
 			(createChildParameter

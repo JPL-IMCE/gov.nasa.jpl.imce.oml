@@ -24,7 +24,7 @@ import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom;
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsPackage;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 
-import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologyBoxAxiomImpl;
@@ -77,7 +77,7 @@ public class ConceptDesignationTerminologyAxiomImpl extends TerminologyBoxAxiomI
 	 * @generated
 	 * @ordered
 	 */
-	protected Concept designatedConcept;
+	protected ConceptKind designatedConcept;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -141,10 +141,10 @@ public class ConceptDesignationTerminologyAxiomImpl extends TerminologyBoxAxiomI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Concept getDesignatedConcept() {
+	public ConceptKind getDesignatedConcept() {
 		if (designatedConcept != null && designatedConcept.eIsProxy()) {
 			InternalEObject oldDesignatedConcept = (InternalEObject)designatedConcept;
-			designatedConcept = (Concept)eResolveProxy(oldDesignatedConcept);
+			designatedConcept = (ConceptKind)eResolveProxy(oldDesignatedConcept);
 			if (designatedConcept != oldDesignatedConcept) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GraphsPackage.CONCEPT_DESIGNATION_TERMINOLOGY_AXIOM__DESIGNATED_CONCEPT, oldDesignatedConcept, designatedConcept));
@@ -158,7 +158,7 @@ public class ConceptDesignationTerminologyAxiomImpl extends TerminologyBoxAxiomI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Concept basicGetDesignatedConcept() {
+	public ConceptKind basicGetDesignatedConcept() {
 		return designatedConcept;
 	}
 
@@ -167,8 +167,8 @@ public class ConceptDesignationTerminologyAxiomImpl extends TerminologyBoxAxiomI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDesignatedConcept(Concept newDesignatedConcept) {
-		Concept oldDesignatedConcept = designatedConcept;
+	public void setDesignatedConcept(ConceptKind newDesignatedConcept) {
+		ConceptKind oldDesignatedConcept = designatedConcept;
 		designatedConcept = newDesignatedConcept;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, GraphsPackage.CONCEPT_DESIGNATION_TERMINOLOGY_AXIOM__DESIGNATED_CONCEPT, oldDesignatedConcept, designatedConcept));
@@ -219,7 +219,7 @@ public class ConceptDesignationTerminologyAxiomImpl extends TerminologyBoxAxiomI
 	public String uuid() {
 		String _string = this.getTbox().uuid().toString();
 		Pair<String, String> _mappedTo = Pair.<String, String>of("tbox", _string);
-		Concept _designatedConcept = this.getDesignatedConcept();
+		ConceptKind _designatedConcept = this.getDesignatedConcept();
 		String _uuid = null;
 		if (_designatedConcept!=null) {
 			_uuid=_designatedConcept.uuid();
@@ -278,7 +278,7 @@ public class ConceptDesignationTerminologyAxiomImpl extends TerminologyBoxAxiomI
 				setDesignatedTerminology((TerminologyBox)newValue);
 				return;
 			case GraphsPackage.CONCEPT_DESIGNATION_TERMINOLOGY_AXIOM__DESIGNATED_CONCEPT:
-				setDesignatedConcept((Concept)newValue);
+				setDesignatedConcept((ConceptKind)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -296,7 +296,7 @@ public class ConceptDesignationTerminologyAxiomImpl extends TerminologyBoxAxiomI
 				setDesignatedTerminology((TerminologyBox)null);
 				return;
 			case GraphsPackage.CONCEPT_DESIGNATION_TERMINOLOGY_AXIOM__DESIGNATED_CONCEPT:
-				setDesignatedConcept((Concept)null);
+				setDesignatedConcept((ConceptKind)null);
 				return;
 		}
 		super.eUnset(featureID);

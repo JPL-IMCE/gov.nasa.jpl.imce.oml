@@ -134,6 +134,29 @@ public class TerminologiesItemProviderAdapterFactory extends TerminologiesAdapte
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CardinalityRestrictedAspectItemProvider cardinalityRestrictedAspectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCardinalityRestrictedAspectAdapter() {
+		if (cardinalityRestrictedAspectItemProvider == null) {
+			cardinalityRestrictedAspectItemProvider = new CardinalityRestrictedAspectItemProvider(this);
+		}
+
+		return cardinalityRestrictedAspectItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.Concept} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -154,6 +177,29 @@ public class TerminologiesItemProviderAdapterFactory extends TerminologiesAdapte
 		}
 
 		return conceptItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CardinalityRestrictedConceptItemProvider cardinalityRestrictedConceptItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCardinalityRestrictedConceptAdapter() {
+		if (cardinalityRestrictedConceptItemProvider == null) {
+			cardinalityRestrictedConceptItemProvider = new CardinalityRestrictedConceptItemProvider(this);
+		}
+
+		return cardinalityRestrictedConceptItemProvider;
 	}
 
 	/**
@@ -246,6 +292,29 @@ public class TerminologiesItemProviderAdapterFactory extends TerminologiesAdapte
 		}
 
 		return reifiedRelationshipRestrictionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CardinalityRestrictedReifiedRelationshipItemProvider cardinalityRestrictedReifiedRelationshipItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCardinalityRestrictedReifiedRelationshipAdapter() {
+		if (cardinalityRestrictedReifiedRelationshipItemProvider == null) {
+			cardinalityRestrictedReifiedRelationshipItemProvider = new CardinalityRestrictedReifiedRelationshipItemProvider(this);
+		}
+
+		return cardinalityRestrictedReifiedRelationshipItemProvider;
 	}
 
 	/**
@@ -1085,11 +1154,14 @@ public class TerminologiesItemProviderAdapterFactory extends TerminologiesAdapte
 	public void dispose() {
 		if (terminologyExtensionAxiomItemProvider != null) terminologyExtensionAxiomItemProvider.dispose();
 		if (aspectItemProvider != null) aspectItemProvider.dispose();
+		if (cardinalityRestrictedAspectItemProvider != null) cardinalityRestrictedAspectItemProvider.dispose();
 		if (conceptItemProvider != null) conceptItemProvider.dispose();
+		if (cardinalityRestrictedConceptItemProvider != null) cardinalityRestrictedConceptItemProvider.dispose();
 		if (forwardPropertyItemProvider != null) forwardPropertyItemProvider.dispose();
 		if (inversePropertyItemProvider != null) inversePropertyItemProvider.dispose();
 		if (reifiedRelationshipItemProvider != null) reifiedRelationshipItemProvider.dispose();
 		if (reifiedRelationshipRestrictionItemProvider != null) reifiedRelationshipRestrictionItemProvider.dispose();
+		if (cardinalityRestrictedReifiedRelationshipItemProvider != null) cardinalityRestrictedReifiedRelationshipItemProvider.dispose();
 		if (unreifiedRelationshipItemProvider != null) unreifiedRelationshipItemProvider.dispose();
 		if (scalarItemProvider != null) scalarItemProvider.dispose();
 		if (entityStructuredDataPropertyItemProvider != null) entityStructuredDataPropertyItemProvider.dispose();

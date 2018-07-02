@@ -23,6 +23,7 @@ import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom;
@@ -255,7 +256,7 @@ public class AspectConceptClassDiagramService {
         return it.getBoxStatements();
       };
       final Function1<ConceptSpecializationAxiom, Boolean> _function_1 = (ConceptSpecializationAxiom f) -> {
-        Concept _subConcept = f.getSubConcept();
+        ConceptKind _subConcept = f.getSubConcept();
         return Boolean.valueOf(Objects.equal(_subConcept, c));
       };
       _xblockexpression = IterableExtensions.<ConceptSpecializationAxiom>toSet(IterableExtensions.<ConceptSpecializationAxiom>filter(Iterables.<ConceptSpecializationAxiom>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(OMLExtensions.allImportedTerminologies(c.getTbox()), _function))), 

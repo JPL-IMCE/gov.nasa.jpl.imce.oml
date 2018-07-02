@@ -58,6 +58,9 @@ import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
@@ -239,6 +242,15 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case TerminologiesPackage.BINARY_SCALAR_RESTRICTION:
 				sequence_BinaryScalarRestriction(context, (BinaryScalarRestriction) semanticObject); 
+				return; 
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT:
+				sequence_CardinalityRestrictedAspect(context, (CardinalityRestrictedAspect) semanticObject); 
+				return; 
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT:
+				sequence_CardinalityRestrictedConcept(context, (CardinalityRestrictedConcept) semanticObject); 
+				return; 
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP:
+				sequence_CardinalityRestrictedReifiedRelationship(context, (CardinalityRestrictedReifiedRelationship) semanticObject); 
 				return; 
 			case TerminologiesPackage.CHAIN_RULE:
 				sequence_ChainRule(context, (ChainRule) semanticObject); 
@@ -495,6 +507,72 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (annotations+=AnnotationPropertyValue* bundledTerminology=[TerminologyBox|ExternalReference])
 	 */
 	protected void sequence_BundledTerminologyAxiom(ISerializationContext context, BundledTerminologyAxiom semanticObject) {
+		genericSequencer.createSequence(context, (EObject) semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TerminologyBoxStatement returns CardinalityRestrictedAspect
+	 *     Term returns CardinalityRestrictedAspect
+	 *     AtomicEntity returns CardinalityRestrictedAspect
+	 *     CardinalityRestrictedAspect returns CardinalityRestrictedAspect
+	 *
+	 * Constraint:
+	 *     (
+	 *         annotations+=AnnotationPropertyValue* 
+	 *         name=ID 
+	 *         restrictionKind=CardinalityRestrictionKind 
+	 *         restrictedCardinality=PositiveIntegerLiteral 
+	 *         restrictedRelationship=[RestrictableRelationship|Reference] 
+	 *         restrictedRange=[Entity|Reference]?
+	 *     )
+	 */
+	protected void sequence_CardinalityRestrictedAspect(ISerializationContext context, CardinalityRestrictedAspect semanticObject) {
+		genericSequencer.createSequence(context, (EObject) semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TerminologyBoxStatement returns CardinalityRestrictedConcept
+	 *     Term returns CardinalityRestrictedConcept
+	 *     AtomicEntity returns CardinalityRestrictedConcept
+	 *     CardinalityRestrictedConcept returns CardinalityRestrictedConcept
+	 *
+	 * Constraint:
+	 *     (
+	 *         annotations+=AnnotationPropertyValue* 
+	 *         name=ID 
+	 *         restrictionKind=CardinalityRestrictionKind 
+	 *         restrictedCardinality=PositiveIntegerLiteral 
+	 *         restrictedRelationship=[RestrictableRelationship|Reference] 
+	 *         restrictedRange=[Entity|Reference]?
+	 *     )
+	 */
+	protected void sequence_CardinalityRestrictedConcept(ISerializationContext context, CardinalityRestrictedConcept semanticObject) {
+		genericSequencer.createSequence(context, (EObject) semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TerminologyBoxStatement returns CardinalityRestrictedReifiedRelationship
+	 *     Term returns CardinalityRestrictedReifiedRelationship
+	 *     EntityRelationship returns CardinalityRestrictedReifiedRelationship
+	 *     CardinalityRestrictedReifiedRelationship returns CardinalityRestrictedReifiedRelationship
+	 *
+	 * Constraint:
+	 *     (
+	 *         annotations+=AnnotationPropertyValue* 
+	 *         name=ID 
+	 *         restrictionKind=CardinalityRestrictionKind 
+	 *         restrictedCardinality=PositiveIntegerLiteral 
+	 *         restrictedRelationship=[RestrictableRelationship|Reference] 
+	 *         restrictedRange=[Entity|Reference]?
+	 *     )
+	 */
+	protected void sequence_CardinalityRestrictedReifiedRelationship(ISerializationContext context, CardinalityRestrictedReifiedRelationship semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
 	}
 	

@@ -112,6 +112,10 @@ import java.util.List
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 import java.util.stream.Collectors
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictionKind
 
 /**
  * OMLTables is a collection of extension queries for OML Extent and conversion methods for OML values.
@@ -213,15 +217,33 @@ class OMLTables {
   	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
+  static def List<CardinalityRestrictedAspect> cardinalityRestrictedAspects(Extent e) {
+  	val List<CardinalityRestrictedAspect> result = new ArrayList<CardinalityRestrictedAspect>()
+  	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(CardinalityRestrictedAspect))]
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
+  }
+  
   static def List<Concept> concepts(Extent e) {
   	val List<Concept> result = new ArrayList<Concept>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(Concept))]
   	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
+  static def List<CardinalityRestrictedConcept> cardinalityRestrictedConcepts(Extent e) {
+  	val List<CardinalityRestrictedConcept> result = new ArrayList<CardinalityRestrictedConcept>()
+  	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(CardinalityRestrictedConcept))]
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
+  }
+  
   static def List<ReifiedRelationshipRestriction> reifiedRelationshipRestrictions(Extent e) {
   	val List<ReifiedRelationshipRestriction> result = new ArrayList<ReifiedRelationshipRestriction>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(ReifiedRelationshipRestriction))]
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
+  }
+  
+  static def List<CardinalityRestrictedReifiedRelationship> cardinalityRestrictedReifiedRelationships(Extent e) {
+  	val List<CardinalityRestrictedReifiedRelationship> result = new ArrayList<CardinalityRestrictedReifiedRelationship>()
+  	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(CardinalityRestrictedReifiedRelationship))]
   	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
@@ -878,4 +900,16 @@ class OMLTables {
   	}
   }
   
+  static def CardinalityRestrictionKind toCardinalityRestrictionKind(String value) {
+  	switch value {
+  		case "<=":
+  			return CardinalityRestrictionKind.MIN
+  		case ">=":
+  			return CardinalityRestrictionKind.MAX
+  		case "==":
+  			return CardinalityRestrictionKind.EXACT
+  		default:
+  			throw new IllegalArgumentException(value +" is not a legal CardinalityRestrictionKind")
+  	}
+  }
 }

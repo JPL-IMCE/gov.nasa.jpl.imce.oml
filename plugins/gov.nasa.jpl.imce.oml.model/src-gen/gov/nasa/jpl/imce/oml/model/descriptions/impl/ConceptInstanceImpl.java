@@ -24,7 +24,7 @@ import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
 
-import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity;
 
 import java.lang.reflect.InvocationTargetException;
@@ -65,7 +65,7 @@ public class ConceptInstanceImpl extends ConceptualEntitySingletonInstanceImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected Concept singletonConceptClassifier;
+	protected ConceptKind singletonConceptClassifier;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -142,10 +142,10 @@ public class ConceptInstanceImpl extends ConceptualEntitySingletonInstanceImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Concept getSingletonConceptClassifier() {
+	public ConceptKind getSingletonConceptClassifier() {
 		if (singletonConceptClassifier != null && singletonConceptClassifier.eIsProxy()) {
 			InternalEObject oldSingletonConceptClassifier = (InternalEObject)singletonConceptClassifier;
-			singletonConceptClassifier = (Concept)eResolveProxy(oldSingletonConceptClassifier);
+			singletonConceptClassifier = (ConceptKind)eResolveProxy(oldSingletonConceptClassifier);
 			if (singletonConceptClassifier != oldSingletonConceptClassifier) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionsPackage.CONCEPT_INSTANCE__SINGLETON_CONCEPT_CLASSIFIER, oldSingletonConceptClassifier, singletonConceptClassifier));
@@ -159,7 +159,7 @@ public class ConceptInstanceImpl extends ConceptualEntitySingletonInstanceImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Concept basicGetSingletonConceptClassifier() {
+	public ConceptKind basicGetSingletonConceptClassifier() {
 		return singletonConceptClassifier;
 	}
 
@@ -168,8 +168,8 @@ public class ConceptInstanceImpl extends ConceptualEntitySingletonInstanceImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSingletonConceptClassifier(Concept newSingletonConceptClassifier) {
-		Concept oldSingletonConceptClassifier = singletonConceptClassifier;
+	public void setSingletonConceptClassifier(ConceptKind newSingletonConceptClassifier) {
+		ConceptKind oldSingletonConceptClassifier = singletonConceptClassifier;
 		singletonConceptClassifier = newSingletonConceptClassifier;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DescriptionsPackage.CONCEPT_INSTANCE__SINGLETON_CONCEPT_CLASSIFIER, oldSingletonConceptClassifier, singletonConceptClassifier));
@@ -276,7 +276,7 @@ public class ConceptInstanceImpl extends ConceptualEntitySingletonInstanceImpl i
 				setDescriptionBox((DescriptionBox)newValue);
 				return;
 			case DescriptionsPackage.CONCEPT_INSTANCE__SINGLETON_CONCEPT_CLASSIFIER:
-				setSingletonConceptClassifier((Concept)newValue);
+				setSingletonConceptClassifier((ConceptKind)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -294,7 +294,7 @@ public class ConceptInstanceImpl extends ConceptualEntitySingletonInstanceImpl i
 				setDescriptionBox((DescriptionBox)null);
 				return;
 			case DescriptionsPackage.CONCEPT_INSTANCE__SINGLETON_CONCEPT_CLASSIFIER:
-				setSingletonConceptClassifier((Concept)null);
+				setSingletonConceptClassifier((ConceptKind)null);
 				return;
 		}
 		super.eUnset(featureID);

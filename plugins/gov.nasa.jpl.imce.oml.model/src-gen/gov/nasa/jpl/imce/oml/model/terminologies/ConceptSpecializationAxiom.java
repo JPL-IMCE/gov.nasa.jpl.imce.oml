@@ -52,12 +52,12 @@ public interface ConceptSpecializationAxiom extends SpecializationAxiom {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sub Concept</em>' reference.
-	 * @see #setSubConcept(Concept)
+	 * @see #setSubConcept(ConceptKind)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getConceptSpecializationAxiom_SubConcept()
 	 * @model required="true"
 	 * @generated
 	 */
-	Concept getSubConcept();
+	ConceptKind getSubConcept();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom#getSubConcept <em>Sub Concept</em>}' reference.
@@ -67,7 +67,7 @@ public interface ConceptSpecializationAxiom extends SpecializationAxiom {
 	 * @see #getSubConcept()
 	 * @generated
 	 */
-	void setSubConcept(Concept value);
+	void setSubConcept(ConceptKind value);
 
 	/**
 	 * Returns the value of the '<em><b>Super Concept</b></em>' reference.
@@ -78,12 +78,12 @@ public interface ConceptSpecializationAxiom extends SpecializationAxiom {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Super Concept</em>' reference.
-	 * @see #setSuperConcept(Concept)
+	 * @see #setSuperConcept(ConceptKind)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getConceptSpecializationAxiom_SuperConcept()
 	 * @model required="true"
 	 * @generated
 	 */
-	Concept getSuperConcept();
+	ConceptKind getSuperConcept();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom#getSuperConcept <em>Super Concept</em>}' reference.
@@ -93,7 +93,7 @@ public interface ConceptSpecializationAxiom extends SpecializationAxiom {
 	 * @see #getSuperConcept()
 	 * @generated
 	 */
-	void setSuperConcept(Concept value);
+	void setSuperConcept(ConceptKind value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -123,7 +123,7 @@ public interface ConceptSpecializationAxiom extends SpecializationAxiom {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model dataType="gov.nasa.jpl.imce.oml.model.common.UUID" unique="false" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox%&gt; _tbox = this.getTbox();\n&lt;%java.lang.String%&gt; _uuid = null;\nif (_tbox!=null)\n{\n\t_uuid=_tbox.uuid();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"tbox\", _uuid);\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.Concept%&gt; _superConcept = this.getSuperConcept();\n&lt;%java.lang.String%&gt; _uuid_1 = null;\nif (_superConcept!=null)\n{\n\t_uuid_1=_superConcept.uuid();\n}\n&lt;%java.lang.String%&gt; _string = null;\nif (_uuid_1!=null)\n{\n\t_string=_uuid_1.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_1 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"superConcept\", _string);\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.Concept%&gt; _subConcept = this.getSubConcept();\n&lt;%java.lang.String%&gt; _uuid_2 = null;\nif (_subConcept!=null)\n{\n\t_uuid_2=_subConcept.uuid();\n}\n&lt;%java.lang.String%&gt; _string_1 = null;\nif (_uuid_2!=null)\n{\n\t_string_1=_uuid_2.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_2 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"subConcept\", _string_1);\n&lt;%java.util.UUID%&gt; _derivedUUID = &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.derivedUUID(\n\t\"ConceptSpecializationAxiom\", _mappedTo, _mappedTo_1, _mappedTo_2);\n&lt;%java.lang.String%&gt; _string_2 = null;\nif (_derivedUUID!=null)\n{\n\t_string_2=_derivedUUID.toString();\n}\nreturn _string_2;'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox%&gt; _tbox = this.getTbox();\n&lt;%java.lang.String%&gt; _uuid = null;\nif (_tbox!=null)\n{\n\t_uuid=_tbox.uuid();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"tbox\", _uuid);\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind%&gt; _superConcept = this.getSuperConcept();\n&lt;%java.lang.String%&gt; _uuid_1 = null;\nif (_superConcept!=null)\n{\n\t_uuid_1=_superConcept.uuid();\n}\n&lt;%java.lang.String%&gt; _string = null;\nif (_uuid_1!=null)\n{\n\t_string=_uuid_1.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_1 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"superConcept\", _string);\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind%&gt; _subConcept = this.getSubConcept();\n&lt;%java.lang.String%&gt; _uuid_2 = null;\nif (_subConcept!=null)\n{\n\t_uuid_2=_subConcept.uuid();\n}\n&lt;%java.lang.String%&gt; _string_1 = null;\nif (_uuid_2!=null)\n{\n\t_string_1=_uuid_2.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_2 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"subConcept\", _string_1);\n&lt;%java.util.UUID%&gt; _derivedUUID = &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.derivedUUID(\n\t\"ConceptSpecializationAxiom\", _mappedTo, _mappedTo_1, _mappedTo_2);\n&lt;%java.lang.String%&gt; _string_2 = null;\nif (_derivedUUID!=null)\n{\n\t_string_2=_derivedUUID.toString();\n}\nreturn _string_2;'"
 	 * @generated
 	 */
 	String uuid();

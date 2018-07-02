@@ -28,7 +28,6 @@ import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
-import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.Resource;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
@@ -36,8 +35,8 @@ import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
-import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
-import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+import gov.nasa.jpl.imce.oml.model.terminologies.AspectKind;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
@@ -47,7 +46,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.Predicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty;
@@ -153,10 +151,10 @@ public class OMLScopeExtensions {
   
   public static void initializeCache(final ResourceSet rs) {
     Map<Object, Object> _loadOptions = rs.getLoadOptions();
-    HashMap<Module, HashMap<Resource, QualifiedName>> _hashMap = new HashMap<Module, HashMap<Resource, QualifiedName>>();
+    HashMap<gov.nasa.jpl.imce.oml.model.common.Module, HashMap<Resource, QualifiedName>> _hashMap = new HashMap<gov.nasa.jpl.imce.oml.model.common.Module, HashMap<Resource, QualifiedName>>();
     _loadOptions.put(OMLScopeExtensions.RESOURCE_SET_OML_IMPORTED_RESOURCE_NAME_CACHE, _hashMap);
     Map<Object, Object> _loadOptions_1 = rs.getLoadOptions();
-    HashMap<Module, IScope> _hashMap_1 = new HashMap<Module, IScope>();
+    HashMap<gov.nasa.jpl.imce.oml.model.common.Module, IScope> _hashMap_1 = new HashMap<gov.nasa.jpl.imce.oml.model.common.Module, IScope>();
     _loadOptions_1.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_TERMINOLOGIES_CACHE, _hashMap_1);
     Map<Object, Object> _loadOptions_2 = rs.getLoadOptions();
     HashMap<DescriptionBox, IScope> _hashMap_2 = new HashMap<DescriptionBox, IScope>();
@@ -220,23 +218,23 @@ public class OMLScopeExtensions {
     _loadOptions_21.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_SCALAR_ONE_OF_RESTRICTIONS_CACHE, _hashMap_21);
   }
   
-  public static HashMap<Module, HashMap<Resource, QualifiedName>> lookupImportedResourceNameCache(final ResourceSet rs) {
-    HashMap<Module, HashMap<Resource, QualifiedName>> _xblockexpression = null;
+  public static HashMap<gov.nasa.jpl.imce.oml.model.common.Module, HashMap<Resource, QualifiedName>> lookupImportedResourceNameCache(final ResourceSet rs) {
+    HashMap<gov.nasa.jpl.imce.oml.model.common.Module, HashMap<Resource, QualifiedName>> _xblockexpression = null;
     {
       final Object cache = rs.getLoadOptions().get(OMLScopeExtensions.RESOURCE_SET_OML_IMPORTED_RESOURCE_NAME_CACHE);
-      HashMap<Module, HashMap<Resource, QualifiedName>> _switchResult = null;
+      HashMap<gov.nasa.jpl.imce.oml.model.common.Module, HashMap<Resource, QualifiedName>> _switchResult = null;
       boolean _matched = false;
       if (cache instanceof HashMap) {
         _matched=true;
-        _switchResult = ((HashMap<Module, HashMap<Resource, QualifiedName>>)cache);
+        _switchResult = ((HashMap<gov.nasa.jpl.imce.oml.model.common.Module, HashMap<Resource, QualifiedName>>)cache);
       }
       _xblockexpression = _switchResult;
     }
     return _xblockexpression;
   }
   
-  public static HashMap<Module, HashMap<Resource, QualifiedName>> lookupImportedResourceNameCache(final EObject e) {
-    HashMap<Module, HashMap<Resource, QualifiedName>> _xblockexpression = null;
+  public static HashMap<gov.nasa.jpl.imce.oml.model.common.Module, HashMap<Resource, QualifiedName>> lookupImportedResourceNameCache(final EObject e) {
+    HashMap<gov.nasa.jpl.imce.oml.model.common.Module, HashMap<Resource, QualifiedName>> _xblockexpression = null;
     {
       org.eclipse.emf.ecore.resource.Resource _eResource = null;
       if (e!=null) {
@@ -247,7 +245,7 @@ public class OMLScopeExtensions {
         _resourceSet=_eResource.getResourceSet();
       }
       final ResourceSet rs = _resourceSet;
-      HashMap<Module, HashMap<Resource, QualifiedName>> _xifexpression = null;
+      HashMap<gov.nasa.jpl.imce.oml.model.common.Module, HashMap<Resource, QualifiedName>> _xifexpression = null;
       if ((null != rs)) {
         _xifexpression = OMLScopeExtensions.lookupImportedResourceNameCache(rs);
       } else {
@@ -258,8 +256,8 @@ public class OMLScopeExtensions {
     return _xblockexpression;
   }
   
-  public static HashMap<Module, IScope> lookupAllTerminologiesCache(final Module m) {
-    HashMap<Module, IScope> _xblockexpression = null;
+  public static HashMap<gov.nasa.jpl.imce.oml.model.common.Module, IScope> lookupAllTerminologiesCache(final gov.nasa.jpl.imce.oml.model.common.Module m) {
+    HashMap<gov.nasa.jpl.imce.oml.model.common.Module, IScope> _xblockexpression = null;
     {
       org.eclipse.emf.ecore.resource.Resource _eResource = null;
       if (m!=null) {
@@ -278,11 +276,11 @@ public class OMLScopeExtensions {
         _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_TERMINOLOGIES_CACHE);
       }
       final Object cache = _get;
-      HashMap<Module, IScope> _switchResult = null;
+      HashMap<gov.nasa.jpl.imce.oml.model.common.Module, IScope> _switchResult = null;
       boolean _matched = false;
       if (cache instanceof HashMap) {
         _matched=true;
-        _switchResult = ((HashMap<Module, IScope>)cache);
+        _switchResult = ((HashMap<gov.nasa.jpl.imce.oml.model.common.Module, IScope>)cache);
       }
       _xblockexpression = _switchResult;
     }
@@ -923,23 +921,23 @@ public class OMLScopeExtensions {
     IScope _xblockexpression = null;
     {
       LogicalElement _subject = annotation.getSubject();
-      Module _moduleContext = null;
+      gov.nasa.jpl.imce.oml.model.common.Module _moduleContext = null;
       if (_subject!=null) {
         _moduleContext=_subject.moduleContext();
       }
-      Iterable<Module> _allImportedModules = null;
+      Iterable<gov.nasa.jpl.imce.oml.model.common.Module> _allImportedModules = null;
       if (_moduleContext!=null) {
         _allImportedModules=this._oMLExtensions.allImportedModules(_moduleContext);
       }
-      Iterable<Module> _filterNull = null;
+      Iterable<gov.nasa.jpl.imce.oml.model.common.Module> _filterNull = null;
       if (_allImportedModules!=null) {
-        _filterNull=IterableExtensions.<Module>filterNull(_allImportedModules);
+        _filterNull=IterableExtensions.<gov.nasa.jpl.imce.oml.model.common.Module>filterNull(_allImportedModules);
       }
-      final Iterable<Module> modules = _filterNull;
-      final Function1<Module, EList<AnnotationProperty>> _function = (Module it) -> {
+      final Iterable<gov.nasa.jpl.imce.oml.model.common.Module> modules = _filterNull;
+      final Function1<gov.nasa.jpl.imce.oml.model.common.Module, EList<AnnotationProperty>> _function = (gov.nasa.jpl.imce.oml.model.common.Module it) -> {
         return it.getAnnotationProperties();
       };
-      Iterable<EList<AnnotationProperty>> _map = IterableExtensions.<Module, EList<AnnotationProperty>>map(modules, _function);
+      Iterable<EList<AnnotationProperty>> _map = IterableExtensions.<gov.nasa.jpl.imce.oml.model.common.Module, EList<AnnotationProperty>>map(modules, _function);
       Iterable<AnnotationProperty> _flatten = null;
       if (_map!=null) {
         _flatten=Iterables.<AnnotationProperty>concat(_map);
@@ -1008,11 +1006,11 @@ public class OMLScopeExtensions {
   public IScope allTerminologies(final TerminologyBox context) {
     IScope _xblockexpression = null;
     {
-      final HashMap<Module, IScope> cache = OMLScopeExtensions.lookupAllTerminologiesCache(context);
+      final HashMap<gov.nasa.jpl.imce.oml.model.common.Module, IScope> cache = OMLScopeExtensions.lookupAllTerminologiesCache(context);
       IScope _elvis = null;
       IScope _computeIfAbsent = null;
       if (cache!=null) {
-        final java.util.function.Function<Module, IScope> _function = (Module it) -> {
+        final java.util.function.Function<gov.nasa.jpl.imce.oml.model.common.Module, IScope> _function = (gov.nasa.jpl.imce.oml.model.common.Module it) -> {
           return this.computeAllTerminologies(it);
         };
         _computeIfAbsent=cache.computeIfAbsent(context, _function);
@@ -1031,11 +1029,11 @@ public class OMLScopeExtensions {
   public IScope allTerminologies(final DescriptionBox context) {
     IScope _xblockexpression = null;
     {
-      final HashMap<Module, IScope> cache = OMLScopeExtensions.lookupAllTerminologiesCache(context);
+      final HashMap<gov.nasa.jpl.imce.oml.model.common.Module, IScope> cache = OMLScopeExtensions.lookupAllTerminologiesCache(context);
       IScope _elvis = null;
       IScope _computeIfAbsent = null;
       if (cache!=null) {
-        final java.util.function.Function<Module, IScope> _function = (Module it) -> {
+        final java.util.function.Function<gov.nasa.jpl.imce.oml.model.common.Module, IScope> _function = (gov.nasa.jpl.imce.oml.model.common.Module it) -> {
           return this.computeAllTerminologies(it);
         };
         _computeIfAbsent=cache.computeIfAbsent(context, _function);
@@ -1051,7 +1049,7 @@ public class OMLScopeExtensions {
     return _xblockexpression;
   }
   
-  private IScope computeAllTerminologies(final Module context) {
+  private IScope computeAllTerminologies(final gov.nasa.jpl.imce.oml.model.common.Module context) {
     IScope _xblockexpression = null;
     {
       final Function1<org.eclipse.emf.ecore.resource.Resource, Iterable<Extent>> _function = (org.eclipse.emf.ecore.resource.Resource it) -> {
@@ -1145,12 +1143,12 @@ public class OMLScopeExtensions {
   public <T extends Resource> QualifiedName importedResourceNameFunction(final Pair<TerminologyBox, T> p) {
     QualifiedName _xblockexpression = null;
     {
-      final HashMap<Module, HashMap<Resource, QualifiedName>> importedResourceNameCache = OMLScopeExtensions.lookupImportedResourceNameCache(p.getKey());
+      final HashMap<gov.nasa.jpl.imce.oml.model.common.Module, HashMap<Resource, QualifiedName>> importedResourceNameCache = OMLScopeExtensions.lookupImportedResourceNameCache(p.getKey());
       QualifiedName _xifexpression = null;
       if ((null != importedResourceNameCache)) {
         QualifiedName _xblockexpression_1 = null;
         {
-          final java.util.function.Function<Module, HashMap<Resource, QualifiedName>> _function = (Module it) -> {
+          final java.util.function.Function<gov.nasa.jpl.imce.oml.model.common.Module, HashMap<Resource, QualifiedName>> _function = (gov.nasa.jpl.imce.oml.model.common.Module it) -> {
             return new HashMap<Resource, QualifiedName>();
           };
           final HashMap<Resource, QualifiedName> nameMap = importedResourceNameCache.computeIfAbsent(p.getKey(), _function);
@@ -1183,12 +1181,12 @@ public class OMLScopeExtensions {
   public <T extends Resource> QualifiedName importedBundleNameFunction(final Pair<Bundle, T> p) {
     QualifiedName _xblockexpression = null;
     {
-      final HashMap<Module, HashMap<Resource, QualifiedName>> importedResourceNameCache = OMLScopeExtensions.lookupImportedResourceNameCache(p.getKey());
+      final HashMap<gov.nasa.jpl.imce.oml.model.common.Module, HashMap<Resource, QualifiedName>> importedResourceNameCache = OMLScopeExtensions.lookupImportedResourceNameCache(p.getKey());
       QualifiedName _xifexpression = null;
       if ((null != importedResourceNameCache)) {
         QualifiedName _xblockexpression_1 = null;
         {
-          final java.util.function.Function<Module, HashMap<Resource, QualifiedName>> _function = (Module it) -> {
+          final java.util.function.Function<gov.nasa.jpl.imce.oml.model.common.Module, HashMap<Resource, QualifiedName>> _function = (gov.nasa.jpl.imce.oml.model.common.Module it) -> {
             return new HashMap<Resource, QualifiedName>();
           };
           final HashMap<Resource, QualifiedName> nameMap = importedResourceNameCache.computeIfAbsent(p.getKey(), _function);
@@ -1221,12 +1219,12 @@ public class OMLScopeExtensions {
   public <T extends Resource> QualifiedName importedDescriptionNameFunction(final Pair<DescriptionBox, T> p) {
     QualifiedName _xblockexpression = null;
     {
-      final HashMap<Module, HashMap<Resource, QualifiedName>> importedResourceNameCache = OMLScopeExtensions.lookupImportedResourceNameCache(p.getKey());
+      final HashMap<gov.nasa.jpl.imce.oml.model.common.Module, HashMap<Resource, QualifiedName>> importedResourceNameCache = OMLScopeExtensions.lookupImportedResourceNameCache(p.getKey());
       QualifiedName _xifexpression = null;
       if ((null != importedResourceNameCache)) {
         QualifiedName _xblockexpression_1 = null;
         {
-          final java.util.function.Function<Module, HashMap<Resource, QualifiedName>> _function = (Module it) -> {
+          final java.util.function.Function<gov.nasa.jpl.imce.oml.model.common.Module, HashMap<Resource, QualifiedName>> _function = (gov.nasa.jpl.imce.oml.model.common.Module it) -> {
             return new HashMap<Resource, QualifiedName>();
           };
           final HashMap<Resource, QualifiedName> nameMap = importedResourceNameCache.computeIfAbsent(p.getKey(), _function);
@@ -1375,13 +1373,13 @@ public class OMLScopeExtensions {
   }
   
   private IScope computeAllAspects(final TerminologyBox tbox) {
-    final Function<TerminologyBox, Iterable<Aspect>> _function = (TerminologyBox it) -> {
+    final Function<TerminologyBox, Iterable<AspectKind>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localAspects(it);
     };
-    final Function<Pair<TerminologyBox, Aspect>, QualifiedName> _function_1 = (Pair<TerminologyBox, Aspect> it) -> {
-      return this.<Aspect>importedResourceNameFunction(it);
+    final Function<Pair<TerminologyBox, AspectKind>, QualifiedName> _function_1 = (Pair<TerminologyBox, AspectKind> it) -> {
+      return this.<AspectKind>importedResourceNameFunction(it);
     };
-    return this.<Aspect>terminologyScope(tbox, _function, _function_1);
+    return this.<AspectKind>terminologyScope(tbox, _function, _function_1);
   }
   
   public IScope allConceptsScope(final TerminologyBox tbox) {
@@ -1408,13 +1406,13 @@ public class OMLScopeExtensions {
   }
   
   private IScope computeAllConcepts(final TerminologyBox tbox) {
-    final Function<TerminologyBox, Iterable<Concept>> _function = (TerminologyBox it) -> {
+    final Function<TerminologyBox, Iterable<ConceptKind>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localConcepts(it);
     };
-    final Function<Pair<TerminologyBox, Concept>, QualifiedName> _function_1 = (Pair<TerminologyBox, Concept> it) -> {
-      return this.<Concept>importedResourceNameFunction(it);
+    final Function<Pair<TerminologyBox, ConceptKind>, QualifiedName> _function_1 = (Pair<TerminologyBox, ConceptKind> it) -> {
+      return this.<ConceptKind>importedResourceNameFunction(it);
     };
-    return this.<Concept>terminologyScope(tbox, _function, _function_1);
+    return this.<ConceptKind>terminologyScope(tbox, _function, _function_1);
   }
   
   public IScope allConceptualRelationshipsScope(final TerminologyBox tbox) {
@@ -1507,13 +1505,13 @@ public class OMLScopeExtensions {
   }
   
   private IScope computeAllReifiedRelationships(final TerminologyBox tbox) {
-    final Function<TerminologyBox, Iterable<ReifiedRelationship>> _function = (TerminologyBox it) -> {
+    final Function<TerminologyBox, Iterable<ConceptualRelationship>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localReifiedRelationships(it);
     };
-    final Function<Pair<TerminologyBox, ReifiedRelationship>, QualifiedName> _function_1 = (Pair<TerminologyBox, ReifiedRelationship> it) -> {
-      return this.<ReifiedRelationship>importedResourceNameFunction(it);
+    final Function<Pair<TerminologyBox, ConceptualRelationship>, QualifiedName> _function_1 = (Pair<TerminologyBox, ConceptualRelationship> it) -> {
+      return this.<ConceptualRelationship>importedResourceNameFunction(it);
     };
-    return this.<ReifiedRelationship>terminologyScope(tbox, _function, _function_1);
+    return this.<ConceptualRelationship>terminologyScope(tbox, _function, _function_1);
   }
   
   public IScope allUnreifiedRelationshipsScope(final TerminologyBox tbox) {
@@ -1907,13 +1905,13 @@ public class OMLScopeExtensions {
   }
   
   public IScope allConceptsScope(final Bundle b) {
-    final Function<TerminologyBox, Iterable<Concept>> _function = (TerminologyBox it) -> {
+    final Function<TerminologyBox, Iterable<ConceptKind>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localConcepts(it);
     };
-    final Function<Pair<TerminologyBox, Concept>, QualifiedName> _function_1 = (Pair<TerminologyBox, Concept> it) -> {
-      return this.<Concept>importedResourceNameFunction(it);
+    final Function<Pair<TerminologyBox, ConceptKind>, QualifiedName> _function_1 = (Pair<TerminologyBox, ConceptKind> it) -> {
+      return this.<ConceptKind>importedResourceNameFunction(it);
     };
-    return this.<Concept>bundleScope(b, _function, _function_1);
+    return this.<ConceptKind>bundleScope(b, _function, _function_1);
   }
   
   public <T extends LogicalElement> IScope descriptionScope(final DescriptionBox dbox, final Function<DescriptionBox, Iterable<T>> localScopeFunction, final Function<Pair<DescriptionBox, T>, QualifiedName> nameFunction) {
@@ -2056,10 +2054,10 @@ public class OMLScopeExtensions {
       final Iterable<TerminologyBox> tboxes = this._oMLExtensions.allImportedTerminologiesFromDescription(dbox);
       final ArrayList<IEObjectDescription> result = Lists.<IEObjectDescription>newArrayList();
       final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function = (TerminologyBox tbox) -> {
-        final Function<Concept, QualifiedName> _function_1 = (Concept importedThing) -> {
-          return this.<Concept>importedResourceNameFunction(Pair.<TerminologyBox, Concept>of(tbox, importedThing));
+        final Function<ConceptKind, QualifiedName> _function_1 = (ConceptKind importedThing) -> {
+          return this.<ConceptKind>importedResourceNameFunction(Pair.<TerminologyBox, ConceptKind>of(tbox, importedThing));
         };
-        return Scopes.<Concept>scopedElementsFor(
+        return Scopes.<ConceptKind>scopedElementsFor(
           this._oMLExtensions.localConcepts(tbox), _function_1);
       };
       final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function));
@@ -2075,10 +2073,10 @@ public class OMLScopeExtensions {
       final Iterable<TerminologyBox> tboxes = this._oMLExtensions.allImportedTerminologiesFromDescription(dbox);
       final ArrayList<IEObjectDescription> result = Lists.<IEObjectDescription>newArrayList();
       final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function = (TerminologyBox tbox) -> {
-        final Function<ReifiedRelationship, QualifiedName> _function_1 = (ReifiedRelationship importedThing) -> {
-          return this.<ReifiedRelationship>importedResourceNameFunction(Pair.<TerminologyBox, ReifiedRelationship>of(tbox, importedThing));
+        final Function<ConceptualRelationship, QualifiedName> _function_1 = (ConceptualRelationship importedThing) -> {
+          return this.<ConceptualRelationship>importedResourceNameFunction(Pair.<TerminologyBox, ConceptualRelationship>of(tbox, importedThing));
         };
-        return Scopes.<ReifiedRelationship>scopedElementsFor(
+        return Scopes.<ConceptualRelationship>scopedElementsFor(
           this._oMLExtensions.localReifiedRelationships(tbox), _function_1);
       };
       final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function));

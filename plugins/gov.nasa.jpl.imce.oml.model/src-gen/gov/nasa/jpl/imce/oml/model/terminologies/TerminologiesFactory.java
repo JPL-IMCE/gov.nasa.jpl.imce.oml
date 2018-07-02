@@ -56,6 +56,15 @@ public interface TerminologiesFactory extends EFactory {
 	Aspect createAspect();
 
 	/**
+	 * Returns a new object of class '<em>Cardinality Restricted Aspect</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Cardinality Restricted Aspect</em>'.
+	 * @generated
+	 */
+	CardinalityRestrictedAspect createCardinalityRestrictedAspect();
+
+	/**
 	 * Returns a new object of class '<em>Concept</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -63,6 +72,15 @@ public interface TerminologiesFactory extends EFactory {
 	 * @generated
 	 */
 	Concept createConcept();
+
+	/**
+	 * Returns a new object of class '<em>Cardinality Restricted Concept</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Cardinality Restricted Concept</em>'.
+	 * @generated
+	 */
+	CardinalityRestrictedConcept createCardinalityRestrictedConcept();
 
 	/**
 	 * Returns a new object of class '<em>Forward Property</em>'.
@@ -99,6 +117,15 @@ public interface TerminologiesFactory extends EFactory {
 	 * @generated
 	 */
 	ReifiedRelationshipRestriction createReifiedRelationshipRestriction();
+
+	/**
+	 * Returns a new object of class '<em>Cardinality Restricted Reified Relationship</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Cardinality Restricted Reified Relationship</em>'.
+	 * @generated
+	 */
+	CardinalityRestrictedReifiedRelationship createCardinalityRestrictedReifiedRelationship();
 
 	/**
 	 * Returns a new object of class '<em>Unreified Relationship</em>'.

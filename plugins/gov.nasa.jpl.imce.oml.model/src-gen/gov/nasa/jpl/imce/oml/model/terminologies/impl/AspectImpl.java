@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class AspectImpl extends EntityImpl implements Aspect {
+public class AspectImpl extends AspectKindImpl implements Aspect {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

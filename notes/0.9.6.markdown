@@ -1,0 +1,83 @@
+gov.nasa.jpl.imce.oml 0.9.6 adds new features to 0.9.5
+
+## Planned scope & Issues resolved:
+
+### [#288 Add support for OWL2-DL Object Property Cardinality Restrictions](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/288)
+
+## Changes:
+
+### Adding [OWL2-DL Object Property Cardinality Restrictions](https://www.w3.org/TR/owl2-syntax/#Object_Property_Cardinality_Restrictions)
+
+#### Concrete Syntax (Aspects)
+
+| Change | Synopsis | OML Aspect whose local name is... | OWL2-DL Mapping |
+|--------|----------|-------------|--------------------|
+| Same   | `aspect $id` | `$id` | `Declaration(Class $id)` |
+|        | | | `SubClassOf($id backbone:Entity)` |
+| New    | `aspect $id <= $n $p` | `$id` as an unqualified minimum cardinality $n restriction about the object property `$p` | `Declaration(Class $id>)` |
+|        | | | `SubClassOf($id ObjectMinCardinality($n $p))` |
+| New    | `aspect $id <= $n $p . $r` | `$id` as an qualified minimum cardinality $n restriction about the object property `$p` for the range `$r` | `Declaration(Class $id>)` |
+|        | | | `SubClassOf($id ObjectMinCardinality($n $p $r))` |
+| New    | `aspect $id >= $n $p` | `$id` as an unqualified maximum cardinality $n restriction about the object property `$p` | `Declaration(Class $id>)` |
+|        | | | `SubClassOf($id ObjectMinCardinality($n $p))` |
+| New    | `aspect $id >= $n $p . $r` | `$id` as an qualified maximum cardinality $n restriction about the object property `$p` for the range `$r` | `Declaration(Class $id>)` |
+|        | | | `SubClassOf($id ObjectMinCardinality($n $p $r))` |
+| New    | `aspect $id == $n $p` | `$id` as an unqualified exact cardinality restriction $n about the object property `$p` | `Declaration(Class $id>)` |
+|        | | | `SubClassOf($id ObjectMinCardinality($n $p))` |
+| New    | `aspect $id == $n $p . $r` | `$id` as an qualified exact cardinality restriction $n about the object property `$p` for the range `$r` | `Declaration(Class $id>)` |
+|        | | | `SubClassOf($id ObjectMinCardinality($n $p $r))` |
+
+#### Concrete Syntax (Concepts)
+
+| Change | Synopsis | OML Concept whose local name is... | OWL2-DL Mapping |
+|--------|----------|-------------|--------------------|
+| Same   | `concept $id` | `$id` | `Declaration(Class $id)` |
+|        | | | `SubClassOf($id backbone:Concept)` |
+| New    | `concept $id <= $n $p` | `$id` as an unqualified minimum cardinality $n restriction about the object property `$p` | `Declaration(Class $id>)` |
+|        | | | `SubClassOf($id ObjectMinCardinality($n $p))` |
+| New    | `concept $id <= $n $p . $r` | `$id` as an qualified minimum cardinality $n restriction about the object property `$p` for the range `$r` | `Declaration(Class $id>)` |
+|        | | | `SubClassOf($id ObjectMinCardinality($n $p $r))` |
+| New    | `concept $id >= $n $p` | `$id` as an unqualified maximum cardinality $n restriction about the object property `$p` | `Declaration(Class $id>)` |
+|        | | | `SubClassOf($id ObjectMinCardinality($n $p))` |
+| New    | `concept $id >= $n $p . $r` | `$id` as an qualified maximum cardinality $n restriction about the object property `$p` for the range `$r` | `Declaration(Class $id>)` |
+|        | | | `SubClassOf($id ObjectMinCardinality($n $p $r))` |
+| New    | `concept $id == $n $p` | `$id` as an unqualified exact cardinality restriction $n about the object property `$p` | `Declaration(Class $id>)` |
+|        | | | `SubClassOf($id ObjectMinCardinality($n $p))` |
+| New    | `concept $id == $n $p . $r` | `$id` as an qualified exact cardinality restriction $n about the object property `$p` for the range `$r` | `Declaration(Class $id>)` |
+|        | | | `SubClassOf($id ObjectMinCardinality($n $p $r))` |
+
+#### Concrete Syntax (ReifiedRelationships)
+
+| Change | Synopsis | Defines an OML ReifiedRelationship whose local name is... | OWL2-DL Mapping |
+|--------|----------|-------------|--------------------|
+| Same   | `reifiedRelationship $id` { ... } | `$id` | `Declaration(Class $id)` |
+|        | | | `SubClassOf($id backbone:ReifiedRelationship)` |
+|        | | | `...` |
+| New    | `reifiedRelationship $id <= $n $p` | `$id` as an unqualified minimum cardinality $n restriction about the object property `$p` | `Declaration(Class $id>)` |
+|        | | | `SubClassOf($id ObjectMinCardinality($n $p))` |
+| New    | `reifiedRelationship $id <= $n $p . $r` | `$id` as an qualified minimum cardinality $n restriction about the object property `$p` for the range `$r` | `Declaration(Class $id>)` |
+|        | | | `SubClassOf($id ObjectMinCardinality($n $p $r))` |
+| New    | `reifiedRelationship $id >= $n $p` | `$id` as an unqualified maximum cardinality $n restriction about the object property `$p` | `Declaration(Class $id>)` |
+|        | | | `SubClassOf($id ObjectMinCardinality($n $p))` |
+| New    | `reifiedRelationship $id >= $n $p . $r` | `$id` as an qualified maximum cardinality $n restriction about the object property `$p` for the range `$r` | `Declaration(Class $id>)` |
+|        | | | `SubClassOf($id ObjectMinCardinality($n $p $r))` |
+| New    | `reifiedRelationship $id == $n $p` | `$id` as an unqualified exact cardinality restriction $n about the object property `$p` | `Declaration(Class $id>)` |
+|        | | | `SubClassOf($id ObjectMinCardinality($n $p))` |
+| New    | `reifiedRelationship $id == $n $p . $r` | `$id` as an qualified exact cardinality restriction $n about the object property `$p` for the range `$r` | `Declaration(Class $id>)` |
+|        | | | `SubClassOf($id ObjectMinCardinality($n $p $r))` |
+
+#### API
+
+0.9.6 adds new metaclasses to support cardinality restrictions on an OML RestrictableRelationship whose domain is either an OML Aspect, OML Concept or OML ReifiedRelationship.
+
+| Change | 0.9.5 | 0.9.6 |
+|--------|-------|-------|
+| Equivalent | `class Aspect extends Entity, UnaryTermKind {}` | `abstract class AspectKind extends Entity, UnaryTermKind {}` |
+| | | `class Aspect extends AspectKind {}` |
+| New | | `class CardinalityRestrictedAspect extends AspectKind {...}` |
+| Equivalent | `class Concept extends Entity, UnaryTermKind {}` | `abstract class ConceptKind extends Entity, UnaryTermKind {}` |
+| | | `class Concept extends ConceptKind {}` |
+| New | | `class CardinalityRestrictedAspect extends ConceptKind {...}` |
+| Same | `class ReifiedRelationship extends ConceptualRelationship, CharacterizedEntityRelationship {...}` | `class ReifiedRelationship extends ConceptualRelationship, CharacterizedEntityRelationship {...}` |
+| Same |`class ReifiedRelationshipRestriction extends ConceptualRelationship {...}` | `class ReifiedRelationshipRestriction extends ConceptualRelationship {...}` |
+| New | | `class CardinalityRestrictedReifiedRelationship extends ConceptualRelationship {...}` |

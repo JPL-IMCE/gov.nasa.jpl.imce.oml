@@ -9,7 +9,6 @@
 <unit id="org.eclipse.emf.ecore.xcore.sdk.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.equinox.sdk.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.platform.sdk" version="0.0.0"/>
-<unit id="org.eclipse.sirius.diagram.elk.feature.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.sirius.properties.feature.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.sirius.runtime.ide.ui.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.sirius.runtime.ide.xtext.feature.group" version="0.0.0"/>

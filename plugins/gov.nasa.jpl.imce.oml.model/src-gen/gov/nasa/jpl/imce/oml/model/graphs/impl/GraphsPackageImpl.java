@@ -377,7 +377,7 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 
 		initEClass(conceptDesignationTerminologyAxiomEClass, ConceptDesignationTerminologyAxiom.class, "ConceptDesignationTerminologyAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConceptDesignationTerminologyAxiom_DesignatedTerminology(), theTerminologiesPackage.getTerminologyBox(), null, "designatedTerminology", null, 1, 1, ConceptDesignationTerminologyAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConceptDesignationTerminologyAxiom_DesignatedConcept(), theTerminologiesPackage.getConcept(), null, "designatedConcept", null, 1, 1, ConceptDesignationTerminologyAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConceptDesignationTerminologyAxiom_DesignatedConcept(), theTerminologiesPackage.getConceptKind(), null, "designatedConcept", null, 1, 1, ConceptDesignationTerminologyAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getConceptDesignationTerminologyAxiom__DesignationTerminologyGraph(), this.getTerminologyGraph(), "designationTerminologyGraph", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -389,7 +389,7 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 
 		initEClass(terminologyNestingAxiomEClass, TerminologyNestingAxiom.class, "TerminologyNestingAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTerminologyNestingAxiom_NestingTerminology(), theTerminologiesPackage.getTerminologyBox(), null, "nestingTerminology", null, 1, 1, TerminologyNestingAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTerminologyNestingAxiom_NestingContext(), theTerminologiesPackage.getConcept(), null, "nestingContext", null, 1, 1, TerminologyNestingAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTerminologyNestingAxiom_NestingContext(), theTerminologiesPackage.getConceptKind(), null, "nestingContext", null, 1, 1, TerminologyNestingAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getTerminologyNestingAxiom__NestedTerminology(), this.getTerminologyGraph(), "nestedTerminology", 0, 1, !IS_UNIQUE, IS_ORDERED);
 

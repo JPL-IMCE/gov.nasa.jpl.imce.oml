@@ -20,7 +20,6 @@ package gov.nasa.jpl.imce.oml.dsl.util;
 import com.google.inject.Inject;
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
-import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
@@ -54,14 +53,14 @@ public class OMLQualifiedNameProvider extends DefaultDeclarativeQualifiedNamePro
   public QualifiedName qualifiedName(final ModuleEdge edge) {
     String _kind = OMLExtensions.kind(edge);
     String _plus = (_kind + "(");
-    Module _sourceModule = edge.sourceModule();
+    gov.nasa.jpl.imce.oml.model.common.Module _sourceModule = edge.sourceModule();
     String _iri = null;
     if (_sourceModule!=null) {
       _iri=_sourceModule.iri();
     }
     String _plus_1 = (_plus + _iri);
     String _plus_2 = (_plus_1 + "->");
-    Module _targetModule = edge.targetModule();
+    gov.nasa.jpl.imce.oml.model.common.Module _targetModule = edge.targetModule();
     String _iri_1 = null;
     if (_targetModule!=null) {
       _iri_1=_targetModule.iri();

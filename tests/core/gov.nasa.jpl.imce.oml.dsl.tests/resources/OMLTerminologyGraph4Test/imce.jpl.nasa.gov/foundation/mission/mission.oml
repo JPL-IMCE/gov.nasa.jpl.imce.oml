@@ -1,0 +1,26 @@
+open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission> {
+
+	extends <http://imce.jpl.nasa.gov/foundation/base/base>
+
+	@rdfs:label="PerformingElement"
+	aspect PerformingElement
+
+	concept Component
+
+	concept Function
+
+	reifiedRelationship Performs {
+		inverseFunctional
+		asymmetric
+		irreflexive
+		unreified=performs
+		inverse=isPerformedBy
+		source=Component
+		target=Function
+	}
+
+	concept MonoComponent == 1 performs
+
+	MonoComponent extendsConcept Component
+
+}

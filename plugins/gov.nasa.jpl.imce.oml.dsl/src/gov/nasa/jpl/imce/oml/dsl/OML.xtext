@@ -133,11 +133,14 @@ Term returns Term:
 	
 AtomicEntity returns Entity:
 	Aspect | 
-	Concept;
+	CardinalityRestrictedAspect |
+	Concept |
+	CardinalityRestrictedConcept;
 	
 EntityRelationship returns EntityRelationship:
 	ReifiedRelationship |
 	ReifiedRelationshipRestriction |
+	CardinalityRestrictedReifiedRelationship |
 	UnreifiedRelationship;
 	
 Datatype returns Datatype:
@@ -209,15 +212,37 @@ enum TerminologyKind returns TerminologyKind:
 	ClosedWorldDesignations = 'closed'
 	;
 
+enum CardinalityRestrictionKind returns CardinalityRestrictionKind:
+	Min = '<=' |
+	Max = '>=' |
+	Exact = '==' 
+	;
+	
 // 2 Atomic Entity Terms
 
 Aspect returns Aspect:
 	( annotations+=AnnotationPropertyValue )*
 	'aspect' name=ID;
 
+CardinalityRestrictedAspect returns CardinalityRestrictedAspect:
+	( annotations+=AnnotationPropertyValue )*
+	'aspect' name=ID 
+	restrictionKind=CardinalityRestrictionKind 
+	restrictedCardinality=PositiveIntegerLiteral 
+	restrictedRelationship=[RestrictableRelationship|Reference] 
+	( '.' restrictedRange=[Entity|Reference] )?;
+
 Concept returns Concept:
 	( annotations+=AnnotationPropertyValue )*
 	'concept' name=ID;
+
+CardinalityRestrictedConcept returns CardinalityRestrictedConcept:
+	( annotations+=AnnotationPropertyValue )*
+	'concept' name=ID 
+	restrictionKind=CardinalityRestrictionKind 
+	restrictedCardinality=PositiveIntegerLiteral 
+	restrictedRelationship=[RestrictableRelationship|Reference] 
+	( '.' restrictedRange=[Entity|Reference] )?;
 
 // 2 EntityRelationship Terms
 
@@ -252,6 +277,14 @@ ReifiedRelationshipRestriction returns ReifiedRelationshipRestriction:
 	'target' '=' target=[Entity|Reference]
 	'}';
 
+CardinalityRestrictedReifiedRelationship returns CardinalityRestrictedReifiedRelationship:
+	( annotations+=AnnotationPropertyValue )*
+	'reifiedRelationship' name=ID 
+	restrictionKind=CardinalityRestrictionKind 
+	restrictedCardinality=PositiveIntegerLiteral 
+	restrictedRelationship=[RestrictableRelationship|Reference] 
+	( '.' restrictedRange=[Entity|Reference] )?;
+	
 UnreifiedRelationship returns UnreifiedRelationship:
 	( annotations+=AnnotationPropertyValue )*
 	'unreifiedRelationship' name=ID '{'

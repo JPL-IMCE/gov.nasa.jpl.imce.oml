@@ -21,11 +21,17 @@ package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
+import gov.nasa.jpl.imce.oml.model.terminologies.AspectKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictionKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
 import gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship;
@@ -193,6 +199,13 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass aspectKindEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass aspectEClass = null;
 
 	/**
@@ -200,7 +213,28 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass cardinalityRestrictedAspectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass conceptKindEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass conceptEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass cardinalityRestrictedConceptEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -257,6 +291,13 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * @generated
 	 */
 	private EClass reifiedRelationshipRestrictionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass cardinalityRestrictedReifiedRelationshipEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -607,6 +648,13 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * @generated
 	 */
 	private EEnum terminologyKindEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum cardinalityRestrictionKindEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -1002,6 +1050,15 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAspectKind() {
+		return aspectKindEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAspect() {
 		return aspectEClass;
 	}
@@ -1011,8 +1068,107 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getCardinalityRestrictedAspect() {
+		return cardinalityRestrictedAspectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCardinalityRestrictedAspect_RestrictionKind() {
+		return (EAttribute)cardinalityRestrictedAspectEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCardinalityRestrictedAspect_RestrictedRelationship() {
+		return (EReference)cardinalityRestrictedAspectEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCardinalityRestrictedAspect_RestrictedRange() {
+		return (EReference)cardinalityRestrictedAspectEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCardinalityRestrictedAspect_RestrictedCardinality() {
+		return (EAttribute)cardinalityRestrictedAspectEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getConceptKind() {
+		return conceptKindEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getConcept() {
 		return conceptEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCardinalityRestrictedConcept() {
+		return cardinalityRestrictedConceptEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCardinalityRestrictedConcept_RestrictionKind() {
+		return (EAttribute)cardinalityRestrictedConceptEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCardinalityRestrictedConcept_RestrictedRelationship() {
+		return (EReference)cardinalityRestrictedConceptEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCardinalityRestrictedConcept_RestrictedRange() {
+		return (EReference)cardinalityRestrictedConceptEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCardinalityRestrictedConcept_RestrictedCardinality() {
+		return (EAttribute)cardinalityRestrictedConceptEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1427,6 +1583,51 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 */
 	public EOperation getReifiedRelationshipRestriction__RootReifiedRelationships() {
 		return reifiedRelationshipRestrictionEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCardinalityRestrictedReifiedRelationship() {
+		return cardinalityRestrictedReifiedRelationshipEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCardinalityRestrictedReifiedRelationship_RestrictionKind() {
+		return (EAttribute)cardinalityRestrictedReifiedRelationshipEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCardinalityRestrictedReifiedRelationship_RestrictedRelationship() {
+		return (EReference)cardinalityRestrictedReifiedRelationshipEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCardinalityRestrictedReifiedRelationship_RestrictedRange() {
+		return (EReference)cardinalityRestrictedReifiedRelationshipEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCardinalityRestrictedReifiedRelationship_RestrictedCardinality() {
+		return (EAttribute)cardinalityRestrictedReifiedRelationshipEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -3108,6 +3309,15 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getCardinalityRestrictionKind() {
+		return cardinalityRestrictionKindEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TerminologiesFactory getTerminologiesFactory() {
 		return (TerminologiesFactory)getEFactoryInstance();
 	}
@@ -3178,9 +3388,25 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		conceptualEntityEClass = createEClass(CONCEPTUAL_ENTITY);
 
+		aspectKindEClass = createEClass(ASPECT_KIND);
+
 		aspectEClass = createEClass(ASPECT);
 
+		cardinalityRestrictedAspectEClass = createEClass(CARDINALITY_RESTRICTED_ASPECT);
+		createEAttribute(cardinalityRestrictedAspectEClass, CARDINALITY_RESTRICTED_ASPECT__RESTRICTION_KIND);
+		createEReference(cardinalityRestrictedAspectEClass, CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_RELATIONSHIP);
+		createEReference(cardinalityRestrictedAspectEClass, CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_RANGE);
+		createEAttribute(cardinalityRestrictedAspectEClass, CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_CARDINALITY);
+
+		conceptKindEClass = createEClass(CONCEPT_KIND);
+
 		conceptEClass = createEClass(CONCEPT);
+
+		cardinalityRestrictedConceptEClass = createEClass(CARDINALITY_RESTRICTED_CONCEPT);
+		createEAttribute(cardinalityRestrictedConceptEClass, CARDINALITY_RESTRICTED_CONCEPT__RESTRICTION_KIND);
+		createEReference(cardinalityRestrictedConceptEClass, CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_RELATIONSHIP);
+		createEReference(cardinalityRestrictedConceptEClass, CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_RANGE);
+		createEAttribute(cardinalityRestrictedConceptEClass, CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_CARDINALITY);
 
 		entityRelationshipEClass = createEClass(ENTITY_RELATIONSHIP);
 		createEReference(entityRelationshipEClass, ENTITY_RELATIONSHIP__SOURCE);
@@ -3235,6 +3461,12 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		reifiedRelationshipRestrictionEClass = createEClass(REIFIED_RELATIONSHIP_RESTRICTION);
 		createEOperation(reifiedRelationshipRestrictionEClass, REIFIED_RELATIONSHIP_RESTRICTION___ALL_NESTED_ELEMENTS);
 		createEOperation(reifiedRelationshipRestrictionEClass, REIFIED_RELATIONSHIP_RESTRICTION___ROOT_REIFIED_RELATIONSHIPS);
+
+		cardinalityRestrictedReifiedRelationshipEClass = createEClass(CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP);
+		createEAttribute(cardinalityRestrictedReifiedRelationshipEClass, CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__RESTRICTION_KIND);
+		createEReference(cardinalityRestrictedReifiedRelationshipEClass, CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__RESTRICTED_RELATIONSHIP);
+		createEReference(cardinalityRestrictedReifiedRelationshipEClass, CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__RESTRICTED_RANGE);
+		createEAttribute(cardinalityRestrictedReifiedRelationshipEClass, CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__RESTRICTED_CARDINALITY);
 
 		unreifiedRelationshipEClass = createEClass(UNREIFIED_RELATIONSHIP);
 		createEOperation(unreifiedRelationshipEClass, UNREIFIED_RELATIONSHIP___RELATION);
@@ -3472,6 +3704,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		// Create enums
 		terminologyKindEEnum = createEEnum(TERMINOLOGY_KIND);
+		cardinalityRestrictionKindEEnum = createEEnum(CARDINALITY_RESTRICTION_KIND);
 	}
 
 	/**
@@ -3519,10 +3752,14 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		entityEClass.getESuperTypes().add(this.getTerm());
 		entityEClass.getESuperTypes().add(this.getPredicate());
 		conceptualEntityEClass.getESuperTypes().add(this.getEntity());
-		aspectEClass.getESuperTypes().add(this.getEntity());
-		aspectEClass.getESuperTypes().add(this.getUnaryTermKind());
-		conceptEClass.getESuperTypes().add(this.getConceptualEntity());
-		conceptEClass.getESuperTypes().add(this.getUnaryTermKind());
+		aspectKindEClass.getESuperTypes().add(this.getEntity());
+		aspectKindEClass.getESuperTypes().add(this.getUnaryTermKind());
+		aspectEClass.getESuperTypes().add(this.getAspectKind());
+		cardinalityRestrictedAspectEClass.getESuperTypes().add(this.getAspectKind());
+		conceptKindEClass.getESuperTypes().add(this.getConceptualEntity());
+		conceptKindEClass.getESuperTypes().add(this.getUnaryTermKind());
+		conceptEClass.getESuperTypes().add(this.getConceptKind());
+		cardinalityRestrictedConceptEClass.getESuperTypes().add(this.getConceptKind());
 		entityRelationshipEClass.getESuperTypes().add(this.getTerm());
 		entityRelationshipEClass.getESuperTypes().add(this.getDirectedBinaryRelationshipKind());
 		characterizedEntityRelationshipEClass.getESuperTypes().add(this.getEntityRelationship());
@@ -3534,6 +3771,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		reifiedRelationshipEClass.getESuperTypes().add(this.getConceptualRelationship());
 		reifiedRelationshipEClass.getESuperTypes().add(this.getCharacterizedEntityRelationship());
 		reifiedRelationshipRestrictionEClass.getESuperTypes().add(this.getConceptualRelationship());
+		cardinalityRestrictedReifiedRelationshipEClass.getESuperTypes().add(this.getConceptualRelationship());
 		unreifiedRelationshipEClass.getESuperTypes().add(this.getCharacterizedEntityRelationship());
 		unreifiedRelationshipEClass.getESuperTypes().add(this.getRestrictableRelationship());
 		datatypeEClass.getESuperTypes().add(this.getTerm());
@@ -3675,9 +3913,25 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		initEClass(conceptualEntityEClass, ConceptualEntity.class, "ConceptualEntity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(aspectKindEClass, AspectKind.class, "AspectKind", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(aspectEClass, Aspect.class, "Aspect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(cardinalityRestrictedAspectEClass, CardinalityRestrictedAspect.class, "CardinalityRestrictedAspect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCardinalityRestrictedAspect_RestrictionKind(), this.getCardinalityRestrictionKind(), "restrictionKind", null, 1, 1, CardinalityRestrictedAspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCardinalityRestrictedAspect_RestrictedRelationship(), this.getRestrictableRelationship(), null, "restrictedRelationship", null, 1, 1, CardinalityRestrictedAspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCardinalityRestrictedAspect_RestrictedRange(), this.getEntity(), null, "restrictedRange", null, 0, 1, CardinalityRestrictedAspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCardinalityRestrictedAspect_RestrictedCardinality(), theCommonPackage.getPositiveIntegerLiteral(), "restrictedCardinality", null, 1, 1, CardinalityRestrictedAspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(conceptKindEClass, ConceptKind.class, "ConceptKind", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(conceptEClass, Concept.class, "Concept", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(cardinalityRestrictedConceptEClass, CardinalityRestrictedConcept.class, "CardinalityRestrictedConcept", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCardinalityRestrictedConcept_RestrictionKind(), this.getCardinalityRestrictionKind(), "restrictionKind", null, 1, 1, CardinalityRestrictedConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCardinalityRestrictedConcept_RestrictedRelationship(), this.getRestrictableRelationship(), null, "restrictedRelationship", null, 1, 1, CardinalityRestrictedConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCardinalityRestrictedConcept_RestrictedRange(), this.getEntity(), null, "restrictedRange", null, 0, 1, CardinalityRestrictedConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCardinalityRestrictedConcept_RestrictedCardinality(), theCommonPackage.getPositiveIntegerLiteral(), "restrictedCardinality", null, 1, 1, CardinalityRestrictedConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(entityRelationshipEClass, EntityRelationship.class, "EntityRelationship", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEntityRelationship_Source(), this.getEntity(), null, "source", null, 1, 1, EntityRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3753,6 +4007,12 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		initEOperation(getReifiedRelationshipRestriction__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getReifiedRelationshipRestriction__RootReifiedRelationships(), this.getReifiedRelationship(), "rootReifiedRelationships", 0, -1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(cardinalityRestrictedReifiedRelationshipEClass, CardinalityRestrictedReifiedRelationship.class, "CardinalityRestrictedReifiedRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCardinalityRestrictedReifiedRelationship_RestrictionKind(), this.getCardinalityRestrictionKind(), "restrictionKind", null, 1, 1, CardinalityRestrictedReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCardinalityRestrictedReifiedRelationship_RestrictedRelationship(), this.getRestrictableRelationship(), null, "restrictedRelationship", null, 1, 1, CardinalityRestrictedReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCardinalityRestrictedReifiedRelationship_RestrictedRange(), this.getEntity(), null, "restrictedRange", null, 0, 1, CardinalityRestrictedReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCardinalityRestrictedReifiedRelationship_RestrictedCardinality(), theCommonPackage.getPositiveIntegerLiteral(), "restrictedCardinality", null, 1, 1, CardinalityRestrictedReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(unreifiedRelationshipEClass, UnreifiedRelationship.class, "UnreifiedRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -3889,7 +4149,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		initEClass(aspectSpecializationAxiomEClass, AspectSpecializationAxiom.class, "AspectSpecializationAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAspectSpecializationAxiom_SubEntity(), this.getEntity(), null, "subEntity", null, 1, 1, AspectSpecializationAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAspectSpecializationAxiom_SuperAspect(), this.getAspect(), null, "superAspect", null, 1, 1, AspectSpecializationAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAspectSpecializationAxiom_SuperAspect(), this.getAspectKind(), null, "superAspect", null, 1, 1, AspectSpecializationAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getAspectSpecializationAxiom__Child(), this.getEntity(), "child", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -3898,8 +4158,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		initEOperation(getAspectSpecializationAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(conceptSpecializationAxiomEClass, ConceptSpecializationAxiom.class, "ConceptSpecializationAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getConceptSpecializationAxiom_SubConcept(), this.getConcept(), null, "subConcept", null, 1, 1, ConceptSpecializationAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConceptSpecializationAxiom_SuperConcept(), this.getConcept(), null, "superConcept", null, 1, 1, ConceptSpecializationAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConceptSpecializationAxiom_SubConcept(), this.getConceptKind(), null, "subConcept", null, 1, 1, ConceptSpecializationAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConceptSpecializationAxiom_SuperConcept(), this.getConceptKind(), null, "superConcept", null, 1, 1, ConceptSpecializationAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getConceptSpecializationAxiom__Child(), this.getEntity(), "child", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -4055,6 +4315,11 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		addEEnumLiteral(terminologyKindEEnum, TerminologyKind.OPEN_WORLD_DEFINITIONS);
 		addEEnumLiteral(terminologyKindEEnum, TerminologyKind.CLOSED_WORLD_DESIGNATIONS);
 
+		initEEnum(cardinalityRestrictionKindEEnum, CardinalityRestrictionKind.class, "CardinalityRestrictionKind");
+		addEEnumLiteral(cardinalityRestrictionKindEEnum, CardinalityRestrictionKind.MIN);
+		addEEnumLiteral(cardinalityRestrictionKindEEnum, CardinalityRestrictionKind.MAX);
+		addEEnumLiteral(cardinalityRestrictionKindEEnum, CardinalityRestrictionKind.EXACT);
+
 		// Create resource
 		createResource(eNS_URI);
 
@@ -4158,12 +4423,37 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });
 		addAnnotation
+		  (cardinalityRestrictionKindEEnum,
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (aspectKindEClass,
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
 		  (aspectEClass,
 		   source,
 		   new String[] {
 		   });
 		addAnnotation
+		  (cardinalityRestrictedAspectEClass,
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (conceptKindEClass,
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
 		  (conceptEClass,
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (cardinalityRestrictedConceptEClass,
 		   source,
 		   new String[] {
 		   });
@@ -4199,6 +4489,11 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   });
 		addAnnotation
 		  (reifiedRelationshipEClass,
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (cardinalityRestrictedReifiedRelationshipEClass,
 		   source,
 		   new String[] {
 		   });

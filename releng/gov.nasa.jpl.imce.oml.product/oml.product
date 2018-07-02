@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="OML Workbench" uid="gov.nasa.jpl.imce.oml.product" id="gov.nasa.jpl.imce.oml.rcp.product" application="org.eclipse.ui.ide.workbench" version="0.9.5.3" useFeatures="true" includeLaunchers="true">
+<product name="OML Workbench" uid="gov.nasa.jpl.imce.oml.product" id="gov.nasa.jpl.imce.oml.rcp.product" application="org.eclipse.ui.ide.workbench" version="0.9.6.0" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/gov.nasa.jpl.imce.oml.rcp/images/about.png"/>
       <text>
          OML Workbench
 
-(c) Copyright Jet Propulsion Laboratory 2018.  All rights reserved. 
+(c) Copyright Jet Propulsion Laboratory 2018.  All rights reserved.
 
 This product includes software developed by open source projects including the Eclipse Organization, https://www.eclipse.org/, and the Apache Software Foundation, https://www.apache.org/.
       </text>

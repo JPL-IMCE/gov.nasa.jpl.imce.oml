@@ -1394,14 +1394,14 @@ public interface TerminologiesPackage extends EPackage {
 	int CONCEPTUAL_ENTITY_OPERATION_COUNT = ENTITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.AspectImpl <em>Aspect</em>}' class.
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.AspectKindImpl <em>Aspect Kind</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.AspectImpl
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getAspect()
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.AspectKindImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getAspectKind()
 	 * @generated
 	 */
-	int ASPECT = 11;
+	int ASPECT_KIND = 11;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -1410,7 +1410,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASPECT__UUID = ENTITY__UUID;
+	int ASPECT_KIND__UUID = ENTITY__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1419,7 +1419,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASPECT__ANNOTATIONS = ENTITY__ANNOTATIONS;
+	int ASPECT_KIND__ANNOTATIONS = ENTITY__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -1428,7 +1428,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASPECT__TBOX = ENTITY__TBOX;
+	int ASPECT_KIND__TBOX = ENTITY__TBOX;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1437,16 +1437,16 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASPECT__NAME = ENTITY__NAME;
+	int ASPECT_KIND__NAME = ENTITY__NAME;
 
 	/**
-	 * The number of structural features of the '<em>Aspect</em>' class.
+	 * The number of structural features of the '<em>Aspect Kind</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ASPECT_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 0;
+	int ASPECT_KIND_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -1455,7 +1455,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASPECT___MODULE_CONTEXT = ENTITY___MODULE_CONTEXT;
+	int ASPECT_KIND___MODULE_CONTEXT = ENTITY___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -1464,7 +1464,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASPECT___IRI = ENTITY___IRI;
+	int ASPECT_KIND___IRI = ENTITY___IRI;
 
 	/**
 	 * The operation id for the '<em>Abbrev IRI</em>' operation.
@@ -1473,7 +1473,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASPECT___ABBREV_IRI = ENTITY___ABBREV_IRI;
+	int ASPECT_KIND___ABBREV_IRI = ENTITY___ABBREV_IRI;
 
 	/**
 	 * The operation id for the '<em>Name</em>' operation.
@@ -1482,7 +1482,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASPECT___NAME = ENTITY___NAME;
+	int ASPECT_KIND___NAME = ENTITY___NAME;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -1491,7 +1491,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASPECT___UUID = ENTITY___UUID;
+	int ASPECT_KIND___UUID = ENTITY___UUID;
 
 	/**
 	 * The operation id for the '<em>All Nested Elements</em>' operation.
@@ -1500,7 +1500,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASPECT___ALL_NESTED_ELEMENTS = ENTITY___ALL_NESTED_ELEMENTS;
+	int ASPECT_KIND___ALL_NESTED_ELEMENTS = ENTITY___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Term</em>' operation.
@@ -1509,7 +1509,134 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASPECT___TERM = ENTITY___TERM;
+	int ASPECT_KIND___TERM = ENTITY___TERM;
+
+	/**
+	 * The number of operations of the '<em>Aspect Kind</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT_KIND_OPERATION_COUNT = ENTITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.AspectImpl <em>Aspect</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.AspectImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getAspect()
+	 * @generated
+	 */
+	int ASPECT = 12;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT__UUID = ASPECT_KIND__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT__ANNOTATIONS = ASPECT_KIND__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT__TBOX = ASPECT_KIND__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT__NAME = ASPECT_KIND__NAME;
+
+	/**
+	 * The number of structural features of the '<em>Aspect</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT_FEATURE_COUNT = ASPECT_KIND_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT___MODULE_CONTEXT = ASPECT_KIND___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Iri</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT___IRI = ASPECT_KIND___IRI;
+
+	/**
+	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT___ABBREV_IRI = ASPECT_KIND___ABBREV_IRI;
+
+	/**
+	 * The operation id for the '<em>Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT___NAME = ASPECT_KIND___NAME;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT___UUID = ASPECT_KIND___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT___ALL_NESTED_ELEMENTS = ASPECT_KIND___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Term</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT___TERM = ASPECT_KIND___TERM;
 
 	/**
 	 * The number of operations of the '<em>Aspect</em>' class.
@@ -1518,7 +1645,297 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASPECT_OPERATION_COUNT = ENTITY_OPERATION_COUNT + 0;
+	int ASPECT_OPERATION_COUNT = ASPECT_KIND_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedAspectImpl <em>Cardinality Restricted Aspect</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedAspectImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getCardinalityRestrictedAspect()
+	 * @generated
+	 */
+	int CARDINALITY_RESTRICTED_ASPECT = 13;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_ASPECT__UUID = ASPECT_KIND__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_ASPECT__ANNOTATIONS = ASPECT_KIND__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_ASPECT__TBOX = ASPECT_KIND__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_ASPECT__NAME = ASPECT_KIND__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Restriction Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_ASPECT__RESTRICTION_KIND = ASPECT_KIND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Relationship</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_RELATIONSHIP = ASPECT_KIND_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Range</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_RANGE = ASPECT_KIND_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Cardinality</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_CARDINALITY = ASPECT_KIND_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Cardinality Restricted Aspect</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_ASPECT_FEATURE_COUNT = ASPECT_KIND_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_ASPECT___MODULE_CONTEXT = ASPECT_KIND___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Iri</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_ASPECT___IRI = ASPECT_KIND___IRI;
+
+	/**
+	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_ASPECT___ABBREV_IRI = ASPECT_KIND___ABBREV_IRI;
+
+	/**
+	 * The operation id for the '<em>Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_ASPECT___NAME = ASPECT_KIND___NAME;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_ASPECT___UUID = ASPECT_KIND___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_ASPECT___ALL_NESTED_ELEMENTS = ASPECT_KIND___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Term</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_ASPECT___TERM = ASPECT_KIND___TERM;
+
+	/**
+	 * The number of operations of the '<em>Cardinality Restricted Aspect</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_ASPECT_OPERATION_COUNT = ASPECT_KIND_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ConceptKindImpl <em>Concept Kind</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ConceptKindImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getConceptKind()
+	 * @generated
+	 */
+	int CONCEPT_KIND = 14;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_KIND__UUID = CONCEPTUAL_ENTITY__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_KIND__ANNOTATIONS = CONCEPTUAL_ENTITY__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_KIND__TBOX = CONCEPTUAL_ENTITY__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_KIND__NAME = CONCEPTUAL_ENTITY__NAME;
+
+	/**
+	 * The number of structural features of the '<em>Concept Kind</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_KIND_FEATURE_COUNT = CONCEPTUAL_ENTITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_KIND___MODULE_CONTEXT = CONCEPTUAL_ENTITY___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Iri</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_KIND___IRI = CONCEPTUAL_ENTITY___IRI;
+
+	/**
+	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_KIND___ABBREV_IRI = CONCEPTUAL_ENTITY___ABBREV_IRI;
+
+	/**
+	 * The operation id for the '<em>Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_KIND___NAME = CONCEPTUAL_ENTITY___NAME;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_KIND___UUID = CONCEPTUAL_ENTITY___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_KIND___ALL_NESTED_ELEMENTS = CONCEPTUAL_ENTITY___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Term</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_KIND___TERM = CONCEPTUAL_ENTITY___TERM;
+
+	/**
+	 * The number of operations of the '<em>Concept Kind</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_KIND_OPERATION_COUNT = CONCEPTUAL_ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ConceptImpl <em>Concept</em>}' class.
@@ -1528,7 +1945,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getConcept()
 	 * @generated
 	 */
-	int CONCEPT = 12;
+	int CONCEPT = 15;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -1537,7 +1954,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT__UUID = CONCEPTUAL_ENTITY__UUID;
+	int CONCEPT__UUID = CONCEPT_KIND__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1546,7 +1963,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT__ANNOTATIONS = CONCEPTUAL_ENTITY__ANNOTATIONS;
+	int CONCEPT__ANNOTATIONS = CONCEPT_KIND__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -1555,7 +1972,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT__TBOX = CONCEPTUAL_ENTITY__TBOX;
+	int CONCEPT__TBOX = CONCEPT_KIND__TBOX;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1564,7 +1981,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT__NAME = CONCEPTUAL_ENTITY__NAME;
+	int CONCEPT__NAME = CONCEPT_KIND__NAME;
 
 	/**
 	 * The number of structural features of the '<em>Concept</em>' class.
@@ -1573,7 +1990,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT_FEATURE_COUNT = CONCEPTUAL_ENTITY_FEATURE_COUNT + 0;
+	int CONCEPT_FEATURE_COUNT = CONCEPT_KIND_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -1582,7 +1999,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT___MODULE_CONTEXT = CONCEPTUAL_ENTITY___MODULE_CONTEXT;
+	int CONCEPT___MODULE_CONTEXT = CONCEPT_KIND___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -1591,7 +2008,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT___IRI = CONCEPTUAL_ENTITY___IRI;
+	int CONCEPT___IRI = CONCEPT_KIND___IRI;
 
 	/**
 	 * The operation id for the '<em>Abbrev IRI</em>' operation.
@@ -1600,7 +2017,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT___ABBREV_IRI = CONCEPTUAL_ENTITY___ABBREV_IRI;
+	int CONCEPT___ABBREV_IRI = CONCEPT_KIND___ABBREV_IRI;
 
 	/**
 	 * The operation id for the '<em>Name</em>' operation.
@@ -1609,7 +2026,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT___NAME = CONCEPTUAL_ENTITY___NAME;
+	int CONCEPT___NAME = CONCEPT_KIND___NAME;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -1618,7 +2035,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT___UUID = CONCEPTUAL_ENTITY___UUID;
+	int CONCEPT___UUID = CONCEPT_KIND___UUID;
 
 	/**
 	 * The operation id for the '<em>All Nested Elements</em>' operation.
@@ -1627,7 +2044,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT___ALL_NESTED_ELEMENTS = CONCEPTUAL_ENTITY___ALL_NESTED_ELEMENTS;
+	int CONCEPT___ALL_NESTED_ELEMENTS = CONCEPT_KIND___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Term</em>' operation.
@@ -1636,7 +2053,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT___TERM = CONCEPTUAL_ENTITY___TERM;
+	int CONCEPT___TERM = CONCEPT_KIND___TERM;
 
 	/**
 	 * The number of operations of the '<em>Concept</em>' class.
@@ -1645,7 +2062,170 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT_OPERATION_COUNT = CONCEPTUAL_ENTITY_OPERATION_COUNT + 0;
+	int CONCEPT_OPERATION_COUNT = CONCEPT_KIND_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedConceptImpl <em>Cardinality Restricted Concept</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedConceptImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getCardinalityRestrictedConcept()
+	 * @generated
+	 */
+	int CARDINALITY_RESTRICTED_CONCEPT = 16;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_CONCEPT__UUID = CONCEPT_KIND__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_CONCEPT__ANNOTATIONS = CONCEPT_KIND__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_CONCEPT__TBOX = CONCEPT_KIND__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_CONCEPT__NAME = CONCEPT_KIND__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Restriction Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_CONCEPT__RESTRICTION_KIND = CONCEPT_KIND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Relationship</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_RELATIONSHIP = CONCEPT_KIND_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Range</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_RANGE = CONCEPT_KIND_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Cardinality</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_CARDINALITY = CONCEPT_KIND_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Cardinality Restricted Concept</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_CONCEPT_FEATURE_COUNT = CONCEPT_KIND_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_CONCEPT___MODULE_CONTEXT = CONCEPT_KIND___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Iri</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_CONCEPT___IRI = CONCEPT_KIND___IRI;
+
+	/**
+	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_CONCEPT___ABBREV_IRI = CONCEPT_KIND___ABBREV_IRI;
+
+	/**
+	 * The operation id for the '<em>Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_CONCEPT___NAME = CONCEPT_KIND___NAME;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_CONCEPT___UUID = CONCEPT_KIND___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_CONCEPT___ALL_NESTED_ELEMENTS = CONCEPT_KIND___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Term</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_CONCEPT___TERM = CONCEPT_KIND___TERM;
+
+	/**
+	 * The number of operations of the '<em>Cardinality Restricted Concept</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_CONCEPT_OPERATION_COUNT = CONCEPT_KIND_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityRelationshipImpl <em>Entity Relationship</em>}' class.
@@ -1655,7 +2235,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityRelationship()
 	 * @generated
 	 */
-	int ENTITY_RELATIONSHIP = 13;
+	int ENTITY_RELATIONSHIP = 17;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -1809,7 +2389,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getCharacterizedEntityRelationship()
 	 * @generated
 	 */
-	int CHARACTERIZED_ENTITY_RELATIONSHIP = 14;
+	int CHARACTERIZED_ENTITY_RELATIONSHIP = 18;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2044,7 +2624,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictableRelationship()
 	 * @generated
 	 */
-	int RESTRICTABLE_RELATIONSHIP = 15;
+	int RESTRICTABLE_RELATIONSHIP = 19;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2153,7 +2733,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getForwardProperty()
 	 * @generated
 	 */
-	int FORWARD_PROPERTY = 16;
+	int FORWARD_PROPERTY = 20;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2280,7 +2860,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getInverseProperty()
 	 * @generated
 	 */
-	int INVERSE_PROPERTY = 17;
+	int INVERSE_PROPERTY = 21;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2407,7 +2987,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getConceptualRelationship()
 	 * @generated
 	 */
-	int CONCEPTUAL_RELATIONSHIP = 18;
+	int CONCEPTUAL_RELATIONSHIP = 22;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2579,7 +3159,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationship()
 	 * @generated
 	 */
-	int REIFIED_RELATIONSHIP = 19;
+	int REIFIED_RELATIONSHIP = 23;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2850,7 +3430,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipRestriction()
 	 * @generated
 	 */
-	int REIFIED_RELATIONSHIP_RESTRICTION = 20;
+	int REIFIED_RELATIONSHIP_RESTRICTION = 24;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -3015,6 +3595,214 @@ public interface TerminologiesPackage extends EPackage {
 	int REIFIED_RELATIONSHIP_RESTRICTION_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 2;
 
 	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedReifiedRelationshipImpl <em>Cardinality Restricted Reified Relationship</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedReifiedRelationshipImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getCardinalityRestrictedReifiedRelationship()
+	 * @generated
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP = 25;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__UUID = CONCEPTUAL_RELATIONSHIP__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__ANNOTATIONS = CONCEPTUAL_RELATIONSHIP__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__TBOX = CONCEPTUAL_RELATIONSHIP__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__NAME = CONCEPTUAL_RELATIONSHIP__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__SOURCE = CONCEPTUAL_RELATIONSHIP__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__TARGET = CONCEPTUAL_RELATIONSHIP__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Restriction Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__RESTRICTION_KIND = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Relationship</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__RESTRICTED_RELATIONSHIP = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Range</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__RESTRICTED_RANGE = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Cardinality</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__RESTRICTED_CARDINALITY = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Cardinality Restricted Reified Relationship</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP_FEATURE_COUNT = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___MODULE_CONTEXT = CONCEPTUAL_RELATIONSHIP___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Iri</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___IRI = CONCEPTUAL_RELATIONSHIP___IRI;
+
+	/**
+	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___ABBREV_IRI = CONCEPTUAL_RELATIONSHIP___ABBREV_IRI;
+
+	/**
+	 * The operation id for the '<em>Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___NAME = CONCEPTUAL_RELATIONSHIP___NAME;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___UUID = CONCEPTUAL_RELATIONSHIP___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = CONCEPTUAL_RELATIONSHIP___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Term</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___TERM = CONCEPTUAL_RELATIONSHIP___TERM;
+
+	/**
+	 * The operation id for the '<em>Relation Domain</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___RELATION_DOMAIN = CONCEPTUAL_RELATIONSHIP___RELATION_DOMAIN;
+
+	/**
+	 * The operation id for the '<em>Relation Range</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___RELATION_RANGE = CONCEPTUAL_RELATIONSHIP___RELATION_RANGE;
+
+	/**
+	 * The operation id for the '<em>Root Reified Relationships</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS = CONCEPTUAL_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS;
+
+	/**
+	 * The number of operations of the '<em>Cardinality Restricted Reified Relationship</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipImpl <em>Unreified Relationship</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3022,7 +3810,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getUnreifiedRelationship()
 	 * @generated
 	 */
-	int UNREIFIED_RELATIONSHIP = 21;
+	int UNREIFIED_RELATIONSHIP = 26;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -3275,7 +4063,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDatatype()
 	 * @generated
 	 */
-	int DATATYPE = 22;
+	int DATATYPE = 27;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -3393,7 +4181,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRange()
 	 * @generated
 	 */
-	int DATA_RANGE = 23;
+	int DATA_RANGE = 28;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -3511,7 +4299,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getScalar()
 	 * @generated
 	 */
-	int SCALAR = 24;
+	int SCALAR = 29;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -3629,7 +4417,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationship()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP = 25;
+	int DATA_RELATIONSHIP = 30;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -3783,7 +4571,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationshipDomain()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP_DOMAIN = 26;
+	int DATA_RELATIONSHIP_DOMAIN = 31;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -3937,7 +4725,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationshipFromEntity()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP_FROM_ENTITY = 27;
+	int DATA_RELATIONSHIP_FROM_ENTITY = 32;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4109,7 +4897,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationshipFromStructure()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP_FROM_STRUCTURE = 28;
+	int DATA_RELATIONSHIP_FROM_STRUCTURE = 33;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4272,7 +5060,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationshipRange()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP_RANGE = 29;
+	int DATA_RELATIONSHIP_RANGE = 34;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4426,7 +5214,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationshipToScalar()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP_TO_SCALAR = 30;
+	int DATA_RELATIONSHIP_TO_SCALAR = 35;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4589,7 +5377,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationshipToStructure()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP_TO_STRUCTURE = 31;
+	int DATA_RELATIONSHIP_TO_STRUCTURE = 36;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4752,7 +5540,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityStructuredDataProperty()
 	 * @generated
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY = 32;
+	int ENTITY_STRUCTURED_DATA_PROPERTY = 37;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4933,7 +5721,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataProperty()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY = 33;
+	int ENTITY_SCALAR_DATA_PROPERTY = 38;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5114,7 +5902,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getStructuredDataProperty()
 	 * @generated
 	 */
-	int STRUCTURED_DATA_PROPERTY = 34;
+	int STRUCTURED_DATA_PROPERTY = 39;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5286,7 +6074,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getScalarDataProperty()
 	 * @generated
 	 */
-	int SCALAR_DATA_PROPERTY = 35;
+	int SCALAR_DATA_PROPERTY = 40;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5458,7 +6246,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getStructure()
 	 * @generated
 	 */
-	int STRUCTURE = 36;
+	int STRUCTURE = 41;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5576,7 +6364,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRule()
 	 * @generated
 	 */
-	int RULE = 37;
+	int RULE = 42;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5694,7 +6482,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getChainRule()
 	 * @generated
 	 */
-	int CHAIN_RULE = 38;
+	int CHAIN_RULE = 43;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5830,7 +6618,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRuleBodySegment()
 	 * @generated
 	 */
-	int RULE_BODY_SEGMENT = 39;
+	int RULE_BODY_SEGMENT = 44;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5948,7 +6736,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSegmentPredicate()
 	 * @generated
 	 */
-	int SEGMENT_PREDICATE = 40;
+	int SEGMENT_PREDICATE = 45;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6084,7 +6872,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getTermAxiom()
 	 * @generated
 	 */
-	int TERM_AXIOM = 41;
+	int TERM_AXIOM = 46;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6166,7 +6954,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_RESTRICTION_AXIOM = 42;
+	int ENTITY_RESTRICTION_AXIOM = 47;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6284,7 +7072,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityExistentialRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM = 43;
+	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM = 48;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6402,7 +7190,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityUniversalRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM = 44;
+	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM = 49;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6520,7 +7308,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSpecializationAxiom()
 	 * @generated
 	 */
-	int SPECIALIZATION_AXIOM = 45;
+	int SPECIALIZATION_AXIOM = 50;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6620,7 +7408,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getAspectSpecializationAxiom()
 	 * @generated
 	 */
-	int ASPECT_SPECIALIZATION_AXIOM = 46;
+	int ASPECT_SPECIALIZATION_AXIOM = 51;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6738,7 +7526,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getConceptSpecializationAxiom()
 	 * @generated
 	 */
-	int CONCEPT_SPECIALIZATION_AXIOM = 47;
+	int CONCEPT_SPECIALIZATION_AXIOM = 52;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6856,7 +7644,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipSpecializationAxiom()
 	 * @generated
 	 */
-	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM = 48;
+	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM = 53;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6974,7 +7762,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSubObjectPropertyOfAxiom()
 	 * @generated
 	 */
-	int SUB_OBJECT_PROPERTY_OF_AXIOM = 49;
+	int SUB_OBJECT_PROPERTY_OF_AXIOM = 54;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7074,7 +7862,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSubDataPropertyOfAxiom()
 	 * @generated
 	 */
-	int SUB_DATA_PROPERTY_OF_AXIOM = 50;
+	int SUB_DATA_PROPERTY_OF_AXIOM = 55;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7174,7 +7962,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataPropertyRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM = 51;
+	int ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM = 56;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7274,7 +8062,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataPropertyExistentialRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_EXISTENTIAL_RESTRICTION_AXIOM = 52;
+	int ENTITY_SCALAR_DATA_PROPERTY_EXISTENTIAL_RESTRICTION_AXIOM = 57;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7383,7 +8171,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataPropertyUniversalRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_UNIVERSAL_RESTRICTION_AXIOM = 53;
+	int ENTITY_SCALAR_DATA_PROPERTY_UNIVERSAL_RESTRICTION_AXIOM = 58;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7492,7 +8280,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataPropertyParticularRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = 54;
+	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = 59;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7610,7 +8398,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityStructuredDataPropertyRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM = 55;
+	int ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM = 60;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7701,7 +8489,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityStructuredDataPropertyParticularRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = 56;
+	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = 61;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7837,7 +8625,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictionStructuredDataPropertyContext()
 	 * @generated
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT = 57;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT = 62;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7955,7 +8743,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictionStructuredDataPropertyTuple()
 	 * @generated
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE = 58;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE = 63;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8082,7 +8870,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictionScalarDataPropertyValue()
 	 * @generated
 	 */
-	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE = 59;
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE = 64;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8191,7 +8979,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictedDataRange()
 	 * @generated
 	 */
-	int RESTRICTED_DATA_RANGE = 60;
+	int RESTRICTED_DATA_RANGE = 65;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8318,7 +9106,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getBinaryScalarRestriction()
 	 * @generated
 	 */
-	int BINARY_SCALAR_RESTRICTION = 61;
+	int BINARY_SCALAR_RESTRICTION = 66;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8472,7 +9260,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getIRIScalarRestriction()
 	 * @generated
 	 */
-	int IRI_SCALAR_RESTRICTION = 62;
+	int IRI_SCALAR_RESTRICTION = 67;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8635,7 +9423,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getNumericScalarRestriction()
 	 * @generated
 	 */
-	int NUMERIC_SCALAR_RESTRICTION = 63;
+	int NUMERIC_SCALAR_RESTRICTION = 68;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8798,7 +9586,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getPlainLiteralScalarRestriction()
 	 * @generated
 	 */
-	int PLAIN_LITERAL_SCALAR_RESTRICTION = 64;
+	int PLAIN_LITERAL_SCALAR_RESTRICTION = 69;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8970,7 +9758,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getStringScalarRestriction()
 	 * @generated
 	 */
-	int STRING_SCALAR_RESTRICTION = 65;
+	int STRING_SCALAR_RESTRICTION = 70;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -9133,7 +9921,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getTimeScalarRestriction()
 	 * @generated
 	 */
-	int TIME_SCALAR_RESTRICTION = 66;
+	int TIME_SCALAR_RESTRICTION = 71;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -9296,7 +10084,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSynonymScalarRestriction()
 	 * @generated
 	 */
-	int SYNONYM_SCALAR_RESTRICTION = 67;
+	int SYNONYM_SCALAR_RESTRICTION = 72;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -9423,7 +10211,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getScalarOneOfRestriction()
 	 * @generated
 	 */
-	int SCALAR_ONE_OF_RESTRICTION = 68;
+	int SCALAR_ONE_OF_RESTRICTION = 73;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -9550,7 +10338,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getScalarOneOfLiteralAxiom()
 	 * @generated
 	 */
-	int SCALAR_ONE_OF_LITERAL_AXIOM = 69;
+	int SCALAR_ONE_OF_LITERAL_AXIOM = 74;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -9659,7 +10447,17 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getTerminologyKind()
 	 * @generated
 	 */
-	int TERMINOLOGY_KIND = 70;
+	int TERMINOLOGY_KIND = 75;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictionKind <em>Cardinality Restriction Kind</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictionKind
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getCardinalityRestrictionKind()
+	 * @generated
+	 */
+	int CARDINALITY_RESTRICTION_KIND = 76;
 
 
 	/**
@@ -10030,6 +10828,16 @@ public interface TerminologiesPackage extends EPackage {
 	EClass getConceptualEntity();
 
 	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.AspectKind <em>Aspect Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Aspect Kind</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.AspectKind
+	 * @generated
+	 */
+	EClass getAspectKind();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.Aspect <em>Aspect</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10040,6 +10848,70 @@ public interface TerminologiesPackage extends EPackage {
 	EClass getAspect();
 
 	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect <em>Cardinality Restricted Aspect</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Cardinality Restricted Aspect</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect
+	 * @generated
+	 */
+	EClass getCardinalityRestrictedAspect();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect#getRestrictionKind <em>Restriction Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Restriction Kind</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect#getRestrictionKind()
+	 * @see #getCardinalityRestrictedAspect()
+	 * @generated
+	 */
+	EAttribute getCardinalityRestrictedAspect_RestrictionKind();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect#getRestrictedRelationship <em>Restricted Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Restricted Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect#getRestrictedRelationship()
+	 * @see #getCardinalityRestrictedAspect()
+	 * @generated
+	 */
+	EReference getCardinalityRestrictedAspect_RestrictedRelationship();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect#getRestrictedRange <em>Restricted Range</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Restricted Range</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect#getRestrictedRange()
+	 * @see #getCardinalityRestrictedAspect()
+	 * @generated
+	 */
+	EReference getCardinalityRestrictedAspect_RestrictedRange();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect#getRestrictedCardinality <em>Restricted Cardinality</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Restricted Cardinality</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect#getRestrictedCardinality()
+	 * @see #getCardinalityRestrictedAspect()
+	 * @generated
+	 */
+	EAttribute getCardinalityRestrictedAspect_RestrictedCardinality();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind <em>Concept Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Concept Kind</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind
+	 * @generated
+	 */
+	EClass getConceptKind();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.Concept <em>Concept</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10048,6 +10920,60 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getConcept();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept <em>Cardinality Restricted Concept</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Cardinality Restricted Concept</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept
+	 * @generated
+	 */
+	EClass getCardinalityRestrictedConcept();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept#getRestrictionKind <em>Restriction Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Restriction Kind</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept#getRestrictionKind()
+	 * @see #getCardinalityRestrictedConcept()
+	 * @generated
+	 */
+	EAttribute getCardinalityRestrictedConcept_RestrictionKind();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept#getRestrictedRelationship <em>Restricted Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Restricted Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept#getRestrictedRelationship()
+	 * @see #getCardinalityRestrictedConcept()
+	 * @generated
+	 */
+	EReference getCardinalityRestrictedConcept_RestrictedRelationship();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept#getRestrictedRange <em>Restricted Range</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Restricted Range</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept#getRestrictedRange()
+	 * @see #getCardinalityRestrictedConcept()
+	 * @generated
+	 */
+	EReference getCardinalityRestrictedConcept_RestrictedRange();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept#getRestrictedCardinality <em>Restricted Cardinality</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Restricted Cardinality</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept#getRestrictedCardinality()
+	 * @see #getCardinalityRestrictedConcept()
+	 * @generated
+	 */
+	EAttribute getCardinalityRestrictedConcept_RestrictedCardinality();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship <em>Entity Relationship</em>}'.
@@ -10525,6 +11451,60 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getReifiedRelationshipRestriction__RootReifiedRelationships();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship <em>Cardinality Restricted Reified Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Cardinality Restricted Reified Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship
+	 * @generated
+	 */
+	EClass getCardinalityRestrictedReifiedRelationship();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship#getRestrictionKind <em>Restriction Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Restriction Kind</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship#getRestrictionKind()
+	 * @see #getCardinalityRestrictedReifiedRelationship()
+	 * @generated
+	 */
+	EAttribute getCardinalityRestrictedReifiedRelationship_RestrictionKind();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship#getRestrictedRelationship <em>Restricted Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Restricted Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship#getRestrictedRelationship()
+	 * @see #getCardinalityRestrictedReifiedRelationship()
+	 * @generated
+	 */
+	EReference getCardinalityRestrictedReifiedRelationship_RestrictedRelationship();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship#getRestrictedRange <em>Restricted Range</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Restricted Range</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship#getRestrictedRange()
+	 * @see #getCardinalityRestrictedReifiedRelationship()
+	 * @generated
+	 */
+	EReference getCardinalityRestrictedReifiedRelationship_RestrictedRange();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship#getRestrictedCardinality <em>Restricted Cardinality</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Restricted Cardinality</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship#getRestrictedCardinality()
+	 * @see #getCardinalityRestrictedReifiedRelationship()
+	 * @generated
+	 */
+	EAttribute getCardinalityRestrictedReifiedRelationship_RestrictedCardinality();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship <em>Unreified Relationship</em>}'.
@@ -12461,6 +13441,16 @@ public interface TerminologiesPackage extends EPackage {
 	EEnum getTerminologyKind();
 
 	/**
+	 * Returns the meta object for enum '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictionKind <em>Cardinality Restriction Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Cardinality Restriction Kind</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictionKind
+	 * @generated
+	 */
+	EEnum getCardinalityRestrictionKind();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12794,6 +13784,16 @@ public interface TerminologiesPackage extends EPackage {
 		EClass CONCEPTUAL_ENTITY = eINSTANCE.getConceptualEntity();
 
 		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.AspectKindImpl <em>Aspect Kind</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.AspectKindImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getAspectKind()
+		 * @generated
+		 */
+		EClass ASPECT_KIND = eINSTANCE.getAspectKind();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.AspectImpl <em>Aspect</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -12804,6 +13804,58 @@ public interface TerminologiesPackage extends EPackage {
 		EClass ASPECT = eINSTANCE.getAspect();
 
 		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedAspectImpl <em>Cardinality Restricted Aspect</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedAspectImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getCardinalityRestrictedAspect()
+		 * @generated
+		 */
+		EClass CARDINALITY_RESTRICTED_ASPECT = eINSTANCE.getCardinalityRestrictedAspect();
+
+		/**
+		 * The meta object literal for the '<em><b>Restriction Kind</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CARDINALITY_RESTRICTED_ASPECT__RESTRICTION_KIND = eINSTANCE.getCardinalityRestrictedAspect_RestrictionKind();
+
+		/**
+		 * The meta object literal for the '<em><b>Restricted Relationship</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_RELATIONSHIP = eINSTANCE.getCardinalityRestrictedAspect_RestrictedRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Restricted Range</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_RANGE = eINSTANCE.getCardinalityRestrictedAspect_RestrictedRange();
+
+		/**
+		 * The meta object literal for the '<em><b>Restricted Cardinality</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_CARDINALITY = eINSTANCE.getCardinalityRestrictedAspect_RestrictedCardinality();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ConceptKindImpl <em>Concept Kind</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ConceptKindImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getConceptKind()
+		 * @generated
+		 */
+		EClass CONCEPT_KIND = eINSTANCE.getConceptKind();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ConceptImpl <em>Concept</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -12812,6 +13864,48 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONCEPT = eINSTANCE.getConcept();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedConceptImpl <em>Cardinality Restricted Concept</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedConceptImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getCardinalityRestrictedConcept()
+		 * @generated
+		 */
+		EClass CARDINALITY_RESTRICTED_CONCEPT = eINSTANCE.getCardinalityRestrictedConcept();
+
+		/**
+		 * The meta object literal for the '<em><b>Restriction Kind</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CARDINALITY_RESTRICTED_CONCEPT__RESTRICTION_KIND = eINSTANCE.getCardinalityRestrictedConcept_RestrictionKind();
+
+		/**
+		 * The meta object literal for the '<em><b>Restricted Relationship</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_RELATIONSHIP = eINSTANCE.getCardinalityRestrictedConcept_RestrictedRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Restricted Range</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_RANGE = eINSTANCE.getCardinalityRestrictedConcept_RestrictedRange();
+
+		/**
+		 * The meta object literal for the '<em><b>Restricted Cardinality</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_CARDINALITY = eINSTANCE.getCardinalityRestrictedConcept_RestrictedCardinality();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityRelationshipImpl <em>Entity Relationship</em>}' class.
@@ -13196,6 +14290,48 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation REIFIED_RELATIONSHIP_RESTRICTION___ROOT_REIFIED_RELATIONSHIPS = eINSTANCE.getReifiedRelationshipRestriction__RootReifiedRelationships();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedReifiedRelationshipImpl <em>Cardinality Restricted Reified Relationship</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedReifiedRelationshipImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getCardinalityRestrictedReifiedRelationship()
+		 * @generated
+		 */
+		EClass CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP = eINSTANCE.getCardinalityRestrictedReifiedRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Restriction Kind</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__RESTRICTION_KIND = eINSTANCE.getCardinalityRestrictedReifiedRelationship_RestrictionKind();
+
+		/**
+		 * The meta object literal for the '<em><b>Restricted Relationship</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__RESTRICTED_RELATIONSHIP = eINSTANCE.getCardinalityRestrictedReifiedRelationship_RestrictedRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Restricted Range</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__RESTRICTED_RANGE = eINSTANCE.getCardinalityRestrictedReifiedRelationship_RestrictedRange();
+
+		/**
+		 * The meta object literal for the '<em><b>Restricted Cardinality</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__RESTRICTED_CARDINALITY = eINSTANCE.getCardinalityRestrictedReifiedRelationship_RestrictedCardinality();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipImpl <em>Unreified Relationship</em>}' class.
@@ -14784,6 +15920,16 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum TERMINOLOGY_KIND = eINSTANCE.getTerminologyKind();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictionKind <em>Cardinality Restriction Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictionKind
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getCardinalityRestrictionKind()
+		 * @generated
+		 */
+		EEnum CARDINALITY_RESTRICTION_KIND = eINSTANCE.getCardinalityRestrictionKind();
 
 	}
 
