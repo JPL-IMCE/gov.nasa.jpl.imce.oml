@@ -2,7 +2,7 @@
 <feature
       id="gov.nasa.jpl.imce.oml.rcp.feature"
       label="%featureName"
-      version="0.9.5.3"
+      version="0.9.6.0"
       provider-name="%featureProvider">
 
    <description url="https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/tree/master/features/gov.nasa.jpl.imce.oml.rcp.feature/README.md">
@@ -129,7 +129,7 @@ License Terms
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.equinox.p2.core.feature"
+         id="org.eclipse.equinox.core.sdk"
          version="0.0.0"/>
 
    <includes
@@ -409,13 +409,6 @@ License Terms
 
    <plugin
          id="org.eclipse.sirius.common.interpreter"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.eef.ide"
          download-size="0"
          install-size="0"
          version="0.0.0"

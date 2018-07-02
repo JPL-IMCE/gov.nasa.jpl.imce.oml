@@ -10,3 +10,4 @@ Require-Bundle: gov.nasa.jpl.imce.oml.model;bundle-version="[0.9.0,1.0.0)";visib
  org.apache.commons.compress;bundle-version="1.6.0";visibility:=reexport,
  gov.nasa.jpl.imce.oml.dsl;bundle-version="[0.9.0,1.0.0)";visibility:=reexport
 Export-Package: gov.nasa.jpl.imce.oml.zip
+Automatic-Module-Name: gov.nasa.jpl.imce.oml.zip

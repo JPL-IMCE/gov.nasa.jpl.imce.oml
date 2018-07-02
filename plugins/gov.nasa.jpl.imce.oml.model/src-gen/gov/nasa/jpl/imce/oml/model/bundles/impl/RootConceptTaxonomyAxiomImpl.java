@@ -50,7 +50,6 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -132,7 +131,7 @@ public class RootConceptTaxonomyAxiomImpl extends TerminologyBundleStatementImpl
 	 * @generated
 	 */
 	public ConceptKind getRoot() {
-		if (root != null && ((EObject)root).eIsProxy()) {
+		if (root != null && root.eIsProxy()) {
 			InternalEObject oldRoot = (InternalEObject)root;
 			root = (ConceptKind)eResolveProxy(oldRoot);
 			if (root != oldRoot) {

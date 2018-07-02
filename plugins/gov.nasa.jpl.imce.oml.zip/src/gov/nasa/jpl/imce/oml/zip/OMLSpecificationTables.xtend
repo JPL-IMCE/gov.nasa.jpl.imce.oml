@@ -19,16 +19,39 @@
 
 package gov.nasa.jpl.imce.oml.zip
 
+import java.io.BufferedReader
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.InputStreamReader
+import java.io.PrintWriter
+import java.lang.IllegalArgumentException
+import java.nio.charset.StandardCharsets
+import java.util.ArrayList
+import java.util.Collections
+import java.util.HashMap
+import java.util.HashSet
+import java.util.LinkedList
+import java.util.Map
+import java.util.Queue
+import java.util.Set
+import org.apache.commons.compress.archivers.zip.ZipArchiveEntry
+import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream
+import org.apache.commons.compress.archivers.zip.ZipFile
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.xtext.resource.XtextResource
+import org.eclipse.xtext.xbase.lib.Pair
+
+import gov.nasa.jpl.imce.oml.model.extensions.OMLTables
 import gov.nasa.jpl.imce.oml.model.bundles.AnonymousConceptUnionAxiom
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle
 import gov.nasa.jpl.imce.oml.model.bundles.BundledTerminologyAxiom
-import gov.nasa.jpl.imce.oml.model.bundles.BundlesFactory
 import gov.nasa.jpl.imce.oml.model.bundles.ConceptTreeDisjunction
 import gov.nasa.jpl.imce.oml.model.bundles.RootConceptTaxonomyAxiom
 import gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
-import gov.nasa.jpl.imce.oml.model.common.CommonFactory
 import gov.nasa.jpl.imce.oml.model.common.Extent
 import gov.nasa.jpl.imce.oml.model.common.LogicalElement
 import gov.nasa.jpl.imce.oml.model.common.Module
@@ -37,7 +60,6 @@ import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstanc
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement
-import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsFactory
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange
@@ -48,9 +70,7 @@ import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataP
 import gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple
 import gov.nasa.jpl.imce.oml.model.descriptions.UnreifiedRelationshipInstanceTuple
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
-import gov.nasa.jpl.imce.oml.model.extensions.OMLTables
 import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom
-import gov.nasa.jpl.imce.oml.model.graphs.GraphsFactory
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect
@@ -69,23 +89,23 @@ import gov.nasa.jpl.imce.oml.model.terminologies.DataRange
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToScalar
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToStructure
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyExistentialRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty
-import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty
+import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.Predicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
@@ -98,36 +118,21 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction
-import gov.nasa.jpl.imce.oml.model.terminologies.Structure
-import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.Structure
+import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.SynonymScalarRestriction
-import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesFactory
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyExtensionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship
-import java.io.BufferedReader
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.InputStreamReader
-import java.io.PrintWriter
-import java.nio.charset.StandardCharsets
-import java.util.ArrayList
-import java.util.Collections
-import java.util.HashMap
-import java.util.HashSet
-import java.util.LinkedList
-import java.util.Map
-import java.util.Queue
-import java.util.Set
-import org.apache.commons.compress.archivers.zip.ZipArchiveEntry
-import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream
-import org.apache.commons.compress.archivers.zip.ZipFile
-import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.emf.ecore.resource.ResourceSet
+
+import gov.nasa.jpl.imce.oml.model.common.CommonFactory
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesFactory
+import gov.nasa.jpl.imce.oml.model.graphs.GraphsFactory
+import gov.nasa.jpl.imce.oml.model.bundles.BundlesFactory
+import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsFactory
 
 /**
  * @generated
@@ -6788,13 +6793,16 @@ class OMLSpecificationTables {
   		}
   	}
   	
-	r.contents.forEach[e|
-		switch e {
-			Extent: {
-				e.modules.forEach[queueModule]
-			}
-		}
-	]
+  	switch r {
+  		XtextResource:
+  			r.contents.forEach[e|
+  				switch e {
+  					Extent: {
+  						e.modules.forEach[queueModule]
+					}
+				}
+			]
+	}
 
   	r
   }

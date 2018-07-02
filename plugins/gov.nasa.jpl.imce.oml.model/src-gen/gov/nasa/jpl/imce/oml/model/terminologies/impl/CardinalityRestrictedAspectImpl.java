@@ -20,7 +20,7 @@ package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
 import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue;
 
-import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect;
 import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictionKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
@@ -29,28 +29,27 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Cardinality Restricted Concept</b></em>'.
+ * An implementation of the model object '<em><b>Cardinality Restricted Aspect</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedConceptImpl#getRestrictionKind <em>Restriction Kind</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedConceptImpl#getRestrictedRelationship <em>Restricted Relationship</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedConceptImpl#getRestrictedRange <em>Restricted Range</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedConceptImpl#getRestrictedCardinality <em>Restricted Cardinality</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedAspectImpl#getRestrictionKind <em>Restriction Kind</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedAspectImpl#getRestrictedRelationship <em>Restricted Relationship</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedAspectImpl#getRestrictedRange <em>Restricted Range</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedAspectImpl#getRestrictedCardinality <em>Restricted Cardinality</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class CardinalityRestrictedConceptImpl extends ConceptKindImpl implements CardinalityRestrictedConcept {
+public class CardinalityRestrictedAspectImpl extends AspectKindImpl implements CardinalityRestrictedAspect {
 	/**
 	 * The default value of the '{@link #getRestrictionKind() <em>Restriction Kind</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -116,7 +115,7 @@ public class CardinalityRestrictedConceptImpl extends ConceptKindImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CardinalityRestrictedConceptImpl() {
+	protected CardinalityRestrictedAspectImpl() {
 		super();
 	}
 
@@ -127,7 +126,7 @@ public class CardinalityRestrictedConceptImpl extends ConceptKindImpl implements
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return TerminologiesPackage.Literals.CARDINALITY_RESTRICTED_CONCEPT;
+		return TerminologiesPackage.Literals.CARDINALITY_RESTRICTED_ASPECT;
 	}
 
 	/**
@@ -148,7 +147,7 @@ public class CardinalityRestrictedConceptImpl extends ConceptKindImpl implements
 		CardinalityRestrictionKind oldRestrictionKind = restrictionKind;
 		restrictionKind = newRestrictionKind == null ? RESTRICTION_KIND_EDEFAULT : newRestrictionKind;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTION_KIND, oldRestrictionKind, restrictionKind));
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTION_KIND, oldRestrictionKind, restrictionKind));
 	}
 
 	/**
@@ -157,12 +156,12 @@ public class CardinalityRestrictedConceptImpl extends ConceptKindImpl implements
 	 * @generated
 	 */
 	public RestrictableRelationship getRestrictedRelationship() {
-		if (restrictedRelationship != null && ((EObject)restrictedRelationship).eIsProxy()) {
+		if (restrictedRelationship != null && restrictedRelationship.eIsProxy()) {
 			InternalEObject oldRestrictedRelationship = (InternalEObject)restrictedRelationship;
 			restrictedRelationship = (RestrictableRelationship)eResolveProxy(oldRestrictedRelationship);
 			if (restrictedRelationship != oldRestrictedRelationship) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_RELATIONSHIP, oldRestrictedRelationship, restrictedRelationship));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_RELATIONSHIP, oldRestrictedRelationship, restrictedRelationship));
 			}
 		}
 		return restrictedRelationship;
@@ -186,7 +185,7 @@ public class CardinalityRestrictedConceptImpl extends ConceptKindImpl implements
 		RestrictableRelationship oldRestrictedRelationship = restrictedRelationship;
 		restrictedRelationship = newRestrictedRelationship;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_RELATIONSHIP, oldRestrictedRelationship, restrictedRelationship));
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_RELATIONSHIP, oldRestrictedRelationship, restrictedRelationship));
 	}
 
 	/**
@@ -195,12 +194,12 @@ public class CardinalityRestrictedConceptImpl extends ConceptKindImpl implements
 	 * @generated
 	 */
 	public Entity getRestrictedRange() {
-		if (restrictedRange != null && ((EObject)restrictedRange).eIsProxy()) {
+		if (restrictedRange != null && restrictedRange.eIsProxy()) {
 			InternalEObject oldRestrictedRange = (InternalEObject)restrictedRange;
 			restrictedRange = (Entity)eResolveProxy(oldRestrictedRange);
 			if (restrictedRange != oldRestrictedRange) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_RANGE, oldRestrictedRange, restrictedRange));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_RANGE, oldRestrictedRange, restrictedRange));
 			}
 		}
 		return restrictedRange;
@@ -224,7 +223,7 @@ public class CardinalityRestrictedConceptImpl extends ConceptKindImpl implements
 		Entity oldRestrictedRange = restrictedRange;
 		restrictedRange = newRestrictedRange;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_RANGE, oldRestrictedRange, restrictedRange));
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_RANGE, oldRestrictedRange, restrictedRange));
 	}
 
 	/**
@@ -245,7 +244,7 @@ public class CardinalityRestrictedConceptImpl extends ConceptKindImpl implements
 		PositiveIntegerValue oldRestrictedCardinality = restrictedCardinality;
 		restrictedCardinality = newRestrictedCardinality;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_CARDINALITY, oldRestrictedCardinality, restrictedCardinality));
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_CARDINALITY, oldRestrictedCardinality, restrictedCardinality));
 	}
 
 	/**
@@ -256,15 +255,15 @@ public class CardinalityRestrictedConceptImpl extends ConceptKindImpl implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTION_KIND:
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTION_KIND:
 				return getRestrictionKind();
-			case TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_RELATIONSHIP:
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_RELATIONSHIP:
 				if (resolve) return getRestrictedRelationship();
 				return basicGetRestrictedRelationship();
-			case TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_RANGE:
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_RANGE:
 				if (resolve) return getRestrictedRange();
 				return basicGetRestrictedRange();
-			case TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_CARDINALITY:
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_CARDINALITY:
 				return getRestrictedCardinality();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -278,16 +277,16 @@ public class CardinalityRestrictedConceptImpl extends ConceptKindImpl implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTION_KIND:
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTION_KIND:
 				setRestrictionKind((CardinalityRestrictionKind)newValue);
 				return;
-			case TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_RELATIONSHIP:
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_RELATIONSHIP:
 				setRestrictedRelationship((RestrictableRelationship)newValue);
 				return;
-			case TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_RANGE:
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_RANGE:
 				setRestrictedRange((Entity)newValue);
 				return;
-			case TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_CARDINALITY:
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_CARDINALITY:
 				setRestrictedCardinality((PositiveIntegerValue)newValue);
 				return;
 		}
@@ -302,16 +301,16 @@ public class CardinalityRestrictedConceptImpl extends ConceptKindImpl implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTION_KIND:
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTION_KIND:
 				setRestrictionKind(RESTRICTION_KIND_EDEFAULT);
 				return;
-			case TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_RELATIONSHIP:
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_RELATIONSHIP:
 				setRestrictedRelationship((RestrictableRelationship)null);
 				return;
-			case TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_RANGE:
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_RANGE:
 				setRestrictedRange((Entity)null);
 				return;
-			case TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_CARDINALITY:
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_CARDINALITY:
 				setRestrictedCardinality(RESTRICTED_CARDINALITY_EDEFAULT);
 				return;
 		}
@@ -326,13 +325,13 @@ public class CardinalityRestrictedConceptImpl extends ConceptKindImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTION_KIND:
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTION_KIND:
 				return restrictionKind != RESTRICTION_KIND_EDEFAULT;
-			case TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_RELATIONSHIP:
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_RELATIONSHIP:
 				return restrictedRelationship != null;
-			case TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_RANGE:
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_RANGE:
 				return restrictedRange != null;
-			case TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_CARDINALITY:
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT__RESTRICTED_CARDINALITY:
 				return RESTRICTED_CARDINALITY_EDEFAULT == null ? restrictedCardinality != null : !RESTRICTED_CARDINALITY_EDEFAULT.equals(restrictedCardinality);
 		}
 		return super.eIsSet(featureID);
@@ -356,4 +355,4 @@ public class CardinalityRestrictedConceptImpl extends ConceptKindImpl implements
 		return result.toString();
 	}
 
-} //CardinalityRestrictedConceptImpl
+} //CardinalityRestrictedAspectImpl

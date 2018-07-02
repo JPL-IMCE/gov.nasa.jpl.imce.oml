@@ -38,7 +38,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -105,7 +104,7 @@ public class ConceptDesignationTerminologyAxiomImpl extends TerminologyBoxAxiomI
 	 * @generated
 	 */
 	public TerminologyBox getDesignatedTerminology() {
-		if (designatedTerminology != null && ((EObject)designatedTerminology).eIsProxy()) {
+		if (designatedTerminology != null && designatedTerminology.eIsProxy()) {
 			InternalEObject oldDesignatedTerminology = (InternalEObject)designatedTerminology;
 			designatedTerminology = (TerminologyBox)eResolveProxy(oldDesignatedTerminology);
 			if (designatedTerminology != oldDesignatedTerminology) {
@@ -143,7 +142,7 @@ public class ConceptDesignationTerminologyAxiomImpl extends TerminologyBoxAxiomI
 	 * @generated
 	 */
 	public ConceptKind getDesignatedConcept() {
-		if (designatedConcept != null && ((EObject)designatedConcept).eIsProxy()) {
+		if (designatedConcept != null && designatedConcept.eIsProxy()) {
 			InternalEObject oldDesignatedConcept = (InternalEObject)designatedConcept;
 			designatedConcept = (ConceptKind)eResolveProxy(oldDesignatedConcept);
 			if (designatedConcept != oldDesignatedConcept) {

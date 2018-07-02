@@ -47,7 +47,6 @@ import gov.nasa.jpl.imce.oml.model.common.LiteralURI;
 import gov.nasa.jpl.imce.oml.model.common.LiteralUUID;
 import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
 import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
-import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
 import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance;
@@ -141,7 +140,6 @@ import java.util.function.Consumer;
 import org.apache.xml.resolver.Catalog;
 import org.apache.xml.resolver.CatalogManager;
 import org.apache.xml.resolver.tools.CatalogResolver;
-import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
@@ -151,7 +149,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -522,7 +519,7 @@ public class OMLExtensions {
     return _xblockexpression;
   }
   
-  public static String getModuleNsURI(final Module it) {
+  public static String getModuleNsURI(final gov.nasa.jpl.imce.oml.model.common.Module it) {
     String _elvis = null;
     final Function1<AnnotationPropertyValue, Boolean> _function = (AnnotationPropertyValue a) -> {
       String _iri = a.getProperty().iri();
@@ -550,7 +547,7 @@ public class OMLExtensions {
     return _elvis;
   }
   
-  public static String getModuleNsPrefix(final Module it) {
+  public static String getModuleNsPrefix(final gov.nasa.jpl.imce.oml.model.common.Module it) {
     String _elvis = null;
     final Function1<AnnotationPropertyValue, Boolean> _function = (AnnotationPropertyValue a) -> {
       String _iri = a.getProperty().iri();
@@ -595,7 +592,7 @@ public class OMLExtensions {
   }
   
   public void phasedResolveAll(final Extent it) {
-    final Consumer<Module> _function = (Module it_1) -> {
+    final Consumer<gov.nasa.jpl.imce.oml.model.common.Module> _function = (gov.nasa.jpl.imce.oml.model.common.Module it_1) -> {
       final Consumer<ModuleEdge> _function_1 = (ModuleEdge it_2) -> {
         EcoreUtil.resolveAll(it_2.targetModule());
       };
@@ -617,13 +614,13 @@ public class OMLExtensions {
       }
       final TerminologyBox tbox = IterableExtensions.<TerminologyBox>head(queue);
       queue.remove(tbox);
-      final Function1<ModuleEdge, Module> _function = (ModuleEdge it) -> {
+      final Function1<ModuleEdge, gov.nasa.jpl.imce.oml.model.common.Module> _function = (ModuleEdge it) -> {
         return it.targetModule();
       };
       final Function1<TerminologyBox, Boolean> _function_1 = (TerminologyBox it) -> {
         return Boolean.valueOf(visited.contains(it));
       };
-      final Iterable<TerminologyBox> inc = IterableExtensions.<TerminologyBox>reject(Iterables.<TerminologyBox>filter(IterableExtensions.<Module>filterNull(ListExtensions.<ModuleEdge, Module>map(tbox.moduleEdges(), _function)), TerminologyBox.class), _function_1);
+      final Iterable<TerminologyBox> inc = IterableExtensions.<TerminologyBox>reject(Iterables.<TerminologyBox>filter(IterableExtensions.<gov.nasa.jpl.imce.oml.model.common.Module>filterNull(ListExtensions.<ModuleEdge, gov.nasa.jpl.imce.oml.model.common.Module>map(tbox.moduleEdges(), _function)), TerminologyBox.class), _function_1);
       Iterables.<TerminologyBox>addAll(queue, inc);
       Iterables.<TerminologyBox>addAll(acc, inc);
       Iterables.<TerminologyBox>addAll(visited, inc);
@@ -632,29 +629,29 @@ public class OMLExtensions {
     return _xblockexpression;
   }
   
-  public Iterable<Module> allImportedModules(final Module it) {
-    return this.collectAllImportedModules(Lists.<Module>newArrayList(it), Lists.<Module>newArrayList(it), Sets.<Module>newHashSet(it));
+  public Iterable<gov.nasa.jpl.imce.oml.model.common.Module> allImportedModules(final gov.nasa.jpl.imce.oml.model.common.Module it) {
+    return this.collectAllImportedModules(Lists.<gov.nasa.jpl.imce.oml.model.common.Module>newArrayList(it), Lists.<gov.nasa.jpl.imce.oml.model.common.Module>newArrayList(it), Sets.<gov.nasa.jpl.imce.oml.model.common.Module>newHashSet(it));
   }
   
-  public final Iterable<Module> collectAllImportedModules(final ArrayList<Module> queue, final ArrayList<Module> acc, final HashSet<Module> visited) {
-    Iterable<Module> _xblockexpression = null;
+  public final Iterable<gov.nasa.jpl.imce.oml.model.common.Module> collectAllImportedModules(final ArrayList<gov.nasa.jpl.imce.oml.model.common.Module> queue, final ArrayList<gov.nasa.jpl.imce.oml.model.common.Module> acc, final HashSet<gov.nasa.jpl.imce.oml.model.common.Module> visited) {
+    Iterable<gov.nasa.jpl.imce.oml.model.common.Module> _xblockexpression = null;
     {
       boolean _isEmpty = queue.isEmpty();
       if (_isEmpty) {
         return acc;
       }
-      final Module m = IterableExtensions.<Module>head(queue);
+      final gov.nasa.jpl.imce.oml.model.common.Module m = IterableExtensions.<gov.nasa.jpl.imce.oml.model.common.Module>head(queue);
       queue.remove(m);
-      final Function1<ModuleEdge, Module> _function = (ModuleEdge it) -> {
+      final Function1<ModuleEdge, gov.nasa.jpl.imce.oml.model.common.Module> _function = (ModuleEdge it) -> {
         return it.targetModule();
       };
-      final Function1<Module, Boolean> _function_1 = (Module it) -> {
+      final Function1<gov.nasa.jpl.imce.oml.model.common.Module, Boolean> _function_1 = (gov.nasa.jpl.imce.oml.model.common.Module it) -> {
         return Boolean.valueOf(visited.contains(it));
       };
-      final Iterable<Module> inc = IterableExtensions.<Module>reject(IterableExtensions.<Module>filterNull(ListExtensions.<ModuleEdge, Module>map(m.moduleEdges(), _function)), _function_1);
-      Iterables.<Module>addAll(queue, inc);
-      Iterables.<Module>addAll(acc, inc);
-      Iterables.<Module>addAll(visited, inc);
+      final Iterable<gov.nasa.jpl.imce.oml.model.common.Module> inc = IterableExtensions.<gov.nasa.jpl.imce.oml.model.common.Module>reject(IterableExtensions.<gov.nasa.jpl.imce.oml.model.common.Module>filterNull(ListExtensions.<ModuleEdge, gov.nasa.jpl.imce.oml.model.common.Module>map(m.moduleEdges(), _function)), _function_1);
+      Iterables.<gov.nasa.jpl.imce.oml.model.common.Module>addAll(queue, inc);
+      Iterables.<gov.nasa.jpl.imce.oml.model.common.Module>addAll(acc, inc);
+      Iterables.<gov.nasa.jpl.imce.oml.model.common.Module>addAll(visited, inc);
       _xblockexpression = this.collectAllImportedModules(queue, acc, visited);
     }
     return _xblockexpression;
@@ -1952,27 +1949,14 @@ public class OMLExtensions {
     return list;
   }
   
-  public static void removeAllINodes(final List<EObject> queue) {
-    boolean _isEmpty = queue.isEmpty();
-    boolean _not = (!_isEmpty);
-    if (_not) {
-      final EObject e = queue.remove(0);
-      final List<INode> nodes = IterableExtensions.<INode>toList(Iterables.<INode>filter(e.eAdapters(), INode.class));
-      e.eAdapters().removeAll(nodes);
-      queue.addAll(e.eContents());
-      OMLExtensions.removeAllINodes(queue);
-    }
-  }
-  
   protected static void _normalize(final Extent ext) {
     final ArrayList<EObject> queue = new ArrayList<EObject>();
     queue.add(ext);
-    OMLExtensions.removeAllINodes(queue);
-    final Function1<Module, String> _function = (Module it) -> {
+    final Function1<gov.nasa.jpl.imce.oml.model.common.Module, String> _function = (gov.nasa.jpl.imce.oml.model.common.Module it) -> {
       return it.abbrevIRI();
     };
-    OMLExtensions.<Module, String>sortInplaceBy(ext.getModules(), _function);
-    final Consumer<Module> _function_1 = (Module m) -> {
+    OMLExtensions.<gov.nasa.jpl.imce.oml.model.common.Module, String>sortInplaceBy(ext.getModules(), _function);
+    final Consumer<gov.nasa.jpl.imce.oml.model.common.Module> _function_1 = (gov.nasa.jpl.imce.oml.model.common.Module m) -> {
       OMLExtensions.normalize(m);
     };
     ext.getModules().forEach(_function_1);
@@ -2257,15 +2241,15 @@ public class OMLExtensions {
     {
       String _switchResult = null;
       boolean _matched = false;
-      if (e instanceof Module) {
+      if (e instanceof gov.nasa.jpl.imce.oml.model.common.Module) {
         _matched=true;
-        _switchResult = ((Module)e).abbrevIRI();
+        _switchResult = ((gov.nasa.jpl.imce.oml.model.common.Module)e).abbrevIRI();
       }
       if (!_matched) {
         if (e instanceof ModuleEdge) {
           _matched=true;
           String _elvis = null;
-          Module _sourceModule = ((ModuleEdge)e).sourceModule();
+          gov.nasa.jpl.imce.oml.model.common.Module _sourceModule = ((ModuleEdge)e).sourceModule();
           String _abbrevIRI = null;
           if (_sourceModule!=null) {
             _abbrevIRI=_sourceModule.abbrevIRI();
@@ -2278,7 +2262,7 @@ public class OMLExtensions {
           }
           String _plus = (_elvis + ".");
           String _elvis_1 = null;
-          Module _targetModule = null;
+          gov.nasa.jpl.imce.oml.model.common.Module _targetModule = null;
           if (((ModuleEdge)e)!=null) {
             _targetModule=((ModuleEdge)e).targetModule();
           }

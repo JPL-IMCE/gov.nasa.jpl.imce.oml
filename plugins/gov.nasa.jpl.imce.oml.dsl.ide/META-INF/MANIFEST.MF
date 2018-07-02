@@ -12,3 +12,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: gov.nasa.jpl.imce.oml.dsl.ide.contentassist.antlr.internal,
  gov.nasa.jpl.imce.oml.dsl.ide.contentassist.antlr
 Bundle-Localization: plugin
+Automatic-Module-Name: gov.nasa.jpl.imce.oml.dsl.ide

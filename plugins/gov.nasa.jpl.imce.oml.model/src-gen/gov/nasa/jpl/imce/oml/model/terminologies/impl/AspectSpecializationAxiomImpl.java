@@ -34,7 +34,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -101,7 +100,7 @@ public class AspectSpecializationAxiomImpl extends SpecializationAxiomImpl imple
 	 * @generated
 	 */
 	public Entity getSubEntity() {
-		if (subEntity != null && ((EObject)subEntity).eIsProxy()) {
+		if (subEntity != null && subEntity.eIsProxy()) {
 			InternalEObject oldSubEntity = (InternalEObject)subEntity;
 			subEntity = (Entity)eResolveProxy(oldSubEntity);
 			if (subEntity != oldSubEntity) {
@@ -139,7 +138,7 @@ public class AspectSpecializationAxiomImpl extends SpecializationAxiomImpl imple
 	 * @generated
 	 */
 	public AspectKind getSuperAspect() {
-		if (superAspect != null && ((EObject)superAspect).eIsProxy()) {
+		if (superAspect != null && superAspect.eIsProxy()) {
 			InternalEObject oldSuperAspect = (InternalEObject)superAspect;
 			superAspect = (AspectKind)eResolveProxy(oldSuperAspect);
 			if (superAspect != oldSuperAspect) {

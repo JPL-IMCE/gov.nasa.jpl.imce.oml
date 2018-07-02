@@ -67,6 +67,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect
 import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind
@@ -88,7 +89,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.Predicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
@@ -122,7 +122,6 @@ import java.net.URL
 import java.util.ArrayList
 import java.util.Comparator
 import java.util.HashSet
-import java.util.List
 import java.util.UUID
 import org.apache.xml.resolver.CatalogManager
 import org.apache.xml.resolver.tools.CatalogResolver
@@ -134,13 +133,11 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.util.EcoreUtil
-import org.eclipse.xtext.nodemodel.INode
 import org.eclipse.xtext.xbase.lib.Functions.Function1
 
 import static com.google.common.base.Preconditions.checkNotNull
-import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship
 
-public class OMLExtensions {
+class OMLExtensions {
 
 	static public val String OML_CATALOG_XML = "oml.catalog.xml"
 
@@ -1066,18 +1063,18 @@ public class OMLExtensions {
 	}
 
 	// Workaround to https://github.com/eclipse/xtext-lib/issues/65
-	public static final class KeyComparator<T, C extends Comparable<? super C>> implements Comparator<T> {
-		private final Function1<? super T, C> keyFunction;
+	static final class KeyComparator<T, C extends Comparable<? super C>> implements Comparator<T> {
+		final Function1<? super T, C> keyFunction;
 
 		/**
 		 * @param keyFunction
 		 *            the key function to use for comparing objects. May not be <code>null</code>
 		 */
-		public new(Function1<? super T, C> keyFunction) {
+		new(Function1<? super T, C> keyFunction) {
 			this.keyFunction = checkNotNull(keyFunction, "keyFunction");
 		}
 
-		override public def int compare(T a, T b) {
+		override int compare(T a, T b) {
 			val C c1 = keyFunction.apply(a);
 			val C c2 = keyFunction.apply(b);
 			if (c1 == c2) {

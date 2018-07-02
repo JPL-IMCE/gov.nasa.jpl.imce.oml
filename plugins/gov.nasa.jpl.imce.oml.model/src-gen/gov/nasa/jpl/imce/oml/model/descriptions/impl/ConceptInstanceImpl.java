@@ -36,7 +36,6 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -124,7 +123,7 @@ public class ConceptInstanceImpl extends ConceptualEntitySingletonInstanceImpl i
 	 */
 	public void setDescriptionBox(DescriptionBox newDescriptionBox) {
 		if (newDescriptionBox != eInternalContainer() || (eContainerFeatureID() != DescriptionsPackage.CONCEPT_INSTANCE__DESCRIPTION_BOX && newDescriptionBox != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject)newDescriptionBox))
+			if (EcoreUtil.isAncestor(this, newDescriptionBox))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
@@ -144,7 +143,7 @@ public class ConceptInstanceImpl extends ConceptualEntitySingletonInstanceImpl i
 	 * @generated
 	 */
 	public ConceptKind getSingletonConceptClassifier() {
-		if (singletonConceptClassifier != null && ((EObject)singletonConceptClassifier).eIsProxy()) {
+		if (singletonConceptClassifier != null && singletonConceptClassifier.eIsProxy()) {
 			InternalEObject oldSingletonConceptClassifier = (InternalEObject)singletonConceptClassifier;
 			singletonConceptClassifier = (ConceptKind)eResolveProxy(oldSingletonConceptClassifier);
 			if (singletonConceptClassifier != oldSingletonConceptClassifier) {

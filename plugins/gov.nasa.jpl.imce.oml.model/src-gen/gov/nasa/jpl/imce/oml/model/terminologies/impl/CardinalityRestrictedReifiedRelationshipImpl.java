@@ -29,7 +29,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -157,7 +156,7 @@ public class CardinalityRestrictedReifiedRelationshipImpl extends ConceptualRela
 	 * @generated
 	 */
 	public RestrictableRelationship getRestrictedRelationship() {
-		if (restrictedRelationship != null && ((EObject)restrictedRelationship).eIsProxy()) {
+		if (restrictedRelationship != null && restrictedRelationship.eIsProxy()) {
 			InternalEObject oldRestrictedRelationship = (InternalEObject)restrictedRelationship;
 			restrictedRelationship = (RestrictableRelationship)eResolveProxy(oldRestrictedRelationship);
 			if (restrictedRelationship != oldRestrictedRelationship) {
@@ -195,7 +194,7 @@ public class CardinalityRestrictedReifiedRelationshipImpl extends ConceptualRela
 	 * @generated
 	 */
 	public Entity getRestrictedRange() {
-		if (restrictedRange != null && ((EObject)restrictedRange).eIsProxy()) {
+		if (restrictedRange != null && restrictedRange.eIsProxy()) {
 			InternalEObject oldRestrictedRange = (InternalEObject)restrictedRange;
 			restrictedRange = (Entity)eResolveProxy(oldRestrictedRange);
 			if (restrictedRange != oldRestrictedRange) {

@@ -13,3 +13,4 @@ Export-Package: com.fasterxml.uuid,
 Bundle-Vendor: %providerName
 Require-Bundle: org.apache.xml.resolver;bundle-version="[1.2.0,2.0.0)";visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: gov.nasa.jpl.imce.oml.uuid

@@ -9,15 +9,7 @@
 		<groupId>gov.nasa.jpl.imce.oml</groupId>
         <artifactId>gov.nasa.jpl.imce.oml.parent</artifactId>
 		<version>0.9.6.0</version>
-		<version>0.9.5.3</version>
 		<relativePath>../gov.nasa.jpl.imce.oml.parent</relativePath>
 	</parent>
-	
-	<distributionManagement>
-		<repository>
-			<id>bintray</id>
-			<url>https://api.bintray.com/content/jpl-imce/gov.nasa.jpl.imce.oml/${project.artifactId}/${project.version};publish=1;override=0;explode=0</url>
-		</repository>
-	</distributionManagement>
 	
 </project>

@@ -24,3 +24,4 @@ Import-Package: org.hamcrest.core,
 Bundle-ClassPath: libs/sculptor-generator-test-library-3.1.0.jar,
  .,
  resources/
+Automatic-Module-Name: gov.nasa.jpl.imce.oml.dsl.tests

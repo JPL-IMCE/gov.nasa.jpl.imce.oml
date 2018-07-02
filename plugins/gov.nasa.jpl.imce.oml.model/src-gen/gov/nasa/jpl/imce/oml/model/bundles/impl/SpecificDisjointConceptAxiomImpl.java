@@ -38,7 +38,6 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -94,7 +93,7 @@ public class SpecificDisjointConceptAxiomImpl extends DisjointUnionOfConceptsAxi
 	 * @generated
 	 */
 	public ConceptKind getDisjointLeaf() {
-		if (disjointLeaf != null && ((EObject)disjointLeaf).eIsProxy()) {
+		if (disjointLeaf != null && disjointLeaf.eIsProxy()) {
 			InternalEObject oldDisjointLeaf = (InternalEObject)disjointLeaf;
 			disjointLeaf = (ConceptKind)eResolveProxy(oldDisjointLeaf);
 			if (disjointLeaf != oldDisjointLeaf) {

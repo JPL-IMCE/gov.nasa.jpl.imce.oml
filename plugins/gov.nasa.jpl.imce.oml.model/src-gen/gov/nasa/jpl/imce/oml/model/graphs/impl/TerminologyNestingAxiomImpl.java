@@ -38,7 +38,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -105,7 +104,7 @@ public class TerminologyNestingAxiomImpl extends TerminologyBoxAxiomImpl impleme
 	 * @generated
 	 */
 	public TerminologyBox getNestingTerminology() {
-		if (nestingTerminology != null && ((EObject)nestingTerminology).eIsProxy()) {
+		if (nestingTerminology != null && nestingTerminology.eIsProxy()) {
 			InternalEObject oldNestingTerminology = (InternalEObject)nestingTerminology;
 			nestingTerminology = (TerminologyBox)eResolveProxy(oldNestingTerminology);
 			if (nestingTerminology != oldNestingTerminology) {
@@ -143,7 +142,7 @@ public class TerminologyNestingAxiomImpl extends TerminologyBoxAxiomImpl impleme
 	 * @generated
 	 */
 	public ConceptKind getNestingContext() {
-		if (nestingContext != null && ((EObject)nestingContext).eIsProxy()) {
+		if (nestingContext != null && nestingContext.eIsProxy()) {
 			InternalEObject oldNestingContext = (InternalEObject)nestingContext;
 			nestingContext = (ConceptKind)eResolveProxy(oldNestingContext);
 			if (nestingContext != oldNestingContext) {

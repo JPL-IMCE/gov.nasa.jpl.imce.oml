@@ -29,3 +29,4 @@ Export-Package: gov.nasa.jpl.imce.oml.dsl.ui.internal,
 Bundle-Activator: gov.nasa.jpl.imce.oml.dsl.ui.internal.DslActivator
 Bundle-Localization: plugin
 Import-Package: org.apache.log4j
+Automatic-Module-Name: gov.nasa.jpl.imce.oml.dsl.ui

@@ -18,3 +18,4 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
 Export-Package: gov.nasa.jpl.imce.oml.viewpoint
+Automatic-Module-Name: gov.nasa.jpl.imce.oml.viewpoint

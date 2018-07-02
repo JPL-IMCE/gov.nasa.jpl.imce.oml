@@ -35,7 +35,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -102,7 +101,7 @@ public class ConceptSpecializationAxiomImpl extends SpecializationAxiomImpl impl
 	 * @generated
 	 */
 	public ConceptKind getSubConcept() {
-		if (subConcept != null && ((EObject)subConcept).eIsProxy()) {
+		if (subConcept != null && subConcept.eIsProxy()) {
 			InternalEObject oldSubConcept = (InternalEObject)subConcept;
 			subConcept = (ConceptKind)eResolveProxy(oldSubConcept);
 			if (subConcept != oldSubConcept) {
@@ -140,7 +139,7 @@ public class ConceptSpecializationAxiomImpl extends SpecializationAxiomImpl impl
 	 * @generated
 	 */
 	public ConceptKind getSuperConcept() {
-		if (superConcept != null && ((EObject)superConcept).eIsProxy()) {
+		if (superConcept != null && superConcept.eIsProxy()) {
 			InternalEObject oldSuperConcept = (InternalEObject)superConcept;
 			superConcept = (ConceptKind)eResolveProxy(oldSuperConcept);
 			if (superConcept != oldSuperConcept) {
