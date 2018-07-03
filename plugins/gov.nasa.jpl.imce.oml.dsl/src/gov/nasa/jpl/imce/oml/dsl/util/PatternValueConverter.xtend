@@ -28,7 +28,7 @@ class PatternValueConverter extends GenericValueConverter<PatternValue> {
 	@Inject
 	protected IValueConverterService valueConverterService;
 
-	override def String toEscapedString(PatternValue value) {
+	override String toEscapedString(PatternValue value) {
 		return value.value
 	}
 	

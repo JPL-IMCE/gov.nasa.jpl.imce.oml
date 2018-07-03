@@ -81,7 +81,7 @@ class OMLZipResource extends ResourceImpl {
 		rs.loadOptions.remove(OML_SPECIFICATION_TABLES)
 	}
 
-	private static val Map<Object, Object> defaultOptions = {
+	static val Map<Object, Object> defaultOptions = {
 		val options = new HashMap<Object, Object>()
 		options.put("file.extension", "omlzip")
 		options
@@ -99,7 +99,7 @@ class OMLZipResource extends ResourceImpl {
 	 * The URIConverter of an OMLZipResource is 
 	 * the CatalogURIConverter associated with its OMLZipResourceSet.
 	 */
-	override protected def URIConverter getURIConverter() {
+	override protected URIConverter getURIConverter() {
 		val rs = getResourceSet
 		switch rs {
 			OMLZipResourceSet:
@@ -119,7 +119,7 @@ class OMLZipResource extends ResourceImpl {
 	 * If successful, the contents of the loaded OMLZipResource is a single toplevel OML Extent whose contents
 	 * is the result of parsing all the tables in the *.omlzip file.
 	 */
-	override def void load(Map<?, ?> options) throws IOException {
+	override void load(Map<?, ?> options) throws IOException {
 		synchronized(this) {
 			if (!loaded)
 				loadInternal(options)
@@ -247,7 +247,7 @@ class OMLZipResource extends ResourceImpl {
 	 * each OML concrete metaclass and whose contents is precisely the Json serialization of each instance
 	 * of that concrete metaclass in the OMLZipResource contents.
 	 */
-	override protected def void doSave(OutputStream outputStream, Map<?, ?> options) throws IOException {
+	override protected void doSave(OutputStream outputStream, Map<?, ?> options) throws IOException {
 		val ZipArchiveOutputStream os = new ZipArchiveOutputStream(outputStream)
 		try {
 			val extents = contents.filter(Extent)

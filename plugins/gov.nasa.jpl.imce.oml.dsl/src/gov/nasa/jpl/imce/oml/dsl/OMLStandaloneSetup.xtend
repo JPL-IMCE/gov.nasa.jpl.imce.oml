@@ -35,7 +35,7 @@ class OMLStandaloneSetup extends OMLStandaloneSetupGenerated {
 		new OMLStandaloneSetup().createInjectorAndDoEMFRegistration()
 	}
 	
-	override def register(Injector injector) {
+	override register(Injector injector) {
 		if (!EPackage.Registry.INSTANCE.containsKey(CommonPackage.eNS_URI)) {
 			EPackage.Registry.INSTANCE.put(CommonPackage.eNS_URI, CommonPackage.eINSTANCE);
 		}

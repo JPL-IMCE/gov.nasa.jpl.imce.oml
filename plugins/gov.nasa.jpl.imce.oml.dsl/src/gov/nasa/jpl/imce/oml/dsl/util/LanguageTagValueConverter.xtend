@@ -28,7 +28,7 @@ class LanguageTagValueConverter extends GenericValueConverter<LanguageTagValue> 
 	@Inject
 	protected IValueConverterService valueConverterService;
 
-	override def String toEscapedString(LanguageTagValue value) {
+	override String toEscapedString(LanguageTagValue value) {
 		return value.value
 	}
 	

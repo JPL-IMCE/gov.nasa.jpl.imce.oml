@@ -28,7 +28,7 @@ class UUIDValue {
 		this.value = value
 	}
  	
-	override def boolean equals(Object that) {
+	override boolean equals(Object that) {
 		switch that {
 			UUIDValue:
 				this.value == that.value

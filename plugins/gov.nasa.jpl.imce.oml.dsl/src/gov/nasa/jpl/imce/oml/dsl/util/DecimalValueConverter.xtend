@@ -28,7 +28,7 @@ class DecimalValueConverter extends GenericValueConverter<DecimalValue> {
 	@Inject
 	protected IValueConverterService valueConverterService;
 
-	override def String toEscapedString(DecimalValue value) {
+	override String toEscapedString(DecimalValue value) {
 		return value.value
 	}
 	

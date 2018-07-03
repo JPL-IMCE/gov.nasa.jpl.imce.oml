@@ -30,11 +30,11 @@ class QuotedStringValueConverter extends GenericValueConverter<QuotedStringValue
 	@Inject
 	protected IValueConverterService valueConverterService;
 
-	override def String toEscapedString(QuotedStringValue value) {
+	override String toEscapedString(QuotedStringValue value) {
 		return "\"" + value.value + "\""
 	}
 	
-	override def QuotedStringValue toValue(String string, INode node) {
+	override QuotedStringValue toValue(String string, INode node) {
 		if (string === null)
 			return null
 		try {

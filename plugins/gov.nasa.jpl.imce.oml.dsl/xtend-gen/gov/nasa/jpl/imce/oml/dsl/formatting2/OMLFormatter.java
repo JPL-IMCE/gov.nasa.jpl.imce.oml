@@ -426,7 +426,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     };
     document.surround(this.textRegionExtensions.regionFor(aspect).keyword("=="), _function_4);
     final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
-      it.noSpace();
+      it.oneSpace();
     };
     document.surround(this.textRegionExtensions.regionFor(aspect).keyword("."), _function_5);
   }
@@ -470,7 +470,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     };
     document.surround(this.textRegionExtensions.regionFor(concept).keyword("=="), _function_4);
     final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
-      it.noSpace();
+      it.oneSpace();
     };
     document.surround(this.textRegionExtensions.regionFor(concept).keyword("."), _function_5);
   }
@@ -620,7 +620,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     };
     document.surround(this.textRegionExtensions.regionFor(rr).keyword("=="), _function_4);
     final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
-      it.noSpace();
+      it.oneSpace();
     };
     document.surround(this.textRegionExtensions.regionFor(rr).keyword("."), _function_5);
   }

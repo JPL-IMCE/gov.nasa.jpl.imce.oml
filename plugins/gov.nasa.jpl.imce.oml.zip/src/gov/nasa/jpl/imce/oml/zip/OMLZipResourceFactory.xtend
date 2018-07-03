@@ -28,7 +28,7 @@ class OMLZipResourceFactory implements Resource.Factory {
 	new(){		
 	}
 	
-	override def Resource createResource(URI uri) {
+	override Resource createResource(URI uri) {
 		val r = new OMLZipResource()
 		r.URI = uri
 		r

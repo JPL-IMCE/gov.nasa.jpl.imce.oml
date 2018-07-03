@@ -33,7 +33,7 @@ class DecimalValue extends AbstractDecimalValue {
 			throw new java.lang.IllegalArgumentException("Construct the AbstractDecimalValue "+value+" as a PositiveIntegerValue instead of a DecimalValue")
 	}
 	
-	override def boolean equals(Object that) {
+	override boolean equals(Object that) {
 		switch that {
 			DecimalValue:
 				this.value == that.value

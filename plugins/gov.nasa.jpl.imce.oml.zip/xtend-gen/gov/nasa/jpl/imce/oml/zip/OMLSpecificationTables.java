@@ -3383,16 +3383,6 @@ public class OMLSpecificationTables {
         pw.print("null");
       }
       pw.print(",");
-      pw.print("\"sourceUUID\":");
-      pw.print("\"");
-      pw.print(it.getSource().uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"targetUUID\":");
-      pw.print("\"");
-      pw.print(it.getTarget().uuid());
-      pw.print("\"");
-      pw.print(",");
       pw.print("\"name\":");
       pw.print(OMLTables.toString(it.name()));
       pw.print(",");
@@ -8045,20 +8035,6 @@ public class OMLSpecificationTables {
             kv.remove("restrictedRangeUUID");
             progress.set(0, Boolean.valueOf(true));
           }
-        }
-        final String sourceXRef = kv.get("sourceUUID");
-        final Pair<Entity, Map<String, String>> sourcePair = this.entities.get(sourceXRef);
-        if ((null != sourcePair)) {
-          oml.setSource(sourcePair.getKey());
-          kv.remove("sourceUUID");
-          progress.set(0, Boolean.valueOf(true));
-        }
-        final String targetXRef = kv.get("targetUUID");
-        final Pair<Entity, Map<String, String>> targetPair = this.entities.get(targetXRef);
-        if ((null != targetPair)) {
-          oml.setTarget(targetPair.getKey());
-          kv.remove("targetUUID");
-          progress.set(0, Boolean.valueOf(true));
         }
         final String restrictedRelationshipXRef = kv.get("restrictedRelationshipUUID");
         final Pair<RestrictableRelationship, Map<String, String>> restrictedRelationshipPair = this.restrictableRelationships.get(restrictedRelationshipXRef);

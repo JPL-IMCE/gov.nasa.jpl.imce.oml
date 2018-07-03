@@ -95,8 +95,8 @@ public class AspectConceptClassDiagramService {
         return it.getBoxStatements();
       };
       final Function1<EntityRelationship, Boolean> _function_1 = (EntityRelationship f) -> {
-        Entity _source = f.getSource();
-        return Boolean.valueOf(Objects.equal(_source, e));
+        Entity _relationSource = f.relationSource();
+        return Boolean.valueOf(Objects.equal(_relationSource, e));
       };
       _xblockexpression = IterableExtensions.<EntityRelationship>toSet(IterableExtensions.<EntityRelationship>filter(Iterables.<EntityRelationship>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(OMLExtensions.allImportedTerminologies(e.getTbox()), _function))), EntityRelationship.class), _function_1));
     }
@@ -181,8 +181,8 @@ public class AspectConceptClassDiagramService {
         if (!_matched) {
           if (t instanceof EntityRelationship) {
             _matched=true;
-            final Entity n1 = ((EntityRelationship) t).getSource();
-            final Entity n2 = ((EntityRelationship) t).getTarget();
+            final Entity n1 = ((EntityRelationship) t).relationSource();
+            final Entity n2 = ((EntityRelationship) t).relationTarget();
             boolean _equals = Objects.equal(n1, e);
             if (_equals) {
               entities.add(n2);

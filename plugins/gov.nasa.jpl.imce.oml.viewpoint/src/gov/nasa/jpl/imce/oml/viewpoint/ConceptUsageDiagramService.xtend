@@ -79,7 +79,7 @@ class ConceptUsageDiagramService {
 	def Set<EntityRelationship> getDirectVisualRelationshipsWithRootAsDomain(Concept c){
 		return getUsageReltionships(c)
 		.filter(EntityRelationship)
-		.filter[f | f.source == c]
+		.filter[f | f.relationSource == c]
 		.toSet
 	}
 	
@@ -461,8 +461,8 @@ class ConceptUsageDiagramService {
 				return new SimpleEntry(n1,n2)
 		    } 
 		    EntityRelationship:{
-				val n1 = t.source
-				val n2 = t.target
+				val n1 = t.relationSource
+				val n2 = t.relationTarget
 				return new SimpleEntry(n1,n2)
 		    }
 		}

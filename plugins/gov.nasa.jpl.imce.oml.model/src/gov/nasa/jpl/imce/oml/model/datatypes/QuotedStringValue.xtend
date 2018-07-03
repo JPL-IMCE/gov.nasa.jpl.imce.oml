@@ -26,7 +26,7 @@ class QuotedStringValue extends StringValue {
 		super(value)
 	}
 	
-	override def boolean equals(Object that) {
+	override boolean equals(Object that) {
 		switch that {
 			QuotedStringValue:
 				this.value == that.value

@@ -55,7 +55,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept;
 import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyExistentialRestrictionAxiom;
@@ -63,6 +62,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticu
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictedDataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
@@ -78,6 +79,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyExtensionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
@@ -389,11 +391,29 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
         }
       }
       if (!_matched) {
-        if (context instanceof EntityRelationship) {
+        if (context instanceof ReifiedRelationship) {
           _matched=true;
-          if ((Objects.equal(reference, TerminologiesPackage.eINSTANCE.getEntityRelationship_Source()) || 
-            Objects.equal(reference, TerminologiesPackage.eINSTANCE.getEntityRelationship_Target()))) {
-            scope = this._oMLScopeExtensions.allEntitiesScope(((EntityRelationship)context).getTbox());
+          if ((Objects.equal(reference, TerminologiesPackage.eINSTANCE.getReifiedRelationship_Source()) || 
+            Objects.equal(reference, TerminologiesPackage.eINSTANCE.getReifiedRelationship_Target()))) {
+            scope = this._oMLScopeExtensions.allEntitiesScope(((ReifiedRelationship)context).getTbox());
+          }
+        }
+      }
+      if (!_matched) {
+        if (context instanceof ReifiedRelationshipRestriction) {
+          _matched=true;
+          if ((Objects.equal(reference, TerminologiesPackage.eINSTANCE.getReifiedRelationshipRestriction_Source()) || 
+            Objects.equal(reference, TerminologiesPackage.eINSTANCE.getReifiedRelationshipRestriction_Target()))) {
+            scope = this._oMLScopeExtensions.allEntitiesScope(((ReifiedRelationshipRestriction)context).getTbox());
+          }
+        }
+      }
+      if (!_matched) {
+        if (context instanceof UnreifiedRelationship) {
+          _matched=true;
+          if ((Objects.equal(reference, TerminologiesPackage.eINSTANCE.getUnreifiedRelationship_Source()) || 
+            Objects.equal(reference, TerminologiesPackage.eINSTANCE.getUnreifiedRelationship_Target()))) {
+            scope = this._oMLScopeExtensions.allEntitiesScope(((UnreifiedRelationship)context).getTbox());
           }
         }
       }

@@ -28,7 +28,7 @@ class PositiveIntegerValue extends AbstractDecimalValue {
 		super(value)
 	}
 	
-	override def boolean equals(Object that) {
+	override boolean equals(Object that) {
 		switch that {
 			PositiveIntegerValue:
 				this.value == that.value

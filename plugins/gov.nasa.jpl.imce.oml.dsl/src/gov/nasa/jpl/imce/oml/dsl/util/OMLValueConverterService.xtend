@@ -165,12 +165,12 @@ class OMLValueConverterService extends DefaultTerminalConverters {
 		uuidValueConverter
 	}
 	
-	override def String toString(Object value, String lexerRule) {
+	override String toString(Object value, String lexerRule) {
 		val conv = getConverter(lexerRule)
 		return conv.toString(value);
 	}
 
-	override def Object toValue(String string, String lexerRule, INode node) throws ValueConverterException {
+	override Object toValue(String string, String lexerRule, INode node) throws ValueConverterException {
 		val conv = getConverter(lexerRule)
 		return conv.toValue(string, node);
 	}

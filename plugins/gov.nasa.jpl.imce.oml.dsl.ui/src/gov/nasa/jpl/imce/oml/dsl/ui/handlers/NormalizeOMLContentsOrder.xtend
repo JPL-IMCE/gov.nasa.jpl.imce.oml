@@ -29,9 +29,9 @@ import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 import gov.nasa.jpl.imce.oml.model.common.Extent
 import org.eclipse.xtext.ui.editor.model.IXtextDocument
 
-public class NormalizeOMLContentsOrder extends AbstractHandler {
+class NormalizeOMLContentsOrder extends AbstractHandler {
 	
-	override def Object execute(ExecutionEvent event) throws ExecutionException {
+	override Object execute(ExecutionEvent event) throws ExecutionException {
 		val XtextEditor editor = EditorUtils.getActiveXtextEditor(event)
 		val IXtextDocument doc = editor?.document
 		if (null !== doc) {
@@ -42,7 +42,7 @@ public class NormalizeOMLContentsOrder extends AbstractHandler {
 	
 	protected static val IUnitOfWork.Void<XtextResource> normalizeOMLResource = new IUnitOfWork.Void<XtextResource>() {
 
-		override def void process(XtextResource state) throws Exception {
+		override void process(XtextResource state) throws Exception {
 			state.contents.filter(Extent).forEach [ ext |
 				OMLExtensions.normalize(ext)
 			]

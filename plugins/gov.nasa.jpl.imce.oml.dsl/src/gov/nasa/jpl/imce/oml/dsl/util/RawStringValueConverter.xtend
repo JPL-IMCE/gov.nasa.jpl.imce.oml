@@ -30,11 +30,11 @@ class RawStringValueConverter extends GenericValueConverter<RawStringValue> {
 	@Inject
 	protected IValueConverterService valueConverterService;
 
-	override def String toEscapedString(RawStringValue value) {
+	override String toEscapedString(RawStringValue value) {
 		return "\"\"\"" + value.value + "\"\"\""
 	}
 	
-	override def RawStringValue toValue(String string, INode node) {
+	override RawStringValue toValue(String string, INode node) {
 		if (string === null)
 			return null
 		try {

@@ -46,9 +46,11 @@ import gov.nasa.jpl.imce.oml.model.graphs.GraphsPackage
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyExistentialRestrictionAxiom
@@ -56,6 +58,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticu
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictedDataRange
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
@@ -68,6 +72,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyExtensionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship
 import java.util.ArrayList
 import java.util.List
 import org.eclipse.emf.ecore.EObject
@@ -76,15 +81,12 @@ import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.impl.ImportNormalizer
 import org.eclipse.xtext.scoping.impl.ImportedNamespaceAwareLocalScopeProvider
-import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect
-import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept
-import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship
 
 class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAwareLocalScopeProvider {
 	
 	@Inject IQualifiedNameConverter qnc
 		
-	override def List<ImportNormalizer> getImportedNamespaceResolvers(EObject context, boolean ignoreCase) {
+	override List<ImportNormalizer> getImportedNamespaceResolvers(EObject context, boolean ignoreCase) {
 		val res = new ArrayList<ImportNormalizer>();
 		switch context {
 			Bundle: {
@@ -166,9 +168,19 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 				else if (reference == TerminologiesPackage.eINSTANCE.cardinalityRestrictedReifiedRelationship_RestrictedRange)
 					scope = context.tbox.allEntitiesScope
 					
-			EntityRelationship:
-				if (reference == TerminologiesPackage.eINSTANCE.entityRelationship_Source ||
-					reference == TerminologiesPackage.eINSTANCE.entityRelationship_Target)
+			ReifiedRelationship:
+				if (reference == TerminologiesPackage.eINSTANCE.reifiedRelationship_Source ||
+					reference == TerminologiesPackage.eINSTANCE.reifiedRelationship_Target)
+					scope = context.tbox.allEntitiesScope
+
+			ReifiedRelationshipRestriction:
+				if (reference == TerminologiesPackage.eINSTANCE.reifiedRelationshipRestriction_Source ||
+					reference == TerminologiesPackage.eINSTANCE.reifiedRelationshipRestriction_Target)
+					scope = context.tbox.allEntitiesScope
+
+			UnreifiedRelationship:
+				if (reference == TerminologiesPackage.eINSTANCE.unreifiedRelationship_Source ||
+					reference == TerminologiesPackage.eINSTANCE.unreifiedRelationship_Target)
 					scope = context.tbox.allEntitiesScope
 					
 			AspectSpecializationAxiom:

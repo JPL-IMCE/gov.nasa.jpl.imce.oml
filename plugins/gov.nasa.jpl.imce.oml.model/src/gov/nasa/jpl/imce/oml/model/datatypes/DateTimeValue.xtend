@@ -39,7 +39,7 @@ class DateTimeValue {
 		this.value = value
 	}
 	
-	override def boolean equals(Object that) {
+	override boolean equals(Object that) {
 		switch that {
 			DateTimeValue:
 				this.value == that.value

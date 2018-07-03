@@ -3001,16 +3001,6 @@ class OMLSpecificationTables {
       } else
         pw.print("null")
       pw.print(",")
-      pw.print("\"sourceUUID\":")
-      pw.print("\"")
-      pw.print(it.source.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"targetUUID\":")
-      pw.print("\"")
-      pw.print(it.target.uuid())
-      pw.print("\"")
-      pw.print(",")
       pw.print("\"name\":")
       pw.print(OMLTables.toString(it.name()))
       pw.print(",")
@@ -6726,20 +6716,6 @@ class OMLSpecificationTables {
   	      	kv.remove("restrictedRangeUUID")
   	      	progress.set(0, true)
   	      }
-  	    }
-  	    val String sourceXRef = kv.get("sourceUUID")
-  	    val Pair<Entity, Map<String, String>> sourcePair = entities.get(sourceXRef)
-  	    if (null !== sourcePair) {
-  	    	oml.source = sourcePair.key
-  	    	kv.remove("sourceUUID")
-  	    	progress.set(0, true)
-  	    }
-  	    val String targetXRef = kv.get("targetUUID")
-  	    val Pair<Entity, Map<String, String>> targetPair = entities.get(targetXRef)
-  	    if (null !== targetPair) {
-  	    	oml.target = targetPair.key
-  	    	kv.remove("targetUUID")
-  	    	progress.set(0, true)
   	    }
   	    val String restrictedRelationshipXRef = kv.get("restrictedRelationshipUUID")
   	    val Pair<RestrictableRelationship, Map<String, String>> restrictedRelationshipPair = restrictableRelationships.get(restrictedRelationshipXRef)

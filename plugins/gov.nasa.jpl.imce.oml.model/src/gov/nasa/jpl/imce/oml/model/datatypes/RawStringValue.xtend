@@ -26,7 +26,7 @@ class RawStringValue extends StringValue {
 		super(value)
 	}
 	
-	override def boolean equals(Object that) {
+	override boolean equals(Object that) {
 		switch that {
 			RawStringValue:
 				this.value == that.value

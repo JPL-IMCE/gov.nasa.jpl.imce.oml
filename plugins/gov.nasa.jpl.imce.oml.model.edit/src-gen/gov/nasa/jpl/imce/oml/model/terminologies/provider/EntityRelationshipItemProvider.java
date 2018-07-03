@@ -20,15 +20,11 @@ package gov.nasa.jpl.imce.oml.model.terminologies.provider;
 
 
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
-import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
-
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
@@ -59,54 +55,8 @@ public class EntityRelationshipItemProvider extends TermItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addSourcePropertyDescriptor(object);
-			addTargetPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Source feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSourcePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_EntityRelationship_source_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EntityRelationship_source_feature", "_UI_EntityRelationship_type"),
-				 TerminologiesPackage.Literals.ENTITY_RELATIONSHIP__SOURCE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Target feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTargetPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_EntityRelationship_target_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EntityRelationship_target_feature", "_UI_EntityRelationship_type"),
-				 TerminologiesPackage.Literals.ENTITY_RELATIONSHIP__TARGET,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**

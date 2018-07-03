@@ -72,6 +72,8 @@ public class ReifiedRelationshipItemProvider extends ConceptualRelationshipItemP
 			addIsReflexivePropertyDescriptor(object);
 			addIsIrreflexivePropertyDescriptor(object);
 			addIsTransitivePropertyDescriptor(object);
+			addSourcePropertyDescriptor(object);
+			addTargetPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -270,6 +272,50 @@ public class ReifiedRelationshipItemProvider extends ConceptualRelationshipItemP
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Source feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSourcePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ReifiedRelationship_source_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ReifiedRelationship_source_feature", "_UI_ReifiedRelationship_type"),
+				 TerminologiesPackage.Literals.REIFIED_RELATIONSHIP__SOURCE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Target feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTargetPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ReifiedRelationship_target_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ReifiedRelationship_target_feature", "_UI_ReifiedRelationship_type"),
+				 TerminologiesPackage.Literals.REIFIED_RELATIONSHIP__TARGET,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

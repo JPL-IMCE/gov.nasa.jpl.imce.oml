@@ -78,6 +78,11 @@ gov.nasa.jpl.imce.oml 0.9.6 adds new features to 0.9.5
 | Equivalent | `class Concept extends Entity, UnaryTermKind {}` | `abstract class ConceptKind extends Entity, UnaryTermKind {}` |
 | | | `class Concept extends ConceptKind {}` |
 | New | | `class CardinalityRestrictedAspect extends ConceptKind {...}` |
-| Same | `class ReifiedRelationship extends ConceptualRelationship, CharacterizedEntityRelationship {...}` | `class ReifiedRelationship extends ConceptualRelationship, CharacterizedEntityRelationship {...}` |
-| Same |`class ReifiedRelationshipRestriction extends ConceptualRelationship {...}` | `class ReifiedRelationshipRestriction extends ConceptualRelationship {...}` |
+| Equivalent | `class ReifiedRelationship extends ConceptualRelationship, CharacterizedEntityRelationship {...}` | `class ReifiedRelationship extends ConceptualRelationship, CharacterizedEntityRelationship {...}` |
+| Equivalent |`class ReifiedRelationshipRestriction extends ConceptualRelationship {...}` | `class ReifiedRelationshipRestriction extends ConceptualRelationship {...}` |
 | New | | `class CardinalityRestrictedReifiedRelationship extends ConceptualRelationship {...}` |
+| Equivalent | `abstract class EntityRelationship extends Term, DirectedBinaryRelationshipKind {` | `abstract class EntityRelationship extends Term, DirectedBinaryRelationshipKind {` |
+| Changed  | `  refers Entity[1] source` | `  op Entity[1] relationSource()` |
+| Changed  | `  refers Entity[1] target` | `  op Entity[1] relationTarget()` |
+| Same     | `  op Term[1] relationDomain()` | `  op Term[1] relationDomain()` |
+| Same     | `  op Term[1] relationRange()` | `  op Term[1] relationRange()` |

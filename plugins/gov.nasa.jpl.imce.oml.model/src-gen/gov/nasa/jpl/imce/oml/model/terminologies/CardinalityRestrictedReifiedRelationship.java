@@ -201,4 +201,22 @@ public interface CardinalityRestrictedReifiedRelationship extends ConceptualRela
 	 */
 	void setRestrictedCardinality(PositiveIntegerValue value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getRestrictedRelationship().relation().relationSource();'"
+	 * @generated
+	 */
+	Entity relationSource();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getRestrictedRelationship().relation().relationTarget();'"
+	 * @generated
+	 */
+	Entity relationTarget();
+
 } // CardinalityRestrictedReifiedRelationship

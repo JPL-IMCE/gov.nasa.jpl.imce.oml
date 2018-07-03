@@ -40,19 +40,19 @@ import org.eclipse.xtext.serializer.tokens.ICrossReferenceSerializer
  */
 class OMLRuntimeModule extends AbstractOMLRuntimeModule {
 
-	override def Class<? extends ILinkingService> bindILinkingService() {
+	override Class<? extends ILinkingService> bindILinkingService() {
 		OMLLinkingService
 	}
 	
-	override def Class<? extends IScopeProvider> bindIScopeProvider() {
+	override Class<? extends IScopeProvider> bindIScopeProvider() {
 		OMLImportedNamespaceAwareLocalScopeProvider
 	}
 	
-    override def Class<? extends IValueConverterService> bindIValueConverterService() {
+    override Class<? extends IValueConverterService> bindIValueConverterService() {
         OMLValueConverterService
     }
 
-    override def Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
+    override Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
         OMLQualifiedNameProvider
     }
 
@@ -60,11 +60,11 @@ class OMLRuntimeModule extends AbstractOMLRuntimeModule {
 	    OMLQualifiedNameConverter
 	}
 	
-	override def Class<? extends IGrammarAccess> bindIGrammarAccess() {
+	override Class<? extends IGrammarAccess> bindIGrammarAccess() {
 		OMLGrammarAccess
 	}
 	
-	override def Class<? extends IFormatter2> bindIFormatter2() {
+	override Class<? extends IFormatter2> bindIFormatter2() {
 		OMLFormatter
 	}
 	
@@ -72,7 +72,7 @@ class OMLRuntimeModule extends AbstractOMLRuntimeModule {
 		OMLCrossReferenceSerializer
 	}
 	
-	override def Class<? extends IResourceFactory> bindIResourceFactory() {
+	override Class<? extends IResourceFactory> bindIResourceFactory() {
 		OMLXtextResourceFactory
 	}
 	

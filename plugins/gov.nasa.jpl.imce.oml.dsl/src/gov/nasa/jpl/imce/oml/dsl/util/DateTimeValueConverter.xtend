@@ -28,7 +28,7 @@ class DateTimeValueConverter extends GenericValueConverter<DateTimeValue> {
 	@Inject
 	protected IValueConverterService valueConverterService;
 
-	override def String toEscapedString(DateTimeValue value) {
+	override String toEscapedString(DateTimeValue value) {
 		return value.value
 	}
 	

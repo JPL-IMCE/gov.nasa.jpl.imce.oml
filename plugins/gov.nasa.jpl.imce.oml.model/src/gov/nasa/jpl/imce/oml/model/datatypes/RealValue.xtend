@@ -25,7 +25,7 @@ class RealValue {
 		this.value = value
 	}
 	
-	override def boolean equals(Object that) {
+	override boolean equals(Object that) {
 		switch that {
 			RealValue:
 				this.value == that.value

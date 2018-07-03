@@ -84,8 +84,8 @@ public class ConceptUsageDiagramService {
    */
   public Set<EntityRelationship> getDirectVisualRelationshipsWithRootAsDomain(final Concept c) {
     final Function1<EntityRelationship, Boolean> _function = (EntityRelationship f) -> {
-      Entity _source = f.getSource();
-      return Boolean.valueOf(Objects.equal(_source, c));
+      Entity _relationSource = f.relationSource();
+      return Boolean.valueOf(Objects.equal(_relationSource, c));
     };
     return IterableExtensions.<EntityRelationship>toSet(IterableExtensions.<EntityRelationship>filter(Iterables.<EntityRelationship>filter(this.getUsageReltionships(c), EntityRelationship.class), _function));
   }
@@ -477,8 +477,8 @@ public class ConceptUsageDiagramService {
       if (!_matched) {
         if (t instanceof EntityRelationship) {
           _matched=true;
-          final Entity n1 = ((EntityRelationship)t).getSource();
-          final Entity n2 = ((EntityRelationship)t).getTarget();
+          final Entity n1 = ((EntityRelationship)t).relationSource();
+          final Entity n2 = ((EntityRelationship)t).relationTarget();
           return new AbstractMap.SimpleEntry<Entity, Entity>(n1, n2);
         }
       }
