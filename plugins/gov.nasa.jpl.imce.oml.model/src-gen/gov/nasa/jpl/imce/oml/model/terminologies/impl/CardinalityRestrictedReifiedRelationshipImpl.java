@@ -26,7 +26,11 @@ import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -252,6 +256,24 @@ public class CardinalityRestrictedReifiedRelationshipImpl extends ConceptualRela
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Entity relationSource() {
+		return this.getRestrictedRelationship().relation().relationSource();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Entity relationTarget() {
+		return this.getRestrictedRelationship().relation().relationTarget();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -335,6 +357,22 @@ public class CardinalityRestrictedReifiedRelationshipImpl extends ConceptualRela
 				return RESTRICTED_CARDINALITY_EDEFAULT == null ? restrictedCardinality != null : !RESTRICTED_CARDINALITY_EDEFAULT.equals(restrictedCardinality);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___RELATION_SOURCE:
+				return relationSource();
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___RELATION_TARGET:
+				return relationTarget();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

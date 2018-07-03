@@ -24,6 +24,8 @@ import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
@@ -63,6 +65,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl#isIsTransitive <em>Is Transitive</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl#getForwardProperty <em>Forward Property</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl#getInverseProperty <em>Inverse Property</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl#getTarget <em>Target</em>}</li>
  * </ul>
  *
  * @generated
@@ -267,6 +271,26 @@ public class ReifiedRelationshipImpl extends ConceptualRelationshipImpl implemen
 	 * @ordered
 	 */
 	protected InverseProperty inverseProperty;
+
+	/**
+	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSource()
+	 * @generated
+	 * @ordered
+	 */
+	protected Entity source;
+
+	/**
+	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTarget()
+	 * @generated
+	 * @ordered
+	 */
+	protected Entity target;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -567,6 +591,100 @@ public class ReifiedRelationshipImpl extends ConceptualRelationshipImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Entity getSource() {
+		if (source != null && source.eIsProxy()) {
+			InternalEObject oldSource = (InternalEObject)source;
+			source = (Entity)eResolveProxy(oldSource);
+			if (source != oldSource) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.REIFIED_RELATIONSHIP__SOURCE, oldSource, source));
+			}
+		}
+		return source;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Entity basicGetSource() {
+		return source;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSource(Entity newSource) {
+		Entity oldSource = source;
+		source = newSource;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.REIFIED_RELATIONSHIP__SOURCE, oldSource, source));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Entity getTarget() {
+		if (target != null && target.eIsProxy()) {
+			InternalEObject oldTarget = (InternalEObject)target;
+			target = (Entity)eResolveProxy(oldTarget);
+			if (target != oldTarget) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.REIFIED_RELATIONSHIP__TARGET, oldTarget, target));
+			}
+		}
+		return target;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Entity basicGetTarget() {
+		return target;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTarget(Entity newTarget) {
+		Entity oldTarget = target;
+		target = newTarget;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.REIFIED_RELATIONSHIP__TARGET, oldTarget, target));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Entity relationSource() {
+		return this.getSource();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Entity relationTarget() {
+		return this.getTarget();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<LogicalElement> allNestedElements() {
 		BasicEList<LogicalElement> _xblockexpression = null;
 		{
@@ -657,6 +775,12 @@ public class ReifiedRelationshipImpl extends ConceptualRelationshipImpl implemen
 				return getForwardProperty();
 			case TerminologiesPackage.REIFIED_RELATIONSHIP__INVERSE_PROPERTY:
 				return getInverseProperty();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP__SOURCE:
+				if (resolve) return getSource();
+				return basicGetSource();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP__TARGET:
+				if (resolve) return getTarget();
+				return basicGetTarget();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -701,6 +825,12 @@ public class ReifiedRelationshipImpl extends ConceptualRelationshipImpl implemen
 				return;
 			case TerminologiesPackage.REIFIED_RELATIONSHIP__INVERSE_PROPERTY:
 				setInverseProperty((InverseProperty)newValue);
+				return;
+			case TerminologiesPackage.REIFIED_RELATIONSHIP__SOURCE:
+				setSource((Entity)newValue);
+				return;
+			case TerminologiesPackage.REIFIED_RELATIONSHIP__TARGET:
+				setTarget((Entity)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -747,6 +877,12 @@ public class ReifiedRelationshipImpl extends ConceptualRelationshipImpl implemen
 			case TerminologiesPackage.REIFIED_RELATIONSHIP__INVERSE_PROPERTY:
 				setInverseProperty((InverseProperty)null);
 				return;
+			case TerminologiesPackage.REIFIED_RELATIONSHIP__SOURCE:
+				setSource((Entity)null);
+				return;
+			case TerminologiesPackage.REIFIED_RELATIONSHIP__TARGET:
+				setTarget((Entity)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -781,6 +917,10 @@ public class ReifiedRelationshipImpl extends ConceptualRelationshipImpl implemen
 				return forwardProperty != null;
 			case TerminologiesPackage.REIFIED_RELATIONSHIP__INVERSE_PROPERTY:
 				return inverseProperty != null;
+			case TerminologiesPackage.REIFIED_RELATIONSHIP__SOURCE:
+				return source != null;
+			case TerminologiesPackage.REIFIED_RELATIONSHIP__TARGET:
+				return target != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -852,9 +992,18 @@ public class ReifiedRelationshipImpl extends ConceptualRelationshipImpl implemen
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
+		if (baseClass == EntityRelationship.class) {
+			switch (baseOperationID) {
+				case TerminologiesPackage.ENTITY_RELATIONSHIP___RELATION_SOURCE: return TerminologiesPackage.REIFIED_RELATIONSHIP___RELATION_SOURCE;
+				case TerminologiesPackage.ENTITY_RELATIONSHIP___RELATION_TARGET: return TerminologiesPackage.REIFIED_RELATIONSHIP___RELATION_TARGET;
+				default: return super.eDerivedOperationID(baseOperationID, baseClass);
+			}
+		}
 		if (baseClass == ConceptualRelationship.class) {
 			switch (baseOperationID) {
 				case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS: return TerminologiesPackage.REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS;
+				case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___RELATION_SOURCE: return TerminologiesPackage.REIFIED_RELATIONSHIP___RELATION_SOURCE;
+				case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___RELATION_TARGET: return TerminologiesPackage.REIFIED_RELATIONSHIP___RELATION_TARGET;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
@@ -874,6 +1023,10 @@ public class ReifiedRelationshipImpl extends ConceptualRelationshipImpl implemen
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
+			case TerminologiesPackage.REIFIED_RELATIONSHIP___RELATION_SOURCE:
+				return relationSource();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP___RELATION_TARGET:
+				return relationTarget();
 			case TerminologiesPackage.REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS:
 				return allNestedElements();
 			case TerminologiesPackage.REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS:

@@ -2274,31 +2274,13 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_RELATIONSHIP__NAME = TERM__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_RELATIONSHIP__SOURCE = TERM_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_RELATIONSHIP__TARGET = TERM_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Entity Relationship</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_RELATIONSHIP_FEATURE_COUNT = TERM_FEATURE_COUNT + 2;
+	int ENTITY_RELATIONSHIP_FEATURE_COUNT = TERM_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -2355,13 +2337,31 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_RELATIONSHIP___ALL_NESTED_ELEMENTS = TERM___ALL_NESTED_ELEMENTS;
 
 	/**
+	 * The operation id for the '<em>Relation Source</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_RELATIONSHIP___RELATION_SOURCE = TERM_OPERATION_COUNT + 2;
+
+	/**
 	 * The operation id for the '<em>Relation Domain</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_RELATIONSHIP___RELATION_DOMAIN = TERM_OPERATION_COUNT + 2;
+	int ENTITY_RELATIONSHIP___RELATION_DOMAIN = TERM_OPERATION_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Relation Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_RELATIONSHIP___RELATION_TARGET = TERM_OPERATION_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Relation Range</em>' operation.
@@ -2370,7 +2370,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_RELATIONSHIP___RELATION_RANGE = TERM_OPERATION_COUNT + 3;
+	int ENTITY_RELATIONSHIP___RELATION_RANGE = TERM_OPERATION_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Entity Relationship</em>' class.
@@ -2379,7 +2379,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_RELATIONSHIP_OPERATION_COUNT = TERM_OPERATION_COUNT + 4;
+	int ENTITY_RELATIONSHIP_OPERATION_COUNT = TERM_OPERATION_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.CharacterizedEntityRelationshipImpl <em>Characterized Entity Relationship</em>}' class.
@@ -2426,24 +2426,6 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHARACTERIZED_ENTITY_RELATIONSHIP__NAME = ENTITY_RELATIONSHIP__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHARACTERIZED_ENTITY_RELATIONSHIP__SOURCE = ENTITY_RELATIONSHIP__SOURCE;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHARACTERIZED_ENTITY_RELATIONSHIP__TARGET = ENTITY_RELATIONSHIP__TARGET;
 
 	/**
 	 * The feature id for the '<em><b>Is Functional</b></em>' attribute.
@@ -2590,6 +2572,15 @@ public interface TerminologiesPackage extends EPackage {
 	int CHARACTERIZED_ENTITY_RELATIONSHIP___ALL_NESTED_ELEMENTS = ENTITY_RELATIONSHIP___ALL_NESTED_ELEMENTS;
 
 	/**
+	 * The operation id for the '<em>Relation Source</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP___RELATION_SOURCE = ENTITY_RELATIONSHIP___RELATION_SOURCE;
+
+	/**
 	 * The operation id for the '<em>Relation Domain</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2597,6 +2588,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHARACTERIZED_ENTITY_RELATIONSHIP___RELATION_DOMAIN = ENTITY_RELATIONSHIP___RELATION_DOMAIN;
+
+	/**
+	 * The operation id for the '<em>Relation Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP___RELATION_TARGET = ENTITY_RELATIONSHIP___RELATION_TARGET;
 
 	/**
 	 * The operation id for the '<em>Relation Range</em>' operation.
@@ -3026,31 +3026,13 @@ public interface TerminologiesPackage extends EPackage {
 	int CONCEPTUAL_RELATIONSHIP__NAME = CONCEPTUAL_ENTITY__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONCEPTUAL_RELATIONSHIP__SOURCE = CONCEPTUAL_ENTITY_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONCEPTUAL_RELATIONSHIP__TARGET = CONCEPTUAL_ENTITY_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Conceptual Relationship</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT = CONCEPTUAL_ENTITY_FEATURE_COUNT + 2;
+	int CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT = CONCEPTUAL_ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -3116,13 +3098,31 @@ public interface TerminologiesPackage extends EPackage {
 	int CONCEPTUAL_RELATIONSHIP___TERM = CONCEPTUAL_ENTITY___TERM;
 
 	/**
+	 * The operation id for the '<em>Relation Source</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPTUAL_RELATIONSHIP___RELATION_SOURCE = CONCEPTUAL_ENTITY_OPERATION_COUNT + 2;
+
+	/**
 	 * The operation id for the '<em>Relation Domain</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPTUAL_RELATIONSHIP___RELATION_DOMAIN = CONCEPTUAL_ENTITY_OPERATION_COUNT + 2;
+	int CONCEPTUAL_RELATIONSHIP___RELATION_DOMAIN = CONCEPTUAL_ENTITY_OPERATION_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Relation Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPTUAL_RELATIONSHIP___RELATION_TARGET = CONCEPTUAL_ENTITY_OPERATION_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Relation Range</em>' operation.
@@ -3131,7 +3131,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPTUAL_RELATIONSHIP___RELATION_RANGE = CONCEPTUAL_ENTITY_OPERATION_COUNT + 3;
+	int CONCEPTUAL_RELATIONSHIP___RELATION_RANGE = CONCEPTUAL_ENTITY_OPERATION_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Root Reified Relationships</em>' operation.
@@ -3140,7 +3140,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPTUAL_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS = CONCEPTUAL_ENTITY_OPERATION_COUNT + 4;
+	int CONCEPTUAL_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS = CONCEPTUAL_ENTITY_OPERATION_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Conceptual Relationship</em>' class.
@@ -3149,7 +3149,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_ENTITY_OPERATION_COUNT + 5;
+	int CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_ENTITY_OPERATION_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl <em>Reified Relationship</em>}' class.
@@ -3196,24 +3196,6 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int REIFIED_RELATIONSHIP__NAME = CONCEPTUAL_RELATIONSHIP__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP__SOURCE = CONCEPTUAL_RELATIONSHIP__SOURCE;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP__TARGET = CONCEPTUAL_RELATIONSHIP__TARGET;
 
 	/**
 	 * The feature id for the '<em><b>Is Functional</b></em>' attribute.
@@ -3315,13 +3297,31 @@ public interface TerminologiesPackage extends EPackage {
 	int REIFIED_RELATIONSHIP__INVERSE_PROPERTY = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 10;
 
 	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP__SOURCE = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 11;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP__TARGET = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 12;
+
+	/**
 	 * The number of structural features of the '<em>Reified Relationship</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP_FEATURE_COUNT = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 11;
+	int REIFIED_RELATIONSHIP_FEATURE_COUNT = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 13;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -3396,13 +3396,31 @@ public interface TerminologiesPackage extends EPackage {
 	int REIFIED_RELATIONSHIP___RELATION_RANGE = CONCEPTUAL_RELATIONSHIP___RELATION_RANGE;
 
 	/**
+	 * The operation id for the '<em>Relation Source</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP___RELATION_SOURCE = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Relation Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP___RELATION_TARGET = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 1;
+
+	/**
 	 * The operation id for the '<em>All Nested Elements</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 0;
+	int REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Root Reified Relationships</em>' operation.
@@ -3411,7 +3429,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 1;
+	int REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Reified Relationship</em>' class.
@@ -3420,7 +3438,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 2;
+	int REIFIED_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipRestrictionImpl <em>Reified Relationship Restriction</em>}' class.
@@ -3475,7 +3493,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP_RESTRICTION__SOURCE = CONCEPTUAL_RELATIONSHIP__SOURCE;
+	int REIFIED_RELATIONSHIP_RESTRICTION__SOURCE = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -3484,7 +3502,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP_RESTRICTION__TARGET = CONCEPTUAL_RELATIONSHIP__TARGET;
+	int REIFIED_RELATIONSHIP_RESTRICTION__TARGET = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Reified Relationship Restriction</em>' class.
@@ -3493,7 +3511,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP_RESTRICTION_FEATURE_COUNT = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 0;
+	int REIFIED_RELATIONSHIP_RESTRICTION_FEATURE_COUNT = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -3568,13 +3586,31 @@ public interface TerminologiesPackage extends EPackage {
 	int REIFIED_RELATIONSHIP_RESTRICTION___RELATION_RANGE = CONCEPTUAL_RELATIONSHIP___RELATION_RANGE;
 
 	/**
+	 * The operation id for the '<em>Relation Source</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_RESTRICTION___RELATION_SOURCE = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Relation Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_RESTRICTION___RELATION_TARGET = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 1;
+
+	/**
 	 * The operation id for the '<em>All Nested Elements</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP_RESTRICTION___ALL_NESTED_ELEMENTS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 0;
+	int REIFIED_RELATIONSHIP_RESTRICTION___ALL_NESTED_ELEMENTS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Root Reified Relationships</em>' operation.
@@ -3583,7 +3619,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP_RESTRICTION___ROOT_REIFIED_RELATIONSHIPS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 1;
+	int REIFIED_RELATIONSHIP_RESTRICTION___ROOT_REIFIED_RELATIONSHIPS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Reified Relationship Restriction</em>' class.
@@ -3592,7 +3628,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP_RESTRICTION_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 2;
+	int REIFIED_RELATIONSHIP_RESTRICTION_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedReifiedRelationshipImpl <em>Cardinality Restricted Reified Relationship</em>}' class.
@@ -3639,24 +3675,6 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__NAME = CONCEPTUAL_RELATIONSHIP__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__SOURCE = CONCEPTUAL_RELATIONSHIP__SOURCE;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__TARGET = CONCEPTUAL_RELATIONSHIP__TARGET;
 
 	/**
 	 * The feature id for the '<em><b>Restriction Kind</b></em>' attribute.
@@ -3794,13 +3812,31 @@ public interface TerminologiesPackage extends EPackage {
 	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS = CONCEPTUAL_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS;
 
 	/**
+	 * The operation id for the '<em>Relation Source</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___RELATION_SOURCE = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Relation Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___RELATION_TARGET = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 1;
+
+	/**
 	 * The number of operations of the '<em>Cardinality Restricted Reified Relationship</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 0;
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipImpl <em>Unreified Relationship</em>}' class.
@@ -3847,24 +3883,6 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int UNREIFIED_RELATIONSHIP__NAME = CHARACTERIZED_ENTITY_RELATIONSHIP__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int UNREIFIED_RELATIONSHIP__SOURCE = CHARACTERIZED_ENTITY_RELATIONSHIP__SOURCE;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int UNREIFIED_RELATIONSHIP__TARGET = CHARACTERIZED_ENTITY_RELATIONSHIP__TARGET;
 
 	/**
 	 * The feature id for the '<em><b>Is Functional</b></em>' attribute.
@@ -3948,13 +3966,31 @@ public interface TerminologiesPackage extends EPackage {
 	int UNREIFIED_RELATIONSHIP__IS_TRANSITIVE = CHARACTERIZED_ENTITY_RELATIONSHIP__IS_TRANSITIVE;
 
 	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP__SOURCE = CHARACTERIZED_ENTITY_RELATIONSHIP_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP__TARGET = CHARACTERIZED_ENTITY_RELATIONSHIP_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Unreified Relationship</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP_FEATURE_COUNT = CHARACTERIZED_ENTITY_RELATIONSHIP_FEATURE_COUNT + 0;
+	int UNREIFIED_RELATIONSHIP_FEATURE_COUNT = CHARACTERIZED_ENTITY_RELATIONSHIP_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -4038,13 +4074,31 @@ public interface TerminologiesPackage extends EPackage {
 	int UNREIFIED_RELATIONSHIP___TERM = CHARACTERIZED_ENTITY_RELATIONSHIP_OPERATION_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Relation Source</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP___RELATION_SOURCE = CHARACTERIZED_ENTITY_RELATIONSHIP_OPERATION_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Relation Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP___RELATION_TARGET = CHARACTERIZED_ENTITY_RELATIONSHIP_OPERATION_COUNT + 4;
+
+	/**
 	 * The operation id for the '<em>Relation</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP___RELATION = CHARACTERIZED_ENTITY_RELATIONSHIP_OPERATION_COUNT + 3;
+	int UNREIFIED_RELATIONSHIP___RELATION = CHARACTERIZED_ENTITY_RELATIONSHIP_OPERATION_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Unreified Relationship</em>' class.
@@ -4053,7 +4107,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP_OPERATION_COUNT = CHARACTERIZED_ENTITY_RELATIONSHIP_OPERATION_COUNT + 4;
+	int UNREIFIED_RELATIONSHIP_OPERATION_COUNT = CHARACTERIZED_ENTITY_RELATIONSHIP_OPERATION_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.DatatypeImpl <em>Datatype</em>}' class.
@@ -10986,26 +11040,14 @@ public interface TerminologiesPackage extends EPackage {
 	EClass getEntityRelationship();
 
 	/**
-	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#getSource <em>Source</em>}'.
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#relationSource() <em>Relation Source</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Source</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#getSource()
-	 * @see #getEntityRelationship()
+	 * @return the meta object for the '<em>Relation Source</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#relationSource()
 	 * @generated
 	 */
-	EReference getEntityRelationship_Source();
-
-	/**
-	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#getTarget <em>Target</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#getTarget()
-	 * @see #getEntityRelationship()
-	 * @generated
-	 */
-	EReference getEntityRelationship_Target();
+	EOperation getEntityRelationship__RelationSource();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#relationDomain() <em>Relation Domain</em>}' operation.
@@ -11016,6 +11058,16 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getEntityRelationship__RelationDomain();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#relationTarget() <em>Relation Target</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Relation Target</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#relationTarget()
+	 * @generated
+	 */
+	EOperation getEntityRelationship__RelationTarget();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#relationRange() <em>Relation Range</em>}' operation.
@@ -11403,6 +11455,48 @@ public interface TerminologiesPackage extends EPackage {
 	EReference getReifiedRelationship_InverseProperty();
 
 	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getSource <em>Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Source</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getSource()
+	 * @see #getReifiedRelationship()
+	 * @generated
+	 */
+	EReference getReifiedRelationship_Source();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getTarget()
+	 * @see #getReifiedRelationship()
+	 * @generated
+	 */
+	EReference getReifiedRelationship_Target();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#relationSource() <em>Relation Source</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Relation Source</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#relationSource()
+	 * @generated
+	 */
+	EOperation getReifiedRelationship__RelationSource();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#relationTarget() <em>Relation Target</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Relation Target</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#relationTarget()
+	 * @generated
+	 */
+	EOperation getReifiedRelationship__RelationTarget();
+
+	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#allNestedElements() <em>All Nested Elements</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11431,6 +11525,48 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getReifiedRelationshipRestriction();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction#getSource <em>Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Source</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction#getSource()
+	 * @see #getReifiedRelationshipRestriction()
+	 * @generated
+	 */
+	EReference getReifiedRelationshipRestriction_Source();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction#getTarget()
+	 * @see #getReifiedRelationshipRestriction()
+	 * @generated
+	 */
+	EReference getReifiedRelationshipRestriction_Target();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction#relationSource() <em>Relation Source</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Relation Source</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction#relationSource()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipRestriction__RelationSource();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction#relationTarget() <em>Relation Target</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Relation Target</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction#relationTarget()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipRestriction__RelationTarget();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction#allNestedElements() <em>All Nested Elements</em>}' operation.
@@ -11507,6 +11643,26 @@ public interface TerminologiesPackage extends EPackage {
 	EAttribute getCardinalityRestrictedReifiedRelationship_RestrictedCardinality();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship#relationSource() <em>Relation Source</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Relation Source</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship#relationSource()
+	 * @generated
+	 */
+	EOperation getCardinalityRestrictedReifiedRelationship__RelationSource();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship#relationTarget() <em>Relation Target</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Relation Target</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship#relationTarget()
+	 * @generated
+	 */
+	EOperation getCardinalityRestrictedReifiedRelationship__RelationTarget();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship <em>Unreified Relationship</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11515,6 +11671,48 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getUnreifiedRelationship();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship#getSource <em>Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Source</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship#getSource()
+	 * @see #getUnreifiedRelationship()
+	 * @generated
+	 */
+	EReference getUnreifiedRelationship_Source();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship#getTarget()
+	 * @see #getUnreifiedRelationship()
+	 * @generated
+	 */
+	EReference getUnreifiedRelationship_Target();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship#relationSource() <em>Relation Source</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Relation Source</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship#relationSource()
+	 * @generated
+	 */
+	EOperation getUnreifiedRelationship__RelationSource();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship#relationTarget() <em>Relation Target</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Relation Target</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship#relationTarget()
+	 * @generated
+	 */
+	EOperation getUnreifiedRelationship__RelationTarget();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship#relation() <em>Relation</em>}' operation.
@@ -13918,20 +14116,12 @@ public interface TerminologiesPackage extends EPackage {
 		EClass ENTITY_RELATIONSHIP = eINSTANCE.getEntityRelationship();
 
 		/**
-		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Relation Source</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ENTITY_RELATIONSHIP__SOURCE = eINSTANCE.getEntityRelationship_Source();
-
-		/**
-		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ENTITY_RELATIONSHIP__TARGET = eINSTANCE.getEntityRelationship_Target();
+		EOperation ENTITY_RELATIONSHIP___RELATION_SOURCE = eINSTANCE.getEntityRelationship__RelationSource();
 
 		/**
 		 * The meta object literal for the '<em><b>Relation Domain</b></em>' operation.
@@ -13940,6 +14130,14 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation ENTITY_RELATIONSHIP___RELATION_DOMAIN = eINSTANCE.getEntityRelationship__RelationDomain();
+
+		/**
+		 * The meta object literal for the '<em><b>Relation Target</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ENTITY_RELATIONSHIP___RELATION_TARGET = eINSTANCE.getEntityRelationship__RelationTarget();
 
 		/**
 		 * The meta object literal for the '<em><b>Relation Range</b></em>' operation.
@@ -14250,6 +14448,38 @@ public interface TerminologiesPackage extends EPackage {
 		EReference REIFIED_RELATIONSHIP__INVERSE_PROPERTY = eINSTANCE.getReifiedRelationship_InverseProperty();
 
 		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REIFIED_RELATIONSHIP__SOURCE = eINSTANCE.getReifiedRelationship_Source();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REIFIED_RELATIONSHIP__TARGET = eINSTANCE.getReifiedRelationship_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Relation Source</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP___RELATION_SOURCE = eINSTANCE.getReifiedRelationship__RelationSource();
+
+		/**
+		 * The meta object literal for the '<em><b>Relation Target</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP___RELATION_TARGET = eINSTANCE.getReifiedRelationship__RelationTarget();
+
+		/**
 		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -14274,6 +14504,38 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EClass REIFIED_RELATIONSHIP_RESTRICTION = eINSTANCE.getReifiedRelationshipRestriction();
+
+		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REIFIED_RELATIONSHIP_RESTRICTION__SOURCE = eINSTANCE.getReifiedRelationshipRestriction_Source();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REIFIED_RELATIONSHIP_RESTRICTION__TARGET = eINSTANCE.getReifiedRelationshipRestriction_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Relation Source</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_RESTRICTION___RELATION_SOURCE = eINSTANCE.getReifiedRelationshipRestriction__RelationSource();
+
+		/**
+		 * The meta object literal for the '<em><b>Relation Target</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_RESTRICTION___RELATION_TARGET = eINSTANCE.getReifiedRelationshipRestriction__RelationTarget();
 
 		/**
 		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
@@ -14334,6 +14596,22 @@ public interface TerminologiesPackage extends EPackage {
 		EAttribute CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__RESTRICTED_CARDINALITY = eINSTANCE.getCardinalityRestrictedReifiedRelationship_RestrictedCardinality();
 
 		/**
+		 * The meta object literal for the '<em><b>Relation Source</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___RELATION_SOURCE = eINSTANCE.getCardinalityRestrictedReifiedRelationship__RelationSource();
+
+		/**
+		 * The meta object literal for the '<em><b>Relation Target</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___RELATION_TARGET = eINSTANCE.getCardinalityRestrictedReifiedRelationship__RelationTarget();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipImpl <em>Unreified Relationship</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -14342,6 +14620,38 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EClass UNREIFIED_RELATIONSHIP = eINSTANCE.getUnreifiedRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UNREIFIED_RELATIONSHIP__SOURCE = eINSTANCE.getUnreifiedRelationship_Source();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UNREIFIED_RELATIONSHIP__TARGET = eINSTANCE.getUnreifiedRelationship_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Relation Source</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation UNREIFIED_RELATIONSHIP___RELATION_SOURCE = eINSTANCE.getUnreifiedRelationship__RelationSource();
+
+		/**
+		 * The meta object literal for the '<em><b>Relation Target</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation UNREIFIED_RELATIONSHIP___RELATION_TARGET = eINSTANCE.getUnreifiedRelationship__RelationTarget();
 
 		/**
 		 * The meta object literal for the '<em><b>Relation</b></em>' operation.

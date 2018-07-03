@@ -1185,25 +1185,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEntityRelationship_Source() {
-		return (EReference)entityRelationshipEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getEntityRelationship_Target() {
-		return (EReference)entityRelationshipEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getEntityRelationship__RelationDomain() {
+	public EOperation getEntityRelationship__RelationSource() {
 		return entityRelationshipEClass.getEOperations().get(0);
 	}
 
@@ -1212,8 +1194,26 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getEntityRelationship__RelationRange() {
+	public EOperation getEntityRelationship__RelationDomain() {
 		return entityRelationshipEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEntityRelationship__RelationTarget() {
+		return entityRelationshipEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEntityRelationship__RelationRange() {
+		return entityRelationshipEClass.getEOperations().get(3);
 	}
 
 	/**
@@ -1545,7 +1545,25 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getReifiedRelationship__AllNestedElements() {
+	public EReference getReifiedRelationship_Source() {
+		return (EReference)reifiedRelationshipEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getReifiedRelationship_Target() {
+		return (EReference)reifiedRelationshipEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getReifiedRelationship__RelationSource() {
 		return reifiedRelationshipEClass.getEOperations().get(0);
 	}
 
@@ -1554,8 +1572,26 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getReifiedRelationship__RootReifiedRelationships() {
+	public EOperation getReifiedRelationship__RelationTarget() {
 		return reifiedRelationshipEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getReifiedRelationship__AllNestedElements() {
+		return reifiedRelationshipEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getReifiedRelationship__RootReifiedRelationships() {
+		return reifiedRelationshipEClass.getEOperations().get(3);
 	}
 
 	/**
@@ -1572,7 +1608,25 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getReifiedRelationshipRestriction__AllNestedElements() {
+	public EReference getReifiedRelationshipRestriction_Source() {
+		return (EReference)reifiedRelationshipRestrictionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getReifiedRelationshipRestriction_Target() {
+		return (EReference)reifiedRelationshipRestrictionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getReifiedRelationshipRestriction__RelationSource() {
 		return reifiedRelationshipRestrictionEClass.getEOperations().get(0);
 	}
 
@@ -1581,8 +1635,26 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getReifiedRelationshipRestriction__RootReifiedRelationships() {
+	public EOperation getReifiedRelationshipRestriction__RelationTarget() {
 		return reifiedRelationshipRestrictionEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getReifiedRelationshipRestriction__AllNestedElements() {
+		return reifiedRelationshipRestrictionEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getReifiedRelationshipRestriction__RootReifiedRelationships() {
+		return reifiedRelationshipRestrictionEClass.getEOperations().get(3);
 	}
 
 	/**
@@ -1635,6 +1707,24 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getCardinalityRestrictedReifiedRelationship__RelationSource() {
+		return cardinalityRestrictedReifiedRelationshipEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getCardinalityRestrictedReifiedRelationship__RelationTarget() {
+		return cardinalityRestrictedReifiedRelationshipEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getUnreifiedRelationship() {
 		return unreifiedRelationshipEClass;
 	}
@@ -1644,8 +1734,44 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getUnreifiedRelationship__Relation() {
+	public EReference getUnreifiedRelationship_Source() {
+		return (EReference)unreifiedRelationshipEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUnreifiedRelationship_Target() {
+		return (EReference)unreifiedRelationshipEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getUnreifiedRelationship__RelationSource() {
 		return unreifiedRelationshipEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getUnreifiedRelationship__RelationTarget() {
+		return unreifiedRelationshipEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getUnreifiedRelationship__Relation() {
+		return unreifiedRelationshipEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -3409,9 +3535,9 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		createEAttribute(cardinalityRestrictedConceptEClass, CARDINALITY_RESTRICTED_CONCEPT__RESTRICTED_CARDINALITY);
 
 		entityRelationshipEClass = createEClass(ENTITY_RELATIONSHIP);
-		createEReference(entityRelationshipEClass, ENTITY_RELATIONSHIP__SOURCE);
-		createEReference(entityRelationshipEClass, ENTITY_RELATIONSHIP__TARGET);
+		createEOperation(entityRelationshipEClass, ENTITY_RELATIONSHIP___RELATION_SOURCE);
 		createEOperation(entityRelationshipEClass, ENTITY_RELATIONSHIP___RELATION_DOMAIN);
+		createEOperation(entityRelationshipEClass, ENTITY_RELATIONSHIP___RELATION_TARGET);
 		createEOperation(entityRelationshipEClass, ENTITY_RELATIONSHIP___RELATION_RANGE);
 
 		characterizedEntityRelationshipEClass = createEClass(CHARACTERIZED_ENTITY_RELATIONSHIP);
@@ -3455,10 +3581,18 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		reifiedRelationshipEClass = createEClass(REIFIED_RELATIONSHIP);
 		createEReference(reifiedRelationshipEClass, REIFIED_RELATIONSHIP__FORWARD_PROPERTY);
 		createEReference(reifiedRelationshipEClass, REIFIED_RELATIONSHIP__INVERSE_PROPERTY);
+		createEReference(reifiedRelationshipEClass, REIFIED_RELATIONSHIP__SOURCE);
+		createEReference(reifiedRelationshipEClass, REIFIED_RELATIONSHIP__TARGET);
+		createEOperation(reifiedRelationshipEClass, REIFIED_RELATIONSHIP___RELATION_SOURCE);
+		createEOperation(reifiedRelationshipEClass, REIFIED_RELATIONSHIP___RELATION_TARGET);
 		createEOperation(reifiedRelationshipEClass, REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS);
 		createEOperation(reifiedRelationshipEClass, REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS);
 
 		reifiedRelationshipRestrictionEClass = createEClass(REIFIED_RELATIONSHIP_RESTRICTION);
+		createEReference(reifiedRelationshipRestrictionEClass, REIFIED_RELATIONSHIP_RESTRICTION__SOURCE);
+		createEReference(reifiedRelationshipRestrictionEClass, REIFIED_RELATIONSHIP_RESTRICTION__TARGET);
+		createEOperation(reifiedRelationshipRestrictionEClass, REIFIED_RELATIONSHIP_RESTRICTION___RELATION_SOURCE);
+		createEOperation(reifiedRelationshipRestrictionEClass, REIFIED_RELATIONSHIP_RESTRICTION___RELATION_TARGET);
 		createEOperation(reifiedRelationshipRestrictionEClass, REIFIED_RELATIONSHIP_RESTRICTION___ALL_NESTED_ELEMENTS);
 		createEOperation(reifiedRelationshipRestrictionEClass, REIFIED_RELATIONSHIP_RESTRICTION___ROOT_REIFIED_RELATIONSHIPS);
 
@@ -3467,8 +3601,14 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		createEReference(cardinalityRestrictedReifiedRelationshipEClass, CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__RESTRICTED_RELATIONSHIP);
 		createEReference(cardinalityRestrictedReifiedRelationshipEClass, CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__RESTRICTED_RANGE);
 		createEAttribute(cardinalityRestrictedReifiedRelationshipEClass, CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP__RESTRICTED_CARDINALITY);
+		createEOperation(cardinalityRestrictedReifiedRelationshipEClass, CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___RELATION_SOURCE);
+		createEOperation(cardinalityRestrictedReifiedRelationshipEClass, CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___RELATION_TARGET);
 
 		unreifiedRelationshipEClass = createEClass(UNREIFIED_RELATIONSHIP);
+		createEReference(unreifiedRelationshipEClass, UNREIFIED_RELATIONSHIP__SOURCE);
+		createEReference(unreifiedRelationshipEClass, UNREIFIED_RELATIONSHIP__TARGET);
+		createEOperation(unreifiedRelationshipEClass, UNREIFIED_RELATIONSHIP___RELATION_SOURCE);
+		createEOperation(unreifiedRelationshipEClass, UNREIFIED_RELATIONSHIP___RELATION_TARGET);
 		createEOperation(unreifiedRelationshipEClass, UNREIFIED_RELATIONSHIP___RELATION);
 
 		datatypeEClass = createEClass(DATATYPE);
@@ -3934,10 +4074,12 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		initEAttribute(getCardinalityRestrictedConcept_RestrictedCardinality(), theCommonPackage.getPositiveIntegerLiteral(), "restrictedCardinality", null, 1, 1, CardinalityRestrictedConcept.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(entityRelationshipEClass, EntityRelationship.class, "EntityRelationship", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEntityRelationship_Source(), this.getEntity(), null, "source", null, 1, 1, EntityRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEntityRelationship_Target(), this.getEntity(), null, "target", null, 1, 1, EntityRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getEntityRelationship__RelationSource(), this.getEntity(), "relationSource", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getEntityRelationship__RelationDomain(), this.getTerm(), "relationDomain", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getEntityRelationship__RelationTarget(), this.getEntity(), "relationTarget", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getEntityRelationship__RelationRange(), this.getTerm(), "relationRange", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -3997,12 +4139,24 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		initEClass(reifiedRelationshipEClass, ReifiedRelationship.class, "ReifiedRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getReifiedRelationship_ForwardProperty(), this.getForwardProperty(), this.getForwardProperty_ReifiedRelationship(), "forwardProperty", null, 1, 1, ReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getReifiedRelationship_InverseProperty(), this.getInverseProperty(), this.getInverseProperty_ReifiedRelationship(), "inverseProperty", null, 0, 1, ReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getReifiedRelationship_Source(), this.getEntity(), null, "source", null, 1, 1, ReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getReifiedRelationship_Target(), this.getEntity(), null, "target", null, 1, 1, ReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getReifiedRelationship__RelationSource(), this.getEntity(), "relationSource", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getReifiedRelationship__RelationTarget(), this.getEntity(), "relationTarget", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getReifiedRelationship__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getReifiedRelationship__RootReifiedRelationships(), this.getReifiedRelationship(), "rootReifiedRelationships", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(reifiedRelationshipRestrictionEClass, ReifiedRelationshipRestriction.class, "ReifiedRelationshipRestriction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getReifiedRelationshipRestriction_Source(), this.getEntity(), null, "source", null, 1, 1, ReifiedRelationshipRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getReifiedRelationshipRestriction_Target(), this.getEntity(), null, "target", null, 1, 1, ReifiedRelationshipRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getReifiedRelationshipRestriction__RelationSource(), this.getEntity(), "relationSource", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getReifiedRelationshipRestriction__RelationTarget(), this.getEntity(), "relationTarget", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getReifiedRelationshipRestriction__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
@@ -4014,7 +4168,17 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		initEReference(getCardinalityRestrictedReifiedRelationship_RestrictedRange(), this.getEntity(), null, "restrictedRange", null, 0, 1, CardinalityRestrictedReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCardinalityRestrictedReifiedRelationship_RestrictedCardinality(), theCommonPackage.getPositiveIntegerLiteral(), "restrictedCardinality", null, 1, 1, CardinalityRestrictedReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEOperation(getCardinalityRestrictedReifiedRelationship__RelationSource(), this.getEntity(), "relationSource", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getCardinalityRestrictedReifiedRelationship__RelationTarget(), this.getEntity(), "relationTarget", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(unreifiedRelationshipEClass, UnreifiedRelationship.class, "UnreifiedRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getUnreifiedRelationship_Source(), this.getEntity(), null, "source", null, 1, 1, UnreifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUnreifiedRelationship_Target(), this.getEntity(), null, "target", null, 1, 1, UnreifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getUnreifiedRelationship__RelationSource(), this.getEntity(), "relationSource", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getUnreifiedRelationship__RelationTarget(), this.getEntity(), "relationTarget", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getUnreifiedRelationship__Relation(), this.getEntityRelationship(), "relation", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -4858,7 +5022,17 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });
 		addAnnotation
+		  (getEntityRelationship__RelationSource(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
 		  (getEntityRelationship__RelationDomain(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getEntityRelationship__RelationTarget(),
 		   source,
 		   new String[] {
 		   });
@@ -4943,6 +5117,16 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });
 		addAnnotation
+		  (getReifiedRelationship__RelationSource(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getReifiedRelationship__RelationTarget(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
 		  (getReifiedRelationship__AllNestedElements(),
 		   source,
 		   new String[] {
@@ -4953,12 +5137,42 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });
 		addAnnotation
+		  (getReifiedRelationshipRestriction__RelationSource(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getReifiedRelationshipRestriction__RelationTarget(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
 		  (getReifiedRelationshipRestriction__AllNestedElements(),
 		   source,
 		   new String[] {
 		   });
 		addAnnotation
 		  (getReifiedRelationshipRestriction__RootReifiedRelationships(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getCardinalityRestrictedReifiedRelationship__RelationSource(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getCardinalityRestrictedReifiedRelationship__RelationTarget(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getUnreifiedRelationship__RelationSource(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getUnreifiedRelationship__RelationTarget(),
 		   source,
 		   new String[] {
 		   });
@@ -6023,6 +6237,16 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });
 		addAnnotation
+		  (getReifiedRelationship__RelationSource(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getReifiedRelationship__RelationTarget(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
 		  (getReifiedRelationship__AllNestedElements(),
 		   source,
 		   new String[] {
@@ -6033,12 +6257,42 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });
 		addAnnotation
+		  (getReifiedRelationshipRestriction__RelationSource(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getReifiedRelationshipRestriction__RelationTarget(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
 		  (getReifiedRelationshipRestriction__AllNestedElements(),
 		   source,
 		   new String[] {
 		   });
 		addAnnotation
 		  (getReifiedRelationshipRestriction__RootReifiedRelationships(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getCardinalityRestrictedReifiedRelationship__RelationSource(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getCardinalityRestrictedReifiedRelationship__RelationTarget(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getUnreifiedRelationship__RelationSource(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getUnreifiedRelationship__RelationTarget(),
 		   source,
 		   new String[] {
 		   });

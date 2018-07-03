@@ -78,8 +78,8 @@ public class TerminologyDiagramService {
         boolean _matched = false;
         if (statement instanceof EntityRelationship) {
           _matched=true;
-          entities.add(((EntityRelationship)statement).getSource());
-          entities.add(((EntityRelationship)statement).getTarget());
+          entities.add(((EntityRelationship)statement).relationSource());
+          entities.add(((EntityRelationship)statement).relationTarget());
         }
         if (!_matched) {
           if (statement instanceof SpecializationAxiom) {
