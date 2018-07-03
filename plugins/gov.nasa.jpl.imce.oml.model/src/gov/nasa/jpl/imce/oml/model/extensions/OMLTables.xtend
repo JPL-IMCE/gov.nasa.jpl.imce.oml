@@ -127,7 +127,7 @@ class OMLTables {
 	
   static def <T extends CrossReferencabilityKind> Comparator<T> crossReferencabilityComparator() {
   	new Comparator<T> {
-  		override def int compare(T t1, T t2) {
+  		override int compare(T t1, T t2) {
   			t1.uuid().compareTo(t2.uuid())
   		}
   	}

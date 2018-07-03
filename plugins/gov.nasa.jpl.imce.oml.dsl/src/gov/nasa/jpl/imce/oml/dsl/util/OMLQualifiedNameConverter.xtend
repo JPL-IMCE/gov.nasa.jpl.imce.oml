@@ -22,17 +22,17 @@ import org.eclipse.xtext.naming.QualifiedName
 
 class OMLQualifiedNameConverter extends IQualifiedNameConverter.DefaultImpl {
 	
-		override def String toString(QualifiedName qualifiedName) {
+		override String toString(QualifiedName qualifiedName) {
 			if (null === qualifiedName)
 				throw new IllegalArgumentException("Qualified name cannot be null")
 			qualifiedName.toString(getDelimiter);
 		}
 		
-		override def getDelimiter() {
+		override getDelimiter() {
 			":"
 		}
 	
-		override def QualifiedName toQualifiedName(String qualifiedNameAsString) {
+		override QualifiedName toQualifiedName(String qualifiedNameAsString) {
 			super.toQualifiedName(qualifiedNameAsString)
 		}	
 	}

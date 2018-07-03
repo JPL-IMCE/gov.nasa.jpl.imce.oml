@@ -28,7 +28,7 @@ class FloatValueConverter extends GenericValueConverter<FloatValue> {
 	@Inject
 	protected IValueConverterService valueConverterService;
 
-	override def String toEscapedString(FloatValue value) {
+	override String toEscapedString(FloatValue value) {
 		return value.value
 	}
 	

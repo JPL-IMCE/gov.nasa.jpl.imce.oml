@@ -34,7 +34,7 @@ class OMLImportNormalizer extends ImportNormalizer{
 		this.namespace = qnc.toString(importedNamespace)
 	}
 	
-	override def QualifiedName resolve(QualifiedName relativeName) {
+	override QualifiedName resolve(QualifiedName relativeName) {
 		var relative = qnc.toString(relativeName)
 		if (relative.startsWith('<') && relative.endsWith('>')) {
 			if (namespace.equals(relative)) {
@@ -58,7 +58,7 @@ class OMLImportNormalizer extends ImportNormalizer{
 		return null
 	}
 	
-	override def QualifiedName deresolve(QualifiedName fullyQualifiedName) {
+	override QualifiedName deresolve(QualifiedName fullyQualifiedName) {
 		var qualified = qnc.toString(fullyQualifiedName)
 		if (qualified.startsWith('<') && qualified.endsWith('>')) {
 			qualified = qualified.substring(1, qualified.length-1)

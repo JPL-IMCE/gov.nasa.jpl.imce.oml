@@ -36,7 +36,7 @@ import java.util.HashMap
  */
 class OMLXtextResource extends LazyLinkingResource {
 	
-	private static val Map<Object, Object> defaultOptions = {
+	static val Map<Object, Object> defaultOptions = {
 		val options = new HashMap<Object, Object>()
 		options.put("file.extension", "oml")
 		options

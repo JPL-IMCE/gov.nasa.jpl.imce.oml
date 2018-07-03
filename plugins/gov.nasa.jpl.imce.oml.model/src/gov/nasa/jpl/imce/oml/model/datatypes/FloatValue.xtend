@@ -25,7 +25,7 @@ class FloatValue {
 		this.value = value
 	}
 	
-	override def boolean equals(Object that) {
+	override boolean equals(Object that) {
 		switch that {
 			FloatValue:
 				this.value == that.value

@@ -12,7 +12,7 @@ import org.eclipse.xtext.serializer.tokens.CrossReferenceSerializer
 class OMLCrossReferenceSerializer extends CrossReferenceSerializer {
 	
 	@Inject
-	private LinkingHelper linkingHelper;
+	LinkingHelper linkingHelper;
 	
 	/*
 	 * Caution: check for null before calling: linkingHelper.getCrossRefNodeAsString(node, true)

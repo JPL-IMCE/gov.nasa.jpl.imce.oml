@@ -17,27 +17,26 @@
  */
 package gov.nasa.jpl.imce.oml.serialization.tests
 
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.EClass
-import org.eclipse.emf.ecore.ETypedElement
-import org.eclipse.emf.ecore.EReference
-import org.eclipse.emf.common.util.EList
 import gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind
-import java.util.Map
-import java.util.HashMap
-import gov.nasa.jpl.imce.oml.zip.OMLZipResource
-import gov.nasa.jpl.imce.oml.model.common.LiteralValue
 import gov.nasa.jpl.imce.oml.model.common.LiteralBoolean
 import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime
+import gov.nasa.jpl.imce.oml.model.common.LiteralDecimal
+import gov.nasa.jpl.imce.oml.model.common.LiteralFloat
+import gov.nasa.jpl.imce.oml.model.common.LiteralNumber
+import gov.nasa.jpl.imce.oml.model.common.LiteralRational
+import gov.nasa.jpl.imce.oml.model.common.LiteralReal
 import gov.nasa.jpl.imce.oml.model.common.LiteralString
 import gov.nasa.jpl.imce.oml.model.common.LiteralURI
 import gov.nasa.jpl.imce.oml.model.common.LiteralUUID
-import gov.nasa.jpl.imce.oml.model.common.LiteralNumber
-import gov.nasa.jpl.imce.oml.model.common.LiteralDecimal
-import gov.nasa.jpl.imce.oml.model.common.LiteralFloat
-import gov.nasa.jpl.imce.oml.model.common.LiteralRational
-import gov.nasa.jpl.imce.oml.model.common.LiteralReal
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue
+import java.util.HashMap
+import java.util.Map
+import org.eclipse.emf.common.util.EList
+import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.EReference
+import org.eclipse.emf.ecore.ETypedElement
+import org.eclipse.emf.ecore.resource.Resource
 
 /**
  * Reflection-based OML Resource Comparison.

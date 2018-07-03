@@ -88,7 +88,7 @@ class CatalogURIConverter extends ExtensibleURIConverterImpl {
 	 * If the catalog fails to resolve the URI to a file, then this method requires a parent uriConverter
 	 * to delegate normalizing the URI.
 	 */
-	override def URI normalize(URI uri) {
+	override URI normalize(URI uri) {
 		if (uri.file) {
 			uri
 		} else if (uri.platform) {
@@ -114,7 +114,7 @@ class CatalogURIConverter extends ExtensibleURIConverterImpl {
 	 * This logic is similar to EMF's ResourceImpl.createOutputStream except for
 	 * the 'file.extension' appended after URIConverter mapping if it is not present.
 	 */
-	override def OutputStream createOutputStream(URI uri, Map<?, ?> options) throws IOException {
+	override OutputStream createOutputStream(URI uri, Map<?, ?> options) throws IOException {
 		val normalized = normalize(uri)
 		val normalizedExt = normalized.fileExtension
 		val fileExtension = options?.get("file.extension")
@@ -155,7 +155,7 @@ class CatalogURIConverter extends ExtensibleURIConverterImpl {
 	 * This logic is similar to EMF's ResourceImpl.createInputStream except for
 	 * the 'file.extension' appended after URIConverter mapping if it is not present.
 	 */
-	override def InputStream createInputStream(URI uri, Map<?, ?> options) throws IOException {
+	override InputStream createInputStream(URI uri, Map<?, ?> options) throws IOException {
 		val normalized = normalize(uri)
 		val normalizedExt = normalized.fileExtension
 		val fileExtension = options?.get("file.extension")
@@ -202,8 +202,8 @@ class CatalogURIConverter extends ExtensibleURIConverterImpl {
 	/*
 	 * Xtend equivalent of the private definition in org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.OptionMap
 	 */
-	static public class OptionsMap implements Map<Object, Object> {
-		private static final Object NO_KEY = new Object()
+	static class OptionsMap implements Map<Object, Object> {
+		static final Object NO_KEY = new Object()
 
 		protected Object key
 		protected Object value
@@ -211,15 +211,15 @@ class CatalogURIConverter extends ExtensibleURIConverterImpl {
 		protected Map<?, ?> defaultOptions
 		protected Map<Object, Object> mergedMap
 
-		public new(Object key, Object value, Map<?, ?> options) {
+		new(Object key, Object value, Map<?, ?> options) {
 			this(key, value, options, null)
 		}
 
-		public new(Map<?, ?> options, Map<?, ?> defaultOptions) {
+		new(Map<?, ?> options, Map<?, ?> defaultOptions) {
 			this(NO_KEY, null, options, defaultOptions)
 		}
 
-		public new(Object key, Object value, Map<?, ?> options, Map<?, ?> defaultOptions) {
+		new(Object key, Object value, Map<?, ?> options, Map<?, ?> defaultOptions) {
 			this.options = options
 			this.defaultOptions = defaultOptions
 			this.key = key
@@ -247,11 +247,11 @@ class CatalogURIConverter extends ExtensibleURIConverterImpl {
 			mergedMap
 		}
 
-		override public def void clear() {
+		override void clear() {
 			throw new UnsupportedOperationException();
 		}
 
-		override public def boolean containsKey(Object key) {
+		override boolean containsKey(Object key) {
 			if (null !== mergedMap)
 				mergedMap.containsKey(key)
 			else
@@ -259,15 +259,15 @@ class CatalogURIConverter extends ExtensibleURIConverterImpl {
 					(null !== defaultOptions && defaultOptions.containsKey(key))
 		}
 
-		override public def boolean containsValue(Object value) {
+		override boolean containsValue(Object value) {
 			return mergedMap().containsValue(value);
 		}
 
-		override public def Set<Map.Entry<Object, Object>> entrySet() {
+		override Set<Map.Entry<Object, Object>> entrySet() {
 			return mergedMap().entrySet();
 		}
 
-		override public def Object get(Object key) {
+		override Object get(Object key) {
 			if (null !== mergedMap)
 				mergedMap.get(key)
 			else if (this.key == key)
@@ -280,7 +280,7 @@ class CatalogURIConverter extends ExtensibleURIConverterImpl {
 				null
 		}
 
-		override public def boolean isEmpty() {
+		override boolean isEmpty() {
 			if (null !== mergedMap)
 				mergedMap.isEmpty
 			else
@@ -288,39 +288,39 @@ class CatalogURIConverter extends ExtensibleURIConverterImpl {
 					(null === defaultOptions || defaultOptions.isEmpty)
 		}
 
-		override public def Set<Object> keySet() {
+		override Set<Object> keySet() {
 			mergedMap().keySet()
 		}
 
-		override public def Object put(Object key, Object value) {
+		override Object put(Object key, Object value) {
 			throw new UnsupportedOperationException()
 		}
 
-		override public def void putAll(Map<? extends Object, ? extends Object> t) {
+		override void putAll(Map<? extends Object, ? extends Object> t) {
 			throw new UnsupportedOperationException()
 		}
 
-		override public def Object remove(Object key) {
+		override Object remove(Object key) {
 			throw new UnsupportedOperationException()
 		}
 
-		override public def int size() {
+		override int size() {
 			mergedMap.size()
 		}
 
-		override public def Collection<Object> values() {
+		override Collection<Object> values() {
 			mergedMap.values()
 		}
 
-		override public def int hashCode() {
+		override int hashCode() {
 			mergedMap.hashCode()
 		}
 
-		override public def boolean equals(Object o) {
+		override boolean equals(Object o) {
 			mergedMap === o
 		}
 
-		override public def String toString() {
+		override String toString() {
 			mergedMap.toString()
 		}
 	}

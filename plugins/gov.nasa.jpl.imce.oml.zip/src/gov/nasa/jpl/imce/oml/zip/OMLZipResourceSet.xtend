@@ -98,7 +98,7 @@ class OMLZipResourceSet extends ResourceSetImpl {
 	/**
 	 * Create an OMLZipREsource.
 	 */
-	override def Resource createResource(URI uri) {
+	override Resource createResource(URI uri) {
 		val last = uri.lastSegment
 		if (null === last)
 			super.createResource(uri, "omlzip")

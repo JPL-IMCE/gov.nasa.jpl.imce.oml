@@ -25,14 +25,14 @@ import com.google.inject.Inject
 
 class OMLXtextResourceFactory implements IResourceFactory  {
 	
-	private Provider<OMLXtextResource> provider
+	Provider<OMLXtextResource> provider
 	
 	@Inject
 	new(Provider<OMLXtextResource> resourceProvider) {
 		this.provider = resourceProvider
 	}
 	
-	override def Resource createResource(URI uri) {
+	override Resource createResource(URI uri) {
 		val OMLXtextResource r = provider.get()
 		r.URI = uri
 		r
