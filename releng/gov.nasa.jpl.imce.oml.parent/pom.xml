@@ -4,13 +4,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>gov.nasa.jpl.imce.oml</groupId>
 	<artifactId>gov.nasa.jpl.imce.oml.parent</artifactId>
-	<version>0.9.6.0</version>
+	<version>0.9.6.1</version>
 	<packaging>pom</packaging>
 	<name>OML Parent</name>
 
 	<properties>
 		<tycho.version>1.1.0</tycho.version>
-		<oml.version>0.9.6.0</oml.version>
+		<oml.version>0.9.6.1</oml.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<repo.url>http://download.eclipse.org/releases/photon</repo.url>
 	</properties>

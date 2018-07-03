@@ -3,12 +3,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>gov.nasa.jpl.imce.oml</groupId>
 	<artifactId>gov.nasa.jpl.imce.oml.updatesite</artifactId>
-	<version>0.9.6.0</version>
+	<version>0.9.6.1</version>
 	<packaging>eclipse-repository</packaging>
 	<parent>
 		<groupId>gov.nasa.jpl.imce.oml</groupId>
         <artifactId>gov.nasa.jpl.imce.oml.parent</artifactId>
-		<version>0.9.6.0</version>
+		<version>0.9.6.1</version>
 		<relativePath>../gov.nasa.jpl.imce.oml.parent</relativePath>
 	</parent>
 	
