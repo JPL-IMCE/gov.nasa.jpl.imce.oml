@@ -182,7 +182,7 @@ class OMLFormatter extends AbstractFormatter2 {
 		aspect.regionFor.keyword('<=').surround[oneSpace]
 		aspect.regionFor.keyword('>=').surround[oneSpace]
 		aspect.regionFor.keyword('==').surround[oneSpace]
-		aspect.regionFor.keyword('.').surround[noSpace]
+		aspect.regionFor.keyword('.').surround[oneSpace]
 	}
 	
 	def dispatch void format(Concept concept, extension IFormattableDocument document) {
@@ -196,7 +196,7 @@ class OMLFormatter extends AbstractFormatter2 {
 		concept.regionFor.keyword('<=').surround[oneSpace]
 		concept.regionFor.keyword('>=').surround[oneSpace]
 		concept.regionFor.keyword('==').surround[oneSpace]
-		concept.regionFor.keyword('.').surround[noSpace]
+		concept.regionFor.keyword('.').surround[oneSpace]
 	}
 	
 	def dispatch void format(ReifiedRelationship rr, extension IFormattableDocument document) {
@@ -245,7 +245,7 @@ class OMLFormatter extends AbstractFormatter2 {
 		rr.regionFor.keyword('<=').surround[oneSpace]
 		rr.regionFor.keyword('>=').surround[oneSpace]
 		rr.regionFor.keyword('==').surround[oneSpace]
-		rr.regionFor.keyword('.').surround[noSpace]
+		rr.regionFor.keyword('.').surround[oneSpace]
 	}
 	
 	def dispatch void format(UnreifiedRelationship ur, extension IFormattableDocument document) {

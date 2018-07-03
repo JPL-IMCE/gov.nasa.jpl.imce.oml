@@ -63,8 +63,8 @@ class TerminologyDiagramService {
 		for (statement : tg?.boxStatements) {
 			switch statement {
 				EntityRelationship: {
-					entities.add(statement.source)
-					entities.add(statement.target)
+					entities.add(statement.relationSource)
+					entities.add(statement.relationTarget)
 				}
 				SpecializationAxiom: {
 					entities.add(statement.child)

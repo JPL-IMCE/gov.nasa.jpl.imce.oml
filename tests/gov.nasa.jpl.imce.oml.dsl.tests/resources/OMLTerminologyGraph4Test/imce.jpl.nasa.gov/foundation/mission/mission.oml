@@ -2,6 +2,17 @@ open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission> {
 
 	extends <http://imce.jpl.nasa.gov/foundation/base/base>
 
+	aspect IdentifiableElement
+
+	aspect Identifier
+
+	unreifiedRelationship identity {
+		source = IdentifiableElement
+		target = Identifier
+	}
+
+	aspect ReferencableElement == 1 identity
+
 	@rdfs:label="PerformingElement"
 	aspect PerformingElement
 
@@ -22,5 +33,11 @@ open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission> {
 	concept MonoComponent == 1 performs
 
 	MonoComponent extendsConcept Component
+
+	concept ElectricalFunction
+
+	ElectricalFunction extendsConcept Function
+
+	reifiedRelationship PerformsElectricalFunction >= 1 performs . ElectricalFunction
 
 }

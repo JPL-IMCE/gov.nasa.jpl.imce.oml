@@ -79,7 +79,7 @@ class AspectConceptClassDiagramService {
 		if(e.tbox === null) return new HashSet<EntityRelationship>()
 
 		OMLExtensions.allImportedTerminologies(e.tbox).map[boxStatements].flatten.filterNull.filter(EntityRelationship).
-			filter[f|f.source == e].toSet
+			filter[f|f.relationSource == e].toSet
 
 	}
 
@@ -133,8 +133,8 @@ class AspectConceptClassDiagramService {
 					}
 				}
 				EntityRelationship: {
-					val n1 = (t as EntityRelationship).source
-					val n2 = (t as EntityRelationship).target
+					val n1 = (t as EntityRelationship).relationSource
+					val n2 = (t as EntityRelationship).relationTarget
 					if (n1 == e) {
 						entities.add(n2)
 					} else if (n2 == e) {

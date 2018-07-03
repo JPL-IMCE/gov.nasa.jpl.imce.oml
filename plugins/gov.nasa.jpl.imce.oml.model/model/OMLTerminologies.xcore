@@ -485,17 +485,19 @@ class CardinalityRestrictedConcept extends ConceptKind {
 @Glossary
 abstract class EntityRelationship extends Term, DirectedBinaryRelationshipKind {
 
- 	refers Entity[1] source
-
+	@NotSchema
+	op Entity[1] relationSource()
+	
 	@NotSchema
 	@Override
-	op Term[1] relationDomain() { source }
-
- 	refers Entity[1] target
-
+	op Term[1] relationDomain() { relationSource }
+	
+	@NotSchema
+	op Entity[1] relationTarget()
+	
 	@NotSchema
 	@Override
-	op Term[1] relationRange() { target }
+	op Term[1] relationRange() { relationTarget }
 	
 }
 
@@ -701,6 +703,18 @@ class ReifiedRelationship extends ConceptualRelationship, CharacterizedEntityRel
 	contains ForwardProperty[1] forwardProperty opposite reifiedRelationship
 	contains InverseProperty[?] inverseProperty opposite reifiedRelationship
 	
+ 	refers Entity[1] source
+	
+	@NotSchema
+	@Override
+	op Entity[1] relationSource() { source }
+	
+ 	refers Entity[1] target
+
+	@NotSchema
+	@Override
+	op Entity[1] relationTarget() { target }
+	
 	@Scala(code="
 		scala.collection.immutable.Set[resolver.api.LogicalElement]() ++
 		extent.forwardProperty.get(this) ++
@@ -734,6 +748,18 @@ class ReifiedRelationship extends ConceptualRelationship, CharacterizedEntityRel
  */
 class ReifiedRelationshipRestriction extends ConceptualRelationship {
 
+ 	refers Entity[1] source
+	
+	@NotSchema
+	@Override
+	op Entity[1] relationSource() { source }
+	
+ 	refers Entity[1] target
+
+	@NotSchema
+	@Override
+	op Entity[1] relationTarget() { target }
+	
 	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
 	@Collection(kind="Set")
 	@NotSchema
@@ -810,6 +836,15 @@ class CardinalityRestrictedReifiedRelationship extends ConceptualRelationship {
 	refers RestrictableRelationship[1] restrictedRelationship
 	refers Entity[?] restrictedRange
 	PositiveIntegerLiteral[1] restrictedCardinality
+	
+	@NotSchema
+	@Override
+	op Entity[1] relationSource() { restrictedRelationship.relation.relationSource }
+
+	@NotSchema
+	@Override
+	op Entity[1] relationTarget() { restrictedRelationship.relation.relationTarget }
+	
 }
 
 /*
@@ -821,6 +856,18 @@ class CardinalityRestrictedReifiedRelationship extends ConceptualRelationship {
  */
 @Glossary
 class UnreifiedRelationship extends CharacterizedEntityRelationship, RestrictableRelationship {
+	
+ 	refers Entity[1] source
+	
+	@NotSchema
+	@Override
+	op Entity[1] relationSource() { source }
+	
+ 	refers Entity[1] target
+
+	@NotSchema
+	@Override
+	op Entity[1] relationTarget() { target }
 	
 	@NotSchema
 	@Override
