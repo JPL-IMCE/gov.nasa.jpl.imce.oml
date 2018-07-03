@@ -39,6 +39,15 @@ The [OML Workbench](releng/gov.nasa.jpl.imce.oml.product/README.md) is an Eclips
 	This creates a version-specific release branch and tag.
 	This also pushes the release branch and tag to origin, which should trigger the travis-ci job that will build the release and deploy it to bintray.
 	
+- Set the next snapshot version:
+
+	Execute `./scripts/snapshotVersion.sh`.
+	
+	This will prompt for a new version -- enter a string of the form `<major>.<minor>.<patch/build>.qualifier`.
+	This changes the versions in manifests and pom files.
+	This also pushes the version changes.
+	
+
 - Managing versions on bintray:
 
     OML is a collection of multiple packages, each with its own versioned artifacts; see: https://bintray.com/jpl-imce/gov.nasa.jpl.imce.oml
