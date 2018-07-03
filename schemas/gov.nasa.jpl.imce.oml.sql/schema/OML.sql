@@ -28,123 +28,137 @@ USE `OML` ;
 
 -- Summary of abstract table names
 -- 
--- CRBK                 CrossReferencableKinds
--- CRTK                 CrossReferencabilityKinds
--- CTreeDsju            ConceptTreeDisjunctions
--- CharacterizedERels   CharacterizedEntityRelationships
--- CualESI              ConceptualEntitySingletonInstances
--- CualEs               ConceptualEntities
--- CualRels             ConceptualRelationships
--- DBoxRels             DescriptionBoxRelationships
--- DRelDomains          DataRelationshipDomains
--- DRelFromEs           DataRelationshipFromEntities
--- DRelFromSts          DataRelationshipFromStructures
--- DRelRanges           DataRelationshipRanges
--- DRelToScs            DataRelationshipToScalars
--- DRelToSts            DataRelationshipToStructures
--- DRels                DataRelationships
--- DirBinRelKinds       DirectedBinaryRelationshipKinds
--- Drs                  DataRanges
--- DsjUOfCsAx           DisjointUnionOfConceptsAxioms
--- Dt                   Datatypes
--- EIdK                 ExtrinsicIdentityKinds
--- ERAx                 EntityRestrictionAxioms
--- ERels                EntityRelationships
--- EScPRAx              EntityScalarDataPropertyRestrictionAxioms
--- EStPRAx              EntityStructuredDataPropertyRestrictionAxioms
--- EltCRefTs            ElementCrossReferenceTuples
--- Es                   Entities
--- IIdK                 IntrinsicIdentityKinds
--- Ik                   IdentityKinds
--- LogEs                LogicalElements
--- ModEdges             ModuleEdges
--- ModElts              ModuleElements
--- Mods                 Modules
--- NonCRBK              NonCrossReferencableKinds
--- NonLogEs             NonLogicalElements
--- P                    Predicates
--- RStPCtxts            RestrictionStructuredDataPropertyContexts
--- Ress                 Resources
--- RestDrs              RestrictedDataRanges
--- RestrictableRels     RestrictableRelationships
--- Rules                Rules
--- S1IStPCtxts          SingletonInstanceStructuredDataPropertyContexts
--- SpeAx                SpecializationAxioms
--- TBox                 TerminologyBoxes
--- TBoxAx               TerminologyBoxAxioms
--- TBoxSt               TerminologyBoxStatements
--- TermAx               TermAxioms
--- Terms                Terms
--- TlgyAx               TerminologyAxioms
--- TlgyBdlAx            TerminologyBundleAxioms
--- TlgyBdlSt            TerminologyBundleStatements
--- TlgyIAsts            TerminologyInstanceAssertions
--- UryTermKinds         UnaryTermKinds
--- ValCRefTs            ValueCrossReferenceTuples
+-- Aks                                    AspectKinds
+-- CKinds                                 ConceptKinds
+-- CRBK                                   CrossReferencableKinds
+-- CRTK                                   CrossReferencabilityKinds
+-- CTreeDsju                              ConceptTreeDisjunctions
+-- CharacterizedERels                     CharacterizedEntityRelationships
+-- CualESI                                ConceptualEntitySingletonInstances
+-- CualEs                                 ConceptualEntities
+-- CualRels                               ConceptualRelationships
+-- DBoxRels                               DescriptionBoxRelationships
+-- DRelDomains                            DataRelationshipDomains
+-- DRelFromEs                             DataRelationshipFromEntities
+-- DRelFromSts                            DataRelationshipFromStructures
+-- DRelRanges                             DataRelationshipRanges
+-- DRelToScs                              DataRelationshipToScalars
+-- DRelToSts                              DataRelationshipToStructures
+-- DRels                                  DataRelationships
+-- DirBinRelKinds                         DirectedBinaryRelationshipKinds
+-- Drs                                    DataRanges
+-- DsjUOfCsAx                             DisjointUnionOfConceptsAxioms
+-- Dt                                     Datatypes
+-- EIdK                                   ExtrinsicIdentityKinds
+-- ERAx                                   EntityRestrictionAxioms
+-- ERels                                  EntityRelationships
+-- EScPRAx                                EntityScalarDataPropertyRestrictionAxioms
+-- EStPRAx                                EntityStructuredDataPropertyRestrictionAxioms
+-- EltCRefTs                              ElementCrossReferenceTuples
+-- Es                                     Entities
+-- IIdK                                   IntrinsicIdentityKinds
+-- Ik                                     IdentityKinds
+-- LogEs                                  LogicalElements
+-- ModEdges                               ModuleEdges
+-- ModElts                                ModuleElements
+-- Mods                                   Modules
+-- NonCRBK                                NonCrossReferencableKinds
+-- NonLogEs                               NonLogicalElements
+-- P                                      Predicates
+-- RStPCtxts                              RestrictionStructuredDataPropertyContexts
+-- Ress                                   Resources
+-- RestDrs                                RestrictedDataRanges
+-- RestrictableRels                       RestrictableRelationships
+-- Rules                                  Rules
+-- S1IStPCtxts                            SingletonInstanceStructuredDataPropertyContexts
+-- SpeAx                                  SpecializationAxioms
+-- TBox                                   TerminologyBoxes
+-- TBoxAx                                 TerminologyBoxAxioms
+-- TBoxSt                                 TerminologyBoxStatements
+-- TermAx                                 TermAxioms
+-- Terms                                  Terms
+-- TlgyAx                                 TerminologyAxioms
+-- TlgyBdlAx                              TerminologyBundleAxioms
+-- TlgyBdlSt                              TerminologyBundleStatements
+-- TlgyIAsts                              TerminologyInstanceAssertions
+-- UryTermKinds                           UnaryTermKinds
+-- ValCRefTs                              ValueCrossReferenceTuples
 		
 -- Summary of concrete table names
 -- 
--- AnnotPropVals        AnnotationPropertyValues
--- AnnotProps           AnnotationProperties
--- AnonymousCUnionAx    AnonymousConceptUnionAxioms
--- AspectSpeAx          AspectSpecializationAxioms
--- Aspects              Aspects
--- BdldTlgyAx           BundledTerminologyAxioms
--- Bdls                 Bundles
--- BinScRs              BinaryScalarRestrictions
--- CDesTlgyAx           ConceptDesignationTerminologyAxioms
--- CIs                  ConceptInstances
--- CSpeAx               ConceptSpecializationAxioms
--- ChainRules           ChainRules
--- Cs                   Concepts
--- DBoxExtCWDef         DescriptionBoxExtendsClosedWorldDefinitions
--- DBoxRfns             DescriptionBoxRefinements
--- DBoxes               DescriptionBoxes
--- EExRAx               EntityExistentialRestrictionAxioms
--- EScPExRAx            EntityScalarDataPropertyExistentialRestrictionAxioms
--- EScPPtrRAx           EntityScalarDataPropertyParticularRestrictionAxioms
--- EScPUxRAx            EntityScalarDataPropertyUniversalRestrictionAxioms
--- EScPs                EntityScalarDataProperties
--- EStPPtrRAx           EntityStructuredDataPropertyParticularRestrictionAxioms
--- EStPs                EntityStructuredDataProperties
--- EUxRAx               EntityUniversalRestrictionAxioms
--- FwdProps             ForwardProperties
--- IRIScRs              IRIScalarRestrictions
--- InvProps             InverseProperties
--- NumericScRs          NumericScalarRestrictions
--- PlainLitScRs         PlainLiteralScalarRestrictions
--- RRIDomains           ReifiedRelationshipInstanceDomains
--- RRIRanges            ReifiedRelationshipInstanceRanges
--- RRIs                 ReifiedRelationshipInstances
--- RRRs                 ReifiedRelationshipRestrictions
--- RRSpeAx              ReifiedRelationshipSpecializationAxioms
--- RRs                  ReifiedRelationships
--- RScPVals             RestrictionScalarDataPropertyValues
--- RStPTs               RestrictionStructuredDataPropertyTuples
--- RootCTaxonomyAx      RootConceptTaxonomyAxioms
--- RuleBodySegs         RuleBodySegments
--- S1IScPVals           SingletonInstanceScalarDataPropertyValues
--- S1IStPVals           SingletonInstanceStructuredDataPropertyValues
--- ScOneOfLitAx         ScalarOneOfLiteralAxioms
--- ScOneOfRs            ScalarOneOfRestrictions
--- ScPVals              ScalarDataPropertyValues
--- ScPs                 ScalarDataProperties
--- Scs                  Scalars
--- SegP                 SegmentPredicates
--- SpeDsjtCAx           SpecificDisjointConceptAxioms
--- StPTs                StructuredDataPropertyTuples
--- StPs                 StructuredDataProperties
--- StringScRs           StringScalarRestrictions
--- Sts                  Structures
--- SubDataPropOfAx      SubDataPropertyOfAxioms
--- SubObjectPropOfAx    SubObjectPropertyOfAxioms
--- SynonymScRs          SynonymScalarRestrictions
--- TimeScRs             TimeScalarRestrictions
--- TlgyExtensionAx      TerminologyExtensionAxioms
--- TlgyGraphs           TerminologyGraphs
--- TlgyNestingAx        TerminologyNestingAxioms
--- URITs                UnreifiedRelationshipInstanceTuples
--- URs                  UnreifiedRelationships
+-- AnnotPropVals                          AnnotationPropertyValues
+-- AnnotProps                             AnnotationProperties
+-- AnonymousCUnionAx                      AnonymousConceptUnionAxioms
+-- As                                     Aspects
+-- AspectSpeAx                            AspectSpecializationAxioms
+-- BdldTlgyAx                             BundledTerminologyAxioms
+-- Bdls                                   Bundles
+-- BinScRs                                BinaryScalarRestrictions
+-- CDesTlgyAx                             ConceptDesignationTerminologyAxioms
+-- CIs                                    ConceptInstances
+-- CR                                     ChainRules
+-- CSpeAx                                 ConceptSpecializationAxioms
+-- CardinalityRestAs                      CardinalityRestrictedAspects
+-- CardinalityRestCs                      CardinalityRestrictedConcepts
+-- CardinalityRestRRs                     CardinalityRestrictedReifiedRelationships
+-- Cs                                     Concepts
+-- DBoxExtCWDef                           DescriptionBoxExtendsClosedWorldDefinitions
+-- DBoxRfns                               DescriptionBoxRefinements
+-- DBoxes                                 DescriptionBoxes
+-- EExRAx                                 EntityExistentialRestrictionAxioms
+-- EScPExRAx                              EntityScalarDataPropertyExistentialRestrictionAxioms
+-- EScPPtrRAx                             EntityScalarDataPropertyParticularRestrictionAxioms
+-- EScPUxRAx                              EntityScalarDataPropertyUniversalRestrictionAxioms
+-- EScPs                                  EntityScalarDataProperties
+-- EStPPtrRAx                             EntityStructuredDataPropertyParticularRestrictionAxioms
+-- EStPs                                  EntityStructuredDataProperties
+-- EUxRAx                                 EntityUniversalRestrictionAxioms
+-- FwdProps                               ForwardProperties
+-- IRIScRs                                IRIScalarRestrictions
+-- InvProps                               InverseProperties
+-- NumericScRs                            NumericScalarRestrictions
+-- PlainLitScRs                           PlainLiteralScalarRestrictions
+-- RRIDomains                             ReifiedRelationshipInstanceDomains
+-- RRIRanges                              ReifiedRelationshipInstanceRanges
+-- RRIs                                   ReifiedRelationshipInstances
+-- RRRs                                   ReifiedRelationshipRestrictions
+-- RRSpeAx                                ReifiedRelationshipSpecializationAxioms
+-- RRs                                    ReifiedRelationships
+-- RScPVals                               RestrictionScalarDataPropertyValues
+-- RStPTs                                 RestrictionStructuredDataPropertyTuples
+-- RootCTaxonomyAx                        RootConceptTaxonomyAxioms
+-- RuleBodySegs                           RuleBodySegments
+-- S1IScPVals                             SingletonInstanceScalarDataPropertyValues
+-- S1IStPVals                             SingletonInstanceStructuredDataPropertyValues
+-- ScOneOfLitAx                           ScalarOneOfLiteralAxioms
+-- ScOneOfRs                              ScalarOneOfRestrictions
+-- ScPVals                                ScalarDataPropertyValues
+-- ScPs                                   ScalarDataProperties
+-- Scs                                    Scalars
+-- SegP                                   SegmentPredicates
+-- SpeDsjtCAx                             SpecificDisjointConceptAxioms
+-- StPTs                                  StructuredDataPropertyTuples
+-- StPs                                   StructuredDataProperties
+-- StringScRs                             StringScalarRestrictions
+-- Sts                                    Structures
+-- SubDataPropOfAx                        SubDataPropertyOfAxioms
+-- SubObjectPropOfAx                      SubObjectPropertyOfAxioms
+-- SynonymScRs                            SynonymScalarRestrictions
+-- TimeScRs                               TimeScalarRestrictions
+-- TlgyExtensionAx                        TerminologyExtensionAxioms
+-- TlgyGraphs                             TerminologyGraphs
+-- TlgyNestingAx                          TerminologyNestingAxioms
+-- URITs                                  UnreifiedRelationshipInstanceTuples
+-- URs                                    UnreifiedRelationships
+
+-- -----------------------------------------------------
+-- Table `OML`.`Aks`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`Aks` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,		  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Abstract Classification Table AspectKinds';
 
 -- -----------------------------------------------------
 -- Table `OML`.`CharacterizedERels`
@@ -154,6 +168,15 @@ CREATE TABLE IF NOT EXISTS `OML`.`CharacterizedERels` (
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )
 COMMENT = 'Abstract Classification Table CharacterizedEntityRelationships';
+
+-- -----------------------------------------------------
+-- Table `OML`.`CKinds`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`CKinds` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,		  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Abstract Classification Table ConceptKinds';
 
 -- -----------------------------------------------------
 -- Table `OML`.`CTreeDsju`
@@ -683,14 +706,14 @@ CREATE TABLE IF NOT EXISTS `OML`.`AnnotProps` (
 COMMENT = 'Concrete Information Table AnnotationProperties';
 
 -- -----------------------------------------------------
--- Table `OML`.`Aspects`
+-- Table `OML`.`As`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`Aspects` (
+CREATE TABLE IF NOT EXISTS `OML`.`As` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
   `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
   `name` TEXT NOT NULL COMMENT 'LocalName',
   
-  CONSTRAINT `fk_Aspects_tboxUUID`
+  CONSTRAINT `fk_As_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
     REFERENCES `OML`.`TBox`(`uuid`)
     ON DELETE CASCADE
@@ -760,7 +783,7 @@ COMMENT = 'Concrete Information Table Structures';
 CREATE TABLE IF NOT EXISTS `OML`.`CDesTlgyAx` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
   `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `designatedConceptUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
+  `designatedConceptUUID` CHAR(36) NOT NULL COMMENT 'CKinds (ConceptKind)',
   `designatedTerminologyIRI` TEXT NOT NULL COMMENT 'TBox (TerminologyBox)',
   
   CONSTRAINT `fk_CDesTlgyAx_tboxUUID`
@@ -771,7 +794,7 @@ CREATE TABLE IF NOT EXISTS `OML`.`CDesTlgyAx` (
   
   CONSTRAINT `fk_CDesTlgyAx_designatedConceptUUID`
     FOREIGN KEY (`designatedConceptUUID`)
-    REFERENCES `OML`.`Cs`(`uuid`)
+    REFERENCES `OML`.`CKinds`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -803,7 +826,7 @@ COMMENT = 'Concrete Information Table TerminologyExtensionAxioms';
 CREATE TABLE IF NOT EXISTS `OML`.`TlgyNestingAx` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
   `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `nestingContextUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
+  `nestingContextUUID` CHAR(36) NOT NULL COMMENT 'CKinds (ConceptKind)',
   `nestingTerminologyIRI` TEXT NOT NULL COMMENT 'TBox (TerminologyBox)',
   
   CONSTRAINT `fk_TlgyNestingAx_tboxUUID`
@@ -814,7 +837,7 @@ CREATE TABLE IF NOT EXISTS `OML`.`TlgyNestingAx` (
   
   CONSTRAINT `fk_TlgyNestingAx_nestingContextUUID`
     FOREIGN KEY (`nestingContextUUID`)
-    REFERENCES `OML`.`Cs`(`uuid`)
+    REFERENCES `OML`.`CKinds`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1422,21 +1445,21 @@ CREATE TABLE IF NOT EXISTS `OML`.`URs` (
 COMMENT = 'Concrete Information Table UnreifiedRelationships';
 
 -- -----------------------------------------------------
--- Table `OML`.`ChainRules`
+-- Table `OML`.`CR`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ChainRules` (
+CREATE TABLE IF NOT EXISTS `OML`.`CR` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
   `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
   `name` TEXT NOT NULL COMMENT 'LocalName',
   `headUUID` CHAR(36) NOT NULL COMMENT 'URs (UnreifiedRelationship)',
   
-  CONSTRAINT `fk_ChainRules_tboxUUID`
+  CONSTRAINT `fk_CR_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
     REFERENCES `OML`.`TBox`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ChainRules_headUUID`
+  CONSTRAINT `fk_CR_headUUID`
     FOREIGN KEY (`headUUID`)
     REFERENCES `OML`.`URs`(`uuid`)
     ON DELETE CASCADE
@@ -1452,7 +1475,7 @@ COMMENT = 'Concrete Information Table ChainRules';
 CREATE TABLE IF NOT EXISTS `OML`.`RuleBodySegs` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
   `previousSegmentUUID` CHAR(36) NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  `ruleUUID` CHAR(36) NULL COMMENT 'ChainRules (ChainRule)',
+  `ruleUUID` CHAR(36) NULL COMMENT 'CR (ChainRule)',
   
   CONSTRAINT `fk_RuleBodySegs_previousSegmentUUID`
     FOREIGN KEY (`previousSegmentUUID`)
@@ -1462,7 +1485,7 @@ CREATE TABLE IF NOT EXISTS `OML`.`RuleBodySegs` (
   
   CONSTRAINT `fk_RuleBodySegs_ruleUUID`
     FOREIGN KEY (`ruleUUID`)
-    REFERENCES `OML`.`ChainRules`(`uuid`)
+    REFERENCES `OML`.`CR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1815,7 +1838,7 @@ COMMENT = 'Concrete Information Table RestrictionScalarDataPropertyValues';
 CREATE TABLE IF NOT EXISTS `OML`.`AspectSpeAx` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
   `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `superAspectUUID` CHAR(36) NOT NULL COMMENT 'Aspects (Aspect)',
+  `superAspectUUID` CHAR(36) NOT NULL COMMENT 'Aks (AspectKind)',
   `subEntityUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
   
   CONSTRAINT `fk_AspectSpeAx_tboxUUID`
@@ -1826,7 +1849,7 @@ CREATE TABLE IF NOT EXISTS `OML`.`AspectSpeAx` (
   
   CONSTRAINT `fk_AspectSpeAx_superAspectUUID`
     FOREIGN KEY (`superAspectUUID`)
-    REFERENCES `OML`.`Aspects`(`uuid`)
+    REFERENCES `OML`.`Aks`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1846,8 +1869,8 @@ COMMENT = 'Concrete Information Table AspectSpecializationAxioms';
 CREATE TABLE IF NOT EXISTS `OML`.`CSpeAx` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
   `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `superConceptUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
-  `subConceptUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
+  `superConceptUUID` CHAR(36) NOT NULL COMMENT 'CKinds (ConceptKind)',
+  `subConceptUUID` CHAR(36) NOT NULL COMMENT 'CKinds (ConceptKind)',
   
   CONSTRAINT `fk_CSpeAx_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
@@ -1857,13 +1880,13 @@ CREATE TABLE IF NOT EXISTS `OML`.`CSpeAx` (
   
   CONSTRAINT `fk_CSpeAx_superConceptUUID`
     FOREIGN KEY (`superConceptUUID`)
-    REFERENCES `OML`.`Cs`(`uuid`)
+    REFERENCES `OML`.`CKinds`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
   CONSTRAINT `fk_CSpeAx_subConceptUUID`
     FOREIGN KEY (`subConceptUUID`)
-    REFERENCES `OML`.`Cs`(`uuid`)
+    REFERENCES `OML`.`CKinds`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1970,7 +1993,7 @@ COMMENT = 'Concrete Information Table SubObjectPropertyOfAxioms';
 CREATE TABLE IF NOT EXISTS `OML`.`RootCTaxonomyAx` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
   `bundleUUID` CHAR(36) NOT NULL COMMENT 'Bdls (Bundle)',
-  `rootUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
+  `rootUUID` CHAR(36) NOT NULL COMMENT 'CKinds (ConceptKind)',
   
   CONSTRAINT `fk_RootCTaxonomyAx_bundleUUID`
     FOREIGN KEY (`bundleUUID`)
@@ -1980,7 +2003,7 @@ CREATE TABLE IF NOT EXISTS `OML`.`RootCTaxonomyAx` (
   
   CONSTRAINT `fk_RootCTaxonomyAx_rootUUID`
     FOREIGN KEY (`rootUUID`)
-    REFERENCES `OML`.`Cs`(`uuid`)
+    REFERENCES `OML`.`CKinds`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -2012,7 +2035,7 @@ COMMENT = 'Concrete Information Table AnonymousConceptUnionAxioms';
 CREATE TABLE IF NOT EXISTS `OML`.`SpeDsjtCAx` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
   `disjointTaxonomyParentUUID` CHAR(36) NOT NULL COMMENT 'CTreeDsju (ConceptTreeDisjunction)',
-  `disjointLeafUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
+  `disjointLeafUUID` CHAR(36) NOT NULL COMMENT 'CKinds (ConceptKind)',
   
   CONSTRAINT `fk_SpeDsjtCAx_disjointTaxonomyParentUUID`
     FOREIGN KEY (`disjointTaxonomyParentUUID`)
@@ -2022,7 +2045,7 @@ CREATE TABLE IF NOT EXISTS `OML`.`SpeDsjtCAx` (
   
   CONSTRAINT `fk_SpeDsjtCAx_disjointLeafUUID`
     FOREIGN KEY (`disjointLeafUUID`)
-    REFERENCES `OML`.`Cs`(`uuid`)
+    REFERENCES `OML`.`CKinds`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -2036,7 +2059,7 @@ COMMENT = 'Concrete Information Table SpecificDisjointConceptAxioms';
 CREATE TABLE IF NOT EXISTS `OML`.`CIs` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
   `descriptionBoxUUID` CHAR(36) NOT NULL COMMENT 'DBoxes (DescriptionBox)',
-  `singletonConceptClassifierUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
+  `singletonConceptClassifierUUID` CHAR(36) NOT NULL COMMENT 'CKinds (ConceptKind)',
   `name` TEXT NOT NULL COMMENT 'LocalName',
   
   CONSTRAINT `fk_CIs_descriptionBoxUUID`
@@ -2047,7 +2070,7 @@ CREATE TABLE IF NOT EXISTS `OML`.`CIs` (
   
   CONSTRAINT `fk_CIs_singletonConceptClassifierUUID`
     FOREIGN KEY (`singletonConceptClassifierUUID`)
-    REFERENCES `OML`.`Cs`(`uuid`)
+    REFERENCES `OML`.`CKinds`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -2334,6 +2357,108 @@ CREATE TABLE IF NOT EXISTS `OML`.`AnnotPropVals` (
 )
 COMMENT = 'Concrete Information Table AnnotationPropertyValues';
 
+-- -----------------------------------------------------
+-- Table `OML`.`CardinalityRestAs`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`CardinalityRestAs` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
+  `restrictedRangeUUID` CHAR(36) NULL COMMENT 'Es (Entity)',
+  `name` TEXT NOT NULL COMMENT 'LocalName',
+  `restrictedCardinality` TEXT NOT NULL COMMENT 'PositiveIntegerLiteral',
+  `restrictedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RestrictableRels (RestrictableRelationship)',
+  `restrictionKind` TEXT NOT NULL COMMENT 'CardinalityRestrictionKind',
+  
+  CONSTRAINT `fk_CardinalityRestAs_tboxUUID`
+    FOREIGN KEY (`tboxUUID`)
+    REFERENCES `OML`.`TBox`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_CardinalityRestAs_restrictedRangeUUID`
+    FOREIGN KEY (`restrictedRangeUUID`)
+    REFERENCES `OML`.`Es`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_CardinalityRestAs_restrictedRelationshipUUID`
+    FOREIGN KEY (`restrictedRelationshipUUID`)
+    REFERENCES `OML`.`RestrictableRels`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table CardinalityRestrictedAspects';
+
+-- -----------------------------------------------------
+-- Table `OML`.`CardinalityRestCs`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`CardinalityRestCs` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
+  `restrictedRangeUUID` CHAR(36) NULL COMMENT 'Es (Entity)',
+  `name` TEXT NOT NULL COMMENT 'LocalName',
+  `restrictedCardinality` TEXT NOT NULL COMMENT 'PositiveIntegerLiteral',
+  `restrictedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RestrictableRels (RestrictableRelationship)',
+  `restrictionKind` TEXT NOT NULL COMMENT 'CardinalityRestrictionKind',
+  
+  CONSTRAINT `fk_CardinalityRestCs_tboxUUID`
+    FOREIGN KEY (`tboxUUID`)
+    REFERENCES `OML`.`TBox`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_CardinalityRestCs_restrictedRangeUUID`
+    FOREIGN KEY (`restrictedRangeUUID`)
+    REFERENCES `OML`.`Es`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_CardinalityRestCs_restrictedRelationshipUUID`
+    FOREIGN KEY (`restrictedRelationshipUUID`)
+    REFERENCES `OML`.`RestrictableRels`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table CardinalityRestrictedConcepts';
+
+-- -----------------------------------------------------
+-- Table `OML`.`CardinalityRestRRs`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`CardinalityRestRRs` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
+  `restrictedRangeUUID` CHAR(36) NULL COMMENT 'Es (Entity)',
+  `name` TEXT NOT NULL COMMENT 'LocalName',
+  `restrictedCardinality` TEXT NOT NULL COMMENT 'PositiveIntegerLiteral',
+  `restrictedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RestrictableRels (RestrictableRelationship)',
+  `restrictionKind` TEXT NOT NULL COMMENT 'CardinalityRestrictionKind',
+  
+  CONSTRAINT `fk_CardinalityRestRRs_tboxUUID`
+    FOREIGN KEY (`tboxUUID`)
+    REFERENCES `OML`.`TBox`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_CardinalityRestRRs_restrictedRangeUUID`
+    FOREIGN KEY (`restrictedRangeUUID`)
+    REFERENCES `OML`.`Es`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_CardinalityRestRRs_restrictedRelationshipUUID`
+    FOREIGN KEY (`restrictedRelationshipUUID`)
+    REFERENCES `OML`.`RestrictableRels`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table CardinalityRestrictedReifiedRelationships';
+
 
 USE `OML`;
 DELIMITER $$
@@ -2515,13 +2640,15 @@ delete from `OML`.`NonLogEs`;
 END$$
 
 -- -----------------------------------------------------
--- Concrete Information Table `OML`.`Aspects` (Aspects)
+-- Concrete Information Table `OML`.`As` (Aspects)
 -- -----------------------------------------------------
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Aspects_AFTER_INSERT` AFTER INSERT ON `Aspects` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`As_AFTER_INSERT` AFTER INSERT ON `As` FOR EACH ROW
 BEGIN
+-- AspectKinds(x) if Aspects(x)
+insert into `OML`.`Aks`(`uuid`) values(new.`uuid`);
 -- CrossReferencableKinds(x) if Aspects(x)
 insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
 -- CrossReferencabilityKinds(x) if Aspects(x)
@@ -2550,8 +2677,10 @@ END$$
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Aspects_AFTER_DELETE` AFTER DELETE ON `Aspects` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`As_AFTER_DELETE` AFTER DELETE ON `As` FOR EACH ROW
 BEGIN
+-- AspectKinds(x) if Aspects(x)
+delete from `OML`.`Aks`;
 -- CrossReferencableKinds(x) if Aspects(x)
 delete from `OML`.`CRBK`;
 -- CrossReferencabilityKinds(x) if Aspects(x)
@@ -2586,6 +2715,8 @@ DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Cs_AFTER_INSERT` AFTER INSERT ON `Cs` FOR EACH ROW
 BEGIN
+-- ConceptKinds(x) if Concepts(x)
+insert into `OML`.`CKinds`(`uuid`) values(new.`uuid`);
 -- CrossReferencableKinds(x) if Concepts(x)
 insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
 -- CrossReferencabilityKinds(x) if Concepts(x)
@@ -2618,6 +2749,8 @@ DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Cs_AFTER_DELETE` AFTER DELETE ON `Cs` FOR EACH ROW
 BEGIN
+-- ConceptKinds(x) if Concepts(x)
+delete from `OML`.`CKinds`;
 -- CrossReferencableKinds(x) if Concepts(x)
 delete from `OML`.`CRBK`;
 -- CrossReferencabilityKinds(x) if Concepts(x)
@@ -4267,12 +4400,12 @@ delete from `OML`.`Terms`;
 END$$
 
 -- -----------------------------------------------------
--- Concrete Information Table `OML`.`ChainRules` (ChainRules)
+-- Concrete Information Table `OML`.`CR` (ChainRules)
 -- -----------------------------------------------------
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ChainRules_AFTER_INSERT` AFTER INSERT ON `ChainRules` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CR_AFTER_INSERT` AFTER INSERT ON `CR` FOR EACH ROW
 BEGIN
 -- CrossReferencableKinds(x) if ChainRules(x)
 insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
@@ -4298,7 +4431,7 @@ END$$
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ChainRules_AFTER_DELETE` AFTER DELETE ON `ChainRules` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CR_AFTER_DELETE` AFTER DELETE ON `CR` FOR EACH ROW
 BEGIN
 -- CrossReferencableKinds(x) if ChainRules(x)
 delete from `OML`.`CRBK`;
@@ -5708,6 +5841,222 @@ delete from `OML`.`NonCRBK`;
 delete from `OML`.`NonLogEs`;
 -- ValueCrossReferenceTuples(x) if AnnotationPropertyValues(x)
 delete from `OML`.`ValCRefTs`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`CardinalityRestAs` (CardinalityRestrictedAspects)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CardinalityRestAs_AFTER_INSERT` AFTER INSERT ON `CardinalityRestAs` FOR EACH ROW
+BEGIN
+-- AspectKinds(x) if CardinalityRestrictedAspects(x)
+insert into `OML`.`Aks`(`uuid`) values(new.`uuid`);
+-- CrossReferencableKinds(x) if CardinalityRestrictedAspects(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if CardinalityRestrictedAspects(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- Entities(x) if CardinalityRestrictedAspects(x)
+insert into `OML`.`Es`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if CardinalityRestrictedAspects(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if CardinalityRestrictedAspects(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if CardinalityRestrictedAspects(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if CardinalityRestrictedAspects(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Predicates(x) if CardinalityRestrictedAspects(x)
+insert into `OML`.`P`(`uuid`) values(new.`uuid`);
+-- Resources(x) if CardinalityRestrictedAspects(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if CardinalityRestrictedAspects(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if CardinalityRestrictedAspects(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+-- UnaryTermKinds(x) if CardinalityRestrictedAspects(x)
+insert into `OML`.`UryTermKinds`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CardinalityRestAs_AFTER_DELETE` AFTER DELETE ON `CardinalityRestAs` FOR EACH ROW
+BEGIN
+-- AspectKinds(x) if CardinalityRestrictedAspects(x)
+delete from `OML`.`Aks`;
+-- CrossReferencableKinds(x) if CardinalityRestrictedAspects(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if CardinalityRestrictedAspects(x)
+delete from `OML`.`CRTK`;
+-- Entities(x) if CardinalityRestrictedAspects(x)
+delete from `OML`.`Es`;
+-- IntrinsicIdentityKinds(x) if CardinalityRestrictedAspects(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if CardinalityRestrictedAspects(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if CardinalityRestrictedAspects(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if CardinalityRestrictedAspects(x)
+delete from `OML`.`ModElts`;
+-- Predicates(x) if CardinalityRestrictedAspects(x)
+delete from `OML`.`P`;
+-- Resources(x) if CardinalityRestrictedAspects(x)
+delete from `OML`.`Ress`;
+-- TerminologyBoxStatements(x) if CardinalityRestrictedAspects(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if CardinalityRestrictedAspects(x)
+delete from `OML`.`Terms`;
+-- UnaryTermKinds(x) if CardinalityRestrictedAspects(x)
+delete from `OML`.`UryTermKinds`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`CardinalityRestCs` (CardinalityRestrictedConcepts)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CardinalityRestCs_AFTER_INSERT` AFTER INSERT ON `CardinalityRestCs` FOR EACH ROW
+BEGIN
+-- ConceptKinds(x) if CardinalityRestrictedConcepts(x)
+insert into `OML`.`CKinds`(`uuid`) values(new.`uuid`);
+-- CrossReferencableKinds(x) if CardinalityRestrictedConcepts(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if CardinalityRestrictedConcepts(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ConceptualEntities(x) if CardinalityRestrictedConcepts(x)
+insert into `OML`.`CualEs`(`uuid`) values(new.`uuid`);
+-- Entities(x) if CardinalityRestrictedConcepts(x)
+insert into `OML`.`Es`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if CardinalityRestrictedConcepts(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if CardinalityRestrictedConcepts(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if CardinalityRestrictedConcepts(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if CardinalityRestrictedConcepts(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Predicates(x) if CardinalityRestrictedConcepts(x)
+insert into `OML`.`P`(`uuid`) values(new.`uuid`);
+-- Resources(x) if CardinalityRestrictedConcepts(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if CardinalityRestrictedConcepts(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if CardinalityRestrictedConcepts(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+-- UnaryTermKinds(x) if CardinalityRestrictedConcepts(x)
+insert into `OML`.`UryTermKinds`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CardinalityRestCs_AFTER_DELETE` AFTER DELETE ON `CardinalityRestCs` FOR EACH ROW
+BEGIN
+-- ConceptKinds(x) if CardinalityRestrictedConcepts(x)
+delete from `OML`.`CKinds`;
+-- CrossReferencableKinds(x) if CardinalityRestrictedConcepts(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if CardinalityRestrictedConcepts(x)
+delete from `OML`.`CRTK`;
+-- ConceptualEntities(x) if CardinalityRestrictedConcepts(x)
+delete from `OML`.`CualEs`;
+-- Entities(x) if CardinalityRestrictedConcepts(x)
+delete from `OML`.`Es`;
+-- IntrinsicIdentityKinds(x) if CardinalityRestrictedConcepts(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if CardinalityRestrictedConcepts(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if CardinalityRestrictedConcepts(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if CardinalityRestrictedConcepts(x)
+delete from `OML`.`ModElts`;
+-- Predicates(x) if CardinalityRestrictedConcepts(x)
+delete from `OML`.`P`;
+-- Resources(x) if CardinalityRestrictedConcepts(x)
+delete from `OML`.`Ress`;
+-- TerminologyBoxStatements(x) if CardinalityRestrictedConcepts(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if CardinalityRestrictedConcepts(x)
+delete from `OML`.`Terms`;
+-- UnaryTermKinds(x) if CardinalityRestrictedConcepts(x)
+delete from `OML`.`UryTermKinds`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`CardinalityRestRRs` (CardinalityRestrictedReifiedRelationships)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CardinalityRestRRs_AFTER_INSERT` AFTER INSERT ON `CardinalityRestRRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if CardinalityRestrictedReifiedRelationships(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if CardinalityRestrictedReifiedRelationships(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ConceptualEntities(x) if CardinalityRestrictedReifiedRelationships(x)
+insert into `OML`.`CualEs`(`uuid`) values(new.`uuid`);
+-- ConceptualRelationships(x) if CardinalityRestrictedReifiedRelationships(x)
+insert into `OML`.`CualRels`(`uuid`) values(new.`uuid`);
+-- DirectedBinaryRelationshipKinds(x) if CardinalityRestrictedReifiedRelationships(x)
+insert into `OML`.`DirBinRelKinds`(`uuid`) values(new.`uuid`);
+-- EntityRelationships(x) if CardinalityRestrictedReifiedRelationships(x)
+insert into `OML`.`ERels`(`uuid`) values(new.`uuid`);
+-- Entities(x) if CardinalityRestrictedReifiedRelationships(x)
+insert into `OML`.`Es`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if CardinalityRestrictedReifiedRelationships(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if CardinalityRestrictedReifiedRelationships(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if CardinalityRestrictedReifiedRelationships(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if CardinalityRestrictedReifiedRelationships(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Predicates(x) if CardinalityRestrictedReifiedRelationships(x)
+insert into `OML`.`P`(`uuid`) values(new.`uuid`);
+-- Resources(x) if CardinalityRestrictedReifiedRelationships(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if CardinalityRestrictedReifiedRelationships(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if CardinalityRestrictedReifiedRelationships(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CardinalityRestRRs_AFTER_DELETE` AFTER DELETE ON `CardinalityRestRRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if CardinalityRestrictedReifiedRelationships(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if CardinalityRestrictedReifiedRelationships(x)
+delete from `OML`.`CRTK`;
+-- ConceptualEntities(x) if CardinalityRestrictedReifiedRelationships(x)
+delete from `OML`.`CualEs`;
+-- ConceptualRelationships(x) if CardinalityRestrictedReifiedRelationships(x)
+delete from `OML`.`CualRels`;
+-- DirectedBinaryRelationshipKinds(x) if CardinalityRestrictedReifiedRelationships(x)
+delete from `OML`.`DirBinRelKinds`;
+-- EntityRelationships(x) if CardinalityRestrictedReifiedRelationships(x)
+delete from `OML`.`ERels`;
+-- Entities(x) if CardinalityRestrictedReifiedRelationships(x)
+delete from `OML`.`Es`;
+-- IntrinsicIdentityKinds(x) if CardinalityRestrictedReifiedRelationships(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if CardinalityRestrictedReifiedRelationships(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if CardinalityRestrictedReifiedRelationships(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if CardinalityRestrictedReifiedRelationships(x)
+delete from `OML`.`ModElts`;
+-- Predicates(x) if CardinalityRestrictedReifiedRelationships(x)
+delete from `OML`.`P`;
+-- Resources(x) if CardinalityRestrictedReifiedRelationships(x)
+delete from `OML`.`Ress`;
+-- TerminologyBoxStatements(x) if CardinalityRestrictedReifiedRelationships(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if CardinalityRestrictedReifiedRelationships(x)
+delete from `OML`.`Terms`;
 END$$
 
 
