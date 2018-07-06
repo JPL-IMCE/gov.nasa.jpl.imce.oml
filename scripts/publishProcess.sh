@@ -13,7 +13,41 @@ else
     mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=$V -Dtycho.mode=maven -Dproperties=oml.version;
     echo "# Review the changes and confirm before proceeding";
     git status;
-    git diff;
+    git diff --stat > /tmp/d1
+    echo "# git diff --stat ..."
+    echo "#--------------------"
+    cat /tmp/d1
+    echo "#--------------------"
+    cat << EOF > /tmp/d2
+ features/gov.nasa.jpl.imce.oml.feature/feature.xml                   | 2 +-
+ features/gov.nasa.jpl.imce.oml.rcp.feature/feature.xml               | 2 +-
+ features/pom.xml                                                     | 4 ++--
+ plugins/gov.nasa.jpl.imce.oml.dsl.ide/META-INF/MANIFEST.MF           | 2 +-
+ plugins/gov.nasa.jpl.imce.oml.dsl.ui/META-INF/MANIFEST.MF            | 2 +-
+ plugins/gov.nasa.jpl.imce.oml.dsl/META-INF/MANIFEST.MF               | 2 +-
+ plugins/gov.nasa.jpl.imce.oml.model.edit/META-INF/MANIFEST.MF        | 2 +-
+ plugins/gov.nasa.jpl.imce.oml.model/META-INF/MANIFEST.MF             | 2 +-
+ plugins/gov.nasa.jpl.imce.oml.rcp/META-INF/MANIFEST.MF               | 2 +-
+ plugins/gov.nasa.jpl.imce.oml.uuid/META-INF/MANIFEST.MF              | 2 +-
+ plugins/gov.nasa.jpl.imce.oml.viewpoint/META-INF/MANIFEST.MF         | 2 +-
+ plugins/gov.nasa.jpl.imce.oml.zip/META-INF/MANIFEST.MF               | 2 +-
+ plugins/pom.xml                                                      | 4 ++--
+ pom.xml                                                              | 4 ++--
+ releng/gov.nasa.jpl.imce.oml.parent/pom.xml                          | 4 ++--
+ releng/gov.nasa.jpl.imce.oml.product/oml.product                     | 2 +-
+ releng/gov.nasa.jpl.imce.oml.product/pom.xml                         | 4 ++--
+ releng/gov.nasa.jpl.imce.oml.target/pom.xml                          | 2 +-
+ releng/gov.nasa.jpl.imce.oml.updatesite/category.xml                 | 2 +-
+ releng/gov.nasa.jpl.imce.oml.updatesite/pom.xml                      | 4 ++--
+ releng/pom.xml                                                       | 4 ++--
+ tests/gov.nasa.jpl.imce.oml.dsl.tests/META-INF/MANIFEST.MF           | 2 +-
+ tests/gov.nasa.jpl.imce.oml.serialization.tests/META-INF/MANIFEST.MF | 2 +-
+ tests/pom.xml                                                        | 4 ++--
+ 24 files changed, 32 insertions(+), 32 deletions(-)    
+EOF
+    echo "#--------------------"
+    diff /tmp/d1 /tmp/d2
+    echo "#--------------------"
     read -p "# OK to commit, tag and push (y/n) ? " ok2;
     if test "y" = "$ok2"; then
        echo "# Commiting, tagging and pushing...";

@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>gov.nasa.jpl.imce.oml</groupId>
 		<artifactId>gov.nasa.jpl.imce.oml.parent</artifactId>
-		<version>0.9.6.0</version>
+		<version>0.9.6-SNAPSHOT</version>
 		<relativePath>./releng/gov.nasa.jpl.imce.oml.parent</relativePath>
 	</parent>
 	<modules>
