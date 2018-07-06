@@ -21,7 +21,7 @@ else
     cat << EOF > /tmp/d2
  features/gov.nasa.jpl.imce.oml.feature/feature.xml                   | 2 +-
  features/gov.nasa.jpl.imce.oml.rcp.feature/feature.xml               | 2 +-
- features/pom.xml                                                     | 4 ++--
+ features/pom.xml                                                     | 2 +-
  plugins/gov.nasa.jpl.imce.oml.dsl.ide/META-INF/MANIFEST.MF           | 2 +-
  plugins/gov.nasa.jpl.imce.oml.dsl.ui/META-INF/MANIFEST.MF            | 2 +-
  plugins/gov.nasa.jpl.imce.oml.dsl/META-INF/MANIFEST.MF               | 2 +-
@@ -31,23 +31,30 @@ else
  plugins/gov.nasa.jpl.imce.oml.uuid/META-INF/MANIFEST.MF              | 2 +-
  plugins/gov.nasa.jpl.imce.oml.viewpoint/META-INF/MANIFEST.MF         | 2 +-
  plugins/gov.nasa.jpl.imce.oml.zip/META-INF/MANIFEST.MF               | 2 +-
- plugins/pom.xml                                                      | 4 ++--
- pom.xml                                                              | 4 ++--
- releng/gov.nasa.jpl.imce.oml.parent/pom.xml                          | 4 ++--
+ plugins/pom.xml                                                      | 2 +-
+ pom.xml                                                              | 2 +-
  releng/gov.nasa.jpl.imce.oml.product/oml.product                     | 2 +-
- releng/gov.nasa.jpl.imce.oml.product/pom.xml                         | 4 ++--
+ releng/gov.nasa.jpl.imce.oml.product/pom.xml                         | 2 +-
  releng/gov.nasa.jpl.imce.oml.target/pom.xml                          | 2 +-
  releng/gov.nasa.jpl.imce.oml.updatesite/category.xml                 | 2 +-
- releng/gov.nasa.jpl.imce.oml.updatesite/pom.xml                      | 4 ++--
+ releng/gov.nasa.jpl.imce.oml.updatesite/pom.xml                      | 2 +-
  releng/pom.xml                                                       | 4 ++--
  tests/gov.nasa.jpl.imce.oml.dsl.tests/META-INF/MANIFEST.MF           | 2 +-
  tests/gov.nasa.jpl.imce.oml.serialization.tests/META-INF/MANIFEST.MF | 2 +-
  tests/pom.xml                                                        | 4 ++--
- 24 files changed, 32 insertions(+), 32 deletions(-)    
+ 23 files changed, 25 insertions(+), 25 deletions(-)
 EOF
     echo "#--------------------"
-    diff /tmp/d1 /tmp/d2
+    echo "# Comparing with expected differences... "
     echo "#--------------------"
+    diff /tmp/d1 /tmp/d2
+	OK=$?
+    echo "#--------------------"
+    if [ 0 -eq $OK ]; then
+    	echo "# Actual differences match expectations!"
+    else
+    	echo "# Actual differences do not match expectations; please review!"
+    fi
     read -p "# OK to commit, tag and push (y/n) ? " ok2;
     if test "y" = "$ok2"; then
        echo "# Commiting, tagging and pushing...";
