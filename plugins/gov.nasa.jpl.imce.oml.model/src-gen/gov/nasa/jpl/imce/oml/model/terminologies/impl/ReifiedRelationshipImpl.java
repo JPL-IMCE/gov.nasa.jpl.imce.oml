@@ -705,8 +705,8 @@ public class ReifiedRelationshipImpl extends ConceptualRelationshipImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ReifiedRelationship> rootReifiedRelationships() {
-		return ECollections.<ReifiedRelationship>singletonEList(this);
+	public EList<CharacterizedEntityRelationship> rootCharacterizedEntityRelationships() {
+		return ECollections.<CharacterizedEntityRelationship>singletonEList(this);
 	}
 
 	/**
@@ -1001,7 +1001,7 @@ public class ReifiedRelationshipImpl extends ConceptualRelationshipImpl implemen
 		}
 		if (baseClass == ConceptualRelationship.class) {
 			switch (baseOperationID) {
-				case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS: return TerminologiesPackage.REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS;
+				case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___ROOT_CHARACTERIZED_ENTITY_RELATIONSHIPS: return TerminologiesPackage.REIFIED_RELATIONSHIP___ROOT_CHARACTERIZED_ENTITY_RELATIONSHIPS;
 				case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___RELATION_SOURCE: return TerminologiesPackage.REIFIED_RELATIONSHIP___RELATION_SOURCE;
 				case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___RELATION_TARGET: return TerminologiesPackage.REIFIED_RELATIONSHIP___RELATION_TARGET;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
@@ -1029,8 +1029,8 @@ public class ReifiedRelationshipImpl extends ConceptualRelationshipImpl implemen
 				return relationTarget();
 			case TerminologiesPackage.REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS:
 				return allNestedElements();
-			case TerminologiesPackage.REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS:
-				return rootReifiedRelationships();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP___ROOT_CHARACTERIZED_ENTITY_RELATIONSHIPS:
+				return rootCharacterizedEntityRelationships();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

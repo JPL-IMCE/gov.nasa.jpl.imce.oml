@@ -3134,13 +3134,13 @@ public interface TerminologiesPackage extends EPackage {
 	int CONCEPTUAL_RELATIONSHIP___RELATION_RANGE = CONCEPTUAL_ENTITY_OPERATION_COUNT + 5;
 
 	/**
-	 * The operation id for the '<em>Root Reified Relationships</em>' operation.
+	 * The operation id for the '<em>Root Characterized Entity Relationships</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPTUAL_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS = CONCEPTUAL_ENTITY_OPERATION_COUNT + 6;
+	int CONCEPTUAL_RELATIONSHIP___ROOT_CHARACTERIZED_ENTITY_RELATIONSHIPS = CONCEPTUAL_ENTITY_OPERATION_COUNT + 6;
 
 	/**
 	 * The number of operations of the '<em>Conceptual Relationship</em>' class.
@@ -3423,13 +3423,13 @@ public interface TerminologiesPackage extends EPackage {
 	int REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>Root Reified Relationships</em>' operation.
+	 * The operation id for the '<em>Root Characterized Entity Relationships</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 3;
+	int REIFIED_RELATIONSHIP___ROOT_CHARACTERIZED_ENTITY_RELATIONSHIPS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Reified Relationship</em>' class.
@@ -3613,13 +3613,13 @@ public interface TerminologiesPackage extends EPackage {
 	int REIFIED_RELATIONSHIP_RESTRICTION___ALL_NESTED_ELEMENTS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>Root Reified Relationships</em>' operation.
+	 * The operation id for the '<em>Root Characterized Entity Relationships</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP_RESTRICTION___ROOT_REIFIED_RELATIONSHIPS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 3;
+	int REIFIED_RELATIONSHIP_RESTRICTION___ROOT_CHARACTERIZED_ENTITY_RELATIONSHIPS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Reified Relationship Restriction</em>' class.
@@ -3803,15 +3803,6 @@ public interface TerminologiesPackage extends EPackage {
 	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___RELATION_RANGE = CONCEPTUAL_RELATIONSHIP___RELATION_RANGE;
 
 	/**
-	 * The operation id for the '<em>Root Reified Relationships</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS = CONCEPTUAL_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS;
-
-	/**
 	 * The operation id for the '<em>Relation Source</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3830,13 +3821,22 @@ public interface TerminologiesPackage extends EPackage {
 	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___RELATION_TARGET = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Root Characterized Entity Relationships</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___ROOT_CHARACTERIZED_ENTITY_RELATIONSHIPS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 2;
+
+	/**
 	 * The number of operations of the '<em>Cardinality Restricted Reified Relationship</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 2;
+	int CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipImpl <em>Unreified Relationship</em>}' class.
@@ -11413,14 +11413,14 @@ public interface TerminologiesPackage extends EPackage {
 	EClass getConceptualRelationship();
 
 	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship#rootReifiedRelationships() <em>Root Reified Relationships</em>}' operation.
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship#rootCharacterizedEntityRelationships() <em>Root Characterized Entity Relationships</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Root Reified Relationships</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship#rootReifiedRelationships()
+	 * @return the meta object for the '<em>Root Characterized Entity Relationships</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship#rootCharacterizedEntityRelationships()
 	 * @generated
 	 */
-	EOperation getConceptualRelationship__RootReifiedRelationships();
+	EOperation getConceptualRelationship__RootCharacterizedEntityRelationships();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship <em>Reified Relationship</em>}'.
@@ -11507,14 +11507,14 @@ public interface TerminologiesPackage extends EPackage {
 	EOperation getReifiedRelationship__AllNestedElements();
 
 	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#rootReifiedRelationships() <em>Root Reified Relationships</em>}' operation.
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#rootCharacterizedEntityRelationships() <em>Root Characterized Entity Relationships</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Root Reified Relationships</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#rootReifiedRelationships()
+	 * @return the meta object for the '<em>Root Characterized Entity Relationships</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#rootCharacterizedEntityRelationships()
 	 * @generated
 	 */
-	EOperation getReifiedRelationship__RootReifiedRelationships();
+	EOperation getReifiedRelationship__RootCharacterizedEntityRelationships();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction <em>Reified Relationship Restriction</em>}'.
@@ -11579,14 +11579,14 @@ public interface TerminologiesPackage extends EPackage {
 	EOperation getReifiedRelationshipRestriction__AllNestedElements();
 
 	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction#rootReifiedRelationships() <em>Root Reified Relationships</em>}' operation.
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction#rootCharacterizedEntityRelationships() <em>Root Characterized Entity Relationships</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Root Reified Relationships</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction#rootReifiedRelationships()
+	 * @return the meta object for the '<em>Root Characterized Entity Relationships</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction#rootCharacterizedEntityRelationships()
 	 * @generated
 	 */
-	EOperation getReifiedRelationshipRestriction__RootReifiedRelationships();
+	EOperation getReifiedRelationshipRestriction__RootCharacterizedEntityRelationships();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship <em>Cardinality Restricted Reified Relationship</em>}'.
@@ -11661,6 +11661,16 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getCardinalityRestrictedReifiedRelationship__RelationTarget();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship#rootCharacterizedEntityRelationships() <em>Root Characterized Entity Relationships</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Root Characterized Entity Relationships</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship#rootCharacterizedEntityRelationships()
+	 * @generated
+	 */
+	EOperation getCardinalityRestrictedReifiedRelationship__RootCharacterizedEntityRelationships();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship <em>Unreified Relationship</em>}'.
@@ -14414,12 +14424,12 @@ public interface TerminologiesPackage extends EPackage {
 		EClass CONCEPTUAL_RELATIONSHIP = eINSTANCE.getConceptualRelationship();
 
 		/**
-		 * The meta object literal for the '<em><b>Root Reified Relationships</b></em>' operation.
+		 * The meta object literal for the '<em><b>Root Characterized Entity Relationships</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation CONCEPTUAL_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS = eINSTANCE.getConceptualRelationship__RootReifiedRelationships();
+		EOperation CONCEPTUAL_RELATIONSHIP___ROOT_CHARACTERIZED_ENTITY_RELATIONSHIPS = eINSTANCE.getConceptualRelationship__RootCharacterizedEntityRelationships();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl <em>Reified Relationship</em>}' class.
@@ -14488,12 +14498,12 @@ public interface TerminologiesPackage extends EPackage {
 		EOperation REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = eINSTANCE.getReifiedRelationship__AllNestedElements();
 
 		/**
-		 * The meta object literal for the '<em><b>Root Reified Relationships</b></em>' operation.
+		 * The meta object literal for the '<em><b>Root Characterized Entity Relationships</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS = eINSTANCE.getReifiedRelationship__RootReifiedRelationships();
+		EOperation REIFIED_RELATIONSHIP___ROOT_CHARACTERIZED_ENTITY_RELATIONSHIPS = eINSTANCE.getReifiedRelationship__RootCharacterizedEntityRelationships();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipRestrictionImpl <em>Reified Relationship Restriction</em>}' class.
@@ -14546,12 +14556,12 @@ public interface TerminologiesPackage extends EPackage {
 		EOperation REIFIED_RELATIONSHIP_RESTRICTION___ALL_NESTED_ELEMENTS = eINSTANCE.getReifiedRelationshipRestriction__AllNestedElements();
 
 		/**
-		 * The meta object literal for the '<em><b>Root Reified Relationships</b></em>' operation.
+		 * The meta object literal for the '<em><b>Root Characterized Entity Relationships</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation REIFIED_RELATIONSHIP_RESTRICTION___ROOT_REIFIED_RELATIONSHIPS = eINSTANCE.getReifiedRelationshipRestriction__RootReifiedRelationships();
+		EOperation REIFIED_RELATIONSHIP_RESTRICTION___ROOT_CHARACTERIZED_ENTITY_RELATIONSHIPS = eINSTANCE.getReifiedRelationshipRestriction__RootCharacterizedEntityRelationships();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.CardinalityRestrictedReifiedRelationshipImpl <em>Cardinality Restricted Reified Relationship</em>}' class.
@@ -14610,6 +14620,14 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___RELATION_TARGET = eINSTANCE.getCardinalityRestrictedReifiedRelationship__RelationTarget();
+
+		/**
+		 * The meta object literal for the '<em><b>Root Characterized Entity Relationships</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___ROOT_CHARACTERIZED_ENTITY_RELATIONSHIPS = eINSTANCE.getCardinalityRestrictedReifiedRelationship__RootCharacterizedEntityRelationships();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipImpl <em>Unreified Relationship</em>}' class.

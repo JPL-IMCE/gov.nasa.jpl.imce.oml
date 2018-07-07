@@ -134,11 +134,11 @@ public interface ReifiedRelationshipRestriction extends ConceptualRelationship {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='resolver.ResolverUtilities.rootReifiedRelationships(this)'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='resolver.ResolverUtilities.rootCharacterizedEntityRelationships(this)'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.rootReifiedRelationships(this);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.rootCharacterizedEntityRelationships(this);'"
 	 * @generated
 	 */
-	EList<ReifiedRelationship> rootReifiedRelationships();
+	EList<CharacterizedEntityRelationship> rootCharacterizedEntityRelationships();
 
 } // ReifiedRelationshipRestriction
