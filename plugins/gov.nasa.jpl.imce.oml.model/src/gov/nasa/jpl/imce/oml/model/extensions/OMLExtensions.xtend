@@ -136,6 +136,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.xtext.xbase.lib.Functions.Function1
 
 import static com.google.common.base.Preconditions.checkNotNull
+import gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship
 
 class OMLExtensions {
 
@@ -573,8 +574,24 @@ class OMLExtensions {
 		localEntityRelationships + allImportedTerminologies(it).map[localEntityRelationships].flatten
 	}
 
-	static def EList<ReifiedRelationship> rootReifiedRelationships(ReifiedRelationshipRestriction prr) {
-		val result = new HashSet<ReifiedRelationship>()
+	static def EList<CharacterizedEntityRelationship> rootCharacterizedEntityRelationships(CardinalityRestrictedReifiedRelationship crr) {
+		val result = new HashSet<CharacterizedEntityRelationship>()
+		
+		val rel = crr.restrictedRelationship.relation
+		switch rel {
+			CharacterizedEntityRelationship:
+				result.add(rel)
+			ReifiedRelationshipRestriction:
+				result.addAll(rootCharacterizedEntityRelationships(rel))
+			CardinalityRestrictedReifiedRelationship:
+				result.addAll(rootCharacterizedEntityRelationships(rel))
+		}
+		
+		ECollections.asEList(result)
+	}
+	
+	static def EList<CharacterizedEntityRelationship> rootCharacterizedEntityRelationships(ReifiedRelationshipRestriction prr) {
+		val result = new HashSet<CharacterizedEntityRelationship>()
 		
 		val horizon = new HashSet<ConceptualRelationship>()
 		horizon.add(prr)
