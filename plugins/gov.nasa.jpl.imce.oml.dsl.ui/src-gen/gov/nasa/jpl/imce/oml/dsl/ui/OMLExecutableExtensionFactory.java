@@ -18,6 +18,7 @@ package gov.nasa.jpl.imce.oml.dsl.ui;
 
 import com.google.inject.Injector;
 import gov.nasa.jpl.imce.oml.dsl.ui.internal.DslActivator;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory;
 import org.osgi.framework.Bundle;
 
@@ -29,12 +30,13 @@ public class OMLExecutableExtensionFactory extends AbstractGuiceAwareExecutableE
 
 	@Override
 	protected Bundle getBundle() {
-		return DslActivator.getInstance().getBundle();
+		return Platform.getBundle(DslActivator.PLUGIN_ID);
 	}
 	
 	@Override
 	protected Injector getInjector() {
-		return DslActivator.getInstance().getInjector(DslActivator.GOV_NASA_JPL_IMCE_OML_DSL_OML);
+		DslActivator activator = DslActivator.getInstance();
+		return activator != null ? activator.getInjector(DslActivator.GOV_NASA_JPL_IMCE_OML_DSL_OML) : null;
 	}
-	
+
 }

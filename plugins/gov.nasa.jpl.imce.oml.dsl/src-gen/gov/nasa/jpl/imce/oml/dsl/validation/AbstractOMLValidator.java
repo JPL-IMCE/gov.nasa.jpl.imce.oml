@@ -36,5 +36,4 @@ public abstract class AbstractOMLValidator extends AbstractDeclarativeValidator 
 		result.add(EPackage.Registry.INSTANCE.getEPackage("http://imce.jpl.nasa.gov/oml/descriptions"));
 		return result;
 	}
-	
 }

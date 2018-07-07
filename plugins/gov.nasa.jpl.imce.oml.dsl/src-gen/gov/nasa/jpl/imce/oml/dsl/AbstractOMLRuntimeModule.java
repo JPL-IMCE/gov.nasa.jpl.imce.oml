@@ -27,6 +27,7 @@ import gov.nasa.jpl.imce.oml.dsl.scoping.OMLScopeProvider;
 import gov.nasa.jpl.imce.oml.dsl.serializer.OMLSemanticSequencer;
 import gov.nasa.jpl.imce.oml.dsl.serializer.OMLSyntacticSequencer;
 import gov.nasa.jpl.imce.oml.dsl.services.OMLGrammarAccess;
+import gov.nasa.jpl.imce.oml.dsl.validation.OMLConfigurableIssueCodesProvider;
 import gov.nasa.jpl.imce.oml.dsl.validation.OMLValidator;
 import java.util.Properties;
 import org.eclipse.xtext.Constants;
@@ -67,6 +68,7 @@ import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ISyntacticSequencer;
 import org.eclipse.xtext.service.DefaultRuntimeModule;
 import org.eclipse.xtext.service.SingletonBinding;
+import org.eclipse.xtext.validation.ConfigurableIssueCodesProvider;
 
 /**
  * Manual modifications go to {@link OMLRuntimeModule}.
@@ -162,6 +164,11 @@ public abstract class AbstractOMLRuntimeModule extends DefaultRuntimeModule {
 	@SingletonBinding(eager=true)
 	public Class<? extends OMLValidator> bindOMLValidator() {
 		return OMLValidator.class;
+	}
+	
+	// contributed by org.eclipse.xtext.xtext.generator.validation.ValidatorFragment2
+	public Class<? extends ConfigurableIssueCodesProvider> bindConfigurableIssueCodesProvider() {
+		return OMLConfigurableIssueCodesProvider.class;
 	}
 	
 	// contributed by org.eclipse.xtext.xtext.generator.scoping.ImportNamespacesScopingFragment2
