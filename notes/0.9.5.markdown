@@ -1,0 +1,75 @@
+gov.nasa.jpl.imce.oml.tycho 0.9.5 is an API-breaking change from 0.9.4
+
+## Planned scope & Issues resolved:
+
+### [#258 Propose a better name than PartialReifiedRelationship](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/258)
+
+### [#260 Performance improvements for OMLZip.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/260)
+
+### [#263 Restore OMLZipResource factory registrations](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/263)
+
+### [#265 Eclipse EMF Normalized URIs.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/265)
+
+### [#268 Problems with multi-threaded EMF Resource operations in Sirius](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/268)
+
+### [#272 OMLStandaloneSetup needs to register a content factory for 'oml'](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/272)
+
+### [#276 Force a deterministic timestamp for OMLZip](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/276)
+
+### [#278 Eclipse Oxygen p2 installable units have disappeared... again!](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/278)
+
+  Switched from Sirius 5.0.1 to 5.1.1 (Xtext is still at 2.12)
+
+### [#280 OMLCatalogManager should not load system catalogs.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/280)
+
+### [#282 Incomplete loading of heterogeneous OML and OMLZip](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/282)
+
+## Summary of changes from 0.9.4
+
+### Loading OML & OMLZip Resources
+
+```xtend
+// Create an XtextResourceSet to load either *.oml or *.omlzip files.
+OMLZipResourceSet.doSetup()
+val rs = new XtextResourceSet()
+val OMLCatalog omlCatalog = OMLExtensions.getCatalog(rs)
+try {
+	omlCatalog.parseCatalog(omlCatalogXML.toURI.toURL)
+} catch (IOException ex) {
+	throw new CoreException(new Status(IStatus.ERROR, EFSEAdapterActivator.ID, '''Failed to load OML Catalog file: «omlCatalogXML»''', ex))
+}
+
+// Loading an OML resource; note that the file extension is not a required part of the URI!
+val r_fse = rs.createResource(URI.createURI("http://imce.jpl.nasa.gov/discipline/fse/fse"), "oml")
+r_fse.load(Collections.EMPTY_MAP)
+fse = r_fse.contents.filter(Extent)?.head?.modules?.filter(TerminologyGraph)?.head
+
+// Loading an OMLZip resource; note that the file extension is not a required part of the URI!
+val r_refdes = rs.createResource(URI.createURI("..."), "omlzip") // ... could be a file:// or http:// URI; with or without extension
+r_refdes.load(Collections.EMPTY_MAP)
+refdes = r_refdes.contents.filter(Extent)?.head?.modules?.filter(TerminologyGraph)?.head
+```
+
+### API
+
+- `ReifiedRelationshipRestriction` in 0.9.5 replaces `PartialReifiedRelationship` in 0.9.4
+
+### Concrete Syntax
+
+In 0.9.5:
+
+```
+reifiedRelationshipRestriction <name> {
+   source <domain>
+   target <range>
+}
+```
+
+In 0.9.4:
+
+```
+partial reifiedRelationship <name> {
+   source <domain>
+   target <range>
+}
+```

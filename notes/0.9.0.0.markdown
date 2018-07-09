@@ -1,0 +1,104 @@
+gov.nasa.jpl.imce.oml.tycho 0.9.0.0 resolves major problems found in 0.8.0.1
+
+## Planned scope & Issues resolved:
+
+- [#98 OML LiteralValue needs to include support for data range restrictions](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/98)
+
+- [#107 Add support for OML entity relationship chains](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/107)
+
+- [#111 Update to Eclipse Oxygen](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/111)
+
+- [#124 Add Eclipse EEF widgets to the OML target platform](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/124)
+
+- [#127 Fix UUID generation logic for Eclipse for RuleBodySegment](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/127)
+
+- [#128 OML WB Builds are broken after Oxygen.1 update](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/128)
+
+- [#130 Formatting ambiguity for ChainRules](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/130)
+
+- [#131 Incorrect RuleBodySegment.position() calculation](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/131)
+
+- [#134 Missing toString for several OML datatypes](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/134)
+
+- [#136 Need syntax for arbitrary string values possibly spanning multiple lines](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/136)
+
+	The OML textual syntax has two types of strings: QuotedString and RawString
+	- QuotedString is a single line string wrapped around single double quote characters with support for escaping; e.g., ".\n \"..".
+	- RawString is a multi-line string between triple double-quote characters without support for escaping; e.g. """ ..... """"
+	
+- [#143 Incorrect Xcore logic for RuleBodySegment.uuid()](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/143)
+
+- [#144 Incorrect Xcore logic for UnreifiedRelationshipPropertyPredicate.uuid()](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/145)
+
+- [#147 ScalarOneOfLiteralAxiom needs @DerivedUUID annotation](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/147)
+
+- [#150 Incorrect fix for RuleBodySegment.uuid()](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/150)
+
+- [#155 Provide an OML Normalization API for the OML/EMF-based representation](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/155)
+
+- [#158 Make DataRelationship[Domain|Range] a kind of DataRelationship](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/158)
+
+- [#160 Update scala code annotations for the generated tagged type resolver implementation](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/160)
+
+- [#161 Missing classifications for abstract OML classes](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/161)
+
+- [#162 Design review about the OML limitations on annotation/data property values](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/162)
+
+- [#166 Add abstractions for OML cross-references (entity only & entity+value)](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/166)
+
+- [#167 ConflictingRegionsException when invoking formatter](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/167)
+
+- [#170 Relax OMLCrossReferenceSerializer for any kind of OML Module](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/170)
+
+- [#172 OML Serialization problem](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/172)
+
+  This problem seems to have been due to stale generated XText code.
+
+- [#175 Provide custom EMF/OML JSon serialization support for "*.omlzip"](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/175)
+
+- [#178 Add OMLZip unit tests that involve LiteralNumber and LiteralValue](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/178)
+
+- [#179 Update OMLZip serialization for optional references and attributes](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/179)
+
+- [#180 OMLSpecificaitonTables.save is vulnerable to exceptions.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/180)
+
+- [#183 Need to strip quotes around IRI and UUID cross references](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/183)
+
+- [#185 Add OML syntax corresponding to OWL subObjectPropertyOf and subDataPropertyOf](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/185)
+
+- [#188 Add oml.zip to the oml.core feature and version range dependencies for all oml plugins](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/188)
+
+- [#190 Add SQL schema for OML tables.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/190)
+
+- [#192 OML AnnotationProperty must be owned by an OML Module, not OML Extent](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/192)
+
+- [#194 Fix SQL triggers in OML schema.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/194)
+
+- [#195 Update OMLExtension sorter for missing metaclasses.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/195)
+
+- [#196 Improve OMLCatalog.parseCatalog](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/196)
+
+- [#197 Update OML's target platform to use latest version of published features](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/197)
+
+  No change to the version number; just changes to the timestamp of the published version because the older timestamp is no longer available!
+  
+- [#199 Improve support for special characters in values for omlzip.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/199)
+
+  See [oml.zip/README.md](../plugins/core/gov.nasa.jpl.imce.oml.zip/README.md)
+  
+- [#200 CatalogURIConverter.normalize should report unresolved URIs](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/200)
+
+- [#201 OMLCatalog needs to provide access to the CatalogEntry rules](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/201)
+
+- [#203 Missing wrappers for raw strings.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/203)
+
+- [#205 OMLTables.toStringArray is missing the last unescaped string part.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/205)
+
+  Reorganized support for string processing under the OMLTables.toString() dispatch methods.
+  
+- [#206 Fix the OMLZipResourceFactory type to 'omlzip' to support mixed `oml`, `omlzip` resources](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/206)
+
+- [#208 Add support for OML EntityRestrictionAxiom about forward or inverse property.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/208)
+
+  Unfortunately, the OML abstract syntax had to be changed significantly to support distinctions among forward/inverse reified relationship restrictions vs. unreified relationship restrictions.
+  The reason is that the XText grammar parser generator does not provide sufficient flexibility 

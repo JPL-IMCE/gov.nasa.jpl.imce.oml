@@ -1,0 +1,17 @@
+gov.nasa.jpl.imce.oml.tycho 0.7.0.5 is a minor bug fix release
+
+### Bug fixes
+
+- [#27 omlInverseReferencers\(<>\)\.filter\[<> === this\].map\[<>\] Type Mismatch](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/27)
+
+	Added `.toEList` conversion.
+	
+- [#28 Add the Obeo Community Edition features to the OML Target](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/28)
+
+	OML Target is configured for Obeo Community Edition on Eclipse Neon.3 (instead of Eclipse Neon.2) with Xtext 2.11 (instead of Xtext 2.10).
+	
+- [#29 Add all OML target features to the OML platform feature](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/29)
+
+	Per issue description.
+	
+### [Release process](releaseProcess.markdown)

@@ -1,0 +1,70 @@
+gov.nasa.jpl.imce.oml.tycho 0.9.2 resolves major problems found in 0.9.1
+
+## Planned scope & Issues resolved:
+
+### [#226 OMLZipResource.getURIConverter needs to return a CatalogURIConverter in all cases](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/226)
+
+### [#227 Stack overflow with circular imports](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/227)
+
+### [#228 Use Java8 parallelSort instead of Xtend ListExtensions.sortInplaceBy](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/228)
+
+### [#230 Ensure catalog mapping is a bijection](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/230)
+
+### [#231 OML Terminology view: incorrect entity restriction notation](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/231)
+
+### [#233 Fix OMLTest infrastructure for cyclic module tests.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/233)
+
+### [#234 Trim the OML WB.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/234)
+
+### [#236 Possible infinite loop in CatalogURIConverter.normalize](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/236)
+
+### [#239 Problems serializing OML raw strings with a trailing '"' character.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/239)
+
+### [#241 OMLSpecificationTables: serializing primitive values needs to bypass OMLTables.toString](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/241)
+
+### [#242 OMLZipResource handling of OML modules with circular OML ModuleEdges](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/242)
+
+## Summary of changes from 0.9.1
+
+### OML ModuleEdges can be cyclic
+
+The following is now possible:
+
+```
+open terminology <http://example.org/A> {
+   extends <http://example.org/B>
+}
+```
+
+and:
+
+```
+open terminology <http://example.org/B> {
+   extends <http://example.org/A>
+}
+```
+
+### Bijective Catalog mapping between http IRI and file URI
+
+Previously, the Catalog mapping was surjective:
+
+
+| IRI | relative file URI |
+|----|----|
+| `http://purl.org/dc/elements/1.1/` | `file:./purl.org/dc/elements/1.1.owl` |
+| `http://purl.org/dc/elements/1.1` | `file:./purl.org/dc/elements/1.1.owl` |
+
+
+Now, the Catalog mapping is bijective:
+
+
+| IRI | relative file URI |
+|----|----|
+| `http://purl.org/dc/elements/1.1/` | `file:./purl.org/dc/elements/1.1/.owl` |
+| `http://purl.org/dc/elements/1.1` | `file:./purl.org/dc/elements/1.1.owl` |
+
+### Serialization of `*.omlzip` should be faster thanks to parallel sorting of OML tables.
+
+Previously, OML tables were sorted using a single-threaded sort algorithm from the Java collection library that defaults to the `TimSort` implementation.
+Now, OML tables are sorted in parallel thanks to the Java 8 [Collection.parallelStream](https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html#parallelStream--)
+and [Stream.sorted(Comparator)](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html#sorted-java.util.Comparator-).
