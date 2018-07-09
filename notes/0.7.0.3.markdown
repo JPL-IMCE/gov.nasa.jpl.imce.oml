@@ -1,0 +1,22 @@
+gov.nasa.jpl.imce.oml.tycho 0.7.0.3 is a minor bug fix release
+
+### Bug fixes
+
+- [Preserve disabling the xtext builder participant in oml.dsl.ui](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/17)
+
+  Disabled the xtext builder participant.
+  
+- [Restored the oml.platform.updatesite](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/16)
+
+  Recommend removing `plugins/org.eclipse.emf.cdo.ecore.retrofit_4.2.300.v20160301-1326.jar` from the published `gov.nasa.jpl.imce.oml.platform.updatesite`
+  to avoid the classloader-related problem below.
+  
+- [Problems using OML libraries from a command line application](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/15)
+
+  Filed [Eclipse Bug 517009](https://bugs.eclipse.org/bugs/show_bug.cgi?id=517009).
+  
+- [“OML Workbench” can’t be opened because it is from an unidentified developer](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/14)
+
+  Copied the instructions provided in the issue comment to the [OML WB/README.md](../releng/gov.nasa.jpl.oml.product/README.md).
+  
+### [Release process](releaseProcess.markdown)

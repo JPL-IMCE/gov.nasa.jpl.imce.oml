@@ -1,0 +1,380 @@
+gov.nasa.jpl.imce.oml.tycho 0.9.1 resolves major problems found in 0.9.0
+
+## Planned scope & Issues resolved:
+
+### [#208 Add support for OML EntityRestrictionAxiom about forward or inverse property.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/208)
+
+#### 1) Abstract syntax change summary in 0.9.1 from 0.9.0.7
+
+##### 1.1) Abstract syntax changes about OML `Entity`
+
+0.9.1 introduces a new abstraction above OML `Entity` as summarized below: 
+
+```
+abstract class Predicate extends Resource {
+	op Term[1] term()
+}
+
+abstract class Entity extends Term, Predicate {
+	op Term[1] term() { this }
+}
+```
+
+In [0.9.0.7](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/blob/releases/0.9.0.7/plugins/core/gov.nasa.jpl.imce.oml.model/model/OMLTerminologies.xcore#L301), OML `Entity` was just:
+
+```
+abstract class Entity extends Term {}
+```
+
+The new abstraction, OML `Predicate` helps simplify both the abstract syntax and concrete syntax of OML `ChainRule` as described below.
+
+##### 1.2) Abstract syntax changes about OML EntityRelationship and OML EntityRestrictionAxioms.
+  
+In 0.9.1, OML `EntityRelationship` is the same as 
+in [0.9.0.7](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/blob/releases/0.9.0.7/plugins/core/gov.nasa.jpl.imce.oml.model/model/OMLTerminologies.xcore#L333)
+as summarized below:
+
+```
+abstract class EntityRelationship extends Term, DirectedBinaryRelationshipKind {
+  refers Entity[1] source
+  refers Entity[1] target
+  boolean[1] isFunctional
+  boolean[1] isInverseFunctional
+  boolean[1] isEssential
+  boolean[1] isInverseEssential
+  boolean[1] isSymmetric
+  boolean[1] isAsymmetric
+  boolean[1] isReflexive
+  boolean[1] isIrreflexive
+  boolean[1] isTransitive
+} 
+```
+
+###### 1.2.1) Significant change about OML `ReifiedRelationship`
+
+  |  0.9.1 | [0.9.0.7](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/blob/releases/0.9.0.7/plugins/core/gov.nasa.jpl.imce.oml.model/model/OMLTerminologies.xcore#L393) |
+  |-------------|----------------|
+  | `class ReifiedRelationship extends EntityRelationship, ConceptualEntity {` | `class ReifiedRelationship extends EntityRelationship, ConceptualEntity {` |
+  | `contains ForwardProperty[1] forwardProperty opposite reifiedRelationship` | `  LocalName[1] unreifiedPropertyName` |
+  | `contains InverseProperty[?] inverseProperty opposite reifiedRelationship` | `  LocalName[?] unreifiedInversePropertyName` |
+  | `}` | `}` |
+
+###### 1.2.2) Minor change about OML `UnreifiedRelationship`
+  
+  |  0.9.1 | [0.9.0.7](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/blob/releases/0.9.0.7/plugins/core/gov.nasa.jpl.imce.oml.model/model/OMLTerminologies.xcore#L407) |
+  |-------------|----------------|
+  | `class UnreifiedRelationship extends EntityRelationship, RestrictableRelationship {` | `class UnreifiedRelationship extends EntityRelationship {}` | 
+  | `op EntityRelationship[1] relation() { this }` | |
+  | `}` | |
+  
+##### 1.3) New metaclasses
+  
+  ```
+  /*
+   * An OML RestrictableRelationship is either an OML ForwardProperty, 
+   * an OML InverseProperty or an OML UnreifiedRelationship.
+   * An OML RestrictableRelationship serves as an abstraction for the different kinds 
+   * of relationships that can be restricted via an OML EntityRestrictionAxiom
+   * and that can be involved in an OML SegmentPredicate for an OML ChainRule.
+   */
+  abstract class RestrictableRelationship extends Resource, Predicate {
+	op EntityRelationship[1] relation()
+	op Term[1] term() { relation() }
+  }
+
+  /*
+   * An OML ForwardProperty is an essential part of an OML ReifiedRelationship.
+   * An OML ForwardProperty defines the unreified relationship from the OML ReifiedRelationship's domain to its range.
+   */
+  class ForwardProperty extends RestrictableRelationship {	
+	container ReifiedRelationship[1] reifiedRelationship opposite forwardProperty
+	LocalName[1] name
+	
+	op IRI[?] iri() { reifiedRelationship?.tbox?.iri()+'#'+name() }
+	op String[?] abbrevIRI() { (reifiedRelationship?.tbox?.nsPrefix()?:"")+':'+name() }
+	op UUID[1] uuid() { OMLExtensions.namespaceUUID(reifiedRelationship?.tbox?.uuid(), "name" -> name()?.toString())?.toString }
+	
+	op EntityRelationship[1] relation() { reifiedRelationship }
+  }
+
+  /*
+   * An OML InverseProperty is an optional part of an OML ReifiedRelationship.
+   * If defined, it corresponds to the inverse of the OML ReifiedRelationship's OML ForwardProperty.
+   */
+  class InverseProperty extends RestrictableRelationship {
+	container ReifiedRelationship[1] reifiedRelationship opposite inverseProperty
+	LocalName[1] name
+	
+	op IRI[?] iri() { reifiedRelationship?.tbox?.iri()+'#'+name() }
+	op String[?] abbrevIRI() { (reifiedRelationship?.tbox?.nsPrefix()?:"")+':'+name() }
+	op UUID[1] uuid() { OMLExtensions.namespaceUUID(reifiedRelationship?.tbox?.uuid(), "name" -> name()?.toString())?.toString }
+	
+	op EntityRelationship[1] relation() { reifiedRelationship }
+  }
+  ```
+
+##### 1.4) Significant change about OML `EntityRestrictionAxiom`
+
+  | 0.9.1 | [0.9.0.7](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/blob/releases/0.9.0.7/plugins/core/gov.nasa.jpl.imce.oml.model/model/OMLTerminologies.xcore#L1070) |
+  |---|---|
+  | `abstract class EntityRestrictionAxiom extends TermAxiom, ElementCrossReferenceTuple {` | `abstract class EntityRestrictionAxiom extends TermAxiom, ElementCrossReferenceTuple {` |
+  | ` refers RestrictableRelationship[1] restrictedRelationship` | ` refers EntityRelationship[1] restrictedRelation` |
+  | ` refers Entity[1] restrictedDomain` | ` refers Entity[1] restrictedDomain` |
+  | ` refers Entity[1] restrictedRange` | ` refers Entity[1] restrictedRange` |
+  | ` op EntityRelationship[1] restrictedRelation() { restrictedRelationship?.relation() }` | |
+  | `}` | `}` |
+  | | `class EntityExistentialRestrictionAxiom extends EntityRestrictionAxiom {}` |
+  | | `class EntityUniversalRestrictionAxiom extends EntityRestrictionAxiom {}` |
+    
+  These significant changes are summarized below:
+  
+  - `restrictedRelation` is now an operation instead of a reference property previously.
+  - Additional expressiveness about which relationships can be restricted as summarized below:
+  
+    | 0.9.1 `restrictedRelationship` | 0.9.0.7 `restrictedRelation` | 
+    |---|---|
+    | `ForwardProperty` (of some `ReifiedRelationship`) | `ReifiedRelationship` | 
+    | `InverseProperty` (of some `ReifiedRelationship`) | N/A | 
+    | `UnreifiedRelationship` | `UnreifiedRelationship` |
+
+##### 1.5) Minor change about OML `ReifiedRelationshipPropertyPredicate`
+
+  | 0.9.1 | [0.9.0.7](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/blob/releases/0.9.0.7/plugins/core/gov.nasa.jpl.imce.oml.model/model/OMLTerminologies.xcore#L855) |
+  |---|---|
+  | `class ReifiedRelationshipPropertyPredicate extends BinarySegmentForwardPropertyPredicate {` | `class ReifiedRelationshipPropertyPredicate extends BinarySegmentForwardPropertyPredicate {` |
+  | `refers ForwardProperty[1] forwardProperty` | `refers ReifiedRelationship[1] reifiedRelationship` |
+  | `op Term[1] termPredicate() { forwardProperty?.reifiedRelationship }` | `op Term[1] termPredicate() { reifiedRelationship }` |
+  | `}` | `}` |
+  
+  This abstract syntax change enables a significant improvement in the concrete syntax of OML `ChainRule`.
+  
+##### 1.6) Minor change about OML `ReifiedRelationshipInversePropertyPredicate`
+
+  | 0.9.1 | [0.9.0.7](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/blob/releases/0.9.0.7/plugins/core/gov.nasa.jpl.imce.oml.model/model/OMLTerminologies.xcore#L883) |
+  |---|---|
+  | `class ReifiedRelationshipInversePropertyPredicate extends BinarySegmentForwardPropertyPredicate {` | `class ReifiedRelationshipInversePropertyPredicate extends BinarySegmentForwardPropertyPredicate {` |
+  | `refers InverseProperty[1] inverseProperty` | `refers ReifiedRelationship[1] reifiedRelationship` |
+  | `op Term[1] termPredicate() { inverseProperty?.reifiedRelationship }` | `op Term[1] termPredicate() { reifiedRelationship }` |
+  | `}` | `}` |
+  
+  This abstract syntax change enables a significant improvement in the concrete syntax of OML `ChainRule`.
+   
+##### 1.7) Significant changes about OML `SegmentPredicate`
+ 
+0.9.1 defines a single metaclass, OML `SegmentPredicate` covering all syntactic variations of this concept as summarized below:
+
+```
+class SegmentPredicate extends ElementCrossReferenceTuple {
+	container RuleBodySegment[1] bodySegment opposite predicate
+	refers Predicate[?] predicate
+	refers ReifiedRelationship[?] reifiedRelationshipSource
+	refers ReifiedRelationship[?] reifiedRelationshipInverseSource
+	refers ReifiedRelationship[?] reifiedRelationshipTarget
+	refers ReifiedRelationship[?] reifiedRelationshipInverseTarget
+	refers UnreifiedRelationship[?] unreifiedRelationshipInverse
+	
+	op Term[1] termPredicate() {
+		predicate?.term ?:
+		reifiedRelationshipSource ?:
+		reifiedRelationshipInverseSource ?:
+		reifiedRelationshipTarget ?:
+		reifiedRelationshipInverseTarget
+	}
+
+	op Module[?] moduleContext() { bodySegment.moduleContext() }
+}
+```
+
+The above is considerably simpler than the taxonomy in 0.9.0.7 summarized below:
+
+```
+abstract class SegmentPredicate extends ElementCrossReferenceTuple {
+	container RuleBodySegment[1] bodySegment opposite predicate
+	op Term[1] termPredicate()
+	op Module[?] moduleContext() { bodySegment.moduleContext() }
+}
+
+abstract class UnarySegmentPredicate extends SegmentPredicate {}
+
+class AspectPredicate extends UnarySegmentPredicate {
+	refers Aspect[1] aspect
+	op Term[1] termPredicate() { aspect }
+}
+
+class ConceptPredicate extends UnarySegmentPredicate {
+	refers Concept[1] concept
+	op Term[1] termPredicate() { concept }
+}
+
+class ReifiedRelationshipPredicate extends UnarySegmentPredicate {
+	refers ReifiedRelationship[1] reifiedRelationship
+	op Term[1] termPredicate() { reifiedRelationship }
+}
+
+abstract class BinarySegmentPropertyPredicate extends SegmentPredicate {}
+
+abstract class BinarySegmentForwardPropertyPredicate extends BinarySegmentPropertyPredicate {}
+
+abstract class BinarySegmentReversePropertyPredicate extends BinarySegmentPropertyPredicate {}
+
+class ReifiedRelationshipPropertyPredicate extends BinarySegmentForwardPropertyPredicate {
+	refers ReifiedRelationship[1] reifiedRelationship
+	op Term[1] termPredicate() { reifiedRelationship }
+}
+
+class ReifiedRelationshipInversePropertyPredicate extends BinarySegmentReversePropertyPredicate {
+	refers ReifiedRelationship[1] reifiedRelationship
+	op Term[1] termPredicate() { reifiedRelationship }
+}
+
+class ReifiedRelationshipSourcePropertyPredicate extends BinarySegmentForwardPropertyPredicate {
+	refers ReifiedRelationship[1] reifiedRelationship
+	op Term[1] termPredicate() { reifiedRelationship }
+}
+
+class ReifiedRelationshipSourceInversePropertyPredicate extends BinarySegmentReversePropertyPredicate {
+	refers ReifiedRelationship[1] reifiedRelationship
+	op Term[1] termPredicate() { reifiedRelationship }
+}
+
+class ReifiedRelationshipTargetPropertyPredicate extends BinarySegmentForwardPropertyPredicate {
+	refers ReifiedRelationship[1] reifiedRelationship
+	op Term[1] termPredicate() { reifiedRelationship }
+}
+
+class ReifiedRelationshipTargetInversePropertyPredicate extends BinarySegmentReversePropertyPredicate {
+	refers ReifiedRelationship[1] reifiedRelationship
+	op Term[1] termPredicate() { reifiedRelationship }
+}
+
+class UnreifiedRelationshipPropertyPredicate extends BinarySegmentForwardPropertyPredicate {
+	refers UnreifiedRelationship[1] unreifiedRelationship
+	op Term[1] termPredicate() { unreifiedRelationship }
+}
+
+class UnreifiedRelationshipInversePropertyPredicate extends BinarySegmentReversePropertyPredicate {
+	refers UnreifiedRelationship[1] unreifiedRelationship
+	op Term[1] termPredicate() { unreifiedRelationship }
+}
+```
+
+#### 2) Concrete syntax changes in OML 0.9.1 from OML 0.9.0.7
+
+##### 2.1) Significant change about OML `EntiryRestrictionAxiom` concrete syntax
+
+The significant change pertains to what kind of relationship can be restricted as summarized below:
+
+| 0.9.1 | 0.9.0.7 | OWL2 correspondence |
+| --- | --- | --- |
+| `UnreifiedRelationship` | `UnreifiedRelationship` | Same |
+| `ForwardProperty` | `ReifiedRelationship` (implicitly, the `ForwardProperty`) | Same |
+| `InverseProperty` | Not Available | New in 0.9.1, Not Available in 0.9.0.7 |
+
+For example, the following in OML 0.9.1:
+
+```
+	allEntities Product . base:aggregates in base:AggregatedElement
+```
+
+corresponds to the following in OML 0.9.0.7:
+
+```
+	allEntities Product . base:Aggregates in base:AggregatedElement
+```
+
+Both OML forms above map to the same axiom in OWL2:
+
+```
+    <owl:Class rdf:about="http://imce.jpl.nasa.gov/foundation/mission/mission#Product">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://imce.jpl.nasa.gov/foundation/base/base#aggregates"/>
+                <owl:allValuesFrom rdf:resource="http://imce.jpl.nasa.gov/foundation/base/base#AggregatedElement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+```
+
+OML 0.9.1 enables the following, which was not possible to specify in OML 0.9.0.7:
+
+```
+allEntities Component . base:isAggregatedIn in Component
+```
+
+which corresponds to the following in OWL2:
+
+```
+    <owl:Class rdf:about="http://imce.jpl.nasa.gov/foundation/mission/mission#Component">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://imce.jpl.nasa.gov/foundation/base/base#isAggregatedIn"/>
+                <owl:allValuesFrom rdf:resource="http://imce.jpl.nasa.gov/foundation/mission/mission#Component"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+```
+
+##### 2.2) Significant change about OML `ChainRule`
+
+The overall concrete syntax for OML `ChainRule` remains unchanged as summarized below:
+
+```
+ChainRule: 'rule' <name> 'infers' <unreified relationship> 'if' SegmentPredicate ( '&&' SegmentPredicate )*
+```
+
+The significant change pertains to the concrete syntax of `SegmentPredicate` as described below
+where `QNAME = name | abbrev IRI`
+
+| What the `SegmentPredicate` pertains to? | 0.9.1 concrete syntax | 0.9.0.7 concrete syntax | Change |
+|---|---|---|---|
+| OML `Aspect` | `<Aspect QNAME>` | `aspect ( <Aspect QNAME> )` | Simpler, isomorphic to OWL2 |
+| OML `Concept` | `<Concept QNAME>` | `concept ( <Concept QNAME> )` | Simpler, isomorphic to OWL2 |
+| OML `ReifiedRelationship` | `<ReifiedRelationship QNAME>` | `reifiedRelationship ( <ReifiedRelationship QNAME> )` | Simpler, isomorphic to OWL2 |
+| OML `ReifiedRelationship.forwardProperty` | `<ReifiedRelationship.forwardProperty QNAME>` | `property ( <ReifiedRelationship QNAME> )` | Simpler, isomorphic to OWL2 |
+| OML `ReifiedRelationship.inverseProperty` | `<ReifiedRelationship.inverseProperty QNAME>` | `inv ( property ( <ReifiedRelationship QNAME> ) )` | Simpler, isomorphic to OWL2 |
+| OML `ReifiedRelationship.source` | `source ( <ReifiedRelationship QNAME> )` | `source ( <ReifiedRelationship QNAME> )` | Same |
+| OML `ReifiedRelationship.source` inverse | `invSource ( <ReifiedRelationship QNAME> )` | `inv ( source ( <ReifiedRelationship QNAME> ) )` | Simpler |
+| OML `ReifiedRelationship.target` | `target ( <ReifiedRelationship QNAME> )` | `target ( <ReifiedRelationship QNAME> )` | Same |
+| OML `ReifiedRelationship.target` inverse | `invTarget ( <ReifiedRelationship QNAME> )` | `inv ( target ( <ReifiedRelationship QNAME> ) )` | Simpler |
+| OML `UnreifiedRelationship` | `<UnreifiedRelationship QNAME>` | `<UnreifiedRelationship QNAME>` | Same, isomorphic to OWL2 |
+| OML `UnreifiedRelationship` inverse | `inv ( <UnreifiedRelationship QNAME> )` | `inv ( <UnreifiedRelationship QNAME> )` | Same, isomorphic to OWL2 |
+
+#### 3) Visualization notation changes in OML 0.9.1 from OML 0.9.0.7 for OML `EntityRestrictionAxiom`(s)
+
+| Kind | Notation in 0.9.0.7 | Notation in 0.9.1 |
+| ---- | --- | --- |
+| `EntityExistentialRestrictionAxiom` | `<<Existential>>` | `some <restricted relationship abbrev IRI> in` |
+| `EntityUNiversalRestrictionAxiom` | `<<Universal>>` | `all <restricted relationship abbrev IRI> in` |
+
+### [#210 Make the OML WB updatable](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/210)
+
+Followed the [official Tycho doc](https://wiki.eclipse.org/Tycho/eclipse-repository#Source_files) and added `installMode="root"` to the OML features in the OML product configuration.
+
+### [#211 Minor updates for code generation](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/211)
+
+- Removed a redundant specialization (an OML `Predicate` is a kind of OML `Resource`)
+
+   - Previously: `abstract class RestrictableRelationship extends Resource, Predicate`
+   - Now: `abstract class RestrictableRelationship extends Predicate`
+  
+- Fixed the return type cardinality of `SegmentPredicate.termPredicate()`:
+
+   - Previously: `op Term[1] termPredicate()`
+   - Now: `op Term[?] termPredicate()`
+  
+- Updated the scala code generation tags for several methods.
+
+### [#213 Update derived UUIDs to sync w/ scala APIs derived UUIDs](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/213)
+
+### [#214 Relax OMLZipResource to allow mixed XTextResource & OMLZipResource in XTextResourcSet](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/214)
+
+### [#216 Incomplete XText scope computation for SegmentPredicate.predicate cross-reference serialization.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/216)
+
+### [#217 OMLZipResourceSet.doSetup registration is incorrect and incomplete](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/217)
+
+### [#219 OMLZipResource.load should use the catalog only for resolving http URIs](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/219)
+
+### [#221 travis_wait truncates output.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/221)
+
+### [#222 OMLSpecificationTables.loadOMLZipResource uri handling logic](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/222)
+
+### [#224 missing cases for OMLImportedNamespaceAwareLocalScopeProvider.getScope](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/224)

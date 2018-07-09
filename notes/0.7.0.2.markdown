@@ -1,0 +1,9 @@
+gov.nasa.jpl.imce.oml.tycho 0.7.0.2 is a minor bug fix release
+
+### Bug fixes
+
+- [Problems using OML libraries from a command line application.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/15)
+
+  Added `minimalReflectiveMethods="false"` to all 5 OML xcore metamodels.
+ 
+### [Release process](releaseProcess.markdown)
