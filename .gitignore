@@ -8,3 +8,4 @@
 .polyglot.build.properties
 bin
 target
+/workspace

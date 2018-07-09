@@ -19,7 +19,6 @@ package gov.nasa.jpl.imce.oml.dsl.ui.internal;
 import com.google.common.collect.Maps;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.google.inject.Module;
 import gov.nasa.jpl.imce.oml.dsl.OMLRuntimeModule;
 import gov.nasa.jpl.imce.oml.dsl.ui.OMLUiModule;
 import java.util.Collections;
@@ -36,6 +35,7 @@ import org.osgi.framework.BundleContext;
  */
 public class DslActivator extends AbstractUIPlugin {
 
+	public static final String PLUGIN_ID = "gov.nasa.jpl.imce.oml.dsl.ui";
 	public static final String GOV_NASA_JPL_IMCE_OML_DSL_OML = "gov.nasa.jpl.imce.oml.dsl.OML";
 	
 	private static final Logger logger = Logger.getLogger(DslActivator.class);
@@ -73,10 +73,10 @@ public class DslActivator extends AbstractUIPlugin {
 	
 	protected Injector createInjector(String language) {
 		try {
-			Module runtimeModule = getRuntimeModule(language);
-			Module sharedStateModule = getSharedStateModule();
-			Module uiModule = getUiModule(language);
-			Module mergedModule = Modules2.mixin(runtimeModule, sharedStateModule, uiModule);
+			com.google.inject.Module runtimeModule = getRuntimeModule(language);
+			com.google.inject.Module sharedStateModule = getSharedStateModule();
+			com.google.inject.Module uiModule = getUiModule(language);
+			com.google.inject.Module mergedModule = Modules2.mixin(runtimeModule, sharedStateModule, uiModule);
 			return Guice.createInjector(mergedModule);
 		} catch (Exception e) {
 			logger.error("Failed to create injector for " + language);
@@ -85,22 +85,23 @@ public class DslActivator extends AbstractUIPlugin {
 		}
 	}
 	
-	protected Module getRuntimeModule(String grammar) {
+	protected com.google.inject.Module getRuntimeModule(String grammar) {
 		if (GOV_NASA_JPL_IMCE_OML_DSL_OML.equals(grammar)) {
 			return new OMLRuntimeModule();
 		}
 		throw new IllegalArgumentException(grammar);
 	}
 	
-	protected Module getUiModule(String grammar) {
+	protected com.google.inject.Module getUiModule(String grammar) {
 		if (GOV_NASA_JPL_IMCE_OML_DSL_OML.equals(grammar)) {
 			return new OMLUiModule(this);
 		}
 		throw new IllegalArgumentException(grammar);
 	}
 	
-	protected Module getSharedStateModule() {
+	protected com.google.inject.Module getSharedStateModule() {
 		return new SharedStateModule();
 	}
+	
 	
 }

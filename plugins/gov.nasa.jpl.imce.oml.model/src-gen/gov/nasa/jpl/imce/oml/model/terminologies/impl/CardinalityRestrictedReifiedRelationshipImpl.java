@@ -20,8 +20,11 @@ package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
 import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue;
 
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
+
 import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictionKind;
+import gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
@@ -274,6 +277,15 @@ public class CardinalityRestrictedReifiedRelationshipImpl extends ConceptualRela
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<CharacterizedEntityRelationship> rootCharacterizedEntityRelationships() {
+		return OMLExtensions.rootCharacterizedEntityRelationships(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -371,6 +383,8 @@ public class CardinalityRestrictedReifiedRelationshipImpl extends ConceptualRela
 				return relationSource();
 			case TerminologiesPackage.CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___RELATION_TARGET:
 				return relationTarget();
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP___ROOT_CHARACTERIZED_ENTITY_RELATIONSHIPS:
+				return rootCharacterizedEntityRelationships();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

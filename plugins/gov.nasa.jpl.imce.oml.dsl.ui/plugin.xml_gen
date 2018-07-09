@@ -204,6 +204,15 @@
 			</activeWhen>
 		</handler>
 	</extension>
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type
+			base-type="org.eclipse.core.runtime.text"
+			file-extensions="oml"
+			id="gov.nasa.jpl.imce.oml.dsl.OML.contenttype"
+			name="OML File"
+			priority="normal">
+		</content-type>
+	</extension>
 	<!-- adding resource factories -->
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
@@ -239,6 +248,15 @@
 			point="org.eclipse.core.resources.markers">
 		<super type="org.eclipse.xtext.ui.check.expensive"/>
 		<persistent value="true"/>
+	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			category="gov.nasa.jpl.imce.oml.dsl.OML"
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.validation.ValidatorPreferencePage"
+			id="gov.nasa.jpl.imce.oml.dsl.OML.validator.preferencePage"
+			name="Errors/Warnings">
+			<keywordReference id="gov.nasa.jpl.imce.oml.dsl.ui.keyword_OML"/>
+		</page>
 	</extension>
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
@@ -388,12 +406,18 @@
 			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="oml">
 		</viewer>
+		<contentTypeBinding
+			contentTypeId="gov.nasa.jpl.imce.oml.dsl.OML.contenttype"
+			contentViewerId="gov.nasa.jpl.imce.oml.dsl.OML.compare.contentViewers" />
 	</extension>
 	<extension point="org.eclipse.compare.contentMergeViewers">
 		<viewer id="gov.nasa.jpl.imce.oml.dsl.OML.compare.contentMergeViewers"
 			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="oml" label="OML Compare">
 		</viewer>
+		<contentTypeBinding
+			contentTypeId="gov.nasa.jpl.imce.oml.dsl.OML.contenttype"
+			contentMergeViewerId="gov.nasa.jpl.imce.oml.dsl.OML.compare.contentMergeViewers" />
 	</extension>
 	<extension point="org.eclipse.ui.editors.documentProviders">
 		<provider id="gov.nasa.jpl.imce.oml.dsl.OML.editors.documentProviders"

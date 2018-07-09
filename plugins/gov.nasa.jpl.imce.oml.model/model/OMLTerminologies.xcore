@@ -686,7 +686,7 @@ abstract class ConceptualRelationship extends ConceptualEntity, EntityRelationsh
 	@Collection(kind="Set")
 	@ImplicitExtent
 	@NotSchema
-	op ReifiedRelationship[*] rootReifiedRelationships()
+	op CharacterizedEntityRelationship[*] rootCharacterizedEntityRelationships()
 }
 
 /*
@@ -735,7 +735,7 @@ class ReifiedRelationship extends ConceptualRelationship, CharacterizedEntityRel
 	@ImplicitExtent
 	@NotSchema
 	@Override
-	op ReifiedRelationship[*] rootReifiedRelationships() { ECollections.singletonEList(this) }
+	op CharacterizedEntityRelationship[*] rootCharacterizedEntityRelationships() { ECollections.singletonEList(this) }
 }
 
 /*
@@ -767,13 +767,13 @@ class ReifiedRelationshipRestriction extends ConceptualRelationship {
 	@Override
 	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
 	
-	@Scala(code="resolver.ResolverUtilities.rootReifiedRelationships(this)")
+	@Scala(code="resolver.ResolverUtilities.rootCharacterizedEntityRelationships(this)")
 	@Collection(kind="Set")
 	@ImplicitExtent
 	@NotSchema
 	@Override
-	op ReifiedRelationship[*] rootReifiedRelationships() { 
-		OMLExtensions.rootReifiedRelationships(this)
+	op CharacterizedEntityRelationship[*] rootCharacterizedEntityRelationships() { 
+		OMLExtensions.rootCharacterizedEntityRelationships(this)
 	}
 }
 
@@ -845,6 +845,14 @@ class CardinalityRestrictedReifiedRelationship extends ConceptualRelationship {
 	@Override
 	op Entity[1] relationTarget() { restrictedRelationship.relation.relationTarget }
 	
+	@Scala(code="resolver.ResolverUtilities.rootCharacterizedEntityRelationships(this)")
+	@Collection(kind="Set")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op CharacterizedEntityRelationship[*] rootCharacterizedEntityRelationships() { 
+		OMLExtensions.rootCharacterizedEntityRelationships(this)
+	}
 }
 
 /*

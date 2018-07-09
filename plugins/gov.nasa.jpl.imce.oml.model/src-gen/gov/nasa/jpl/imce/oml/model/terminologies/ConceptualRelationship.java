@@ -47,6 +47,6 @@ public interface ConceptualRelationship extends ConceptualEntity, EntityRelation
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
 	 * @generated
 	 */
-	EList<ReifiedRelationship> rootReifiedRelationships();
+	EList<CharacterizedEntityRelationship> rootCharacterizedEntityRelationships();
 
 } // ConceptualRelationship

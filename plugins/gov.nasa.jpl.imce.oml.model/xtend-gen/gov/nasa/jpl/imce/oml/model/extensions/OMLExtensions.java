@@ -77,6 +77,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect;
 import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept;
 import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
+import gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
@@ -818,10 +819,37 @@ public class OMLExtensions {
     return Iterables.<EntityRelationship>concat(_localEntityRelationships, _flatten);
   }
   
-  public static EList<ReifiedRelationship> rootReifiedRelationships(final ReifiedRelationshipRestriction prr) {
-    EList<ReifiedRelationship> _xblockexpression = null;
+  public static EList<CharacterizedEntityRelationship> rootCharacterizedEntityRelationships(final CardinalityRestrictedReifiedRelationship crr) {
+    EList<CharacterizedEntityRelationship> _xblockexpression = null;
     {
-      final HashSet<ReifiedRelationship> result = new HashSet<ReifiedRelationship>();
+      final HashSet<CharacterizedEntityRelationship> result = new HashSet<CharacterizedEntityRelationship>();
+      final EntityRelationship rel = crr.getRestrictedRelationship().relation();
+      boolean _matched = false;
+      if (rel instanceof CharacterizedEntityRelationship) {
+        _matched=true;
+        result.add(((CharacterizedEntityRelationship)rel));
+      }
+      if (!_matched) {
+        if (rel instanceof ReifiedRelationshipRestriction) {
+          _matched=true;
+          result.addAll(OMLExtensions.rootCharacterizedEntityRelationships(((ReifiedRelationshipRestriction)rel)));
+        }
+      }
+      if (!_matched) {
+        if (rel instanceof CardinalityRestrictedReifiedRelationship) {
+          _matched=true;
+          result.addAll(OMLExtensions.rootCharacterizedEntityRelationships(((CardinalityRestrictedReifiedRelationship)rel)));
+        }
+      }
+      _xblockexpression = ECollections.<CharacterizedEntityRelationship>asEList(((CharacterizedEntityRelationship[])Conversions.unwrapArray(result, CharacterizedEntityRelationship.class)));
+    }
+    return _xblockexpression;
+  }
+  
+  public static EList<CharacterizedEntityRelationship> rootCharacterizedEntityRelationships(final ReifiedRelationshipRestriction prr) {
+    EList<CharacterizedEntityRelationship> _xblockexpression = null;
+    {
+      final HashSet<CharacterizedEntityRelationship> result = new HashSet<CharacterizedEntityRelationship>();
       final HashSet<ConceptualRelationship> horizon = new HashSet<ConceptualRelationship>();
       horizon.add(prr);
       final HashSet<ReifiedRelationshipSpecializationAxiom> candidates = new HashSet<ReifiedRelationshipSpecializationAxiom>();
@@ -847,7 +875,7 @@ public class OMLExtensions {
             };
             final List<ConceptualRelationship> parents = ListExtensions.<ReifiedRelationshipSpecializationAxiom, ConceptualRelationship>map(axioms, _function_2);
             final Iterable<ReifiedRelationship> moreReifiedRelationships = Iterables.<ReifiedRelationship>filter(parents, ReifiedRelationship.class);
-            Iterables.<ReifiedRelationship>addAll(result, moreReifiedRelationships);
+            Iterables.<CharacterizedEntityRelationship>addAll(result, moreReifiedRelationships);
             final Iterable<ReifiedRelationshipRestriction> moreReifiedRelationshipRestrictions = Iterables.<ReifiedRelationshipRestriction>filter(parents, ReifiedRelationshipRestriction.class);
             Iterables.<ConceptualRelationship>addAll(horizon, moreReifiedRelationshipRestrictions);
             boolean _isEmpty_1 = horizon.isEmpty();
@@ -856,7 +884,7 @@ public class OMLExtensions {
           }
         }
       } while(more);
-      _xblockexpression = ECollections.<ReifiedRelationship>asEList(((ReifiedRelationship[])Conversions.unwrapArray(result, ReifiedRelationship.class)));
+      _xblockexpression = ECollections.<CharacterizedEntityRelationship>asEList(((CharacterizedEntityRelationship[])Conversions.unwrapArray(result, CharacterizedEntityRelationship.class)));
     }
     return _xblockexpression;
   }

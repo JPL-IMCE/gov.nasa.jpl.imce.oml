@@ -24,10 +24,10 @@ import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
+import gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Term;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
@@ -206,8 +206,8 @@ public class ReifiedRelationshipRestrictionImpl extends ConceptualRelationshipIm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ReifiedRelationship> rootReifiedRelationships() {
-		return OMLExtensions.rootReifiedRelationships(this);
+	public EList<CharacterizedEntityRelationship> rootCharacterizedEntityRelationships() {
+		return OMLExtensions.rootCharacterizedEntityRelationships(this);
 	}
 
 	/**
@@ -308,7 +308,7 @@ public class ReifiedRelationshipRestrictionImpl extends ConceptualRelationshipIm
 		}
 		if (baseClass == ConceptualRelationship.class) {
 			switch (baseOperationID) {
-				case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS: return TerminologiesPackage.REIFIED_RELATIONSHIP_RESTRICTION___ROOT_REIFIED_RELATIONSHIPS;
+				case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___ROOT_CHARACTERIZED_ENTITY_RELATIONSHIPS: return TerminologiesPackage.REIFIED_RELATIONSHIP_RESTRICTION___ROOT_CHARACTERIZED_ENTITY_RELATIONSHIPS;
 				case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___RELATION_SOURCE: return TerminologiesPackage.REIFIED_RELATIONSHIP_RESTRICTION___RELATION_SOURCE;
 				case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___RELATION_TARGET: return TerminologiesPackage.REIFIED_RELATIONSHIP_RESTRICTION___RELATION_TARGET;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
@@ -331,8 +331,8 @@ public class ReifiedRelationshipRestrictionImpl extends ConceptualRelationshipIm
 				return relationTarget();
 			case TerminologiesPackage.REIFIED_RELATIONSHIP_RESTRICTION___ALL_NESTED_ELEMENTS:
 				return allNestedElements();
-			case TerminologiesPackage.REIFIED_RELATIONSHIP_RESTRICTION___ROOT_REIFIED_RELATIONSHIPS:
-				return rootReifiedRelationships();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_RESTRICTION___ROOT_CHARACTERIZED_ENTITY_RELATIONSHIPS:
+				return rootCharacterizedEntityRelationships();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

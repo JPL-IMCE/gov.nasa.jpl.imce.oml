@@ -32,19 +32,19 @@ Workflow {
 				rootPath = rootPath
 				runtimeTest = {
 					enabled = true
-					root = "../../../tests/core/${baseName}.tests"
+					root = "../../tests/${baseName}.tests"
 				}
 				eclipsePlugin = {
 					enabled = true
-					root = "../../ui/gov.nasa.jpl.imce.oml.dsl.ui"
+					root = "../gov.nasa.jpl.imce.oml.dsl.ui"
 				}
 				eclipsePluginTest = {
 					enabled = true
-					root = "../../../tests/core/${baseName}.ui.tests"
+					root = "../../tests/${baseName}.ui.tests"
 				}
 				createEclipseMetaData = true
 				genericIde = {
-					root = "../../ui/gov.nasa.jpl.imce.oml.dsl.ide"
+					root = "../gov.nasa.jpl.imce.oml.dsl.ide"
 				}
 			}
 			code = {
@@ -57,6 +57,7 @@ Workflow {
 			name = "${baseName}.OML"
 			fileExtensions = "oml"
 			
+			referencedResource = "platform:/resource/org.eclipse.emf.ecore.xcore.lib/model/XcoreLang.xcore"
 			referencedResource = "platform:/resource/${modelName}/model/OMLCommon.xcore"
 			referencedResource = "platform:/resource/${modelName}/model/OMLTerminologies.xcore"
 			referencedResource = "platform:/resource/${modelName}/model/OMLGraphs.xcore"

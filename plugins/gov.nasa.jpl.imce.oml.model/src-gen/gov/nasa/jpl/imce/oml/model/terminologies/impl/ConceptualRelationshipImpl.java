@@ -18,11 +18,11 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
+import gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.DirectedBinaryRelationshipKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.Term;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 
@@ -64,7 +64,7 @@ public abstract class ConceptualRelationshipImpl extends ConceptualEntityImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ReifiedRelationship> rootReifiedRelationships() {
+	public EList<CharacterizedEntityRelationship> rootCharacterizedEntityRelationships() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -144,8 +144,8 @@ public abstract class ConceptualRelationshipImpl extends ConceptualEntityImpl im
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS:
-				return rootReifiedRelationships();
+			case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___ROOT_CHARACTERIZED_ENTITY_RELATIONSHIPS:
+				return rootCharacterizedEntityRelationships();
 			case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___RELATION_SOURCE:
 				return relationSource();
 			case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___RELATION_DOMAIN:

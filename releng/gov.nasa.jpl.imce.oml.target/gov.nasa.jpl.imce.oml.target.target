@@ -1,20 +1,23 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="oml" sequenceNumber="27">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><?pde version="3.8"?><target name="oml" sequenceNumber="27">
 <locations>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.egit.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.emf.compare.diagram.sirius.source.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.emf.compare.egit.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.emf.compare.ide.ui.source.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.emf.ecore.xcore.sdk.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.equinox.sdk.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.platform.sdk" version="0.0.0"/>
-<unit id="org.eclipse.sirius.properties.feature.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.sirius.runtime.ide.ui.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.sirius.runtime.ide.xtext.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.xtext.xbase.feature.group" version="0.0.0"/>
-<repository location="http://download.eclipse.org/releases/photon"/>
-</location>
+	<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+		<unit id="org.apache.xml.resolver" version="1.2.0.v201005080400"/>
+		<repository location="http://download.eclipse.org/tools/orbit/R-builds/R20170516192513/repository"/>
+	</location>
+	<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+		<unit id="org.eclipse.egit.feature.group" version="0.0.0"/>
+		<unit id="org.eclipse.emf.compare.diagram.sirius.source.feature.group" version="0.0.0"/>
+		<unit id="org.eclipse.emf.compare.egit.feature.group" version="0.0.0"/>
+		<unit id="org.eclipse.emf.compare.ide.ui.source.feature.group" version="0.0.0"/>
+		<unit id="org.eclipse.emf.ecore.xcore.sdk.feature.group" version="0.0.0"/>
+		<unit id="org.eclipse.equinox.sdk.feature.group" version="0.0.0"/>
+		<unit id="org.eclipse.platform.sdk" version="0.0.0"/>
+		<unit id="org.eclipse.sirius.properties.feature.feature.group" version="0.0.0"/>
+		<unit id="org.eclipse.sirius.runtime.ide.ui.feature.group" version="0.0.0"/>
+		<unit id="org.eclipse.sirius.runtime.ide.xtext.feature.group" version="0.0.0"/>
+		<unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
+		<unit id="org.eclipse.xtext.xbase.feature.group" version="0.0.0"/>
+		<repository location="http://download.eclipse.org/releases/photon"/>
+	</location>
 </locations>
 </target>

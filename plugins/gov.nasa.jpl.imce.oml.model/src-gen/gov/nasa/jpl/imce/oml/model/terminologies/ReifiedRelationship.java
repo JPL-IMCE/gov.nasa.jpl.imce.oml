@@ -194,9 +194,9 @@ public interface ReifiedRelationship extends ConceptualRelationship, Characteriz
 	 * @model unique="false"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='scala.collection.immutable.Set[resolver.api.ReifiedRelationship](this)'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return &lt;%org.eclipse.emf.common.util.ECollections%&gt;.&lt;&lt;%gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship%&gt;&gt;singletonEList(this);'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return &lt;%org.eclipse.emf.common.util.ECollections%&gt;.&lt;&lt;%gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship%&gt;&gt;singletonEList(this);'"
 	 * @generated
 	 */
-	EList<ReifiedRelationship> rootReifiedRelationships();
+	EList<CharacterizedEntityRelationship> rootCharacterizedEntityRelationships();
 
 } // ReifiedRelationship

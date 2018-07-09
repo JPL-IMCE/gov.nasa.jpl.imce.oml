@@ -20,6 +20,8 @@ package gov.nasa.jpl.imce.oml.model.terminologies;
 
 import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue;
 
+import org.eclipse.emf.common.util.EList;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Cardinality Restricted Reified Relationship</b></em>'.
@@ -218,5 +220,16 @@ public interface CardinalityRestrictedReifiedRelationship extends ConceptualRela
 	 * @generated
 	 */
 	Entity relationTarget();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='resolver.ResolverUtilities.rootCharacterizedEntityRelationships(this)'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.rootCharacterizedEntityRelationships(this);'"
+	 * @generated
+	 */
+	EList<CharacterizedEntityRelationship> rootCharacterizedEntityRelationships();
 
 } // CardinalityRestrictedReifiedRelationship

@@ -28,6 +28,7 @@ import gov.nasa.jpl.imce.oml.dsl.ui.labeling.OMLLabelProvider;
 import gov.nasa.jpl.imce.oml.dsl.ui.outline.OMLOutlineTreeProvider;
 import gov.nasa.jpl.imce.oml.dsl.ui.quickfix.OMLQuickfixProvider;
 import gov.nasa.jpl.imce.oml.dsl.ui.wizard.OMLProjectCreator;
+import gov.nasa.jpl.imce.oml.dsl.validation.OMLValidatorConfigurationBlock;
 import org.eclipse.compare.IViewerCreator;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -92,6 +93,7 @@ import org.eclipse.xtext.ui.refactoring.ui.IRenameSupport;
 import org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferences;
 import org.eclipse.xtext.ui.resource.ResourceServiceDescriptionLabelProvider;
 import org.eclipse.xtext.ui.shared.Access;
+import org.eclipse.xtext.ui.validation.AbstractValidatorConfigurationBlock;
 import org.eclipse.xtext.ui.wizard.IProjectCreator;
 
 /**
@@ -148,6 +150,11 @@ public abstract class AbstractOMLUiModule extends DefaultUiModule {
 	// contributed by org.eclipse.xtext.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment2
 	public void configureContentAssistLexerProvider(Binder binder) {
 		binder.bind(InternalOMLLexer.class).toProvider(LexerProvider.create(InternalOMLLexer.class));
+	}
+	
+	// contributed by org.eclipse.xtext.xtext.generator.validation.ValidatorFragment2
+	public Class<? extends AbstractValidatorConfigurationBlock> bindAbstractValidatorConfigurationBlock() {
+		return OMLValidatorConfigurationBlock.class;
 	}
 	
 	// contributed by org.eclipse.xtext.xtext.generator.exporting.QualifiedNamesFragment2
@@ -238,6 +245,13 @@ public abstract class AbstractOMLUiModule extends DefaultUiModule {
 	}
 	
 	// contributed by org.eclipse.xtext.xtext.generator.ui.refactoring.RefactorElementNameFragment2
+	public void configureIPreferenceStoreInitializer(Binder binder) {
+		binder.bind(IPreferenceStoreInitializer.class)
+			.annotatedWith(Names.named("RefactoringPreferences"))
+			.to(RefactoringPreferences.Initializer.class);
+	}
+	
+	// contributed by org.eclipse.xtext.xtext.generator.ui.refactoring.RefactorElementNameFragment2
 	public Class<? extends IRenameStrategy> bindIRenameStrategy() {
 		return DefaultRenameStrategy.class;
 	}
@@ -245,13 +259,6 @@ public abstract class AbstractOMLUiModule extends DefaultUiModule {
 	// contributed by org.eclipse.xtext.xtext.generator.ui.refactoring.RefactorElementNameFragment2
 	public Class<? extends IReferenceUpdater> bindIReferenceUpdater() {
 		return DefaultReferenceUpdater.class;
-	}
-	
-	// contributed by org.eclipse.xtext.xtext.generator.ui.refactoring.RefactorElementNameFragment2
-	public void configureIPreferenceStoreInitializer(Binder binder) {
-		binder.bind(IPreferenceStoreInitializer.class)
-			.annotatedWith(Names.named("RefactoringPreferences"))
-			.to(RefactoringPreferences.Initializer.class);
 	}
 	
 	// contributed by org.eclipse.xtext.xtext.generator.ui.refactoring.RefactorElementNameFragment2
