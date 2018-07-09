@@ -7,9 +7,9 @@
 	<packaging>pom</packaging>
 	<parent>
 		<groupId>gov.nasa.jpl.imce.oml</groupId>
-		<artifactId>gov.nasa.jpl.imce.oml.parent</artifactId>
+		<artifactId>gov.nasa.jpl.imce.oml.configuration</artifactId>
 		<version>0.9.6-SNAPSHOT</version>
-		<relativePath>./releng/gov.nasa.jpl.imce.oml.parent</relativePath>
+		<relativePath>./releng/gov.nasa.jpl.imce.oml.configuration</relativePath>
 	</parent>
 	<modules>
 		<module>plugins</module>

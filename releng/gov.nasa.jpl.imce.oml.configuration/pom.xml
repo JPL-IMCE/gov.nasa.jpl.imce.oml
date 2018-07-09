@@ -3,10 +3,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>gov.nasa.jpl.imce.oml</groupId>
-	<artifactId>gov.nasa.jpl.imce.oml.parent</artifactId>
+	<artifactId>gov.nasa.jpl.imce.oml.configuration</artifactId>
 	<version>0.9.6-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>OML Parent</name>
 
 	<properties>
 		<tycho.version>1.1.0</tycho.version>

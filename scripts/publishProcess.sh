@@ -10,7 +10,12 @@ else
     git branch releases/$V;
     git checkout releases/$V;
     echo "# Setting versions to '$V' in POM files and META-INF/MANIFEST.MF...";
-    mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=$V -Dtycho.mode=maven -Dproperties=oml.version;
+    mvn \
+    	org.eclipse.tycho:tycho-versions-plugin:set-version \
+    	-DnewVersion=$V \
+    	-Dtycho.mode=maven \
+    	-Dproperties=oml.version \
+    	-Dartifacts=gov.nasa.jpl.imce.oml.configuration,gov.nasa.jpl.imce.oml.root;
     echo "# Review the changes and confirm before proceeding";
     git status;
     git diff --stat > /tmp/d1
@@ -32,7 +37,8 @@ else
  plugins/gov.nasa.jpl.imce.oml.viewpoint/META-INF/MANIFEST.MF         | 2 +-
  plugins/gov.nasa.jpl.imce.oml.zip/META-INF/MANIFEST.MF               | 2 +-
  plugins/pom.xml                                                      | 2 +-
- pom.xml                                                              | 2 +-
+ pom.xml                                                              | 4 ++--
+ releng/gov.nasa.jpl.imce.oml.configuration/pom.xml                   | 4 ++--
  releng/gov.nasa.jpl.imce.oml.product/oml.product                     | 2 +-
  releng/gov.nasa.jpl.imce.oml.product/pom.xml                         | 2 +-
  releng/gov.nasa.jpl.imce.oml.target/pom.xml                          | 2 +-
@@ -42,7 +48,7 @@ else
  tests/gov.nasa.jpl.imce.oml.dsl.tests/META-INF/MANIFEST.MF           | 2 +-
  tests/gov.nasa.jpl.imce.oml.serialization.tests/META-INF/MANIFEST.MF | 2 +-
  tests/pom.xml                                                        | 4 ++--
- 23 files changed, 25 insertions(+), 25 deletions(-)
+ 24 files changed, 28 insertions(+), 28 deletions(-)
 EOF
     echo "#--------------------"
     echo "# Comparing with expected differences... "

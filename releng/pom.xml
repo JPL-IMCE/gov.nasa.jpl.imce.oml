@@ -11,6 +11,7 @@
 		<version>0.9.6-SNAPSHOT</version>
 	</parent>
 	<modules>
+		<module>gov.nasa.jpl.imce.oml.configuration</module>
 		<module>gov.nasa.jpl.imce.oml.product</module>
 		<module>gov.nasa.jpl.imce.oml.target</module>
 		<module>gov.nasa.jpl.imce.oml.updatesite</module>
