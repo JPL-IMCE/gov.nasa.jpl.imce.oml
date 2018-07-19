@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/gov.nasa.jpl.imce.oml.feature_0.9.6.qualifier.jar" id="gov.nasa.jpl.imce.oml.feature" version="0.9.6.qualifier">
+   <feature url="features/gov.nasa.jpl.imce.oml.feature_0.9.6.3.jar" id="gov.nasa.jpl.imce.oml.feature" version="0.9.6.3">
       <category name="OMLWorkbench"/>
    </feature>
    <category-def name="OMLWorkbench" label="OML Workbench"/>
