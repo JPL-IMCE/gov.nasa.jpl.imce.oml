@@ -4191,12 +4191,14 @@ class OMLSpecificationTables {
   protected def void includeAspects(String uuid, Aspect oml) {
   	logicalElements.put(uuid, new Pair<LogicalElement, Map<String, String>>(oml, Collections.emptyMap))
   	entities.put(uuid, new Pair<Entity, Map<String, String>>(oml, Collections.emptyMap))
+  	aspectKinds.put(uuid, new Pair<AspectKind, Map<String, String>>(oml, Collections.emptyMap))
   	predicates.put(uuid, new Pair<Predicate, Map<String, String>>(oml, Collections.emptyMap))
   	
   }
   protected def void includeConcepts(String uuid, Concept oml) {
   	logicalElements.put(uuid, new Pair<LogicalElement, Map<String, String>>(oml, Collections.emptyMap))
   	entities.put(uuid, new Pair<Entity, Map<String, String>>(oml, Collections.emptyMap))
+  	conceptKinds.put(uuid, new Pair<ConceptKind, Map<String, String>>(oml, Collections.emptyMap))
   	predicates.put(uuid, new Pair<Predicate, Map<String, String>>(oml, Collections.emptyMap))
   	
   }
@@ -4458,12 +4460,14 @@ class OMLSpecificationTables {
   protected def void includeCardinalityRestrictedAspects(String uuid, CardinalityRestrictedAspect oml) {
   	logicalElements.put(uuid, new Pair<LogicalElement, Map<String, String>>(oml, Collections.emptyMap))
   	entities.put(uuid, new Pair<Entity, Map<String, String>>(oml, Collections.emptyMap))
+  	aspectKinds.put(uuid, new Pair<AspectKind, Map<String, String>>(oml, Collections.emptyMap))
   	predicates.put(uuid, new Pair<Predicate, Map<String, String>>(oml, Collections.emptyMap))
   	
   }
   protected def void includeCardinalityRestrictedConcepts(String uuid, CardinalityRestrictedConcept oml) {
   	logicalElements.put(uuid, new Pair<LogicalElement, Map<String, String>>(oml, Collections.emptyMap))
   	entities.put(uuid, new Pair<Entity, Map<String, String>>(oml, Collections.emptyMap))
+  	conceptKinds.put(uuid, new Pair<ConceptKind, Map<String, String>>(oml, Collections.emptyMap))
   	predicates.put(uuid, new Pair<Predicate, Map<String, String>>(oml, Collections.emptyMap))
   	
   }
@@ -4475,199 +4479,199 @@ class OMLSpecificationTables {
   	predicates.put(uuid, new Pair<Predicate, Map<String, String>>(oml, Collections.emptyMap))
   	
   }
-  
+
   protected def void resolve(ResourceSet rs, OMLZipResource r) {
-  	
+
   	System.out.println("Resolve: "+r.URI)
   	val t0 = System.currentTimeMillis
   	// Lookup table for LogicalElement cross references
     if (includeMap(logicalElements, terminologyGraphs)) {
-    		System.out.println("+ logicalElements, terminologyGraphs")
-    	}
+    	System.out.println("+ logicalElements, terminologyGraphs")
+    }
     if (includeMap(logicalElements, bundles)) {
-    		System.out.println("+ logicalElements, bundles")
-    	}
+    	System.out.println("+ logicalElements, bundles")
+    }
     if (includeMap(logicalElements, descriptionBoxes)) {
-    		System.out.println("+ logicalElements, descriptionBoxes")
-    	}
+    	System.out.println("+ logicalElements, descriptionBoxes")
+    }
     if (includeMap(logicalElements, aspects)) {
-    		System.out.println("+ logicalElements, aspects")
-    	}
+    	System.out.println("+ logicalElements, aspects")
+    }
     if (includeMap(logicalElements, concepts)) {
-    		System.out.println("+ logicalElements, concepts")
-    	}
+    	System.out.println("+ logicalElements, concepts")
+    }
     if (includeMap(logicalElements, scalars)) {
-    		System.out.println("+ logicalElements, scalars")
-    	}
+    	System.out.println("+ logicalElements, scalars")
+    }
     if (includeMap(logicalElements, structures)) {
-    		System.out.println("+ logicalElements, structures")
-    	}
+    	System.out.println("+ logicalElements, structures")
+    }
     if (includeMap(logicalElements, conceptDesignationTerminologyAxioms)) {
-    		System.out.println("+ logicalElements, conceptDesignationTerminologyAxioms")
-    	}
+    	System.out.println("+ logicalElements, conceptDesignationTerminologyAxioms")
+    }
     if (includeMap(logicalElements, terminologyExtensionAxioms)) {
-    		System.out.println("+ logicalElements, terminologyExtensionAxioms")
-    	}
+    	System.out.println("+ logicalElements, terminologyExtensionAxioms")
+    }
     if (includeMap(logicalElements, terminologyNestingAxioms)) {
-    		System.out.println("+ logicalElements, terminologyNestingAxioms")
-    	}
+    	System.out.println("+ logicalElements, terminologyNestingAxioms")
+    }
     if (includeMap(logicalElements, bundledTerminologyAxioms)) {
-    		System.out.println("+ logicalElements, bundledTerminologyAxioms")
-    	}
+    	System.out.println("+ logicalElements, bundledTerminologyAxioms")
+    }
     if (includeMap(logicalElements, descriptionBoxExtendsClosedWorldDefinitions)) {
-    		System.out.println("+ logicalElements, descriptionBoxExtendsClosedWorldDefinitions")
-    	}
+    	System.out.println("+ logicalElements, descriptionBoxExtendsClosedWorldDefinitions")
+    }
     if (includeMap(logicalElements, descriptionBoxRefinements)) {
-    		System.out.println("+ logicalElements, descriptionBoxRefinements")
-    	}
+    	System.out.println("+ logicalElements, descriptionBoxRefinements")
+    }
     if (includeMap(logicalElements, binaryScalarRestrictions)) {
-    		System.out.println("+ logicalElements, binaryScalarRestrictions")
-    	}
+    	System.out.println("+ logicalElements, binaryScalarRestrictions")
+    }
     if (includeMap(logicalElements, iriScalarRestrictions)) {
-    		System.out.println("+ logicalElements, iriScalarRestrictions")
-    	}
+    	System.out.println("+ logicalElements, iriScalarRestrictions")
+    }
     if (includeMap(logicalElements, numericScalarRestrictions)) {
-    		System.out.println("+ logicalElements, numericScalarRestrictions")
-    	}
+    	System.out.println("+ logicalElements, numericScalarRestrictions")
+    }
     if (includeMap(logicalElements, plainLiteralScalarRestrictions)) {
-    		System.out.println("+ logicalElements, plainLiteralScalarRestrictions")
-    	}
+    	System.out.println("+ logicalElements, plainLiteralScalarRestrictions")
+    }
     if (includeMap(logicalElements, scalarOneOfRestrictions)) {
-    		System.out.println("+ logicalElements, scalarOneOfRestrictions")
-    	}
+    	System.out.println("+ logicalElements, scalarOneOfRestrictions")
+    }
     if (includeMap(logicalElements, scalarOneOfLiteralAxioms)) {
-    		System.out.println("+ logicalElements, scalarOneOfLiteralAxioms")
-    	}
+    	System.out.println("+ logicalElements, scalarOneOfLiteralAxioms")
+    }
     if (includeMap(logicalElements, stringScalarRestrictions)) {
-    		System.out.println("+ logicalElements, stringScalarRestrictions")
-    	}
+    	System.out.println("+ logicalElements, stringScalarRestrictions")
+    }
     if (includeMap(logicalElements, synonymScalarRestrictions)) {
-    		System.out.println("+ logicalElements, synonymScalarRestrictions")
-    	}
+    	System.out.println("+ logicalElements, synonymScalarRestrictions")
+    }
     if (includeMap(logicalElements, timeScalarRestrictions)) {
-    		System.out.println("+ logicalElements, timeScalarRestrictions")
-    	}
+    	System.out.println("+ logicalElements, timeScalarRestrictions")
+    }
     if (includeMap(logicalElements, entityScalarDataProperties)) {
-    		System.out.println("+ logicalElements, entityScalarDataProperties")
-    	}
+    	System.out.println("+ logicalElements, entityScalarDataProperties")
+    }
     if (includeMap(logicalElements, entityStructuredDataProperties)) {
-    		System.out.println("+ logicalElements, entityStructuredDataProperties")
-    	}
+    	System.out.println("+ logicalElements, entityStructuredDataProperties")
+    }
     if (includeMap(logicalElements, scalarDataProperties)) {
-    		System.out.println("+ logicalElements, scalarDataProperties")
-    	}
+    	System.out.println("+ logicalElements, scalarDataProperties")
+    }
     if (includeMap(logicalElements, structuredDataProperties)) {
-    		System.out.println("+ logicalElements, structuredDataProperties")
-    	}
+    	System.out.println("+ logicalElements, structuredDataProperties")
+    }
     if (includeMap(logicalElements, reifiedRelationships)) {
-    		System.out.println("+ logicalElements, reifiedRelationships")
-    	}
+    	System.out.println("+ logicalElements, reifiedRelationships")
+    }
     if (includeMap(logicalElements, reifiedRelationshipRestrictions)) {
-    		System.out.println("+ logicalElements, reifiedRelationshipRestrictions")
-    	}
+    	System.out.println("+ logicalElements, reifiedRelationshipRestrictions")
+    }
     if (includeMap(logicalElements, forwardProperties)) {
-    		System.out.println("+ logicalElements, forwardProperties")
-    	}
+    	System.out.println("+ logicalElements, forwardProperties")
+    }
     if (includeMap(logicalElements, inverseProperties)) {
-    		System.out.println("+ logicalElements, inverseProperties")
-    	}
+    	System.out.println("+ logicalElements, inverseProperties")
+    }
     if (includeMap(logicalElements, unreifiedRelationships)) {
-    		System.out.println("+ logicalElements, unreifiedRelationships")
-    	}
+    	System.out.println("+ logicalElements, unreifiedRelationships")
+    }
     if (includeMap(logicalElements, chainRules)) {
-    		System.out.println("+ logicalElements, chainRules")
-    	}
+    	System.out.println("+ logicalElements, chainRules")
+    }
     if (includeMap(logicalElements, ruleBodySegments)) {
-    		System.out.println("+ logicalElements, ruleBodySegments")
-    	}
+    	System.out.println("+ logicalElements, ruleBodySegments")
+    }
     if (includeMap(logicalElements, segmentPredicates)) {
-    		System.out.println("+ logicalElements, segmentPredicates")
-    	}
+    	System.out.println("+ logicalElements, segmentPredicates")
+    }
     if (includeMap(logicalElements, entityExistentialRestrictionAxioms)) {
-    		System.out.println("+ logicalElements, entityExistentialRestrictionAxioms")
-    	}
+    	System.out.println("+ logicalElements, entityExistentialRestrictionAxioms")
+    }
     if (includeMap(logicalElements, entityUniversalRestrictionAxioms)) {
-    		System.out.println("+ logicalElements, entityUniversalRestrictionAxioms")
-    	}
+    	System.out.println("+ logicalElements, entityUniversalRestrictionAxioms")
+    }
     if (includeMap(logicalElements, entityScalarDataPropertyExistentialRestrictionAxioms)) {
-    		System.out.println("+ logicalElements, entityScalarDataPropertyExistentialRestrictionAxioms")
-    	}
+    	System.out.println("+ logicalElements, entityScalarDataPropertyExistentialRestrictionAxioms")
+    }
     if (includeMap(logicalElements, entityScalarDataPropertyParticularRestrictionAxioms)) {
-    		System.out.println("+ logicalElements, entityScalarDataPropertyParticularRestrictionAxioms")
-    	}
+    	System.out.println("+ logicalElements, entityScalarDataPropertyParticularRestrictionAxioms")
+    }
     if (includeMap(logicalElements, entityScalarDataPropertyUniversalRestrictionAxioms)) {
-    		System.out.println("+ logicalElements, entityScalarDataPropertyUniversalRestrictionAxioms")
-    	}
+    	System.out.println("+ logicalElements, entityScalarDataPropertyUniversalRestrictionAxioms")
+    }
     if (includeMap(logicalElements, entityStructuredDataPropertyParticularRestrictionAxioms)) {
-    		System.out.println("+ logicalElements, entityStructuredDataPropertyParticularRestrictionAxioms")
-    	}
+    	System.out.println("+ logicalElements, entityStructuredDataPropertyParticularRestrictionAxioms")
+    }
     if (includeMap(logicalElements, restrictionStructuredDataPropertyTuples)) {
-    		System.out.println("+ logicalElements, restrictionStructuredDataPropertyTuples")
-    	}
+    	System.out.println("+ logicalElements, restrictionStructuredDataPropertyTuples")
+    }
     if (includeMap(logicalElements, restrictionScalarDataPropertyValues)) {
-    		System.out.println("+ logicalElements, restrictionScalarDataPropertyValues")
-    	}
+    	System.out.println("+ logicalElements, restrictionScalarDataPropertyValues")
+    }
     if (includeMap(logicalElements, aspectSpecializationAxioms)) {
-    		System.out.println("+ logicalElements, aspectSpecializationAxioms")
-    	}
+    	System.out.println("+ logicalElements, aspectSpecializationAxioms")
+    }
     if (includeMap(logicalElements, conceptSpecializationAxioms)) {
-    		System.out.println("+ logicalElements, conceptSpecializationAxioms")
-    	}
+    	System.out.println("+ logicalElements, conceptSpecializationAxioms")
+    }
     if (includeMap(logicalElements, reifiedRelationshipSpecializationAxioms)) {
-    		System.out.println("+ logicalElements, reifiedRelationshipSpecializationAxioms")
-    	}
+    	System.out.println("+ logicalElements, reifiedRelationshipSpecializationAxioms")
+    }
     if (includeMap(logicalElements, subDataPropertyOfAxioms)) {
-    		System.out.println("+ logicalElements, subDataPropertyOfAxioms")
-    	}
+    	System.out.println("+ logicalElements, subDataPropertyOfAxioms")
+    }
     if (includeMap(logicalElements, subObjectPropertyOfAxioms)) {
-    		System.out.println("+ logicalElements, subObjectPropertyOfAxioms")
-    	}
+    	System.out.println("+ logicalElements, subObjectPropertyOfAxioms")
+    }
     if (includeMap(logicalElements, rootConceptTaxonomyAxioms)) {
-    		System.out.println("+ logicalElements, rootConceptTaxonomyAxioms")
-    	}
+    	System.out.println("+ logicalElements, rootConceptTaxonomyAxioms")
+    }
     if (includeMap(logicalElements, anonymousConceptUnionAxioms)) {
-    		System.out.println("+ logicalElements, anonymousConceptUnionAxioms")
-    	}
+    	System.out.println("+ logicalElements, anonymousConceptUnionAxioms")
+    }
     if (includeMap(logicalElements, specificDisjointConceptAxioms)) {
-    		System.out.println("+ logicalElements, specificDisjointConceptAxioms")
-    	}
+    	System.out.println("+ logicalElements, specificDisjointConceptAxioms")
+    }
     if (includeMap(logicalElements, conceptInstances)) {
-    		System.out.println("+ logicalElements, conceptInstances")
-    	}
+    	System.out.println("+ logicalElements, conceptInstances")
+    }
     if (includeMap(logicalElements, reifiedRelationshipInstances)) {
-    		System.out.println("+ logicalElements, reifiedRelationshipInstances")
-    	}
+    	System.out.println("+ logicalElements, reifiedRelationshipInstances")
+    }
     if (includeMap(logicalElements, reifiedRelationshipInstanceDomains)) {
-    		System.out.println("+ logicalElements, reifiedRelationshipInstanceDomains")
-    	}
+    	System.out.println("+ logicalElements, reifiedRelationshipInstanceDomains")
+    }
     if (includeMap(logicalElements, reifiedRelationshipInstanceRanges)) {
-    		System.out.println("+ logicalElements, reifiedRelationshipInstanceRanges")
-    	}
+    	System.out.println("+ logicalElements, reifiedRelationshipInstanceRanges")
+    }
     if (includeMap(logicalElements, unreifiedRelationshipInstanceTuples)) {
-    		System.out.println("+ logicalElements, unreifiedRelationshipInstanceTuples")
-    	}
+    	System.out.println("+ logicalElements, unreifiedRelationshipInstanceTuples")
+    }
     if (includeMap(logicalElements, singletonInstanceStructuredDataPropertyValues)) {
-    		System.out.println("+ logicalElements, singletonInstanceStructuredDataPropertyValues")
-    	}
+    	System.out.println("+ logicalElements, singletonInstanceStructuredDataPropertyValues")
+    }
     if (includeMap(logicalElements, singletonInstanceScalarDataPropertyValues)) {
-    		System.out.println("+ logicalElements, singletonInstanceScalarDataPropertyValues")
-    	}
+    	System.out.println("+ logicalElements, singletonInstanceScalarDataPropertyValues")
+    }
     if (includeMap(logicalElements, structuredDataPropertyTuples)) {
-    		System.out.println("+ logicalElements, structuredDataPropertyTuples")
-    	}
+    	System.out.println("+ logicalElements, structuredDataPropertyTuples")
+    }
     if (includeMap(logicalElements, scalarDataPropertyValues)) {
-    		System.out.println("+ logicalElements, scalarDataPropertyValues")
-    	}
+    	System.out.println("+ logicalElements, scalarDataPropertyValues")
+    }
     if (includeMap(logicalElements, cardinalityRestrictedAspects)) {
-    		System.out.println("+ logicalElements, cardinalityRestrictedAspects")
-    	}
+    	System.out.println("+ logicalElements, cardinalityRestrictedAspects")
+    }
     if (includeMap(logicalElements, cardinalityRestrictedConcepts)) {
-    		System.out.println("+ logicalElements, cardinalityRestrictedConcepts")
-    	}
+    	System.out.println("+ logicalElements, cardinalityRestrictedConcepts")
+    }
     if (includeMap(logicalElements, cardinalityRestrictedReifiedRelationships)) {
-    		System.out.println("+ logicalElements, cardinalityRestrictedReifiedRelationships")
-    	}
-  	
+    	System.out.println("+ logicalElements, cardinalityRestrictedReifiedRelationships")
+    }
+
 	// Lookup table for Entity cross references
   	if (includeMap(entities, aspects)) {
   		System.out.println("+ entities, aspects")
@@ -4690,69 +4694,85 @@ class OMLSpecificationTables {
   	if (includeMap(entities, cardinalityRestrictedReifiedRelationships)) {
   		System.out.println("+ entities, cardinalityRestrictedReifiedRelationships")
   	}
-    
+
+	// Lookup table for AspectKind cross references
+  	if (includeMap(aspectKinds, aspects)) {
+  		System.out.println("+ aspectKinds, aspects")
+  	}
+  	if (includeMap(aspectKinds, cardinalityRestrictedAspects)) {
+  		System.out.println("+ aspectKinds, cardinalityRestrictedAspects")
+  	}
+
+	// Lookup table for ConceptKind cross references
+  	if (includeMap(conceptKinds, concepts)) {
+  		System.out.println("+ conceptKinds, concepts")
+  	}
+  	if (includeMap(conceptKinds, cardinalityRestrictedConcepts)) {
+  		System.out.println("+ conceptKinds, cardinalityRestrictedConcepts")
+  	}
+
 	// Lookup table for EntityRelationship cross references
     if (includeMap(entityRelationships, reifiedRelationships)) {
-    		System.out.println("+ entities, reifiedRelationships")
-    	}
+    	System.out.println("+ entities, reifiedRelationships")
+    }
     if (includeMap(entityRelationships, reifiedRelationshipRestrictions)) {
-    		System.out.println("+ entities, reifiedRelationshipRestrictions")
-    	}
+    	System.out.println("+ entities, reifiedRelationshipRestrictions")
+    }
     if (includeMap(entityRelationships, unreifiedRelationships)) {
-    		System.out.println("+ entities, unreifiedRelationships")
-    	}
+    	System.out.println("+ entities, unreifiedRelationships")
+    }
     if (includeMap(entityRelationships, cardinalityRestrictedReifiedRelationships)) {
-    		System.out.println("+ entities, cardinalityRestrictedReifiedRelationships")
-    	}
-    
+    	System.out.println("+ entities, cardinalityRestrictedReifiedRelationships")
+    }
+
 	// Lookup table for ConceptualRelationship cross references
     if (includeMap(conceptualRelationships, reifiedRelationships)) {
-    		 System.out.println("+ entities, reifiedRelationships")
-    	}
+    	System.out.println("+ entities, reifiedRelationships")
+    }
     if (includeMap(conceptualRelationships, reifiedRelationshipRestrictions)) {
-    		 System.out.println("+ entities, reifiedRelationshipRestrictions")
-    	}
+    	System.out.println("+ entities, reifiedRelationshipRestrictions")
+    }
     if (includeMap(conceptualRelationships, cardinalityRestrictedReifiedRelationships)) {
-    		 System.out.println("+ entities, cardinalityRestrictedReifiedRelationships")
-    	}
-    
+    	System.out.println("+ entities, cardinalityRestrictedReifiedRelationships")
+    }
+
 	// Lookup table for DataRange cross references
     if (includeMap(dataRanges, scalars)) {
-    		 System.out.println("+ entities, scalars")
-    	}
+    	System.out.println("+ entities, scalars")
+    }
     if (includeMap(dataRanges, binaryScalarRestrictions)) {
-    		 System.out.println("+ entities, binaryScalarRestrictions")
-    	}
+    	System.out.println("+ entities, binaryScalarRestrictions")
+    }
     if (includeMap(dataRanges, iriScalarRestrictions)) {
-    		 System.out.println("+ entities, iriScalarRestrictions")
-    	}
+    	System.out.println("+ entities, iriScalarRestrictions")
+    }
     if (includeMap(dataRanges, numericScalarRestrictions)) {
-    		 System.out.println("+ entities, numericScalarRestrictions")
-    	}
+    	System.out.println("+ entities, numericScalarRestrictions")
+    }
     if (includeMap(dataRanges, plainLiteralScalarRestrictions)) {
-    		 System.out.println("+ entities, plainLiteralScalarRestrictions")
-    	}
+    	System.out.println("+ entities, plainLiteralScalarRestrictions")
+    }
     if (includeMap(dataRanges, scalarOneOfRestrictions)) {
-    		 System.out.println("+ entities, scalarOneOfRestrictions")
-    	}
+    	System.out.println("+ entities, scalarOneOfRestrictions")
+    }
     if (includeMap(dataRanges, stringScalarRestrictions)) {
-    		 System.out.println("+ entities, stringScalarRestrictions")
-    	}
+    	System.out.println("+ entities, stringScalarRestrictions")
+    }
     if (includeMap(dataRanges, synonymScalarRestrictions)) {
-    		 System.out.println("+ entities, synonymScalarRestrictions")
-    	}
+    	System.out.println("+ entities, synonymScalarRestrictions")
+    }
     if (includeMap(dataRanges, timeScalarRestrictions)) {
-    		 System.out.println("+ entities, timeScalarRestrictions")
-    	}
-  	
+    	System.out.println("+ entities, timeScalarRestrictions")
+    }
+
 	// Lookup table for DataRelationshipToScalar cross references
   	if (includeMap(dataRelationshipToScalars, entityScalarDataProperties)) {
-  		 System.out.println("+ entities, entityScalarDataProperties")
+  		System.out.println("+ entities, entityScalarDataProperties")
   	}
   	if (includeMap(dataRelationshipToScalars, scalarDataProperties)) {
-  		 System.out.println("+ entities, scalarDataProperties")
+  		System.out.println("+ entities, scalarDataProperties")
   	}
-  	
+
 	// Lookup table for DataRelationshipToStructure cross references
   	if (includeMap(dataRelationshipToStructures, entityStructuredDataProperties)) {
   		System.out.println("+ entities, entityStructuredDataProperties")
@@ -4760,49 +4780,49 @@ class OMLSpecificationTables {
   	if (includeMap(dataRelationshipToStructures, structuredDataProperties)) {
   		System.out.println("+ entities, structuredDataProperties")
   	}
-  	
+
 	// Lookup table for Predicate cross references
     if (includeMap(predicates, aspects)) {
-    		System.out.println("+ entities, aspects")
-    	}
+    	System.out.println("+ entities, aspects")
+    }
     if (includeMap(predicates, concepts)) {
-    		System.out.println("+ entities, concepts")
-    	}
+    	System.out.println("+ entities, concepts")
+    }
     if (includeMap(predicates, reifiedRelationships)) {
-    		System.out.println("+ entities, reifiedRelationships")
-    	}
+    	System.out.println("+ entities, reifiedRelationships")
+    }
     if (includeMap(predicates, reifiedRelationshipRestrictions)) {
-    		System.out.println("+ entities, reifiedRelationshipRestrictions")
-    	}
+    	System.out.println("+ entities, reifiedRelationshipRestrictions")
+    }
     if (includeMap(predicates, forwardProperties)) {
-    		System.out.println("+ entities, forwardProperties")
-    	}
+    	System.out.println("+ entities, forwardProperties")
+    }
     if (includeMap(predicates, inverseProperties)) {
-    		System.out.println("+ entities, inverseProperties")
-    	}
+    	System.out.println("+ entities, inverseProperties")
+    }
     if (includeMap(predicates, unreifiedRelationships)) {
-    		System.out.println("+ entities, unreifiedRelationships")
-    	}
+    	System.out.println("+ entities, unreifiedRelationships")
+    }
     if (includeMap(predicates, cardinalityRestrictedAspects)) {
-    		System.out.println("+ entities, cardinalityRestrictedAspects")
-    	}
+    	System.out.println("+ entities, cardinalityRestrictedAspects")
+    }
     if (includeMap(predicates, cardinalityRestrictedConcepts)) {
-    		System.out.println("+ entities, cardinalityRestrictedConcepts")
-    	}
+    	System.out.println("+ entities, cardinalityRestrictedConcepts")
+    }
     if (includeMap(predicates, cardinalityRestrictedReifiedRelationships)) {
-    		System.out.println("+ entities, cardinalityRestrictedReifiedRelationships")
-    	}
+    	System.out.println("+ entities, cardinalityRestrictedReifiedRelationships")
+    }
 
 	// Lookup table for RestrictableRelationship cross references
     if (includeMap(restrictableRelationships, forwardProperties)) {
-    		System.out.println("+ entities, forwardProperties")
-    	}
+    	System.out.println("+ entities, forwardProperties")
+    }
     if (includeMap(restrictableRelationships, inverseProperties)) {
-    		System.out.println("+ entities, inverseProperties")
-    	}
+    	System.out.println("+ entities, inverseProperties")
+    }
     if (includeMap(restrictableRelationships, unreifiedRelationships)) {
-    		System.out.println("+ entities, unreifiedRelationships")
-    	}
+    	System.out.println("+ entities, unreifiedRelationships")
+    }
 
 	// Lookup table for RestrictionStructuredDataPropertyContext cross references
   	if (includeMap(restrictionStructuredDataPropertyContexts, entityStructuredDataPropertyParticularRestrictionAxioms)) {
@@ -4811,7 +4831,7 @@ class OMLSpecificationTables {
   	if (includeMap(restrictionStructuredDataPropertyContexts, restrictionStructuredDataPropertyTuples)) {
   		System.out.println("+ entities, restrictionStructuredDataPropertyTuples")
   	}
-  	
+
 	// Lookup table for TerminologyBox cross references
   	if (includeMap(terminologyBoxes, terminologyGraphs)) {
   		System.out.println("+ entities, terminologyGraphs")
@@ -4819,7 +4839,7 @@ class OMLSpecificationTables {
   	if (includeMap(terminologyBoxes, bundles)) {
   		System.out.println("+ entities, bundles")
   	}
-  	
+
 	// Lookup table for ConceptTreeDisjunction cross references
   	if (includeMap(conceptTreeDisjunctions, rootConceptTaxonomyAxioms)) {
   		System.out.println("+ entities, rootConceptTaxonomyAxioms")
@@ -4827,7 +4847,7 @@ class OMLSpecificationTables {
   	if (includeMap(conceptTreeDisjunctions, anonymousConceptUnionAxioms)) {
   		System.out.println("+ entities, anonymousConceptUnionAxioms")
   	}
-  	
+
 	// Lookup table for ConceptualEntitySingletonInstance cross references
   	if (includeMap(conceptualEntitySingletonInstances, conceptInstances)) {
   		System.out.println("+ entities, conceptInstances")
@@ -4835,7 +4855,7 @@ class OMLSpecificationTables {
   	if (includeMap(conceptualEntitySingletonInstances, reifiedRelationshipInstances)) {
   		System.out.println("+ entities, reifiedRelationshipInstances")
   	}
-  	
+
 	// Lookup table for SingletonInstanceStructuredDataPropertyContext cross references
   	if (includeMap(singletonInstanceStructuredDataPropertyContexts, singletonInstanceStructuredDataPropertyValues)) {
   		System.out.println("+ entities, singletonInstanceStructuredDataPropertyValues")
@@ -4843,7 +4863,7 @@ class OMLSpecificationTables {
   	if (includeMap(singletonInstanceStructuredDataPropertyContexts, structuredDataPropertyTuples)) {
   		System.out.println("+ entities, structuredDataPropertyTuples")
   	}
-  	
+
   	var iterations = 0
   	val progress = new ArrayList<Boolean>(1)
   	val allDone = new ArrayList<Boolean>(1)

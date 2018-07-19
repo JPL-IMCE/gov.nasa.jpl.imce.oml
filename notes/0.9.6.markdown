@@ -2,7 +2,17 @@ gov.nasa.jpl.imce.oml 0.9.6 adds new features to 0.9.5
 
 ## Planned scope & Issues resolved:
 
+### [#284 Add support for OWL Object Property Cardinality Restrictions.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/284)
+
+### [#286 Migrate to Photon and refactor for Tycho](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/286)
+
 ### [#288 Add support for OWL2-DL Object Property Cardinality Restrictions](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/288)
+
+### [#290 CardinalityRestrictedReifiedRelationship needs derived source & target](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/290)
+
+### [#293 No "gov.nasa.jpl.imce.oml.parent" artifact published.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/293)
+
+### [#295 Code generation problem w/ the OMLResourceZip support for Eclipse](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/295)
 
 ## Changes:
 
