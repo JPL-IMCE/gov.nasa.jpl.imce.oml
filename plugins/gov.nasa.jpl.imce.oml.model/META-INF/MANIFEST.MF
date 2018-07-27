@@ -6,7 +6,7 @@ Bundle-Vendor: %providerName
 Bundle-Name: %pluginName
 Bundle-SymbolicName: gov.nasa.jpl.imce.oml.model;singleton:=true
 Automatic-Module-Name: gov.nasa.jpl.imce.oml.model
-Bundle-Version: 0.9.6.qualifier
+Bundle-Version: 0.9.6.4
 Bundle-ClassPath: .
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: gov.nasa.jpl.imce.oml.model.bundles,
