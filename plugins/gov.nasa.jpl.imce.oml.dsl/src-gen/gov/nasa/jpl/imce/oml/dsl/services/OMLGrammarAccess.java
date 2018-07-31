@@ -6065,8 +6065,6 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	private final TerminalRule tLETTER_DIGIT_PREFIX;
 	private final TerminalRule tLETTER_DIGIT_SUFFIX;
 	private final TerminalRule tABBREV_IRI;
-	private final TerminalRule tID_PREFIX;
-	private final TerminalRule tID;
 	private final TerminalRule tLANG_TAG;
 	private final TerminalRule tDATE_TIME;
 	private final TerminalRule tUUID;
@@ -6080,6 +6078,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	private final TerminalRule tDEC;
 	private final TerminalRule tDECIMAL;
 	private final TerminalRule tFLOAT;
+	private final TerminalRule tID;
 	private final TerminalRule tML_COMMENT;
 	private final TerminalRule tSL_COMMENT;
 	private final TerminalRule tWS;
@@ -6248,8 +6247,6 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		this.tLETTER_DIGIT_PREFIX = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LETTER_DIGIT_PREFIX");
 		this.tLETTER_DIGIT_SUFFIX = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LETTER_DIGIT_SUFFIX");
 		this.tABBREV_IRI = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.ABBREV_IRI");
-		this.tID_PREFIX = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.ID_PREFIX");
-		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.ID");
 		this.tLANG_TAG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LANG_TAG");
 		this.tDATE_TIME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.DATE_TIME");
 		this.tUUID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.UUID");
@@ -6263,6 +6260,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		this.tDEC = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.DEC");
 		this.tDECIMAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.DECIMAL");
 		this.tFLOAT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.FLOAT");
+		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.ID");
 		this.tML_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.ML_COMMENT");
 		this.tSL_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.SL_COMMENT");
 		this.tWS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.WS");
@@ -7939,18 +7937,6 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		return tABBREV_IRI;
 	}
 	
-	//terminal fragment ID_PREFIX:
-	//	LETTER | '_';
-	public TerminalRule getID_PREFIXRule() {
-		return tID_PREFIX;
-	}
-	
-	//terminal ID:
-	//	'^'? ID_PREFIX LETTER_DIGIT_SUFFIX*;
-	public TerminalRule getIDRule() {
-		return tID;
-	}
-	
 	//terminal LANG_TAG returns LanguageTagDataType:
 	//	'lang=' LETTER+ ('-' LETTER_DIGIT+)*;
 	public TerminalRule getLANG_TAGRule() {
@@ -8030,6 +8016,12 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//	'-'? (DIGIT+ '.' DIGIT+) (('e' | 'E') ('+' | '-')? DIGIT+)?;
 	public TerminalRule getFLOATRule() {
 		return tFLOAT;
+	}
+	
+	//terminal ID:
+	//	'^'? LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX*;
+	public TerminalRule getIDRule() {
+		return tID;
 	}
 	
 	//terminal ML_COMMENT:
