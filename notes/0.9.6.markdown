@@ -32,9 +32,16 @@ open terminology <http://example.org> {
 }
 ```
 
-The OML Xtext grammar changed slightly, reoganizing the different relative priorities of the token parsing rules
-to allow digit-leading identifiers in OML as long as the identifier contains at least one non-digit character.
+The OML Xtext grammar changed slightly, reoganizing the different relative priorities of the token parsing rules to allow digit-leading identifiers in OML as long as the identifier contains at least one non-digit character. Additionally, arbitrary characters are allowed in an OML ID as long as the ID string begins and ends with a single quote character.
 
+Examples of valid OML IDs:
+
+```
+Component
+0123Component
+0123-Component
+'0123-?!@#$%^&*()[]=+|-Component'
+```
 
 ### Adding [OWL2-DL Object Property Cardinality Restrictions](https://www.w3.org/TR/owl2-syntax/#Object_Property_Cardinality_Restrictions)
 

@@ -79,9 +79,13 @@ open terminology <http://example.org> {
 	
 	extends <http://purl.org/dc/elements/1.1/>
 
-	concept 42c
+	concept Component
 	
-	concept Bar
+	concept 0123Component
+	
+	concept 0123-Component
+		
+	concept '0123-?!@#$%^&*()[]=+|-Component'
 	
 	Bar extendsConcept 1.1:Foo
 	
@@ -115,8 +119,11 @@ open terminology <http://example.org> {
 		val tbox2 = result.modules.filter(TerminologyBox).last
 		tbox2.nsPrefix.assertEquals("example.org")
 		
-		val c2 = tbox2.boxStatements.filter(Concept).head
-		c2.name().assertEquals("42c")
+		val c2s = tbox2.boxStatements.filter(Concept)
+		assertNotNull(c2s.findFirst[name() == "Component"])
+		assertNotNull(c2s.findFirst[name() == "0123Component"])
+		assertNotNull(c2s.findFirst[name() == "0123-Component"])
+		assertNotNull(c2s.findFirst[name() == "'0123-?!@#$%^&*()[]=+|-Component'"])
 		
 		System.out.println(this.class.name + " OK!")
 	}

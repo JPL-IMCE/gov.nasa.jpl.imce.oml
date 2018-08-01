@@ -836,7 +836,8 @@ terminal FLOAT returns FloatDataType:
 	(DIGIT+ '.' DIGIT+)
     (('e' | 'E') ('+' | '-')? DIGIT+)?;
 
-terminal ID:											'^'? LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX*;
+terminal ID:											'^'? LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX* |
+														'^'? '\'' LETTER_DIGIT_PREFIX (!'\'')* '\'';
 	    
 terminal ML_COMMENT: 									'/*' -> '*/';
  
