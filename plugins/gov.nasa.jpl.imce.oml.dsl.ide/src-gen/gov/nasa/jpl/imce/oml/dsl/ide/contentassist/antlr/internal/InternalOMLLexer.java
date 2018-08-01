@@ -5426,52 +5426,222 @@ public class InternalOMLLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalOML.g:24048:9: ( ( '^' )? RULE_LETTER_DIGIT_PREFIX ( RULE_LETTER_DIGIT_SUFFIX )* )
-            // InternalOML.g:24048:11: ( '^' )? RULE_LETTER_DIGIT_PREFIX ( RULE_LETTER_DIGIT_SUFFIX )*
+            // InternalOML.g:24048:9: ( ( ( '^' )? RULE_LETTER_DIGIT_PREFIX ( RULE_LETTER_DIGIT_SUFFIX )* | ( '^' )? '\\'' RULE_LETTER_DIGIT_PREFIX (~ ( '\\'' ) )* '\\'' ) )
+            // InternalOML.g:24048:11: ( ( '^' )? RULE_LETTER_DIGIT_PREFIX ( RULE_LETTER_DIGIT_SUFFIX )* | ( '^' )? '\\'' RULE_LETTER_DIGIT_PREFIX (~ ( '\\'' ) )* '\\'' )
             {
-            // InternalOML.g:24048:11: ( '^' )?
-            int alt63=2;
-            int LA63_0 = input.LA(1);
+            // InternalOML.g:24048:11: ( ( '^' )? RULE_LETTER_DIGIT_PREFIX ( RULE_LETTER_DIGIT_SUFFIX )* | ( '^' )? '\\'' RULE_LETTER_DIGIT_PREFIX (~ ( '\\'' ) )* '\\'' )
+            int alt67=2;
+            switch ( input.LA(1) ) {
+            case '^':
+                {
+                int LA67_1 = input.LA(2);
 
-            if ( (LA63_0=='^') ) {
-                alt63=1;
+                if ( ((LA67_1>='0' && LA67_1<='9')||(LA67_1>='A' && LA67_1<='Z')||LA67_1=='_'||(LA67_1>='a' && LA67_1<='z')) ) {
+                    alt67=1;
+                }
+                else if ( (LA67_1=='\'') ) {
+                    alt67=2;
+                }
+                else {
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 67, 1, input);
+
+                    throw nvae;
+                }
+                }
+                break;
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+            case 'A':
+            case 'B':
+            case 'C':
+            case 'D':
+            case 'E':
+            case 'F':
+            case 'G':
+            case 'H':
+            case 'I':
+            case 'J':
+            case 'K':
+            case 'L':
+            case 'M':
+            case 'N':
+            case 'O':
+            case 'P':
+            case 'Q':
+            case 'R':
+            case 'S':
+            case 'T':
+            case 'U':
+            case 'V':
+            case 'W':
+            case 'X':
+            case 'Y':
+            case 'Z':
+            case '_':
+            case 'a':
+            case 'b':
+            case 'c':
+            case 'd':
+            case 'e':
+            case 'f':
+            case 'g':
+            case 'h':
+            case 'i':
+            case 'j':
+            case 'k':
+            case 'l':
+            case 'm':
+            case 'n':
+            case 'o':
+            case 'p':
+            case 'q':
+            case 'r':
+            case 's':
+            case 't':
+            case 'u':
+            case 'v':
+            case 'w':
+            case 'x':
+            case 'y':
+            case 'z':
+                {
+                alt67=1;
+                }
+                break;
+            case '\'':
+                {
+                alt67=2;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 67, 0, input);
+
+                throw nvae;
             }
-            switch (alt63) {
+
+            switch (alt67) {
                 case 1 :
-                    // InternalOML.g:24048:11: '^'
+                    // InternalOML.g:24048:12: ( '^' )? RULE_LETTER_DIGIT_PREFIX ( RULE_LETTER_DIGIT_SUFFIX )*
                     {
-                    match('^'); 
+                    // InternalOML.g:24048:12: ( '^' )?
+                    int alt63=2;
+                    int LA63_0 = input.LA(1);
+
+                    if ( (LA63_0=='^') ) {
+                        alt63=1;
+                    }
+                    switch (alt63) {
+                        case 1 :
+                            // InternalOML.g:24048:12: '^'
+                            {
+                            match('^'); 
+
+                            }
+                            break;
+
+                    }
+
+                    mRULE_LETTER_DIGIT_PREFIX(); 
+                    // InternalOML.g:24048:42: ( RULE_LETTER_DIGIT_SUFFIX )*
+                    loop64:
+                    do {
+                        int alt64=2;
+                        int LA64_0 = input.LA(1);
+
+                        if ( ((LA64_0>='-' && LA64_0<='.')||(LA64_0>='0' && LA64_0<='9')||(LA64_0>='A' && LA64_0<='Z')||LA64_0=='_'||(LA64_0>='a' && LA64_0<='z')) ) {
+                            alt64=1;
+                        }
+
+
+                        switch (alt64) {
+                    	case 1 :
+                    	    // InternalOML.g:24048:42: RULE_LETTER_DIGIT_SUFFIX
+                    	    {
+                    	    mRULE_LETTER_DIGIT_SUFFIX(); 
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop64;
+                        }
+                    } while (true);
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalOML.g:24048:68: ( '^' )? '\\'' RULE_LETTER_DIGIT_PREFIX (~ ( '\\'' ) )* '\\''
+                    {
+                    // InternalOML.g:24048:68: ( '^' )?
+                    int alt65=2;
+                    int LA65_0 = input.LA(1);
+
+                    if ( (LA65_0=='^') ) {
+                        alt65=1;
+                    }
+                    switch (alt65) {
+                        case 1 :
+                            // InternalOML.g:24048:68: '^'
+                            {
+                            match('^'); 
+
+                            }
+                            break;
+
+                    }
+
+                    match('\''); 
+                    mRULE_LETTER_DIGIT_PREFIX(); 
+                    // InternalOML.g:24048:103: (~ ( '\\'' ) )*
+                    loop66:
+                    do {
+                        int alt66=2;
+                        int LA66_0 = input.LA(1);
+
+                        if ( ((LA66_0>='\u0000' && LA66_0<='&')||(LA66_0>='(' && LA66_0<='\uFFFF')) ) {
+                            alt66=1;
+                        }
+
+
+                        switch (alt66) {
+                    	case 1 :
+                    	    // InternalOML.g:24048:103: ~ ( '\\'' )
+                    	    {
+                    	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='\uFFFF') ) {
+                    	        input.consume();
+
+                    	    }
+                    	    else {
+                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
+                    	        recover(mse);
+                    	        throw mse;}
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop66;
+                        }
+                    } while (true);
+
+                    match('\''); 
 
                     }
                     break;
 
             }
-
-            mRULE_LETTER_DIGIT_PREFIX(); 
-            // InternalOML.g:24048:41: ( RULE_LETTER_DIGIT_SUFFIX )*
-            loop64:
-            do {
-                int alt64=2;
-                int LA64_0 = input.LA(1);
-
-                if ( ((LA64_0>='-' && LA64_0<='.')||(LA64_0>='0' && LA64_0<='9')||(LA64_0>='A' && LA64_0<='Z')||LA64_0=='_'||(LA64_0>='a' && LA64_0<='z')) ) {
-                    alt64=1;
-                }
-
-
-                switch (alt64) {
-            	case 1 :
-            	    // InternalOML.g:24048:41: RULE_LETTER_DIGIT_SUFFIX
-            	    {
-            	    mRULE_LETTER_DIGIT_SUFFIX(); 
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop64;
-                }
-            } while (true);
 
 
             }
@@ -5495,29 +5665,29 @@ public class InternalOMLLexer extends Lexer {
             match("/*"); 
 
             // InternalOML.g:24050:24: ( options {greedy=false; } : . )*
-            loop65:
+            loop68:
             do {
-                int alt65=2;
-                int LA65_0 = input.LA(1);
+                int alt68=2;
+                int LA68_0 = input.LA(1);
 
-                if ( (LA65_0=='*') ) {
-                    int LA65_1 = input.LA(2);
+                if ( (LA68_0=='*') ) {
+                    int LA68_1 = input.LA(2);
 
-                    if ( (LA65_1=='/') ) {
-                        alt65=2;
+                    if ( (LA68_1=='/') ) {
+                        alt68=2;
                     }
-                    else if ( ((LA65_1>='\u0000' && LA65_1<='.')||(LA65_1>='0' && LA65_1<='\uFFFF')) ) {
-                        alt65=1;
+                    else if ( ((LA68_1>='\u0000' && LA68_1<='.')||(LA68_1>='0' && LA68_1<='\uFFFF')) ) {
+                        alt68=1;
                     }
 
 
                 }
-                else if ( ((LA65_0>='\u0000' && LA65_0<=')')||(LA65_0>='+' && LA65_0<='\uFFFF')) ) {
-                    alt65=1;
+                else if ( ((LA68_0>='\u0000' && LA68_0<=')')||(LA68_0>='+' && LA68_0<='\uFFFF')) ) {
+                    alt68=1;
                 }
 
 
-                switch (alt65) {
+                switch (alt68) {
             	case 1 :
             	    // InternalOML.g:24050:52: .
             	    {
@@ -5527,7 +5697,7 @@ public class InternalOMLLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop65;
+            	    break loop68;
                 }
             } while (true);
 
@@ -5555,17 +5725,17 @@ public class InternalOMLLexer extends Lexer {
             match("//"); 
 
             // InternalOML.g:24052:24: (~ ( ( '\\n' | '\\r' ) ) )*
-            loop66:
+            loop69:
             do {
-                int alt66=2;
-                int LA66_0 = input.LA(1);
+                int alt69=2;
+                int LA69_0 = input.LA(1);
 
-                if ( ((LA66_0>='\u0000' && LA66_0<='\t')||(LA66_0>='\u000B' && LA66_0<='\f')||(LA66_0>='\u000E' && LA66_0<='\uFFFF')) ) {
-                    alt66=1;
+                if ( ((LA69_0>='\u0000' && LA69_0<='\t')||(LA69_0>='\u000B' && LA69_0<='\f')||(LA69_0>='\u000E' && LA69_0<='\uFFFF')) ) {
+                    alt69=1;
                 }
 
 
-                switch (alt66) {
+                switch (alt69) {
             	case 1 :
             	    // InternalOML.g:24052:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
@@ -5583,29 +5753,29 @@ public class InternalOMLLexer extends Lexer {
             	    break;
 
             	default :
-            	    break loop66;
+            	    break loop69;
                 }
             } while (true);
 
             // InternalOML.g:24052:40: ( ( '\\r' )? '\\n' )?
-            int alt68=2;
-            int LA68_0 = input.LA(1);
+            int alt71=2;
+            int LA71_0 = input.LA(1);
 
-            if ( (LA68_0=='\n'||LA68_0=='\r') ) {
-                alt68=1;
+            if ( (LA71_0=='\n'||LA71_0=='\r') ) {
+                alt71=1;
             }
-            switch (alt68) {
+            switch (alt71) {
                 case 1 :
                     // InternalOML.g:24052:41: ( '\\r' )? '\\n'
                     {
                     // InternalOML.g:24052:41: ( '\\r' )?
-                    int alt67=2;
-                    int LA67_0 = input.LA(1);
+                    int alt70=2;
+                    int LA70_0 = input.LA(1);
 
-                    if ( (LA67_0=='\r') ) {
-                        alt67=1;
+                    if ( (LA70_0=='\r') ) {
+                        alt70=1;
                     }
-                    switch (alt67) {
+                    switch (alt70) {
                         case 1 :
                             // InternalOML.g:24052:41: '\\r'
                             {
@@ -5643,18 +5813,18 @@ public class InternalOMLLexer extends Lexer {
             // InternalOML.g:24054:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
             // InternalOML.g:24054:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
-            int cnt69=0;
-            loop69:
+            int cnt72=0;
+            loop72:
             do {
-                int alt69=2;
-                int LA69_0 = input.LA(1);
+                int alt72=2;
+                int LA72_0 = input.LA(1);
 
-                if ( ((LA69_0>='\t' && LA69_0<='\n')||LA69_0=='\r'||LA69_0==' ') ) {
-                    alt69=1;
+                if ( ((LA72_0>='\t' && LA72_0<='\n')||LA72_0=='\r'||LA72_0==' ') ) {
+                    alt72=1;
                 }
 
 
-                switch (alt69) {
+                switch (alt72) {
             	case 1 :
             	    // InternalOML.g:
             	    {
@@ -5672,12 +5842,12 @@ public class InternalOMLLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt69 >= 1 ) break loop69;
+            	    if ( cnt72 >= 1 ) break loop72;
                         EarlyExitException eee =
-                            new EarlyExitException(69, input);
+                            new EarlyExitException(72, input);
                         throw eee;
                 }
-                cnt69++;
+                cnt72++;
             } while (true);
 
 
@@ -5693,9 +5863,9 @@ public class InternalOMLLexer extends Lexer {
 
     public void mTokens() throws RecognitionException {
         // InternalOML.g:1:8: ( T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | T__121 | T__122 | T__123 | T__124 | T__125 | T__126 | T__127 | T__128 | T__129 | T__130 | T__131 | T__132 | T__133 | T__134 | T__135 | T__136 | T__137 | T__138 | T__139 | T__140 | T__141 | T__142 | T__143 | T__144 | T__145 | T__146 | T__147 | T__148 | T__149 | T__150 | T__151 | T__152 | T__153 | T__154 | T__155 | T__156 | T__157 | T__158 | T__159 | T__160 | T__161 | T__162 | T__163 | T__164 | T__165 | T__166 | RULE_RATIONAL | RULE_FALSE | RULE_TRUE | RULE_URI | RULE_REAL | RULE_PATTERN | RULE_QUOTED_STRING_VALUE | RULE_RAW_STRING_VALUE | RULE_IRI | RULE_ABBREV_IRI | RULE_LANG_TAG | RULE_DATE_TIME | RULE_UUID | RULE_DIGITS | RULE_DECIMAL | RULE_FLOAT | RULE_ID | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS )
-        int alt70=119;
-        alt70 = dfa70.predict(input);
-        switch (alt70) {
+        int alt73=119;
+        alt73 = dfa73.predict(input);
+        switch (alt73) {
             case 1 :
                 // InternalOML.g:1:10: T__68
                 {
@@ -6536,7 +6706,7 @@ public class InternalOMLLexer extends Lexer {
 
 
     protected DFA25 dfa25 = new DFA25(this);
-    protected DFA70 dfa70 = new DFA70(this);
+    protected DFA73 dfa73 = new DFA73(this);
     static final String DFA25_eotS =
         "\3\uffff\1\10\5\uffff\1\10\7\uffff\2\10\17\uffff\3\10\2\uffff\1\10\2\uffff\2\10";
     static final String DFA25_eofS =
@@ -6629,21 +6799,21 @@ public class InternalOMLLexer extends Lexer {
             return "23986:28: ( RULE_IUSER_INFO '@' )?";
         }
     }
-    static final String DFA70_eotS =
-        "\1\uffff\2\47\2\uffff\1\61\3\47\1\uffff\1\47\1\77\1\uffff\4\47\1\uffff\4\47\4\uffff\2\47\2\uffff\1\144\1\47\2\uffff\1\47\1\144\1\uffff\2\47\1\uffff\1\47\1\uffff\1\47\1\uffff\2\47\1\165\3\uffff\15\47\2\uffff\27\47\1\u00a4\1\u00a5\2\47\1\uffff\4\47\1\u00ad\2\47\1\uffff\1\47\1\144\1\47\1\uffff\1\47\1\u00ad\2\uffff\1\156\1\uffff\1\160\1\uffff\4\47\1\uffff\54\47\1\u00f2\1\47\2\uffff\7\47\2\uffff\1\u00ad\1\u00ae\1\47\2\u00ad\1\uffff\1\156\4\uffff\1\u0103\24\47\1\u0118\22\47\1\u012b\17\47\1\uffff\3\47\1\u013f\11\47\1\156\1\uffff\1\156\1\uffff\1\u014b\2\47\1\u014e\1\47\1\u0150\14\47\1\u015d\1\47\1\uffff\11\47\1\u0168\7\47\1\u0170\1\uffff\2\47\1\uffff\20\47\1\uffff\2\47\1\uffff\7\47\1\u00ae\1\uffff\1\u018b\1\47\1\uffff\1\47\1\uffff\5\47\1\u0193\4\47\1\u0198\1\47\1\uffff\1\47\1\u019c\3\47\1\u01a0\4\47\1\uffff\7\47\1\uffff\2\47\1\u01ae\2\47\1\u01b3\11\47\1\u01bd\2\47\1\u01c0\7\47\1\uffff\1\u01ca\1\47\1\u01cc\1\u01cd\3\47\1\uffff\2\47\1\u01d3\1\47\1\uffff\2\47\1\u01d7\1\uffff\3\47\1\uffff\2\47\1\u01e0\6\47\1\u01e9\3\47\1\uffff\4\47\1\uffff\6\47\1\u01f9\2\47\1\uffff\2\47\1\uffff\11\47\1\uffff\1\47\2\uffff\5\47\1\uffff\3\47\1\uffff\10\47\1\uffff\10\47\1\uffff\4\47\1\u0224\12\47\1\uffff\32\47\1\uffff\5\47\1\u024e\5\47\1\u0254\1\47\1\u0257\1\47\1\uffff\2\47\1\u025c\4\47\1\u0261\2\47\1\u0264\1\u0265\2\47\1\u0268\1\u0269\2\47\1\u026c\4\47\1\u0271\3\47\1\u0275\3\47\1\u0279\11\47\1\uffff\5\47\1\uffff\2\47\1\uffff\4\47\1\uffff\4\47\1\uffff\2\47\2\uffff\2\47\2\uffff\2\47\1\uffff\4\47\1\uffff\3\47\1\uffff\1\u02a0\1\u02a2\1\47\1\uffff\34\47\1\u02c0\11\47\1\uffff\1\47\1\uffff\5\47\1\u02d0\14\47\1\u02dd\12\47\1\uffff\1\u02e8\1\u02e9\1\u02ea\1\u02eb\13\47\1\uffff\1\u02f7\13\47\1\uffff\12\47\4\uffff\10\47\1\u0315\2\47\1\uffff\1\u0318\4\47\1\u031d\20\47\1\u032e\6\47\1\uffff\2\47\1\uffff\4\47\1\uffff\2\47\1\u033d\15\47\1\uffff\16\47\1\uffff\12\47\1\u0363\11\47\1\u036d\15\47\1\u037b\1\47\1\u037d\1\uffff\3\47\1\u0381\5\47\1\uffff\3\47\1\u038a\4\47\1\u038f\4\47\1\uffff\1\47\1\uffff\3\47\1\uffff\5\47\1\u039d\2\47\1\uffff\1\47\1\u03a3\1\u03a4\1\47\1\uffff\3\47\1\u03a9\11\47\1\uffff\5\47\2\uffff\4\47\1\uffff\1\47\1\u03bd\2\47\1\u03c0\1\47\1\u03c2\1\47\1\u03c4\5\47\1\u03ca\4\47\1\uffff\2\47\1\uffff\1\47\1\uffff\1\47\1\uffff\5\47\1\uffff\1\u03d8\1\u03d9\4\47\1\u03de\1\u03df\5\47\2\uffff\1\u03e5\3\47\2\uffff\1\47\1\u03ea\1\u03eb\2\47\1\uffff\1\u03ee\3\47\2\uffff\2\47\1\uffff\11\47\1\u03fd\2\47\1\u0400\1\47\1\uffff\1\47\1\u0403\1\uffff\2\47\1\uffff\1\u0406\1\47\1\uffff\2\47\1\u040a\1\uffff";
-    static final String DFA70_eofS =
+    static final String DFA73_eotS =
+        "\1\uffff\2\44\2\uffff\1\61\3\44\1\uffff\1\44\1\77\1\uffff\4\44\1\uffff\4\44\4\uffff\2\44\2\uffff\1\144\1\44\2\uffff\1\44\1\144\2\uffff\3\44\1\uffff\1\44\1\uffff\2\44\1\165\3\uffff\15\44\2\uffff\27\44\1\u00a4\1\u00a5\2\44\1\uffff\4\44\1\u00ad\2\44\2\uffff\1\144\2\44\1\uffff\1\44\1\u00ad\1\uffff\1\156\1\uffff\1\160\1\uffff\4\44\1\uffff\54\44\1\u00f2\1\44\2\uffff\7\44\2\uffff\1\u00ad\1\u00ae\1\44\2\u00ad\1\156\5\uffff\1\u0103\24\44\1\u0118\22\44\1\u012b\17\44\1\uffff\3\44\1\u013f\11\44\1\uffff\2\156\1\uffff\1\u014b\2\44\1\u014e\1\44\1\u0150\14\44\1\u015d\1\44\1\uffff\11\44\1\u0168\7\44\1\u0170\1\uffff\2\44\1\uffff\20\44\1\uffff\2\44\1\uffff\7\44\1\u00ae\1\uffff\1\u018b\1\44\1\uffff\1\44\1\uffff\5\44\1\u0193\4\44\1\u0198\1\44\1\uffff\1\44\1\u019c\3\44\1\u01a0\4\44\1\uffff\7\44\1\uffff\2\44\1\u01ae\2\44\1\u01b3\11\44\1\u01bd\2\44\1\u01c0\7\44\1\uffff\1\u01ca\1\44\1\u01cc\1\u01cd\3\44\1\uffff\2\44\1\u01d3\1\44\1\uffff\2\44\1\u01d7\1\uffff\3\44\1\uffff\2\44\1\u01e0\6\44\1\u01e9\3\44\1\uffff\4\44\1\uffff\6\44\1\u01f9\2\44\1\uffff\2\44\1\uffff\11\44\1\uffff\1\44\2\uffff\5\44\1\uffff\3\44\1\uffff\10\44\1\uffff\10\44\1\uffff\4\44\1\u0224\12\44\1\uffff\32\44\1\uffff\5\44\1\u024e\5\44\1\u0254\1\44\1\u0257\1\44\1\uffff\2\44\1\u025c\4\44\1\u0261\2\44\1\u0264\1\u0265\2\44\1\u0268\1\u0269\2\44\1\u026c\4\44\1\u0271\3\44\1\u0275\3\44\1\u0279\11\44\1\uffff\5\44\1\uffff\2\44\1\uffff\4\44\1\uffff\4\44\1\uffff\2\44\2\uffff\2\44\2\uffff\2\44\1\uffff\4\44\1\uffff\3\44\1\uffff\1\u02a0\1\u02a2\1\44\1\uffff\34\44\1\u02c0\11\44\1\uffff\1\44\1\uffff\5\44\1\u02d0\14\44\1\u02dd\12\44\1\uffff\1\u02e8\1\u02e9\1\u02ea\1\u02eb\13\44\1\uffff\1\u02f7\13\44\1\uffff\12\44\4\uffff\10\44\1\u0315\2\44\1\uffff\1\u0318\4\44\1\u031d\20\44\1\u032e\6\44\1\uffff\2\44\1\uffff\4\44\1\uffff\2\44\1\u033d\15\44\1\uffff\16\44\1\uffff\12\44\1\u0363\11\44\1\u036d\15\44\1\u037b\1\44\1\u037d\1\uffff\3\44\1\u0381\5\44\1\uffff\3\44\1\u038a\4\44\1\u038f\4\44\1\uffff\1\44\1\uffff\3\44\1\uffff\5\44\1\u039d\2\44\1\uffff\1\44\1\u03a3\1\u03a4\1\44\1\uffff\3\44\1\u03a9\11\44\1\uffff\5\44\2\uffff\4\44\1\uffff\1\44\1\u03bd\2\44\1\u03c0\1\44\1\u03c2\1\44\1\u03c4\5\44\1\u03ca\4\44\1\uffff\2\44\1\uffff\1\44\1\uffff\1\44\1\uffff\5\44\1\uffff\1\u03d8\1\u03d9\4\44\1\u03de\1\u03df\5\44\2\uffff\1\u03e5\3\44\2\uffff\1\44\1\u03ea\1\u03eb\2\44\1\uffff\1\u03ee\3\44\2\uffff\2\44\1\uffff\11\44\1\u03fd\2\44\1\u0400\1\44\1\uffff\1\44\1\u0403\1\uffff\2\44\1\uffff\1\u0406\1\44\1\uffff\2\44\1\u040a\1\uffff";
+    static final String DFA73_eofS =
         "\u040b\uffff";
-    static final String DFA70_minS =
-        "\1\11\2\53\1\0\1\uffff\1\75\3\53\1\uffff\2\53\1\uffff\4\53\1\uffff\4\53\3\uffff\1\60\2\53\1\uffff\1\60\1\55\1\53\2\0\2\55\1\uffff\2\53\1\uffff\1\53\1\57\1\55\1\uffff\2\53\1\0\3\uffff\15\53\2\uffff\33\53\1\uffff\4\53\1\56\2\55\1\uffff\2\55\1\53\1\uffff\2\55\1\uffff\2\0\1\uffff\1\42\1\uffff\4\53\1\uffff\56\53\2\uffff\7\53\2\uffff\5\55\4\0\2\uffff\70\53\1\uffff\15\53\1\0\1\uffff\1\0\1\uffff\24\53\1\uffff\22\53\1\uffff\2\53\1\uffff\20\53\1\uffff\2\53\1\uffff\6\53\2\55\1\uffff\2\53\1\uffff\1\53\1\uffff\14\53\1\uffff\12\53\1\uffff\7\53\1\uffff\32\53\1\uffff\7\53\1\uffff\4\53\1\uffff\3\53\1\uffff\3\53\1\uffff\15\53\1\uffff\4\53\1\uffff\11\53\1\uffff\2\53\1\uffff\11\53\1\uffff\1\53\2\uffff\5\53\1\uffff\3\53\1\uffff\10\53\1\uffff\10\53\1\uffff\17\53\1\uffff\32\53\1\uffff\17\53\1\uffff\51\53\1\uffff\5\53\1\uffff\2\53\1\uffff\4\53\1\uffff\4\53\1\uffff\2\53\2\uffff\2\53\2\uffff\2\53\1\uffff\4\53\1\uffff\3\53\1\uffff\3\53\1\uffff\46\53\1\uffff\1\53\1\uffff\35\53\1\uffff\17\53\1\uffff\14\53\1\uffff\12\53\4\uffff\13\53\1\uffff\35\53\1\uffff\2\53\1\uffff\4\53\1\uffff\20\53\1\uffff\16\53\1\uffff\45\53\1\uffff\11\53\1\uffff\15\53\1\uffff\1\53\1\uffff\3\53\1\uffff\10\53\1\uffff\4\53\1\uffff\15\53\1\uffff\5\53\2\uffff\4\53\1\uffff\23\53\1\uffff\2\53\1\uffff\1\53\1\uffff\1\53\1\uffff\5\53\1\uffff\15\53\2\uffff\4\53\2\uffff\5\53\1\uffff\4\53\2\uffff\2\53\1\uffff\16\53\1\uffff\2\53\1\uffff\2\53\1\uffff\2\53\1\uffff\3\53\1\uffff";
-    static final String DFA70_maxS =
-        "\1\175\2\172\1\uffff\1\uffff\1\75\3\172\1\uffff\2\172\1\uffff\4\172\1\uffff\4\172\3\uffff\3\172\1\uffff\1\71\2\172\2\uffff\2\172\1\uffff\2\172\1\uffff\3\172\1\uffff\2\172\1\uffff\3\uffff\15\172\2\uffff\33\172\1\uffff\4\172\1\71\2\172\1\uffff\3\172\1\uffff\2\172\1\uffff\2\uffff\1\uffff\1\42\1\uffff\4\172\1\uffff\56\172\2\uffff\7\172\2\uffff\5\172\4\uffff\2\uffff\70\172\1\uffff\15\172\1\uffff\1\uffff\1\uffff\1\uffff\24\172\1\uffff\22\172\1\uffff\2\172\1\uffff\20\172\1\uffff\2\172\1\uffff\10\172\1\uffff\2\172\1\uffff\1\172\1\uffff\14\172\1\uffff\12\172\1\uffff\7\172\1\uffff\32\172\1\uffff\7\172\1\uffff\4\172\1\uffff\3\172\1\uffff\3\172\1\uffff\15\172\1\uffff\4\172\1\uffff\11\172\1\uffff\2\172\1\uffff\11\172\1\uffff\1\172\2\uffff\5\172\1\uffff\3\172\1\uffff\10\172\1\uffff\10\172\1\uffff\17\172\1\uffff\32\172\1\uffff\17\172\1\uffff\51\172\1\uffff\5\172\1\uffff\2\172\1\uffff\4\172\1\uffff\4\172\1\uffff\2\172\2\uffff\2\172\2\uffff\2\172\1\uffff\4\172\1\uffff\3\172\1\uffff\3\172\1\uffff\46\172\1\uffff\1\172\1\uffff\35\172\1\uffff\17\172\1\uffff\14\172\1\uffff\12\172\4\uffff\13\172\1\uffff\35\172\1\uffff\2\172\1\uffff\4\172\1\uffff\20\172\1\uffff\16\172\1\uffff\45\172\1\uffff\11\172\1\uffff\15\172\1\uffff\1\172\1\uffff\3\172\1\uffff\10\172\1\uffff\4\172\1\uffff\15\172\1\uffff\5\172\2\uffff\4\172\1\uffff\23\172\1\uffff\2\172\1\uffff\1\172\1\uffff\1\172\1\uffff\5\172\1\uffff\15\172\2\uffff\4\172\2\uffff\5\172\1\uffff\4\172\2\uffff\2\172\1\uffff\16\172\1\uffff\2\172\1\uffff\2\172\1\uffff\2\172\1\uffff\3\172\1\uffff";
-    static final String DFA70_acceptS =
-        "\4\uffff\1\4\4\uffff\1\12\2\uffff\1\15\4\uffff\1\31\4\uffff\1\55\1\56\1\57\3\uffff\1\143\7\uffff\1\167\2\uffff\1\164\3\uffff\1\147\3\uffff\1\154\1\5\1\11\15\uffff\1\14\1\150\33\uffff\1\100\7\uffff\1\161\3\uffff\1\155\2\uffff\1\144\2\uffff\1\151\1\uffff\1\152\4\uffff\1\3\56\uffff\1\67\1\54\7\uffff\1\162\1\163\11\uffff\1\166\1\153\70\uffff\1\62\16\uffff\1\165\1\uffff\1\1\24\uffff\1\146\22\uffff\1\52\2\uffff\1\160\20\uffff\1\127\2\uffff\1\156\10\uffff\1\121\2\uffff\1\6\1\uffff\1\145\14\uffff\1\131\12\uffff\1\77\7\uffff\1\46\32\uffff\1\2\7\uffff\1\30\4\uffff\1\36\3\uffff\1\16\3\uffff\1\45\15\uffff\1\35\4\uffff\1\42\11\uffff\1\53\2\uffff\1\104\11\uffff\1\32\1\uffff\1\7\1\110\5\uffff\1\101\3\uffff\1\20\10\uffff\1\24\10\uffff\1\125\17\uffff\1\37\32\uffff\1\157\17\uffff\1\76\51\uffff\1\134\5\uffff\1\140\2\uffff\1\34\4\uffff\1\43\4\uffff\1\136\2\uffff\1\60\1\61\2\uffff\1\117\1\105\2\uffff\1\106\4\uffff\1\132\3\uffff\1\137\3\uffff\1\142\46\uffff\1\70\1\uffff\1\13\35\uffff\1\141\17\uffff\1\65\14\uffff\1\66\12\uffff\1\112\1\114\1\113\1\115\13\uffff\1\71\35\uffff\1\17\2\uffff\1\72\4\uffff\1\27\20\uffff\1\126\16\uffff\1\103\45\uffff\1\135\11\uffff\1\23\15\uffff\1\75\1\uffff\1\133\3\uffff\1\10\10\uffff\1\26\4\uffff\1\51\15\uffff\1\73\5\uffff\1\33\1\64\4\uffff\1\74\23\uffff\1\107\2\uffff\1\63\1\uffff\1\124\1\uffff\1\22\5\uffff\1\41\15\uffff\1\120\1\50\4\uffff\1\25\1\102\5\uffff\1\122\4\uffff\1\47\1\111\2\uffff\1\123\16\uffff\1\130\2\uffff\1\44\2\uffff\1\116\2\uffff\1\40\3\uffff\1\21";
-    static final String DFA70_specialS =
-        "\3\uffff\1\11\34\uffff\1\13\1\10\14\uffff\1\1\75\uffff\1\12\1\6\106\uffff\1\7\1\0\1\3\1\2\110\uffff\1\5\1\uffff\1\4\u0308\uffff}>";
-    static final String[] DFA70_transitionS = {
-            "\2\44\2\uffff\1\44\22\uffff\1\44\1\uffff\1\41\3\uffff\1\26\1\uffff\1\27\1\30\1\uffff\1\34\1\uffff\1\35\1\21\1\40\1\36\11\43\2\uffff\1\3\1\5\1\4\1\uffff\1\11\32\37\3\uffff\1\31\1\42\1\uffff\1\10\1\15\1\2\1\16\1\17\1\6\2\37\1\25\2\37\1\32\1\33\1\20\1\1\1\7\1\37\1\22\1\24\1\12\1\23\5\37\1\13\1\uffff\1\14",
-            "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\15\50\1\46\1\50\1\45\12\50",
+    static final String DFA73_minS =
+        "\1\11\2\53\1\0\1\uffff\1\75\3\53\1\uffff\2\53\1\uffff\4\53\1\uffff\4\53\3\uffff\1\47\2\53\1\uffff\1\60\1\55\1\53\2\0\2\55\2\uffff\3\53\1\57\1\55\1\uffff\2\53\1\0\3\uffff\15\53\2\uffff\33\53\1\uffff\4\53\1\56\2\55\2\uffff\2\55\1\53\1\uffff\2\55\2\0\1\uffff\1\42\1\uffff\4\53\1\uffff\56\53\2\uffff\7\53\2\uffff\5\55\4\0\2\uffff\70\53\1\uffff\15\53\1\uffff\2\0\1\uffff\24\53\1\uffff\22\53\1\uffff\2\53\1\uffff\20\53\1\uffff\2\53\1\uffff\6\53\2\55\1\uffff\2\53\1\uffff\1\53\1\uffff\14\53\1\uffff\12\53\1\uffff\7\53\1\uffff\32\53\1\uffff\7\53\1\uffff\4\53\1\uffff\3\53\1\uffff\3\53\1\uffff\15\53\1\uffff\4\53\1\uffff\11\53\1\uffff\2\53\1\uffff\11\53\1\uffff\1\53\2\uffff\5\53\1\uffff\3\53\1\uffff\10\53\1\uffff\10\53\1\uffff\17\53\1\uffff\32\53\1\uffff\17\53\1\uffff\51\53\1\uffff\5\53\1\uffff\2\53\1\uffff\4\53\1\uffff\4\53\1\uffff\2\53\2\uffff\2\53\2\uffff\2\53\1\uffff\4\53\1\uffff\3\53\1\uffff\3\53\1\uffff\46\53\1\uffff\1\53\1\uffff\35\53\1\uffff\17\53\1\uffff\14\53\1\uffff\12\53\4\uffff\13\53\1\uffff\35\53\1\uffff\2\53\1\uffff\4\53\1\uffff\20\53\1\uffff\16\53\1\uffff\45\53\1\uffff\11\53\1\uffff\15\53\1\uffff\1\53\1\uffff\3\53\1\uffff\10\53\1\uffff\4\53\1\uffff\15\53\1\uffff\5\53\2\uffff\4\53\1\uffff\23\53\1\uffff\2\53\1\uffff\1\53\1\uffff\1\53\1\uffff\5\53\1\uffff\15\53\2\uffff\4\53\2\uffff\5\53\1\uffff\4\53\2\uffff\2\53\1\uffff\16\53\1\uffff\2\53\1\uffff\2\53\1\uffff\2\53\1\uffff\3\53\1\uffff";
+    static final String DFA73_maxS =
+        "\1\175\2\172\1\uffff\1\uffff\1\75\3\172\1\uffff\2\172\1\uffff\4\172\1\uffff\4\172\3\uffff\3\172\1\uffff\1\71\2\172\2\uffff\2\172\2\uffff\5\172\1\uffff\2\172\1\uffff\3\uffff\15\172\2\uffff\33\172\1\uffff\4\172\1\71\2\172\2\uffff\3\172\1\uffff\2\172\2\uffff\1\uffff\1\42\1\uffff\4\172\1\uffff\56\172\2\uffff\7\172\2\uffff\5\172\4\uffff\2\uffff\70\172\1\uffff\15\172\1\uffff\2\uffff\1\uffff\24\172\1\uffff\22\172\1\uffff\2\172\1\uffff\20\172\1\uffff\2\172\1\uffff\10\172\1\uffff\2\172\1\uffff\1\172\1\uffff\14\172\1\uffff\12\172\1\uffff\7\172\1\uffff\32\172\1\uffff\7\172\1\uffff\4\172\1\uffff\3\172\1\uffff\3\172\1\uffff\15\172\1\uffff\4\172\1\uffff\11\172\1\uffff\2\172\1\uffff\11\172\1\uffff\1\172\2\uffff\5\172\1\uffff\3\172\1\uffff\10\172\1\uffff\10\172\1\uffff\17\172\1\uffff\32\172\1\uffff\17\172\1\uffff\51\172\1\uffff\5\172\1\uffff\2\172\1\uffff\4\172\1\uffff\4\172\1\uffff\2\172\2\uffff\2\172\2\uffff\2\172\1\uffff\4\172\1\uffff\3\172\1\uffff\3\172\1\uffff\46\172\1\uffff\1\172\1\uffff\35\172\1\uffff\17\172\1\uffff\14\172\1\uffff\12\172\4\uffff\13\172\1\uffff\35\172\1\uffff\2\172\1\uffff\4\172\1\uffff\20\172\1\uffff\16\172\1\uffff\45\172\1\uffff\11\172\1\uffff\15\172\1\uffff\1\172\1\uffff\3\172\1\uffff\10\172\1\uffff\4\172\1\uffff\15\172\1\uffff\5\172\2\uffff\4\172\1\uffff\23\172\1\uffff\2\172\1\uffff\1\172\1\uffff\1\172\1\uffff\5\172\1\uffff\15\172\2\uffff\4\172\2\uffff\5\172\1\uffff\4\172\2\uffff\2\172\1\uffff\16\172\1\uffff\2\172\1\uffff\2\172\1\uffff\2\172\1\uffff\3\172\1\uffff";
+    static final String DFA73_acceptS =
+        "\4\uffff\1\4\4\uffff\1\12\2\uffff\1\15\4\uffff\1\31\4\uffff\1\55\1\56\1\57\3\uffff\1\143\7\uffff\1\164\1\167\5\uffff\1\147\3\uffff\1\154\1\5\1\11\15\uffff\1\14\1\150\33\uffff\1\100\7\uffff\1\161\1\144\3\uffff\1\155\4\uffff\1\151\1\uffff\1\152\4\uffff\1\3\56\uffff\1\67\1\54\7\uffff\1\162\1\163\11\uffff\1\166\1\153\70\uffff\1\62\15\uffff\1\165\2\uffff\1\1\24\uffff\1\146\22\uffff\1\52\2\uffff\1\160\20\uffff\1\127\2\uffff\1\156\10\uffff\1\121\2\uffff\1\6\1\uffff\1\145\14\uffff\1\131\12\uffff\1\77\7\uffff\1\46\32\uffff\1\2\7\uffff\1\30\4\uffff\1\36\3\uffff\1\16\3\uffff\1\45\15\uffff\1\35\4\uffff\1\42\11\uffff\1\53\2\uffff\1\104\11\uffff\1\32\1\uffff\1\7\1\110\5\uffff\1\101\3\uffff\1\20\10\uffff\1\24\10\uffff\1\125\17\uffff\1\37\32\uffff\1\157\17\uffff\1\76\51\uffff\1\134\5\uffff\1\140\2\uffff\1\34\4\uffff\1\43\4\uffff\1\136\2\uffff\1\60\1\61\2\uffff\1\117\1\105\2\uffff\1\106\4\uffff\1\132\3\uffff\1\137\3\uffff\1\142\46\uffff\1\70\1\uffff\1\13\35\uffff\1\141\17\uffff\1\65\14\uffff\1\66\12\uffff\1\112\1\114\1\113\1\115\13\uffff\1\71\35\uffff\1\17\2\uffff\1\72\4\uffff\1\27\20\uffff\1\126\16\uffff\1\103\45\uffff\1\135\11\uffff\1\23\15\uffff\1\75\1\uffff\1\133\3\uffff\1\10\10\uffff\1\26\4\uffff\1\51\15\uffff\1\73\5\uffff\1\33\1\64\4\uffff\1\74\23\uffff\1\107\2\uffff\1\63\1\uffff\1\124\1\uffff\1\22\5\uffff\1\41\15\uffff\1\120\1\50\4\uffff\1\25\1\102\5\uffff\1\122\4\uffff\1\47\1\111\2\uffff\1\123\16\uffff\1\130\2\uffff\1\44\2\uffff\1\116\2\uffff\1\40\3\uffff\1\21";
+    static final String DFA73_specialS =
+        "\3\uffff\1\10\34\uffff\1\13\1\5\14\uffff\1\1\75\uffff\1\12\1\11\106\uffff\1\0\1\3\1\7\1\2\111\uffff\1\4\1\6\u0308\uffff}>";
+    static final String[] DFA73_transitionS = {
+            "\2\45\2\uffff\1\45\22\uffff\1\45\1\uffff\1\41\3\uffff\1\26\1\44\1\27\1\30\1\uffff\1\34\1\uffff\1\35\1\21\1\40\1\36\11\43\2\uffff\1\3\1\5\1\4\1\uffff\1\11\32\37\3\uffff\1\31\1\42\1\uffff\1\10\1\15\1\2\1\16\1\17\1\6\2\37\1\25\2\37\1\32\1\33\1\20\1\1\1\7\1\37\1\22\1\24\1\12\1\23\5\37\1\13\1\uffff\1\14",
+            "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\15\50\1\47\1\50\1\46\12\50",
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\13\50\1\54\2\50\1\55\13\50",
             "\75\57\1\56\uffc2\57",
             "",
@@ -6667,24 +6837,24 @@ public class InternalOMLLexer extends Lexer {
             "",
             "",
             "",
-            "\12\47\7\uffff\32\47\3\uffff\1\134\1\47\1\uffff\32\47",
+            "\1\44\10\uffff\12\44\7\uffff\32\44\3\uffff\1\134\1\44\1\uffff\32\44",
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\1\136\3\50\1\135\25\50",
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\1\140\7\50\1\137\21\50",
             "",
             "\12\141",
-            "\1\52\1\145\1\153\12\146\1\150\6\uffff\1\52\1\151\1\52\1\152\1\147\1\152\5\52\1\152\13\52\1\143\2\52\4\uffff\1\52\1\uffff\1\52\1\151\1\52\1\152\1\147\1\152\5\52\1\152\13\52\1\142\2\52",
+            "\1\52\1\147\1\145\12\146\1\151\6\uffff\1\52\1\152\1\52\1\153\1\150\1\153\5\52\1\153\13\52\1\143\2\52\4\uffff\1\52\1\uffff\1\52\1\152\1\52\1\153\1\150\1\153\5\52\1\153\13\52\1\142\2\52",
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\32\50",
             "\52\156\1\154\4\156\1\155\uffd0\156",
             "\42\160\1\157\uffdd\160",
-            "\2\52\1\uffff\12\52\1\150\6\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
-            "\1\52\1\145\1\153\12\146\1\150\6\uffff\1\52\1\151\1\52\1\152\1\147\1\152\5\52\1\152\16\52\4\uffff\1\52\1\uffff\1\52\1\151\1\52\1\152\1\147\1\152\5\52\1\152\16\52",
+            "\2\52\1\uffff\12\52\1\151\6\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\1\52\1\147\1\145\12\146\1\151\6\uffff\1\52\1\152\1\52\1\153\1\150\1\153\5\52\1\153\16\52\4\uffff\1\52\1\uffff\1\52\1\152\1\52\1\153\1\150\1\153\5\52\1\153\16\52",
+            "",
             "",
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\4\50\1\161\25\50",
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\4\50\1\162\25\50",
-            "",
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\32\50",
-            "\1\53\12\150\7\uffff\32\150\4\uffff\1\150\1\uffff\32\150",
-            "\2\52\1\uffff\12\52\1\150\6\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\1\53\12\151\7\uffff\32\151\4\uffff\1\151\1\uffff\32\151",
+            "\2\52\1\uffff\12\52\1\151\6\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "",
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\16\50\1\163\13\50",
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\15\50\1\164\14\50",
@@ -6739,18 +6909,18 @@ public class InternalOMLLexer extends Lexer {
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\15\50\1\u00aa\14\50",
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\15\50\1\u00ab\14\50",
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\27\50\1\u00ac\2\50",
-            "\1\u00ae\1\153\12\141",
-            "\2\52\1\uffff\12\u00af\1\150\6\uffff\6\u00af\24\52\4\uffff\1\u00af\1\uffff\6\u00af\24\52",
-            "\2\52\1\uffff\12\u00af\1\150\6\uffff\6\u00af\24\52\4\uffff\1\u00af\1\uffff\6\u00af\24\52",
+            "\1\u00ae\1\145\12\141",
+            "\2\52\1\uffff\12\u00af\1\151\6\uffff\6\u00af\24\52\4\uffff\1\u00af\1\uffff\6\u00af\24\52",
+            "\2\52\1\uffff\12\u00af\1\151\6\uffff\6\u00af\24\52\4\uffff\1\u00af\1\uffff\6\u00af\24\52",
             "",
-            "\2\52\1\uffff\12\u00b0\1\150\6\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
-            "\1\52\1\145\1\153\12\146\1\150\6\uffff\1\52\1\151\1\52\1\152\1\147\1\152\5\52\1\152\16\52\4\uffff\1\52\1\uffff\1\52\1\151\1\52\1\152\1\147\1\152\5\52\1\152\16\52",
-            "\1\u00ad\1\uffff\1\u00b1\1\52\1\uffff\12\u00b2\1\150\6\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "",
-            "\2\52\1\uffff\12\52\1\150\6\uffff\3\52\1\u00b3\4\52\1\u00b3\21\52\4\uffff\1\52\1\uffff\3\52\1\u00b3\4\52\1\u00b3\21\52",
-            "\2\52\1\uffff\12\52\1\150\6\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\1\52\1\147\1\145\12\146\1\151\6\uffff\1\52\1\152\1\52\1\153\1\150\1\153\5\52\1\153\16\52\4\uffff\1\52\1\uffff\1\52\1\152\1\52\1\153\1\150\1\153\5\52\1\153\16\52",
+            "\2\52\1\uffff\12\u00b0\1\151\6\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\1\u00ad\1\uffff\1\u00b1\1\52\1\uffff\12\u00b2\1\151\6\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "",
-            "\52\u00b7\1\u00b4\4\u00b7\1\u00b5\54\u00b7\1\u00b6\uffa3\u00b7",
+            "\2\52\1\uffff\12\52\1\151\6\uffff\3\52\1\u00b3\4\52\1\u00b3\21\52\4\uffff\1\52\1\uffff\3\52\1\u00b3\4\52\1\u00b3\21\52",
+            "\2\52\1\uffff\12\52\1\151\6\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\52\u00b7\1\u00b6\4\u00b7\1\u00b4\54\u00b7\1\u00b5\uffa3\u00b7",
             "\0\u00b8",
             "",
             "\1\u00b9",
@@ -6817,15 +6987,15 @@ public class InternalOMLLexer extends Lexer {
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\4\50\1\u00fe\3\50\1\u00fd\2\50\1\u00fc\16\50\4\uffff\1\52\1\uffff\32\50",
             "",
             "",
-            "\2\52\1\uffff\12\u00af\1\150\6\uffff\6\u00af\24\52\4\uffff\1\u00af\1\uffff\6\u00af\24\52",
-            "\2\52\1\uffff\12\u00b0\1\150\6\uffff\4\52\1\u00ff\25\52\4\uffff\1\52\1\uffff\4\52\1\u00ff\25\52",
-            "\2\52\1\uffff\12\u00b2\1\150\6\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
-            "\2\52\1\uffff\12\u00b2\1\150\6\uffff\1\52\1\151\1\52\1\152\1\52\1\152\5\52\1\152\16\52\4\uffff\1\52\1\uffff\1\52\1\151\1\52\1\152\1\52\1\152\5\52\1\152\16\52",
-            "\2\52\1\uffff\12\52\1\150\6\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
-            "\52\u00b7\1\u00b4\4\u00b7\1\u0100\54\u00b7\1\u00b6\uffa3\u00b7",
-            "\0\u0101",
-            "\52\u00b7\1\u00b4\4\u00b7\1\u0102\54\u00b7\1\u00b6\uffa3\u00b7",
-            "\52\u00b7\1\u00b4\4\u00b7\1\u00b5\54\u00b7\1\u00b6\uffa3\u00b7",
+            "\2\52\1\uffff\12\u00af\1\151\6\uffff\6\u00af\24\52\4\uffff\1\u00af\1\uffff\6\u00af\24\52",
+            "\2\52\1\uffff\12\u00b0\1\151\6\uffff\4\52\1\u00ff\25\52\4\uffff\1\52\1\uffff\4\52\1\u00ff\25\52",
+            "\2\52\1\uffff\12\u00b2\1\151\6\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\2\52\1\uffff\12\u00b2\1\151\6\uffff\1\52\1\152\1\52\1\153\1\52\1\153\5\52\1\153\16\52\4\uffff\1\52\1\uffff\1\52\1\152\1\52\1\153\1\52\1\153\5\52\1\153\16\52",
+            "\2\52\1\uffff\12\52\1\151\6\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\0\u0100",
+            "\52\u00b7\1\u00b6\4\u00b7\1\u0101\54\u00b7\1\u00b5\uffa3\u00b7",
+            "\52\u00b7\1\u00b6\4\u00b7\1\u0102\54\u00b7\1\u00b5\uffa3\u00b7",
+            "\52\u00b7\1\u00b6\4\u00b7\1\u00b4\54\u00b7\1\u00b5\uffa3\u00b7",
             "",
             "",
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\32\50",
@@ -6897,10 +7067,10 @@ public class InternalOMLLexer extends Lexer {
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\4\50\1\u0146\25\50",
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\15\50\1\u0147\14\50",
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\27\50\1\u0148\2\50",
-            "\1\u00ae\1\uffff\1\u0149\1\52\1\uffff\12\u014a\1\150\6\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
-            "\0\u0101",
+            "\1\u00ae\1\uffff\1\u0149\1\52\1\uffff\12\u014a\1\151\6\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "",
-            "\52\u00b7\1\u00b4\4\u00b7\1\u00b5\54\u00b7\1\u00b6\uffa3\u00b7",
+            "\52\u00b7\1\u00b6\4\u00b7\1\u00b4\54\u00b7\1\u00b5\uffa3\u00b7",
+            "\0\u0100",
             "",
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\32\50",
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\3\50\1\u014c\26\50",
@@ -6971,8 +7141,8 @@ public class InternalOMLLexer extends Lexer {
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\15\50\1\u0188\14\50",
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\2\50\1\u0189\27\50",
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\2\50\1\u018a\27\50",
-            "\2\52\1\uffff\12\u014a\1\150\6\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
-            "\2\52\1\uffff\12\u014a\1\150\6\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\2\52\1\uffff\12\u014a\1\151\6\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\2\52\1\uffff\12\u014a\1\151\6\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "",
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\32\50",
             "\1\53\1\uffff\2\50\1\uffff\12\50\1\51\6\uffff\32\50\4\uffff\1\52\1\uffff\23\50\1\u018c\6\50",
@@ -7679,34 +7849,34 @@ public class InternalOMLLexer extends Lexer {
             ""
     };
 
-    static final short[] DFA70_eot = DFA.unpackEncodedString(DFA70_eotS);
-    static final short[] DFA70_eof = DFA.unpackEncodedString(DFA70_eofS);
-    static final char[] DFA70_min = DFA.unpackEncodedStringToUnsignedChars(DFA70_minS);
-    static final char[] DFA70_max = DFA.unpackEncodedStringToUnsignedChars(DFA70_maxS);
-    static final short[] DFA70_accept = DFA.unpackEncodedString(DFA70_acceptS);
-    static final short[] DFA70_special = DFA.unpackEncodedString(DFA70_specialS);
-    static final short[][] DFA70_transition;
+    static final short[] DFA73_eot = DFA.unpackEncodedString(DFA73_eotS);
+    static final short[] DFA73_eof = DFA.unpackEncodedString(DFA73_eofS);
+    static final char[] DFA73_min = DFA.unpackEncodedStringToUnsignedChars(DFA73_minS);
+    static final char[] DFA73_max = DFA.unpackEncodedStringToUnsignedChars(DFA73_maxS);
+    static final short[] DFA73_accept = DFA.unpackEncodedString(DFA73_acceptS);
+    static final short[] DFA73_special = DFA.unpackEncodedString(DFA73_specialS);
+    static final short[][] DFA73_transition;
 
     static {
-        int numStates = DFA70_transitionS.length;
-        DFA70_transition = new short[numStates][];
+        int numStates = DFA73_transitionS.length;
+        DFA73_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA70_transition[i] = DFA.unpackEncodedString(DFA70_transitionS[i]);
+            DFA73_transition[i] = DFA.unpackEncodedString(DFA73_transitionS[i]);
         }
     }
 
-    class DFA70 extends DFA {
+    class DFA73 extends DFA {
 
-        public DFA70(BaseRecognizer recognizer) {
+        public DFA73(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 70;
-            this.eot = DFA70_eot;
-            this.eof = DFA70_eof;
-            this.min = DFA70_min;
-            this.max = DFA70_max;
-            this.accept = DFA70_accept;
-            this.special = DFA70_special;
-            this.transition = DFA70_transition;
+            this.decisionNumber = 73;
+            this.eot = DFA73_eot;
+            this.eof = DFA73_eof;
+            this.min = DFA73_min;
+            this.max = DFA73_max;
+            this.accept = DFA73_accept;
+            this.special = DFA73_special;
+            this.transition = DFA73_transition;
         }
         public String getDescription() {
             return "1:1: Tokens : ( T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | T__90 | T__91 | T__92 | T__93 | T__94 | T__95 | T__96 | T__97 | T__98 | T__99 | T__100 | T__101 | T__102 | T__103 | T__104 | T__105 | T__106 | T__107 | T__108 | T__109 | T__110 | T__111 | T__112 | T__113 | T__114 | T__115 | T__116 | T__117 | T__118 | T__119 | T__120 | T__121 | T__122 | T__123 | T__124 | T__125 | T__126 | T__127 | T__128 | T__129 | T__130 | T__131 | T__132 | T__133 | T__134 | T__135 | T__136 | T__137 | T__138 | T__139 | T__140 | T__141 | T__142 | T__143 | T__144 | T__145 | T__146 | T__147 | T__148 | T__149 | T__150 | T__151 | T__152 | T__153 | T__154 | T__155 | T__156 | T__157 | T__158 | T__159 | T__160 | T__161 | T__162 | T__163 | T__164 | T__165 | T__166 | RULE_RATIONAL | RULE_FALSE | RULE_TRUE | RULE_URI | RULE_REAL | RULE_PATTERN | RULE_QUOTED_STRING_VALUE | RULE_RAW_STRING_VALUE | RULE_IRI | RULE_ABBREV_IRI | RULE_LANG_TAG | RULE_DATE_TIME | RULE_UUID | RULE_DIGITS | RULE_DECIMAL | RULE_FLOAT | RULE_ID | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS );";
@@ -7716,152 +7886,152 @@ public class InternalOMLLexer extends Lexer {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA70_181 = input.LA(1);
+                        int LA73_180 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA70_181>='\u0000' && LA70_181<='\uFFFF')) ) {s = 257;}
+                        if ( ((LA73_180>='\u0000' && LA73_180<='\uFFFF')) ) {s = 256;}
 
                         else s = 110;
 
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA70_46 = input.LA(1);
+                        int LA73_46 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA70_46>='\u0000' && LA70_46<='\uFFFF')) ) {s = 47;}
+                        if ( ((LA73_46>='\u0000' && LA73_46<='\uFFFF')) ) {s = 47;}
 
                         else s = 117;
 
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA70_183 = input.LA(1);
+                        int LA73_183 = input.LA(1);
 
                         s = -1;
-                        if ( (LA70_183=='*') ) {s = 180;}
+                        if ( (LA73_183=='/') ) {s = 180;}
 
-                        else if ( (LA70_183=='/') ) {s = 181;}
+                        else if ( (LA73_183=='\\') ) {s = 181;}
 
-                        else if ( (LA70_183=='\\') ) {s = 182;}
+                        else if ( (LA73_183=='*') ) {s = 182;}
 
-                        else if ( ((LA70_183>='\u0000' && LA70_183<=')')||(LA70_183>='+' && LA70_183<='.')||(LA70_183>='0' && LA70_183<='[')||(LA70_183>=']' && LA70_183<='\uFFFF')) ) {s = 183;}
+                        else if ( ((LA73_183>='\u0000' && LA73_183<=')')||(LA73_183>='+' && LA73_183<='.')||(LA73_183>='0' && LA73_183<='[')||(LA73_183>=']' && LA73_183<='\uFFFF')) ) {s = 183;}
 
                         if ( s>=0 ) return s;
                         break;
                     case 3 : 
-                        int LA70_182 = input.LA(1);
+                        int LA73_181 = input.LA(1);
 
                         s = -1;
-                        if ( (LA70_182=='/') ) {s = 258;}
+                        if ( (LA73_181=='/') ) {s = 257;}
 
-                        else if ( (LA70_182=='*') ) {s = 180;}
+                        else if ( (LA73_181=='\\') ) {s = 181;}
 
-                        else if ( (LA70_182=='\\') ) {s = 182;}
+                        else if ( (LA73_181=='*') ) {s = 182;}
 
-                        else if ( ((LA70_182>='\u0000' && LA70_182<=')')||(LA70_182>='+' && LA70_182<='.')||(LA70_182>='0' && LA70_182<='[')||(LA70_182>=']' && LA70_182<='\uFFFF')) ) {s = 183;}
+                        else if ( ((LA73_181>='\u0000' && LA73_181<=')')||(LA73_181>='+' && LA73_181<='.')||(LA73_181>='0' && LA73_181<='[')||(LA73_181>=']' && LA73_181<='\uFFFF')) ) {s = 183;}
 
                         if ( s>=0 ) return s;
                         break;
                     case 4 : 
-                        int LA70_258 = input.LA(1);
+                        int LA73_257 = input.LA(1);
 
                         s = -1;
-                        if ( (LA70_258=='*') ) {s = 180;}
+                        if ( (LA73_257=='*') ) {s = 182;}
 
-                        else if ( (LA70_258=='/') ) {s = 181;}
+                        else if ( (LA73_257=='/') ) {s = 180;}
 
-                        else if ( (LA70_258=='\\') ) {s = 182;}
+                        else if ( (LA73_257=='\\') ) {s = 181;}
 
-                        else if ( ((LA70_258>='\u0000' && LA70_258<=')')||(LA70_258>='+' && LA70_258<='.')||(LA70_258>='0' && LA70_258<='[')||(LA70_258>=']' && LA70_258<='\uFFFF')) ) {s = 183;}
+                        else if ( ((LA73_257>='\u0000' && LA73_257<=')')||(LA73_257>='+' && LA73_257<='.')||(LA73_257>='0' && LA73_257<='[')||(LA73_257>=']' && LA73_257<='\uFFFF')) ) {s = 183;}
 
                         else s = 110;
 
                         if ( s>=0 ) return s;
                         break;
                     case 5 : 
-                        int LA70_256 = input.LA(1);
+                        int LA73_33 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA70_256>='\u0000' && LA70_256<='\uFFFF')) ) {s = 257;}
+                        if ( (LA73_33=='\"') ) {s = 111;}
 
-                        else s = 110;
+                        else if ( ((LA73_33>='\u0000' && LA73_33<='!')||(LA73_33>='#' && LA73_33<='\uFFFF')) ) {s = 112;}
 
                         if ( s>=0 ) return s;
                         break;
                     case 6 : 
-                        int LA70_109 = input.LA(1);
+                        int LA73_258 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA70_109>='\u0000' && LA70_109<='\uFFFF')) ) {s = 184;}
+                        if ( ((LA73_258>='\u0000' && LA73_258<='\uFFFF')) ) {s = 256;}
 
                         else s = 110;
 
                         if ( s>=0 ) return s;
                         break;
                     case 7 : 
-                        int LA70_180 = input.LA(1);
+                        int LA73_182 = input.LA(1);
 
                         s = -1;
-                        if ( (LA70_180=='/') ) {s = 256;}
+                        if ( (LA73_182=='/') ) {s = 258;}
 
-                        else if ( (LA70_180=='*') ) {s = 180;}
+                        else if ( (LA73_182=='\\') ) {s = 181;}
 
-                        else if ( (LA70_180=='\\') ) {s = 182;}
+                        else if ( (LA73_182=='*') ) {s = 182;}
 
-                        else if ( ((LA70_180>='\u0000' && LA70_180<=')')||(LA70_180>='+' && LA70_180<='.')||(LA70_180>='0' && LA70_180<='[')||(LA70_180>=']' && LA70_180<='\uFFFF')) ) {s = 183;}
+                        else if ( ((LA73_182>='\u0000' && LA73_182<=')')||(LA73_182>='+' && LA73_182<='.')||(LA73_182>='0' && LA73_182<='[')||(LA73_182>=']' && LA73_182<='\uFFFF')) ) {s = 183;}
 
                         if ( s>=0 ) return s;
                         break;
                     case 8 : 
-                        int LA70_33 = input.LA(1);
+                        int LA73_3 = input.LA(1);
 
                         s = -1;
-                        if ( (LA70_33=='\"') ) {s = 111;}
+                        if ( (LA73_3=='=') ) {s = 46;}
 
-                        else if ( ((LA70_33>='\u0000' && LA70_33<='!')||(LA70_33>='#' && LA70_33<='\uFFFF')) ) {s = 112;}
+                        else if ( ((LA73_3>='\u0000' && LA73_3<='<')||(LA73_3>='>' && LA73_3<='\uFFFF')) ) {s = 47;}
 
                         if ( s>=0 ) return s;
                         break;
                     case 9 : 
-                        int LA70_3 = input.LA(1);
+                        int LA73_109 = input.LA(1);
 
                         s = -1;
-                        if ( (LA70_3=='=') ) {s = 46;}
+                        if ( ((LA73_109>='\u0000' && LA73_109<='\uFFFF')) ) {s = 184;}
 
-                        else if ( ((LA70_3>='\u0000' && LA70_3<='<')||(LA70_3>='>' && LA70_3<='\uFFFF')) ) {s = 47;}
+                        else s = 110;
 
                         if ( s>=0 ) return s;
                         break;
                     case 10 : 
-                        int LA70_108 = input.LA(1);
+                        int LA73_108 = input.LA(1);
 
                         s = -1;
-                        if ( (LA70_108=='*') ) {s = 180;}
+                        if ( (LA73_108=='/') ) {s = 180;}
 
-                        else if ( (LA70_108=='/') ) {s = 181;}
+                        else if ( (LA73_108=='\\') ) {s = 181;}
 
-                        else if ( (LA70_108=='\\') ) {s = 182;}
+                        else if ( (LA73_108=='*') ) {s = 182;}
 
-                        else if ( ((LA70_108>='\u0000' && LA70_108<=')')||(LA70_108>='+' && LA70_108<='.')||(LA70_108>='0' && LA70_108<='[')||(LA70_108>=']' && LA70_108<='\uFFFF')) ) {s = 183;}
+                        else if ( ((LA73_108>='\u0000' && LA73_108<=')')||(LA73_108>='+' && LA73_108<='.')||(LA73_108>='0' && LA73_108<='[')||(LA73_108>=']' && LA73_108<='\uFFFF')) ) {s = 183;}
 
                         if ( s>=0 ) return s;
                         break;
                     case 11 : 
-                        int LA70_32 = input.LA(1);
+                        int LA73_32 = input.LA(1);
 
                         s = -1;
-                        if ( (LA70_32=='*') ) {s = 108;}
+                        if ( (LA73_32=='*') ) {s = 108;}
 
-                        else if ( (LA70_32=='/') ) {s = 109;}
+                        else if ( (LA73_32=='/') ) {s = 109;}
 
-                        else if ( ((LA70_32>='\u0000' && LA70_32<=')')||(LA70_32>='+' && LA70_32<='.')||(LA70_32>='0' && LA70_32<='\uFFFF')) ) {s = 110;}
+                        else if ( ((LA73_32>='\u0000' && LA73_32<=')')||(LA73_32>='+' && LA73_32<='.')||(LA73_32>='0' && LA73_32<='\uFFFF')) ) {s = 110;}
 
                         if ( s>=0 ) return s;
                         break;
             }
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 70, _s, input);
+                new NoViableAltException(getDescription(), 73, _s, input);
             error(nvae);
             throw nvae;
         }

@@ -8019,7 +8019,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal ID:
-	//	'^'? LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX*;
+	//	'^'? LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX* |
+	//	'^'? '\'' LETTER_DIGIT_PREFIX !'\''* '\'';
 	public TerminalRule getIDRule() {
 		return tID;
 	}

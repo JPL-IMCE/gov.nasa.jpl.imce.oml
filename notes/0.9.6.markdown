@@ -34,13 +34,33 @@ open terminology <http://example.org> {
 
 The OML Xtext grammar changed slightly, reoganizing the different relative priorities of the token parsing rules to allow digit-leading identifiers in OML as long as the identifier contains at least one non-digit character. Additionally, arbitrary characters are allowed in an OML ID as long as the ID string begins and ends with a single quote character.
 
+The grammar rule for OML IDs is as follows:
+
+```
+terminal ID: '^'? LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX* |
+             '^'? '\'' LETTER_DIGIT_PREFIX (!'\'')* '\''
+```
+
 Examples of valid OML IDs:
 
 ```
 Component
 0123Component
+'0123 Component'
 0123-Component
 '0123-?!@#$%^&*()[]=+|-Component'
+```
+
+Helper API:
+
+```
+gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
+
+  /**
+   * Returns the input string if it is already a valid OML ID or wraps it with single quotes if needed.
+   * Throws IllegalArgumentException if the input string does not match the lexical syntax of an OML ID.
+   */
+  static def String wrapOMLIDIfNeeded(String id)
 ```
 
 ### Adding [OWL2-DL Object Property Cardinality Restrictions](https://www.w3.org/TR/owl2-syntax/#Object_Property_Cardinality_Restrictions)

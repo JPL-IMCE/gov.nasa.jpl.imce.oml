@@ -16,6 +16,7 @@
  */
 package gov.nasa.jpl.imce.oml.dsl.tests;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import gov.nasa.jpl.imce.oml.dsl.tests.OMLInjectorProvider;
@@ -34,6 +35,7 @@ import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.XtextRunner;
 import org.eclipse.xtext.testing.util.ParseHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.junit.Assert;
 import org.junit.Test;
@@ -139,12 +141,22 @@ public class OMLTerminologyGraph1Test {
       _builder.newLine();
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("concept 42c");
+      _builder.append("concept Component");
       _builder.newLine();
       _builder.append("\t");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("concept Bar");
+      _builder.append("concept 0123Component");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("concept 0123-Component");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("concept \'0123-?!@#$%^&*()[]=+|-Component\'");
       _builder.newLine();
       _builder.append("\t");
       _builder.newLine();
@@ -176,8 +188,27 @@ public class OMLTerminologyGraph1Test {
       Assert.assertSame(c1, a_subj);
       final TerminologyBox tbox2 = IterableExtensions.<TerminologyBox>last(Iterables.<TerminologyBox>filter(result.getModules(), TerminologyBox.class));
       Assert.assertEquals(tbox2.nsPrefix(), "example.org");
-      final Concept c2 = IterableExtensions.<Concept>head(Iterables.<Concept>filter(tbox2.getBoxStatements(), Concept.class));
-      Assert.assertEquals(c2.name(), "42c");
+      final Iterable<Concept> c2s = Iterables.<Concept>filter(tbox2.getBoxStatements(), Concept.class);
+      final Function1<Concept, Boolean> _function = (Concept it) -> {
+        String _name = it.name();
+        return Boolean.valueOf(Objects.equal(_name, "Component"));
+      };
+      Assert.assertNotNull(IterableExtensions.<Concept>findFirst(c2s, _function));
+      final Function1<Concept, Boolean> _function_1 = (Concept it) -> {
+        String _name = it.name();
+        return Boolean.valueOf(Objects.equal(_name, "0123Component"));
+      };
+      Assert.assertNotNull(IterableExtensions.<Concept>findFirst(c2s, _function_1));
+      final Function1<Concept, Boolean> _function_2 = (Concept it) -> {
+        String _name = it.name();
+        return Boolean.valueOf(Objects.equal(_name, "0123-Component"));
+      };
+      Assert.assertNotNull(IterableExtensions.<Concept>findFirst(c2s, _function_2));
+      final Function1<Concept, Boolean> _function_3 = (Concept it) -> {
+        String _name = it.name();
+        return Boolean.valueOf(Objects.equal(_name, "\'0123-?!@#$%^&*()[]=+|-Component\'"));
+      };
+      Assert.assertNotNull(IterableExtensions.<Concept>findFirst(c2s, _function_3));
       String _name = this.getClass().getName();
       String _plus = (_name + " OK!");
       System.out.println(_plus);
