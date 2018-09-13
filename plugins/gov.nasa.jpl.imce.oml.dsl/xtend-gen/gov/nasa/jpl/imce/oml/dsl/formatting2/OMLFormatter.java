@@ -35,6 +35,7 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange;
@@ -2229,6 +2230,24 @@ public class OMLFormatter extends AbstractFormatter2 {
     document.append(this.textRegionExtensions.regionFor(i).keyword(")"), _function_5);
   }
   
+  protected void _format(final InstanceRelationshipValueRestriction i, @Extension final IFormattableDocument document) {
+    final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(1);
+      };
+      document.<AnnotationPropertyValue>append(document.<AnnotationPropertyValue>format(it), _function_1);
+    };
+    i.getAnnotations().forEach(_function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(i).keyword("."), _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(i).keyword("="), _function_2);
+  }
+  
   public void format(final Object t, final IFormattableDocument document) {
     if (t instanceof EntityScalarDataProperty) {
       _format((EntityScalarDataProperty)t, document);
@@ -2373,6 +2392,9 @@ public class OMLFormatter extends AbstractFormatter2 {
       return;
     } else if (t instanceof DescriptionBox) {
       _format((DescriptionBox)t, document);
+      return;
+    } else if (t instanceof InstanceRelationshipValueRestriction) {
+      _format((InstanceRelationshipValueRestriction)t, document);
       return;
     } else if (t instanceof SingletonInstanceStructuredDataPropertyValue) {
       _format((SingletonInstanceStructuredDataPropertyValue)t, document);

@@ -145,6 +145,10 @@ public class DescriptionsAdapterFactory extends AdapterFactoryImpl {
 				return createConceptInstanceAdapter();
 			}
 			@Override
+			public Adapter caseInstanceRelationshipValueRestriction(InstanceRelationshipValueRestriction object) {
+				return createInstanceRelationshipValueRestrictionAdapter();
+			}
+			@Override
 			public Adapter caseReifiedRelationshipInstance(ReifiedRelationshipInstance object) {
 				return createReifiedRelationshipInstanceAdapter();
 			}
@@ -397,6 +401,20 @@ public class DescriptionsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConceptInstanceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction <em>Instance Relationship Value Restriction</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction
+	 * @generated
+	 */
+	public Adapter createInstanceRelationshipValueRestrictionAdapter() {
 		return null;
 	}
 

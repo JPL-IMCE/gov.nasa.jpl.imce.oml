@@ -29,6 +29,7 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorld
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionKind;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange;
@@ -67,6 +68,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionBoxImpl#getClosedWorldDefinitions <em>Closed World Definitions</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionBoxImpl#getConceptInstances <em>Concept Instances</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionBoxImpl#getReifiedRelationshipInstances <em>Reified Relationship Instances</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionBoxImpl#getInstanceRelationshipValueRestrictions <em>Instance Relationship Value Restrictions</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionBoxImpl#getReifiedRelationshipInstanceDomains <em>Reified Relationship Instance Domains</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionBoxImpl#getReifiedRelationshipInstanceRanges <em>Reified Relationship Instance Ranges</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionBoxImpl#getUnreifiedRelationshipInstanceTuples <em>Unreified Relationship Instance Tuples</em>}</li>
@@ -136,6 +138,16 @@ public class DescriptionBoxImpl extends ModuleImpl implements DescriptionBox {
 	 * @ordered
 	 */
 	protected EList<ReifiedRelationshipInstance> reifiedRelationshipInstances;
+
+	/**
+	 * The cached value of the '{@link #getInstanceRelationshipValueRestrictions() <em>Instance Relationship Value Restrictions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInstanceRelationshipValueRestrictions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<InstanceRelationshipValueRestriction> instanceRelationshipValueRestrictions;
 
 	/**
 	 * The cached value of the '{@link #getReifiedRelationshipInstanceDomains() <em>Reified Relationship Instance Domains</em>}' containment reference list.
@@ -280,6 +292,18 @@ public class DescriptionBoxImpl extends ModuleImpl implements DescriptionBox {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<InstanceRelationshipValueRestriction> getInstanceRelationshipValueRestrictions() {
+		if (instanceRelationshipValueRestrictions == null) {
+			instanceRelationshipValueRestrictions = new EObjectContainmentWithInverseEList<InstanceRelationshipValueRestriction>(InstanceRelationshipValueRestriction.class, this, DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_VALUE_RESTRICTIONS, DescriptionsPackage.INSTANCE_RELATIONSHIP_VALUE_RESTRICTION__DESCRIPTION_BOX);
+		}
+		return instanceRelationshipValueRestrictions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<ReifiedRelationshipInstanceDomain> getReifiedRelationshipInstanceDomains() {
 		if (reifiedRelationshipInstanceDomains == null) {
 			reifiedRelationshipInstanceDomains = new EObjectContainmentWithInverseEList<ReifiedRelationshipInstanceDomain>(ReifiedRelationshipInstanceDomain.class, this, DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_DOMAINS, DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE_DOMAIN__DESCRIPTION_BOX);
@@ -362,6 +386,7 @@ public class DescriptionBoxImpl extends ModuleImpl implements DescriptionBox {
 			final BasicEList<ModuleElement> mes = new BasicEList<ModuleElement>();
 			mes.addAll(this.getConceptInstances());
 			mes.addAll(this.getReifiedRelationshipInstances());
+			mes.addAll(this.getInstanceRelationshipValueRestrictions());
 			mes.addAll(this.getReifiedRelationshipInstanceDomains());
 			mes.addAll(this.getReifiedRelationshipInstanceRanges());
 			mes.addAll(this.getUnreifiedRelationshipInstanceTuples());
@@ -389,6 +414,8 @@ public class DescriptionBoxImpl extends ModuleImpl implements DescriptionBox {
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getConceptInstances()).basicAdd(otherEnd, msgs);
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getReifiedRelationshipInstances()).basicAdd(otherEnd, msgs);
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_VALUE_RESTRICTIONS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getInstanceRelationshipValueRestrictions()).basicAdd(otherEnd, msgs);
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_DOMAINS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getReifiedRelationshipInstanceDomains()).basicAdd(otherEnd, msgs);
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_RANGES:
@@ -419,6 +446,8 @@ public class DescriptionBoxImpl extends ModuleImpl implements DescriptionBox {
 				return ((InternalEList<?>)getConceptInstances()).basicRemove(otherEnd, msgs);
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCES:
 				return ((InternalEList<?>)getReifiedRelationshipInstances()).basicRemove(otherEnd, msgs);
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_VALUE_RESTRICTIONS:
+				return ((InternalEList<?>)getInstanceRelationshipValueRestrictions()).basicRemove(otherEnd, msgs);
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_DOMAINS:
 				return ((InternalEList<?>)getReifiedRelationshipInstanceDomains()).basicRemove(otherEnd, msgs);
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_RANGES:
@@ -451,6 +480,8 @@ public class DescriptionBoxImpl extends ModuleImpl implements DescriptionBox {
 				return getConceptInstances();
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCES:
 				return getReifiedRelationshipInstances();
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_VALUE_RESTRICTIONS:
+				return getInstanceRelationshipValueRestrictions();
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_DOMAINS:
 				return getReifiedRelationshipInstanceDomains();
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_RANGES:
@@ -492,6 +523,10 @@ public class DescriptionBoxImpl extends ModuleImpl implements DescriptionBox {
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCES:
 				getReifiedRelationshipInstances().clear();
 				getReifiedRelationshipInstances().addAll((Collection<? extends ReifiedRelationshipInstance>)newValue);
+				return;
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_VALUE_RESTRICTIONS:
+				getInstanceRelationshipValueRestrictions().clear();
+				getInstanceRelationshipValueRestrictions().addAll((Collection<? extends InstanceRelationshipValueRestriction>)newValue);
 				return;
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_DOMAINS:
 				getReifiedRelationshipInstanceDomains().clear();
@@ -540,6 +575,9 @@ public class DescriptionBoxImpl extends ModuleImpl implements DescriptionBox {
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCES:
 				getReifiedRelationshipInstances().clear();
 				return;
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_VALUE_RESTRICTIONS:
+				getInstanceRelationshipValueRestrictions().clear();
+				return;
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_DOMAINS:
 				getReifiedRelationshipInstanceDomains().clear();
 				return;
@@ -577,6 +615,8 @@ public class DescriptionBoxImpl extends ModuleImpl implements DescriptionBox {
 				return conceptInstances != null && !conceptInstances.isEmpty();
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCES:
 				return reifiedRelationshipInstances != null && !reifiedRelationshipInstances.isEmpty();
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_VALUE_RESTRICTIONS:
+				return instanceRelationshipValueRestrictions != null && !instanceRelationshipValueRestrictions.isEmpty();
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_DOMAINS:
 				return reifiedRelationshipInstanceDomains != null && !reifiedRelationshipInstanceDomains.isEmpty();
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_RANGES:

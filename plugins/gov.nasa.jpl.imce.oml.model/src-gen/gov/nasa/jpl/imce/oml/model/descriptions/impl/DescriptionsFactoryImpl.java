@@ -81,6 +81,7 @@ public class DescriptionsFactoryImpl extends EFactoryImpl implements Description
 			case DescriptionsPackage.STRUCTURED_DATA_PROPERTY_TUPLE: return createStructuredDataPropertyTuple();
 			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE: return createScalarDataPropertyValue();
 			case DescriptionsPackage.CONCEPT_INSTANCE: return createConceptInstance();
+			case DescriptionsPackage.INSTANCE_RELATIONSHIP_VALUE_RESTRICTION: return createInstanceRelationshipValueRestriction();
 			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE: return createReifiedRelationshipInstance();
 			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE_DOMAIN: return createReifiedRelationshipInstanceDomain();
 			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE_RANGE: return createReifiedRelationshipInstanceRange();
@@ -198,6 +199,16 @@ public class DescriptionsFactoryImpl extends EFactoryImpl implements Description
 	public ConceptInstance createConceptInstance() {
 		ConceptInstanceImpl conceptInstance = new ConceptInstanceImpl();
 		return conceptInstance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InstanceRelationshipValueRestriction createInstanceRelationshipValueRestriction() {
+		InstanceRelationshipValueRestrictionImpl instanceRelationshipValueRestriction = new InstanceRelationshipValueRestrictionImpl();
+		return instanceRelationshipValueRestriction;
 	}
 
 	/**

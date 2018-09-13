@@ -37,6 +37,7 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange;
@@ -1112,6 +1113,43 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
               _allReifiedRelationshipScope=this._oMLScopeExtensions.allReifiedRelationshipScope(_descriptionBox);
             }
             scope = _allReifiedRelationshipScope;
+          }
+        }
+      }
+      if (!_matched) {
+        if (context instanceof InstanceRelationshipValueRestriction) {
+          _matched=true;
+          EReference _instanceRelationshipValueRestriction_Domain = DescriptionsPackage.eINSTANCE.getInstanceRelationshipValueRestriction_Domain();
+          boolean _equals = Objects.equal(reference, _instanceRelationshipValueRestriction_Domain);
+          if (_equals) {
+            DescriptionBox _descriptionBox = ((InstanceRelationshipValueRestriction)context).descriptionBox();
+            IScope _allConceptualEntitySingletonInstanceScope = null;
+            if (_descriptionBox!=null) {
+              _allConceptualEntitySingletonInstanceScope=this._oMLScopeExtensions.allConceptualEntitySingletonInstanceScope(_descriptionBox);
+            }
+            scope = _allConceptualEntitySingletonInstanceScope;
+          } else {
+            EReference _instanceRelationshipValueRestriction_Range = DescriptionsPackage.eINSTANCE.getInstanceRelationshipValueRestriction_Range();
+            boolean _equals_1 = Objects.equal(reference, _instanceRelationshipValueRestriction_Range);
+            if (_equals_1) {
+              DescriptionBox _descriptionBox_1 = ((InstanceRelationshipValueRestriction)context).descriptionBox();
+              IScope _allConceptualEntitySingletonInstanceScope_1 = null;
+              if (_descriptionBox_1!=null) {
+                _allConceptualEntitySingletonInstanceScope_1=this._oMLScopeExtensions.allConceptualEntitySingletonInstanceScope(_descriptionBox_1);
+              }
+              scope = _allConceptualEntitySingletonInstanceScope_1;
+            } else {
+              EReference _instanceRelationshipValueRestriction_RestrictedRelationship = DescriptionsPackage.eINSTANCE.getInstanceRelationshipValueRestriction_RestrictedRelationship();
+              boolean _equals_2 = Objects.equal(reference, _instanceRelationshipValueRestriction_RestrictedRelationship);
+              if (_equals_2) {
+                DescriptionBox _descriptionBox_2 = ((InstanceRelationshipValueRestriction)context).descriptionBox();
+                IScope _allRestrictableRelationshipsScope = null;
+                if (_descriptionBox_2!=null) {
+                  _allRestrictableRelationshipsScope=this._oMLScopeExtensions.allRestrictableRelationshipsScope(_descriptionBox_2);
+                }
+                scope = _allRestrictableRelationshipsScope;
+              }
+            }
           }
         }
       }

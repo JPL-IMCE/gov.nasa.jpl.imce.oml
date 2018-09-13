@@ -252,6 +252,20 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DescriptionsPackage.INSTANCE_RELATIONSHIP_VALUE_RESTRICTION: {
+				InstanceRelationshipValueRestriction instanceRelationshipValueRestriction = (InstanceRelationshipValueRestriction)theEObject;
+				T result = caseInstanceRelationshipValueRestriction(instanceRelationshipValueRestriction);
+				if (result == null) result = caseTerminologyInstanceAssertion(instanceRelationshipValueRestriction);
+				if (result == null) result = caseElementCrossReferenceTuple(instanceRelationshipValueRestriction);
+				if (result == null) result = caseModuleElement(instanceRelationshipValueRestriction);
+				if (result == null) result = caseExtrinsicIdentityKind(instanceRelationshipValueRestriction);
+				if (result == null) result = caseCrossReferencableKind(instanceRelationshipValueRestriction);
+				if (result == null) result = caseLogicalElement(instanceRelationshipValueRestriction);
+				if (result == null) result = caseIdentityKind(instanceRelationshipValueRestriction);
+				if (result == null) result = caseCrossReferencabilityKind(instanceRelationshipValueRestriction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE: {
 				ReifiedRelationshipInstance reifiedRelationshipInstance = (ReifiedRelationshipInstance)theEObject;
 				T result = caseReifiedRelationshipInstance(reifiedRelationshipInstance);
@@ -490,6 +504,21 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseConceptInstance(ConceptInstance object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Instance Relationship Value Restriction</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Instance Relationship Value Restriction</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInstanceRelationshipValueRestriction(InstanceRelationshipValueRestriction object) {
 		return null;
 	}
 
