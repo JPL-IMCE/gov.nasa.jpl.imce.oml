@@ -60,9 +60,10 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRange
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToScalar
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToStructure
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty
 
 /*
  * OML DescriptionKind specifies semantic constraints that apply to
@@ -103,6 +104,10 @@ class DescriptionBox extends Module {
 	
 	@CopyConstructor
 	@Collection(kind="Set")
+	contains InstanceRelationshipValueRestriction[] instanceRelationshipValueRestrictions opposite descriptionBox
+	
+	@CopyConstructor
+	@Collection(kind="Set")
 	contains ReifiedRelationshipInstanceDomain[] reifiedRelationshipInstanceDomains opposite descriptionBox
 	
 	@CopyConstructor
@@ -135,6 +140,7 @@ class DescriptionBox extends Module {
 	
 	@Scala(code="extent.lookupConceptInstances(this) ++
 		extent.lookupReifiedRelationshipInstances(this) ++
+		extent.lookupInstanceRelationshipValueRestrictions(this) ++
 		extent.lookupReifiedRelationshipInstanceDomains(this) ++
 		extent.lookupReifiedRelationshipInstanceRanges(this) ++
 		extent.lookupUnreifiedRelationshipInstanceTuples(this) ++
@@ -147,6 +153,7 @@ class DescriptionBox extends Module {
 		val mes = new BasicEList<ModuleElement>()
 		mes.addAll(conceptInstances)
 		mes.addAll(reifiedRelationshipInstances)
+		mes.addAll(instanceRelationshipValueRestrictions)
 		mes.addAll(reifiedRelationshipInstanceDomains)
 		mes.addAll(reifiedRelationshipInstanceRanges)
 		mes.addAll(unreifiedRelationshipInstanceTuples)
@@ -508,6 +515,52 @@ class ConceptInstance extends ConceptualEntitySingletonInstance {
 	@ImplicitExtent
 	@NotSchema
 	op DescriptionBox[?] descriptionBox() { getDescriptionBox }
+	
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
+}
+
+/*
+ * An OML InstanceRelationshipValueRestriction specifies an OWL HasValueRestriction 
+ * about an OML Relationship involving a pair of OML ConceptualEntitySingletonInstances
+ * playing the domain and range roles for that OML Relationship.
+ */
+@Glossary
+@DerivedUUID
+class InstanceRelationshipValueRestriction extends TerminologyInstanceAssertion, ElementCrossReferenceTuple {
+	
+	@Factory
+	container DescriptionBox[1] descriptionBox opposite instanceRelationshipValueRestrictions
+	
+	refers ConceptualEntitySingletonInstance[1] domain
+	
+	refers RestrictableRelationship[1] restrictedRelationship
+	
+	refers ConceptualEntitySingletonInstance[1] range
+	
+	@Scala(code="extent.descriptionBoxOfUnreifiedRelationshipInstanceTuple.get(this)")
+	@ImplicitExtent
+	@NotSchema
+	op DescriptionBox[?] descriptionBox() { getDescriptionBox }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"InstanceRelationshipValueRestriction", 
+		"descriptionBox" -> descriptionBox()?.uuid()?.toString(),
+		"domain" -> domain?.uuid()?.toString(),
+		"range" -> range?.uuid()?.toString(),
+		"restrictedRelationship" -> restrictedRelationship?.uuid()?.toString()
+		)?.toString
+	}
+	
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] moduleContext() { descriptionBox() }
 	
 	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
 	@Collection(kind="Set")

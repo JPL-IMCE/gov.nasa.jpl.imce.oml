@@ -77,6 +77,7 @@ DescriptionBox returns DescriptionBox:
 	( closedWorldDefinitions+=DescriptionBoxExtendsClosedWorldDefinitions |
 	  descriptionBoxRefinements+=DescriptionBoxRefinement |
 	  conceptInstances+=ConceptInstance |
+	  instanceRelationshipValueRestrictions+=InstanceRelationshipValueRestriction |
 	  reifiedRelationshipInstances+=ReifiedRelationshipInstance |
 	  reifiedRelationshipInstanceDomains+=ReifiedRelationshipInstanceDomain|
 	  reifiedRelationshipInstanceRanges+=ReifiedRelationshipInstanceRange |
@@ -630,6 +631,12 @@ ReifiedRelationshipInstance returns ReifiedRelationshipInstance:
 	( annotations+=AnnotationPropertyValue )*
 	'reifiedRelationshipInstance' '(' name=ID 'is-a' singletonConceptualRelationshipClassifier=[ConceptualRelationship|Reference] ')';
 
+InstanceRelationshipValueRestriction returns InstanceRelationshipValueRestriction:
+	( annotations+=AnnotationPropertyValue )*
+	domain=[ConceptualEntitySingletonInstance|Reference] 
+	'.' restrictedRelationship=[RestrictableRelationship|Reference] 
+	'=' range=[ConceptualEntitySingletonInstance|Reference];
+	
 ReifiedRelationshipInstanceDomain returns ReifiedRelationshipInstanceDomain:
 	( annotations+=AnnotationPropertyValue )*
 	'domain' 

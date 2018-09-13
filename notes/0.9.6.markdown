@@ -4,6 +4,12 @@ gov.nasa.jpl.imce.oml 0.9.6 adds new features to 0.9.5
 
 ### [#288 Add support for OWL2-DL Object Property Cardinality Restrictions](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/288)
 
+### [#290 CardinalityRestrictedReifiedRelationship needs derived source & target](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/290)
+
+### [#293 No "gov.nasa.jpl.imce.oml.parent" artifact published.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/293)
+
+### [#301 Add support for OWL HasValue restriction on OML individuals.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/301)
+
 ## Changes:
 
 ### Adding [OWL2-DL Object Property Cardinality Restrictions](https://www.w3.org/TR/owl2-syntax/#Object_Property_Cardinality_Restrictions)

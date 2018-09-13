@@ -564,6 +564,20 @@ class OMLScopeExtensions {
 		cache?.computeIfAbsent(tbox, [computeAllRestrictableRelationships]) ?: computeAllRestrictableRelationships(tbox)
 	}
 	
+	def IScope allRestrictableRelationshipsScope(DescriptionBox dbox) {
+		val tboxes = dbox.allImportedTerminologiesFromDescription()
+		
+		val ArrayList<IEObjectDescription> result = Lists.newArrayList()
+		val inc = tboxes.map [ tbox |
+			Scopes.scopedElementsFor(
+				tbox.localRestrictableRelationships,
+				[importedThing|importedResourceNameFunction(Pair.of(tbox, importedThing))]
+			)
+		].flatten
+		result.addAll(inc)
+		new SimpleScope(result)
+	}
+	
 	private def IScope computeAllRestrictableRelationships(TerminologyBox tbox) {
 		terminologyScope(tbox, [localRestrictableRelationships], [importedResourceNameFunction])
 	}
