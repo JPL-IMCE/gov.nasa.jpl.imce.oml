@@ -116,6 +116,9 @@ import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect
 import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept
 import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictionKind
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction
 
 /**
  * OMLTables is a collection of extension queries for OML Extent and conversion methods for OML values.
@@ -502,6 +505,24 @@ class OMLTables {
   static def List<ReifiedRelationshipInstance> reifiedRelationshipInstances(Extent e) {
   	val List<ReifiedRelationshipInstance> result = new ArrayList<ReifiedRelationshipInstance>()
   	e.descriptionBoxes.forEach[dbox | result.addAll(dbox.reifiedRelationshipInstances)]
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
+  }
+  
+  static def List<InstanceRelationshipExistentialRangeRestriction> instanceRelationshipExistentialRangeRestrictions(Extent e) {
+  	val List<InstanceRelationshipExistentialRangeRestriction> result = new ArrayList<InstanceRelationshipExistentialRangeRestriction>()
+  	e.descriptionBoxes.forEach[dbox | result.addAll(dbox.instanceRelationshipExistentialRangeRestrictions)]
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
+  }
+  
+  static def List<InstanceRelationshipUniversalRangeRestriction> instanceRelationshipUniversalRangeRestrictions(Extent e) {
+  	val List<InstanceRelationshipUniversalRangeRestriction> result = new ArrayList<InstanceRelationshipUniversalRangeRestriction>()
+  	e.descriptionBoxes.forEach[dbox | result.addAll(dbox.instanceRelationshipUniversalRangeRestrictions)]
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
+  }
+  
+  static def List<InstanceRelationshipValueRestriction> instanceRelationshipValueRestrictions(Extent e) {
+  	val List<InstanceRelationshipValueRestriction> result = new ArrayList<InstanceRelationshipValueRestriction>()
+  	e.descriptionBoxes.forEach[dbox | result.addAll(dbox.instanceRelationshipValueRestrictions)]
   	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   

@@ -78,6 +78,8 @@ DescriptionBox returns DescriptionBox:
 	  descriptionBoxRefinements+=DescriptionBoxRefinement |
 	  conceptInstances+=ConceptInstance |
 	  instanceRelationshipValueRestrictions+=InstanceRelationshipValueRestriction |
+	  instanceRelationshipExistentialRangeRestrictions+=InstanceRelationshipExistentialRangeRestriction |
+	  instanceRelationshipUniversalRangeRestrictions+=InstanceRelationshipUniversalRangeRestriction |
 	  reifiedRelationshipInstances+=ReifiedRelationshipInstance |
 	  reifiedRelationshipInstanceDomains+=ReifiedRelationshipInstanceDomain|
 	  reifiedRelationshipInstanceRanges+=ReifiedRelationshipInstanceRange |
@@ -636,6 +638,20 @@ InstanceRelationshipValueRestriction returns InstanceRelationshipValueRestrictio
 	domain=[ConceptualEntitySingletonInstance|Reference] 
 	'.' restrictedRelationship=[RestrictableRelationship|Reference] 
 	'=' range=[ConceptualEntitySingletonInstance|Reference];
+	
+InstanceRelationshipExistentialRangeRestriction returns InstanceRelationshipExistentialRangeRestriction:
+	( annotations+=AnnotationPropertyValue )*
+	'someEntities'
+	domain=[ConceptualEntitySingletonInstance|Reference] 
+	'.' restrictedRelationship=[RestrictableRelationship|Reference] 
+	'in' range=[Entity|Reference];
+	
+InstanceRelationshipUniversalRangeRestriction returns InstanceRelationshipUniversalRangeRestriction:
+	( annotations+=AnnotationPropertyValue )*
+	'allEntities'
+	domain=[ConceptualEntitySingletonInstance|Reference] 
+	'.' restrictedRelationship=[RestrictableRelationship|Reference] 
+	'in' range=[Entity|Reference];
 	
 ReifiedRelationshipInstanceDomain returns ReifiedRelationshipInstanceDomain:
 	( annotations+=AnnotationPropertyValue )*

@@ -777,6 +777,21 @@ class OMLScopeExtensions {
 		new SimpleScope(result)
 	}
 	
+	
+	def IScope allEntitiesScope(DescriptionBox dbox) {
+		val tboxes = dbox.allImportedTerminologiesFromDescription()
+		
+		val ArrayList<IEObjectDescription> result = Lists.newArrayList()
+		val inc = tboxes.map [ tbox |
+			Scopes.scopedElementsFor(
+				tbox.localEntities,
+				[importedThing|importedResourceNameFunction(Pair.of(tbox, importedThing))]
+			)
+		].flatten
+		result.addAll(inc)
+		new SimpleScope(result)
+	}
+	
 	def IScope allUnreifiedRelationshipScope(DescriptionBox dbox) {
 		val tboxes = dbox.allImportedTerminologiesFromDescription()
 		

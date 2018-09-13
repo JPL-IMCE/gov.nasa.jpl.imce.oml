@@ -31,6 +31,8 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance
 import gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue
@@ -165,6 +167,9 @@ class OMLFormatter extends AbstractFormatter2 {
 		descriptionBox.descriptionBoxRefinements.forEach[format.append[setNewLines(2)]]
 		descriptionBox.conceptInstances.forEach[format.append[setNewLines(2)]]
 		descriptionBox.reifiedRelationshipInstances.forEach[format.append[setNewLines(2)]]
+		descriptionBox.instanceRelationshipExistentialRangeRestrictions.forEach[format.append[setNewLines(2)]]
+		descriptionBox.instanceRelationshipUniversalRangeRestrictions.forEach[format.append[setNewLines(2)]]
+		descriptionBox.instanceRelationshipValueRestrictions.forEach[format.append[setNewLines(2)]]
 		descriptionBox.reifiedRelationshipInstanceDomains.forEach[format.append[setNewLines(2)]]
 		descriptionBox.reifiedRelationshipInstanceRanges.forEach[format.append[setNewLines(2)]]
 		descriptionBox.unreifiedRelationshipInstanceTuples.forEach[format.append[setNewLines(2)]]
@@ -759,5 +764,19 @@ class OMLFormatter extends AbstractFormatter2 {
 		i.annotations.forEach[format.append[setNewLines(1)]]
 		i.regionFor.keyword('.').surround[noSpace]
 		i.regionFor.keyword('=').surround[oneSpace]
+	}
+	
+	def dispatch void format(InstanceRelationshipExistentialRangeRestriction i, extension IFormattableDocument document) {
+		i.annotations.forEach[format.append[setNewLines(1)]]
+		i.regionFor.keyword('someEntities').append[oneSpace]
+		i.regionFor.keyword('.').surround[noSpace]
+		i.regionFor.keyword('in').surround[oneSpace]
+	}
+	
+	def dispatch void format(InstanceRelationshipUniversalRangeRestriction i, extension IFormattableDocument document) {
+		i.annotations.forEach[format.append[setNewLines(1)]]
+		i.regionFor.keyword('someEntities').append[oneSpace]
+		i.regionFor.keyword('.').surround[noSpace]
+		i.regionFor.keyword('in').surround[oneSpace]
 	}
 }
