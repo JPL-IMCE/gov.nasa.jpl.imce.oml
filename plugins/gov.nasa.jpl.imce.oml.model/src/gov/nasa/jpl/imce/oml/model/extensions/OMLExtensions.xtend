@@ -137,9 +137,36 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1
 
 import static com.google.common.base.Preconditions.checkNotNull
 import gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship
+import java.util.regex.Pattern
+import java.util.regex.Matcher
 
 class OMLExtensions {
 
+	public static val Pattern OML_ID_PATTERN = Pattern.compile("([a-zA-Z0-9_][a-zA-Z0-9_.-]*)|('[a-zA-Z0-9_][^']*')|([a-zA-Z0-9_][^']*)")
+ 
+ 	/**
+ 	 * Returns the input string if it is already a valid OML ID or wraps it with single quotes if needed.
+ 	 * Throws IllegalArgumentException if the input string does not match the lexical syntax of an OML ID.
+ 	 */
+	static def String wrapOMLIDIfNeeded(String id) {
+		val Matcher m = OML_ID_PATTERN.matcher(id)
+		if (m.matches) {
+			val g1 = m.group(1)
+			val g2 = m.group(2)
+			val g3 = m.group(3)
+			if (id == g1)
+				id
+			else if (id == g2)
+				id
+			else if (id == g3)
+				"'" + id + "'"
+			else
+				throw new IllegalArgumentException('''Illegal OML ID string: «id»''')
+		} else
+			throw new IllegalArgumentException('''Illegal OML ID string: «id»''')
+		
+	}
+	
 	static public val String OML_CATALOG_XML = "oml.catalog.xml"
 
 	static val String RESOURCE_SET_CATALOG_MANAGER = "RESOURCE_SET_CATALOG_MANAGER"

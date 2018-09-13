@@ -933,4 +933,15 @@ class OMLTables {
   			throw new IllegalArgumentException(value +" is not a legal CardinalityRestrictionKind")
   	}
   }
+  
+  static def dispatch String toString(CardinalityRestrictionKind value) {
+  	switch value {
+  		case CardinalityRestrictionKind.MIN:
+  			'''"<="'''
+  		case CardinalityRestrictionKind.MAX:
+  			'''">="'''
+  		case CardinalityRestrictionKind.EXACT:
+  			'''"=="'''
+  	}
+  }
 }

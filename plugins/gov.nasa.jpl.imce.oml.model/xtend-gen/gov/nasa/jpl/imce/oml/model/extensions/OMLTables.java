@@ -1800,6 +1800,32 @@ public class OMLTables {
     }
   }
   
+  protected static String _toString(final CardinalityRestrictionKind value) {
+    String _switchResult = null;
+    if (value != null) {
+      switch (value) {
+        case MIN:
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("\"<=\"");
+          _switchResult = _builder.toString();
+          break;
+        case MAX:
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append("\">=\"");
+          _switchResult = _builder_1.toString();
+          break;
+        case EXACT:
+          StringConcatenation _builder_2 = new StringConcatenation();
+          _builder_2.append("\"==\"");
+          _switchResult = _builder_2.toString();
+          break;
+        default:
+          break;
+      }
+    }
+    return _switchResult;
+  }
+  
   public static String toString(final Object value) {
     if (value instanceof LiteralNumber) {
       return _toString((LiteralNumber)value);
@@ -1813,6 +1839,8 @@ public class OMLTables {
       return _toString((LiteralValue)value);
     } else if (value instanceof DescriptionKind) {
       return _toString((DescriptionKind)value);
+    } else if (value instanceof CardinalityRestrictionKind) {
+      return _toString((CardinalityRestrictionKind)value);
     } else if (value instanceof TerminologyKind) {
       return _toString((TerminologyKind)value);
     } else if (value instanceof PositiveIntegerValue) {

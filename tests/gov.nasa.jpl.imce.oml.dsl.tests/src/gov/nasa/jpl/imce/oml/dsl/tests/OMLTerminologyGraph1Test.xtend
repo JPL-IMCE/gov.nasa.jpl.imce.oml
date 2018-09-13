@@ -79,7 +79,13 @@ open terminology <http://example.org> {
 	
 	extends <http://purl.org/dc/elements/1.1/>
 
-	concept Bar
+	concept Component
+	
+	concept 0123Component
+	
+	concept 0123-Component
+		
+	concept '0123-?!@#$%^&*()[]=+|-Component'
 	
 	Bar extendsConcept 1.1:Foo
 	
@@ -93,22 +99,31 @@ open terminology <http://example.org> {
 		val r = result.eResource
 		EcoreUtil.resolveAll(r)
 		
-		val tbox = result.modules.filter(TerminologyBox).head
-		tbox.nsPrefix.assertEquals("mission")
+		val tbox1 = result.modules.filter(TerminologyBox).head
+		tbox1.nsPrefix.assertEquals("mission")
 		
-		val ap = tbox.annotationProperties.head
+		val ap = tbox1.annotationProperties.head
 		
-		val c = tbox.boxStatements.filter(Concept).head
-		c.name().assertEquals("PerformingElement")
+		val c1 = tbox1.boxStatements.filter(Concept).head
+		c1.name().assertEquals("PerformingElement")
 		
-		val a = c.annotations.head
+		val a = c1.annotations.head
 		val a_prop = a.property
 		val a_subj = a.subject
 		val a_value = a.value
 		
 		"Performing Element".assertEquals(a_value.stringValue.value)
 		ap.assertSame(a_prop)
-		c.assertSame(a_subj)
+		c1.assertSame(a_subj)
+		
+		val tbox2 = result.modules.filter(TerminologyBox).last
+		tbox2.nsPrefix.assertEquals("example.org")
+		
+		val c2s = tbox2.boxStatements.filter(Concept)
+		assertNotNull(c2s.findFirst[name() == "Component"])
+		assertNotNull(c2s.findFirst[name() == "0123Component"])
+		assertNotNull(c2s.findFirst[name() == "0123-Component"])
+		assertNotNull(c2s.findFirst[name() == "'0123-?!@#$%^&*()[]=+|-Component'"])
 		
 		System.out.println(this.class.name + " OK!")
 	}

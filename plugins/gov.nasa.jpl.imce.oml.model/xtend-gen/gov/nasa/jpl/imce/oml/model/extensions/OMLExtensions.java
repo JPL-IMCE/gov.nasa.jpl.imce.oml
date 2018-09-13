@@ -138,6 +138,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.UUID;
 import java.util.function.Consumer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.apache.xml.resolver.Catalog;
 import org.apache.xml.resolver.CatalogManager;
 import org.apache.xml.resolver.tools.CatalogResolver;
@@ -150,6 +152,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -186,6 +189,62 @@ public class OMLExtensions {
         }
       }
     }
+  }
+  
+  public final static Pattern OML_ID_PATTERN = Pattern.compile("([a-zA-Z0-9_][a-zA-Z0-9_.-]*)|(\'[a-zA-Z0-9_][^\']*\')|([a-zA-Z0-9_][^\']*)");
+  
+  /**
+   * Returns the input string if it is already a valid OML ID or wraps it with single quotes if needed.
+   * Throws IllegalArgumentException if the input string does not match the lexical syntax of an OML ID.
+   */
+  public static String wrapOMLIDIfNeeded(final String id) {
+    String _xblockexpression = null;
+    {
+      final Matcher m = OMLExtensions.OML_ID_PATTERN.matcher(id);
+      String _xifexpression = null;
+      boolean _matches = m.matches();
+      if (_matches) {
+        String _xblockexpression_1 = null;
+        {
+          final String g1 = m.group(1);
+          final String g2 = m.group(2);
+          final String g3 = m.group(3);
+          String _xifexpression_1 = null;
+          boolean _equals = Objects.equal(id, g1);
+          if (_equals) {
+            _xifexpression_1 = id;
+          } else {
+            String _xifexpression_2 = null;
+            boolean _equals_1 = Objects.equal(id, g2);
+            if (_equals_1) {
+              _xifexpression_2 = id;
+            } else {
+              String _xifexpression_3 = null;
+              boolean _equals_2 = Objects.equal(id, g3);
+              if (_equals_2) {
+                _xifexpression_3 = (("\'" + id) + "\'");
+              } else {
+                StringConcatenation _builder = new StringConcatenation();
+                _builder.append("Illegal OML ID string: ");
+                _builder.append(id);
+                throw new IllegalArgumentException(_builder.toString());
+              }
+              _xifexpression_2 = _xifexpression_3;
+            }
+            _xifexpression_1 = _xifexpression_2;
+          }
+          _xblockexpression_1 = _xifexpression_1;
+        }
+        _xifexpression = _xblockexpression_1;
+      } else {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("Illegal OML ID string: ");
+        _builder.append(id);
+        throw new IllegalArgumentException(_builder.toString());
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
   }
   
   public final static String OML_CATALOG_XML = "oml.catalog.xml";
