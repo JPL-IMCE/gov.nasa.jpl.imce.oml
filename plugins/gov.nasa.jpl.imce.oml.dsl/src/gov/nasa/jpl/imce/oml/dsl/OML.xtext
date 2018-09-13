@@ -800,10 +800,6 @@ terminal fragment LETTER_DIGIT_SUFFIX:					LETTER_DIGIT | '_' | '-' | '.';
 
 terminal ABBREV_IRI:									LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX* ':' LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX*;
 	
-terminal fragment ID_PREFIX: 							LETTER|'_';
-
-terminal ID:											'^'? ID_PREFIX LETTER_DIGIT_SUFFIX*;
-
 //----------------------------
 // https://www.w3.org/TR/xmlschema11-2/#language
 
@@ -839,7 +835,10 @@ terminal FLOAT returns FloatDataType:
 	'-'?
 	(DIGIT+ '.' DIGIT+)
     (('e' | 'E') ('+' | '-')? DIGIT+)?;
-    
+
+terminal ID:											'^'? LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX* |
+														'^'? '\'' LETTER_DIGIT_PREFIX (!'\'')* '\'';
+	    
 terminal ML_COMMENT: 									'/*' -> '*/';
  
 terminal SL_COMMENT:									'//' !('\n'|'\r')* ('\r'? '\n')?;

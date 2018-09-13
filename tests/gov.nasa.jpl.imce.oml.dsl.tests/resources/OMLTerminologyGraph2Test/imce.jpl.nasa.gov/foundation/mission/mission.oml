@@ -19,4 +19,6 @@ open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission> {
 		target=Function
 	}
 
+	concept '123-???- -45!@#'
+
 }
