@@ -2105,6 +2105,25 @@ public class OMLScopeExtensions {
     return _xblockexpression;
   }
   
+  public IScope allEntitiesScope(final DescriptionBox dbox) {
+    SimpleScope _xblockexpression = null;
+    {
+      final Iterable<TerminologyBox> tboxes = this._oMLExtensions.allImportedTerminologiesFromDescription(dbox);
+      final ArrayList<IEObjectDescription> result = Lists.<IEObjectDescription>newArrayList();
+      final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function = (TerminologyBox tbox) -> {
+        final Function<Entity, QualifiedName> _function_1 = (Entity importedThing) -> {
+          return this.<Entity>importedResourceNameFunction(Pair.<TerminologyBox, Entity>of(tbox, importedThing));
+        };
+        return Scopes.<Entity>scopedElementsFor(
+          this._oMLExtensions.localEntities(tbox), _function_1);
+      };
+      final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function));
+      Iterables.<IEObjectDescription>addAll(result, inc);
+      _xblockexpression = new SimpleScope(result);
+    }
+    return _xblockexpression;
+  }
+  
   public IScope allUnreifiedRelationshipScope(final DescriptionBox dbox) {
     SimpleScope _xblockexpression = null;
     {

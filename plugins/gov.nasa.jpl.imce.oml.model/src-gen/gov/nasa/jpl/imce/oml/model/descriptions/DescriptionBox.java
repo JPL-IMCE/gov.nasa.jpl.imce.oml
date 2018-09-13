@@ -43,6 +43,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox#getConceptInstances <em>Concept Instances</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox#getReifiedRelationshipInstances <em>Reified Relationship Instances</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox#getInstanceRelationshipValueRestrictions <em>Instance Relationship Value Restrictions</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox#getInstanceRelationshipExistentialRangeRestrictions <em>Instance Relationship Existential Range Restrictions</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox#getInstanceRelationshipUniversalRangeRestrictions <em>Instance Relationship Universal Range Restrictions</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox#getReifiedRelationshipInstanceDomains <em>Reified Relationship Instance Domains</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox#getReifiedRelationshipInstanceRanges <em>Reified Relationship Instance Ranges</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox#getUnreifiedRelationshipInstanceTuples <em>Unreified Relationship Instance Tuples</em>}</li>
@@ -178,6 +180,44 @@ public interface DescriptionBox extends gov.nasa.jpl.imce.oml.model.common.Modul
 	 * @generated
 	 */
 	EList<InstanceRelationshipValueRestriction> getInstanceRelationshipValueRestrictions();
+
+	/**
+	 * Returns the value of the '<em><b>Instance Relationship Existential Range Restrictions</b></em>' containment reference list.
+	 * The list contents are of type {@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction}.
+	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction#getDescriptionBox <em>Description Box</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Instance Relationship Existential Range Restrictions</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Instance Relationship Existential Range Restrictions</em>' containment reference list.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage#getDescriptionBox_InstanceRelationshipExistentialRangeRestrictions()
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction#getDescriptionBox
+	 * @model opposite="descriptionBox" containment="true"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 * @generated
+	 */
+	EList<InstanceRelationshipExistentialRangeRestriction> getInstanceRelationshipExistentialRangeRestrictions();
+
+	/**
+	 * Returns the value of the '<em><b>Instance Relationship Universal Range Restrictions</b></em>' containment reference list.
+	 * The list contents are of type {@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction}.
+	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction#getDescriptionBox <em>Description Box</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Instance Relationship Universal Range Restrictions</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Instance Relationship Universal Range Restrictions</em>' containment reference list.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage#getDescriptionBox_InstanceRelationshipUniversalRangeRestrictions()
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction#getDescriptionBox
+	 * @model opposite="descriptionBox" containment="true"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 * @generated
+	 */
+	EList<InstanceRelationshipUniversalRangeRestriction> getInstanceRelationshipUniversalRangeRestrictions();
 
 	/**
 	 * Returns the value of the '<em><b>Reified Relationship Instance Domains</b></em>' containment reference list.

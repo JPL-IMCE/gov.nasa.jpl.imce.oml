@@ -43,6 +43,9 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange;
@@ -194,6 +197,15 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case DescriptionsPackage.DESCRIPTION_BOX_REFINEMENT:
 				sequence_DescriptionBoxRefinement(context, (DescriptionBoxRefinement) semanticObject); 
+				return; 
+			case DescriptionsPackage.INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTION:
+				sequence_InstanceRelationshipExistentialRangeRestriction(context, (InstanceRelationshipExistentialRangeRestriction) semanticObject); 
+				return; 
+			case DescriptionsPackage.INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTION:
+				sequence_InstanceRelationshipUniversalRangeRestriction(context, (InstanceRelationshipUniversalRangeRestriction) semanticObject); 
+				return; 
+			case DescriptionsPackage.INSTANCE_RELATIONSHIP_VALUE_RESTRICTION:
+				sequence_InstanceRelationshipValueRestriction(context, (InstanceRelationshipValueRestriction) semanticObject); 
 				return; 
 			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE:
 				sequence_ReifiedRelationshipInstance(context, (ReifiedRelationshipInstance) semanticObject); 
@@ -700,6 +712,9 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *             closedWorldDefinitions+=DescriptionBoxExtendsClosedWorldDefinitions | 
 	 *             descriptionBoxRefinements+=DescriptionBoxRefinement | 
 	 *             conceptInstances+=ConceptInstance | 
+	 *             instanceRelationshipValueRestrictions+=InstanceRelationshipValueRestriction | 
+	 *             instanceRelationshipExistentialRangeRestrictions+=InstanceRelationshipExistentialRangeRestriction | 
+	 *             instanceRelationshipUniversalRangeRestrictions+=InstanceRelationshipUniversalRangeRestriction | 
 	 *             reifiedRelationshipInstances+=ReifiedRelationshipInstance | 
 	 *             reifiedRelationshipInstanceDomains+=ReifiedRelationshipInstanceDomain | 
 	 *             reifiedRelationshipInstanceRanges+=ReifiedRelationshipInstanceRange | 
@@ -913,6 +928,57 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     )
 	 */
 	protected void sequence_IRIScalarRestriction(ISerializationContext context, IRIScalarRestriction semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     InstanceRelationshipExistentialRangeRestriction returns InstanceRelationshipExistentialRangeRestriction
+	 *
+	 * Constraint:
+	 *     (
+	 *         annotations+=AnnotationPropertyValue* 
+	 *         domain=[ConceptualEntitySingletonInstance|Reference] 
+	 *         restrictedRelationship=[RestrictableRelationship|Reference] 
+	 *         range=[Entity|Reference]
+	 *     )
+	 */
+	protected void sequence_InstanceRelationshipExistentialRangeRestriction(ISerializationContext context, InstanceRelationshipExistentialRangeRestriction semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     InstanceRelationshipUniversalRangeRestriction returns InstanceRelationshipUniversalRangeRestriction
+	 *
+	 * Constraint:
+	 *     (
+	 *         annotations+=AnnotationPropertyValue* 
+	 *         domain=[ConceptualEntitySingletonInstance|Reference] 
+	 *         restrictedRelationship=[RestrictableRelationship|Reference] 
+	 *         range=[Entity|Reference]
+	 *     )
+	 */
+	protected void sequence_InstanceRelationshipUniversalRangeRestriction(ISerializationContext context, InstanceRelationshipUniversalRangeRestriction semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     InstanceRelationshipValueRestriction returns InstanceRelationshipValueRestriction
+	 *
+	 * Constraint:
+	 *     (
+	 *         annotations+=AnnotationPropertyValue* 
+	 *         domain=[ConceptualEntitySingletonInstance|Reference] 
+	 *         restrictedRelationship=[RestrictableRelationship|Reference] 
+	 *         range=[ConceptualEntitySingletonInstance|Reference]
+	 *     )
+	 */
+	protected void sequence_InstanceRelationshipValueRestriction(ISerializationContext context, InstanceRelationshipValueRestriction semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

@@ -29,6 +29,8 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorld
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionKind;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain;
@@ -69,6 +71,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionBoxImpl#getConceptInstances <em>Concept Instances</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionBoxImpl#getReifiedRelationshipInstances <em>Reified Relationship Instances</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionBoxImpl#getInstanceRelationshipValueRestrictions <em>Instance Relationship Value Restrictions</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionBoxImpl#getInstanceRelationshipExistentialRangeRestrictions <em>Instance Relationship Existential Range Restrictions</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionBoxImpl#getInstanceRelationshipUniversalRangeRestrictions <em>Instance Relationship Universal Range Restrictions</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionBoxImpl#getReifiedRelationshipInstanceDomains <em>Reified Relationship Instance Domains</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionBoxImpl#getReifiedRelationshipInstanceRanges <em>Reified Relationship Instance Ranges</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionBoxImpl#getUnreifiedRelationshipInstanceTuples <em>Unreified Relationship Instance Tuples</em>}</li>
@@ -148,6 +152,26 @@ public class DescriptionBoxImpl extends ModuleImpl implements DescriptionBox {
 	 * @ordered
 	 */
 	protected EList<InstanceRelationshipValueRestriction> instanceRelationshipValueRestrictions;
+
+	/**
+	 * The cached value of the '{@link #getInstanceRelationshipExistentialRangeRestrictions() <em>Instance Relationship Existential Range Restrictions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInstanceRelationshipExistentialRangeRestrictions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<InstanceRelationshipExistentialRangeRestriction> instanceRelationshipExistentialRangeRestrictions;
+
+	/**
+	 * The cached value of the '{@link #getInstanceRelationshipUniversalRangeRestrictions() <em>Instance Relationship Universal Range Restrictions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInstanceRelationshipUniversalRangeRestrictions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<InstanceRelationshipUniversalRangeRestriction> instanceRelationshipUniversalRangeRestrictions;
 
 	/**
 	 * The cached value of the '{@link #getReifiedRelationshipInstanceDomains() <em>Reified Relationship Instance Domains</em>}' containment reference list.
@@ -304,6 +328,30 @@ public class DescriptionBoxImpl extends ModuleImpl implements DescriptionBox {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<InstanceRelationshipExistentialRangeRestriction> getInstanceRelationshipExistentialRangeRestrictions() {
+		if (instanceRelationshipExistentialRangeRestrictions == null) {
+			instanceRelationshipExistentialRangeRestrictions = new EObjectContainmentWithInverseEList<InstanceRelationshipExistentialRangeRestriction>(InstanceRelationshipExistentialRangeRestriction.class, this, DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTIONS, DescriptionsPackage.INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTION__DESCRIPTION_BOX);
+		}
+		return instanceRelationshipExistentialRangeRestrictions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<InstanceRelationshipUniversalRangeRestriction> getInstanceRelationshipUniversalRangeRestrictions() {
+		if (instanceRelationshipUniversalRangeRestrictions == null) {
+			instanceRelationshipUniversalRangeRestrictions = new EObjectContainmentWithInverseEList<InstanceRelationshipUniversalRangeRestriction>(InstanceRelationshipUniversalRangeRestriction.class, this, DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTIONS, DescriptionsPackage.INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTION__DESCRIPTION_BOX);
+		}
+		return instanceRelationshipUniversalRangeRestrictions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<ReifiedRelationshipInstanceDomain> getReifiedRelationshipInstanceDomains() {
 		if (reifiedRelationshipInstanceDomains == null) {
 			reifiedRelationshipInstanceDomains = new EObjectContainmentWithInverseEList<ReifiedRelationshipInstanceDomain>(ReifiedRelationshipInstanceDomain.class, this, DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_DOMAINS, DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE_DOMAIN__DESCRIPTION_BOX);
@@ -416,6 +464,10 @@ public class DescriptionBoxImpl extends ModuleImpl implements DescriptionBox {
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getReifiedRelationshipInstances()).basicAdd(otherEnd, msgs);
 			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_VALUE_RESTRICTIONS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getInstanceRelationshipValueRestrictions()).basicAdd(otherEnd, msgs);
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTIONS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getInstanceRelationshipExistentialRangeRestrictions()).basicAdd(otherEnd, msgs);
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTIONS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getInstanceRelationshipUniversalRangeRestrictions()).basicAdd(otherEnd, msgs);
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_DOMAINS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getReifiedRelationshipInstanceDomains()).basicAdd(otherEnd, msgs);
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_RANGES:
@@ -448,6 +500,10 @@ public class DescriptionBoxImpl extends ModuleImpl implements DescriptionBox {
 				return ((InternalEList<?>)getReifiedRelationshipInstances()).basicRemove(otherEnd, msgs);
 			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_VALUE_RESTRICTIONS:
 				return ((InternalEList<?>)getInstanceRelationshipValueRestrictions()).basicRemove(otherEnd, msgs);
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTIONS:
+				return ((InternalEList<?>)getInstanceRelationshipExistentialRangeRestrictions()).basicRemove(otherEnd, msgs);
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTIONS:
+				return ((InternalEList<?>)getInstanceRelationshipUniversalRangeRestrictions()).basicRemove(otherEnd, msgs);
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_DOMAINS:
 				return ((InternalEList<?>)getReifiedRelationshipInstanceDomains()).basicRemove(otherEnd, msgs);
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_RANGES:
@@ -482,6 +538,10 @@ public class DescriptionBoxImpl extends ModuleImpl implements DescriptionBox {
 				return getReifiedRelationshipInstances();
 			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_VALUE_RESTRICTIONS:
 				return getInstanceRelationshipValueRestrictions();
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTIONS:
+				return getInstanceRelationshipExistentialRangeRestrictions();
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTIONS:
+				return getInstanceRelationshipUniversalRangeRestrictions();
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_DOMAINS:
 				return getReifiedRelationshipInstanceDomains();
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_RANGES:
@@ -527,6 +587,14 @@ public class DescriptionBoxImpl extends ModuleImpl implements DescriptionBox {
 			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_VALUE_RESTRICTIONS:
 				getInstanceRelationshipValueRestrictions().clear();
 				getInstanceRelationshipValueRestrictions().addAll((Collection<? extends InstanceRelationshipValueRestriction>)newValue);
+				return;
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTIONS:
+				getInstanceRelationshipExistentialRangeRestrictions().clear();
+				getInstanceRelationshipExistentialRangeRestrictions().addAll((Collection<? extends InstanceRelationshipExistentialRangeRestriction>)newValue);
+				return;
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTIONS:
+				getInstanceRelationshipUniversalRangeRestrictions().clear();
+				getInstanceRelationshipUniversalRangeRestrictions().addAll((Collection<? extends InstanceRelationshipUniversalRangeRestriction>)newValue);
 				return;
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_DOMAINS:
 				getReifiedRelationshipInstanceDomains().clear();
@@ -578,6 +646,12 @@ public class DescriptionBoxImpl extends ModuleImpl implements DescriptionBox {
 			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_VALUE_RESTRICTIONS:
 				getInstanceRelationshipValueRestrictions().clear();
 				return;
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTIONS:
+				getInstanceRelationshipExistentialRangeRestrictions().clear();
+				return;
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTIONS:
+				getInstanceRelationshipUniversalRangeRestrictions().clear();
+				return;
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_DOMAINS:
 				getReifiedRelationshipInstanceDomains().clear();
 				return;
@@ -617,6 +691,10 @@ public class DescriptionBoxImpl extends ModuleImpl implements DescriptionBox {
 				return reifiedRelationshipInstances != null && !reifiedRelationshipInstances.isEmpty();
 			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_VALUE_RESTRICTIONS:
 				return instanceRelationshipValueRestrictions != null && !instanceRelationshipValueRestrictions.isEmpty();
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTIONS:
+				return instanceRelationshipExistentialRangeRestrictions != null && !instanceRelationshipExistentialRangeRestrictions.isEmpty();
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTIONS:
+				return instanceRelationshipUniversalRangeRestrictions != null && !instanceRelationshipUniversalRangeRestrictions.isEmpty();
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_DOMAINS:
 				return reifiedRelationshipInstanceDomains != null && !reifiedRelationshipInstanceDomains.isEmpty();
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_RANGES:

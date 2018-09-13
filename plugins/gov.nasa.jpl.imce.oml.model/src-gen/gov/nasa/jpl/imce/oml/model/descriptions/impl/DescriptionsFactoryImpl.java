@@ -82,6 +82,8 @@ public class DescriptionsFactoryImpl extends EFactoryImpl implements Description
 			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE: return createScalarDataPropertyValue();
 			case DescriptionsPackage.CONCEPT_INSTANCE: return createConceptInstance();
 			case DescriptionsPackage.INSTANCE_RELATIONSHIP_VALUE_RESTRICTION: return createInstanceRelationshipValueRestriction();
+			case DescriptionsPackage.INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTION: return createInstanceRelationshipExistentialRangeRestriction();
+			case DescriptionsPackage.INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTION: return createInstanceRelationshipUniversalRangeRestriction();
 			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE: return createReifiedRelationshipInstance();
 			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE_DOMAIN: return createReifiedRelationshipInstanceDomain();
 			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE_RANGE: return createReifiedRelationshipInstanceRange();
@@ -209,6 +211,26 @@ public class DescriptionsFactoryImpl extends EFactoryImpl implements Description
 	public InstanceRelationshipValueRestriction createInstanceRelationshipValueRestriction() {
 		InstanceRelationshipValueRestrictionImpl instanceRelationshipValueRestriction = new InstanceRelationshipValueRestrictionImpl();
 		return instanceRelationshipValueRestriction;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InstanceRelationshipExistentialRangeRestriction createInstanceRelationshipExistentialRangeRestriction() {
+		InstanceRelationshipExistentialRangeRestrictionImpl instanceRelationshipExistentialRangeRestriction = new InstanceRelationshipExistentialRangeRestrictionImpl();
+		return instanceRelationshipExistentialRangeRestriction;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InstanceRelationshipUniversalRangeRestriction createInstanceRelationshipUniversalRangeRestriction() {
+		InstanceRelationshipUniversalRangeRestrictionImpl instanceRelationshipUniversalRangeRestriction = new InstanceRelationshipUniversalRangeRestrictionImpl();
+		return instanceRelationshipUniversalRangeRestriction;
 	}
 
 	/**

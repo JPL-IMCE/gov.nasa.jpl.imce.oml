@@ -119,6 +119,24 @@ public interface DescriptionsFactory extends EFactory {
 	InstanceRelationshipValueRestriction createInstanceRelationshipValueRestriction();
 
 	/**
+	 * Returns a new object of class '<em>Instance Relationship Existential Range Restriction</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Instance Relationship Existential Range Restriction</em>'.
+	 * @generated
+	 */
+	InstanceRelationshipExistentialRangeRestriction createInstanceRelationshipExistentialRangeRestriction();
+
+	/**
+	 * Returns a new object of class '<em>Instance Relationship Universal Range Restriction</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Instance Relationship Universal Range Restriction</em>'.
+	 * @generated
+	 */
+	InstanceRelationshipUniversalRangeRestriction createInstanceRelationshipUniversalRangeRestriction();
+
+	/**
 	 * Returns a new object of class '<em>Reified Relationship Instance</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

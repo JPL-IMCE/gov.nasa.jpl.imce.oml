@@ -37,6 +37,9 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsFactory;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange;
@@ -119,6 +122,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
@@ -142,6 +147,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.MapExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 /**
  * @generated
@@ -276,7 +282,11 @@ public class OMLSpecificationTables {
   
   protected final Map<String, Pair<CardinalityRestrictedReifiedRelationship, Map<String, String>>> cardinalityRestrictedReifiedRelationships;
   
-  protected final /* Map<String, Pair<InstanceRelationshipValueRestriction, Map<String, String>>> */Object instanceRelationshipValueRestrictions;
+  protected final Map<String, Pair<InstanceRelationshipExistentialRangeRestriction, Map<String, String>>> instanceRelationshipExistentialRangeRestrictions;
+  
+  protected final Map<String, Pair<InstanceRelationshipUniversalRangeRestriction, Map<String, String>>> instanceRelationshipUniversalRangeRestrictions;
+  
+  protected final Map<String, Pair<InstanceRelationshipValueRestriction, Map<String, String>>> instanceRelationshipValueRestrictions;
   
   protected final Map<String, Pair<gov.nasa.jpl.imce.oml.model.common.Module, Map<String, String>>> modules;
   
@@ -338,9 +348,189 @@ public class OMLSpecificationTables {
   protected final Map<String, gov.nasa.jpl.imce.oml.model.common.Module> iri2module;
   
   public OMLSpecificationTables() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nInstanceRelationshipValueRestriction cannot be resolved to a type."
-      + "\nThe field OMLSpecificationTables.instanceRelationshipValueRestrictions refers to the missing type InstanceRelationshipValueRestriction");
+    LinkedList<String> _linkedList = new LinkedList<String>();
+    this.iriLoadQueue = _linkedList;
+    HashSet<String> _hashSet = new HashSet<String>();
+    this.visitedIRIs = _hashSet;
+    LinkedList<gov.nasa.jpl.imce.oml.model.common.Module> _linkedList_1 = new LinkedList<gov.nasa.jpl.imce.oml.model.common.Module>();
+    this.moduleQueue = _linkedList_1;
+    HashSet<gov.nasa.jpl.imce.oml.model.common.Module> _hashSet_1 = new HashSet<gov.nasa.jpl.imce.oml.model.common.Module>();
+    this.visitedModules = _hashSet_1;
+    HashMap<String, gov.nasa.jpl.imce.oml.model.common.Module> _hashMap = new HashMap<String, gov.nasa.jpl.imce.oml.model.common.Module>();
+    this.iri2module = _hashMap;
+    this.omlCommonFactory = CommonFactory.eINSTANCE;
+    this.omlTerminologiesFactory = TerminologiesFactory.eINSTANCE;
+    this.omlGraphsFactory = GraphsFactory.eINSTANCE;
+    this.omlBundlesFactory = BundlesFactory.eINSTANCE;
+    this.omlDescriptionsFactory = DescriptionsFactory.eINSTANCE;
+    HashMap<String, Pair<TerminologyGraph, Map<String, String>>> _hashMap_1 = new HashMap<String, Pair<TerminologyGraph, Map<String, String>>>();
+    this.terminologyGraphs = _hashMap_1;
+    HashMap<String, Pair<Bundle, Map<String, String>>> _hashMap_2 = new HashMap<String, Pair<Bundle, Map<String, String>>>();
+    this.bundles = _hashMap_2;
+    HashMap<String, Pair<DescriptionBox, Map<String, String>>> _hashMap_3 = new HashMap<String, Pair<DescriptionBox, Map<String, String>>>();
+    this.descriptionBoxes = _hashMap_3;
+    HashMap<String, Pair<AnnotationProperty, Map<String, String>>> _hashMap_4 = new HashMap<String, Pair<AnnotationProperty, Map<String, String>>>();
+    this.annotationProperties = _hashMap_4;
+    HashMap<String, Pair<Aspect, Map<String, String>>> _hashMap_5 = new HashMap<String, Pair<Aspect, Map<String, String>>>();
+    this.aspects = _hashMap_5;
+    HashMap<String, Pair<Concept, Map<String, String>>> _hashMap_6 = new HashMap<String, Pair<Concept, Map<String, String>>>();
+    this.concepts = _hashMap_6;
+    HashMap<String, Pair<Scalar, Map<String, String>>> _hashMap_7 = new HashMap<String, Pair<Scalar, Map<String, String>>>();
+    this.scalars = _hashMap_7;
+    HashMap<String, Pair<Structure, Map<String, String>>> _hashMap_8 = new HashMap<String, Pair<Structure, Map<String, String>>>();
+    this.structures = _hashMap_8;
+    HashMap<String, Pair<ConceptDesignationTerminologyAxiom, Map<String, String>>> _hashMap_9 = new HashMap<String, Pair<ConceptDesignationTerminologyAxiom, Map<String, String>>>();
+    this.conceptDesignationTerminologyAxioms = _hashMap_9;
+    HashMap<String, Pair<TerminologyExtensionAxiom, Map<String, String>>> _hashMap_10 = new HashMap<String, Pair<TerminologyExtensionAxiom, Map<String, String>>>();
+    this.terminologyExtensionAxioms = _hashMap_10;
+    HashMap<String, Pair<TerminologyNestingAxiom, Map<String, String>>> _hashMap_11 = new HashMap<String, Pair<TerminologyNestingAxiom, Map<String, String>>>();
+    this.terminologyNestingAxioms = _hashMap_11;
+    HashMap<String, Pair<BundledTerminologyAxiom, Map<String, String>>> _hashMap_12 = new HashMap<String, Pair<BundledTerminologyAxiom, Map<String, String>>>();
+    this.bundledTerminologyAxioms = _hashMap_12;
+    HashMap<String, Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>>> _hashMap_13 = new HashMap<String, Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>>>();
+    this.descriptionBoxExtendsClosedWorldDefinitions = _hashMap_13;
+    HashMap<String, Pair<DescriptionBoxRefinement, Map<String, String>>> _hashMap_14 = new HashMap<String, Pair<DescriptionBoxRefinement, Map<String, String>>>();
+    this.descriptionBoxRefinements = _hashMap_14;
+    HashMap<String, Pair<BinaryScalarRestriction, Map<String, String>>> _hashMap_15 = new HashMap<String, Pair<BinaryScalarRestriction, Map<String, String>>>();
+    this.binaryScalarRestrictions = _hashMap_15;
+    HashMap<String, Pair<IRIScalarRestriction, Map<String, String>>> _hashMap_16 = new HashMap<String, Pair<IRIScalarRestriction, Map<String, String>>>();
+    this.iriScalarRestrictions = _hashMap_16;
+    HashMap<String, Pair<NumericScalarRestriction, Map<String, String>>> _hashMap_17 = new HashMap<String, Pair<NumericScalarRestriction, Map<String, String>>>();
+    this.numericScalarRestrictions = _hashMap_17;
+    HashMap<String, Pair<PlainLiteralScalarRestriction, Map<String, String>>> _hashMap_18 = new HashMap<String, Pair<PlainLiteralScalarRestriction, Map<String, String>>>();
+    this.plainLiteralScalarRestrictions = _hashMap_18;
+    HashMap<String, Pair<ScalarOneOfRestriction, Map<String, String>>> _hashMap_19 = new HashMap<String, Pair<ScalarOneOfRestriction, Map<String, String>>>();
+    this.scalarOneOfRestrictions = _hashMap_19;
+    HashMap<String, Pair<ScalarOneOfLiteralAxiom, Map<String, String>>> _hashMap_20 = new HashMap<String, Pair<ScalarOneOfLiteralAxiom, Map<String, String>>>();
+    this.scalarOneOfLiteralAxioms = _hashMap_20;
+    HashMap<String, Pair<StringScalarRestriction, Map<String, String>>> _hashMap_21 = new HashMap<String, Pair<StringScalarRestriction, Map<String, String>>>();
+    this.stringScalarRestrictions = _hashMap_21;
+    HashMap<String, Pair<SynonymScalarRestriction, Map<String, String>>> _hashMap_22 = new HashMap<String, Pair<SynonymScalarRestriction, Map<String, String>>>();
+    this.synonymScalarRestrictions = _hashMap_22;
+    HashMap<String, Pair<TimeScalarRestriction, Map<String, String>>> _hashMap_23 = new HashMap<String, Pair<TimeScalarRestriction, Map<String, String>>>();
+    this.timeScalarRestrictions = _hashMap_23;
+    HashMap<String, Pair<EntityScalarDataProperty, Map<String, String>>> _hashMap_24 = new HashMap<String, Pair<EntityScalarDataProperty, Map<String, String>>>();
+    this.entityScalarDataProperties = _hashMap_24;
+    HashMap<String, Pair<EntityStructuredDataProperty, Map<String, String>>> _hashMap_25 = new HashMap<String, Pair<EntityStructuredDataProperty, Map<String, String>>>();
+    this.entityStructuredDataProperties = _hashMap_25;
+    HashMap<String, Pair<ScalarDataProperty, Map<String, String>>> _hashMap_26 = new HashMap<String, Pair<ScalarDataProperty, Map<String, String>>>();
+    this.scalarDataProperties = _hashMap_26;
+    HashMap<String, Pair<StructuredDataProperty, Map<String, String>>> _hashMap_27 = new HashMap<String, Pair<StructuredDataProperty, Map<String, String>>>();
+    this.structuredDataProperties = _hashMap_27;
+    HashMap<String, Pair<ReifiedRelationship, Map<String, String>>> _hashMap_28 = new HashMap<String, Pair<ReifiedRelationship, Map<String, String>>>();
+    this.reifiedRelationships = _hashMap_28;
+    HashMap<String, Pair<ReifiedRelationshipRestriction, Map<String, String>>> _hashMap_29 = new HashMap<String, Pair<ReifiedRelationshipRestriction, Map<String, String>>>();
+    this.reifiedRelationshipRestrictions = _hashMap_29;
+    HashMap<String, Pair<ForwardProperty, Map<String, String>>> _hashMap_30 = new HashMap<String, Pair<ForwardProperty, Map<String, String>>>();
+    this.forwardProperties = _hashMap_30;
+    HashMap<String, Pair<InverseProperty, Map<String, String>>> _hashMap_31 = new HashMap<String, Pair<InverseProperty, Map<String, String>>>();
+    this.inverseProperties = _hashMap_31;
+    HashMap<String, Pair<UnreifiedRelationship, Map<String, String>>> _hashMap_32 = new HashMap<String, Pair<UnreifiedRelationship, Map<String, String>>>();
+    this.unreifiedRelationships = _hashMap_32;
+    HashMap<String, Pair<ChainRule, Map<String, String>>> _hashMap_33 = new HashMap<String, Pair<ChainRule, Map<String, String>>>();
+    this.chainRules = _hashMap_33;
+    HashMap<String, Pair<RuleBodySegment, Map<String, String>>> _hashMap_34 = new HashMap<String, Pair<RuleBodySegment, Map<String, String>>>();
+    this.ruleBodySegments = _hashMap_34;
+    HashMap<String, Pair<SegmentPredicate, Map<String, String>>> _hashMap_35 = new HashMap<String, Pair<SegmentPredicate, Map<String, String>>>();
+    this.segmentPredicates = _hashMap_35;
+    HashMap<String, Pair<EntityExistentialRestrictionAxiom, Map<String, String>>> _hashMap_36 = new HashMap<String, Pair<EntityExistentialRestrictionAxiom, Map<String, String>>>();
+    this.entityExistentialRestrictionAxioms = _hashMap_36;
+    HashMap<String, Pair<EntityUniversalRestrictionAxiom, Map<String, String>>> _hashMap_37 = new HashMap<String, Pair<EntityUniversalRestrictionAxiom, Map<String, String>>>();
+    this.entityUniversalRestrictionAxioms = _hashMap_37;
+    HashMap<String, Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>> _hashMap_38 = new HashMap<String, Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>>();
+    this.entityScalarDataPropertyExistentialRestrictionAxioms = _hashMap_38;
+    HashMap<String, Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>> _hashMap_39 = new HashMap<String, Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>>();
+    this.entityScalarDataPropertyParticularRestrictionAxioms = _hashMap_39;
+    HashMap<String, Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>> _hashMap_40 = new HashMap<String, Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>>();
+    this.entityScalarDataPropertyUniversalRestrictionAxioms = _hashMap_40;
+    HashMap<String, Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>> _hashMap_41 = new HashMap<String, Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>>();
+    this.entityStructuredDataPropertyParticularRestrictionAxioms = _hashMap_41;
+    HashMap<String, Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>> _hashMap_42 = new HashMap<String, Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>>();
+    this.restrictionStructuredDataPropertyTuples = _hashMap_42;
+    HashMap<String, Pair<RestrictionScalarDataPropertyValue, Map<String, String>>> _hashMap_43 = new HashMap<String, Pair<RestrictionScalarDataPropertyValue, Map<String, String>>>();
+    this.restrictionScalarDataPropertyValues = _hashMap_43;
+    HashMap<String, Pair<AspectSpecializationAxiom, Map<String, String>>> _hashMap_44 = new HashMap<String, Pair<AspectSpecializationAxiom, Map<String, String>>>();
+    this.aspectSpecializationAxioms = _hashMap_44;
+    HashMap<String, Pair<ConceptSpecializationAxiom, Map<String, String>>> _hashMap_45 = new HashMap<String, Pair<ConceptSpecializationAxiom, Map<String, String>>>();
+    this.conceptSpecializationAxioms = _hashMap_45;
+    HashMap<String, Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>> _hashMap_46 = new HashMap<String, Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>>();
+    this.reifiedRelationshipSpecializationAxioms = _hashMap_46;
+    HashMap<String, Pair<SubDataPropertyOfAxiom, Map<String, String>>> _hashMap_47 = new HashMap<String, Pair<SubDataPropertyOfAxiom, Map<String, String>>>();
+    this.subDataPropertyOfAxioms = _hashMap_47;
+    HashMap<String, Pair<SubObjectPropertyOfAxiom, Map<String, String>>> _hashMap_48 = new HashMap<String, Pair<SubObjectPropertyOfAxiom, Map<String, String>>>();
+    this.subObjectPropertyOfAxioms = _hashMap_48;
+    HashMap<String, Pair<RootConceptTaxonomyAxiom, Map<String, String>>> _hashMap_49 = new HashMap<String, Pair<RootConceptTaxonomyAxiom, Map<String, String>>>();
+    this.rootConceptTaxonomyAxioms = _hashMap_49;
+    HashMap<String, Pair<AnonymousConceptUnionAxiom, Map<String, String>>> _hashMap_50 = new HashMap<String, Pair<AnonymousConceptUnionAxiom, Map<String, String>>>();
+    this.anonymousConceptUnionAxioms = _hashMap_50;
+    HashMap<String, Pair<SpecificDisjointConceptAxiom, Map<String, String>>> _hashMap_51 = new HashMap<String, Pair<SpecificDisjointConceptAxiom, Map<String, String>>>();
+    this.specificDisjointConceptAxioms = _hashMap_51;
+    HashMap<String, Pair<ConceptInstance, Map<String, String>>> _hashMap_52 = new HashMap<String, Pair<ConceptInstance, Map<String, String>>>();
+    this.conceptInstances = _hashMap_52;
+    HashMap<String, Pair<ReifiedRelationshipInstance, Map<String, String>>> _hashMap_53 = new HashMap<String, Pair<ReifiedRelationshipInstance, Map<String, String>>>();
+    this.reifiedRelationshipInstances = _hashMap_53;
+    HashMap<String, Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>> _hashMap_54 = new HashMap<String, Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>>();
+    this.reifiedRelationshipInstanceDomains = _hashMap_54;
+    HashMap<String, Pair<ReifiedRelationshipInstanceRange, Map<String, String>>> _hashMap_55 = new HashMap<String, Pair<ReifiedRelationshipInstanceRange, Map<String, String>>>();
+    this.reifiedRelationshipInstanceRanges = _hashMap_55;
+    HashMap<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>> _hashMap_56 = new HashMap<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>>();
+    this.unreifiedRelationshipInstanceTuples = _hashMap_56;
+    HashMap<String, Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>> _hashMap_57 = new HashMap<String, Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>>();
+    this.singletonInstanceStructuredDataPropertyValues = _hashMap_57;
+    HashMap<String, Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>> _hashMap_58 = new HashMap<String, Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>>();
+    this.singletonInstanceScalarDataPropertyValues = _hashMap_58;
+    HashMap<String, Pair<StructuredDataPropertyTuple, Map<String, String>>> _hashMap_59 = new HashMap<String, Pair<StructuredDataPropertyTuple, Map<String, String>>>();
+    this.structuredDataPropertyTuples = _hashMap_59;
+    HashMap<String, Pair<ScalarDataPropertyValue, Map<String, String>>> _hashMap_60 = new HashMap<String, Pair<ScalarDataPropertyValue, Map<String, String>>>();
+    this.scalarDataPropertyValues = _hashMap_60;
+    HashMap<String, Pair<AnnotationPropertyValue, Map<String, String>>> _hashMap_61 = new HashMap<String, Pair<AnnotationPropertyValue, Map<String, String>>>();
+    this.annotationPropertyValues = _hashMap_61;
+    HashMap<String, Pair<CardinalityRestrictedAspect, Map<String, String>>> _hashMap_62 = new HashMap<String, Pair<CardinalityRestrictedAspect, Map<String, String>>>();
+    this.cardinalityRestrictedAspects = _hashMap_62;
+    HashMap<String, Pair<CardinalityRestrictedConcept, Map<String, String>>> _hashMap_63 = new HashMap<String, Pair<CardinalityRestrictedConcept, Map<String, String>>>();
+    this.cardinalityRestrictedConcepts = _hashMap_63;
+    HashMap<String, Pair<CardinalityRestrictedReifiedRelationship, Map<String, String>>> _hashMap_64 = new HashMap<String, Pair<CardinalityRestrictedReifiedRelationship, Map<String, String>>>();
+    this.cardinalityRestrictedReifiedRelationships = _hashMap_64;
+    HashMap<String, Pair<InstanceRelationshipExistentialRangeRestriction, Map<String, String>>> _hashMap_65 = new HashMap<String, Pair<InstanceRelationshipExistentialRangeRestriction, Map<String, String>>>();
+    this.instanceRelationshipExistentialRangeRestrictions = _hashMap_65;
+    HashMap<String, Pair<InstanceRelationshipUniversalRangeRestriction, Map<String, String>>> _hashMap_66 = new HashMap<String, Pair<InstanceRelationshipUniversalRangeRestriction, Map<String, String>>>();
+    this.instanceRelationshipUniversalRangeRestrictions = _hashMap_66;
+    HashMap<String, Pair<InstanceRelationshipValueRestriction, Map<String, String>>> _hashMap_67 = new HashMap<String, Pair<InstanceRelationshipValueRestriction, Map<String, String>>>();
+    this.instanceRelationshipValueRestrictions = _hashMap_67;
+    HashMap<String, Pair<gov.nasa.jpl.imce.oml.model.common.Module, Map<String, String>>> _hashMap_68 = new HashMap<String, Pair<gov.nasa.jpl.imce.oml.model.common.Module, Map<String, String>>>();
+    this.modules = _hashMap_68;
+    HashMap<String, Pair<LogicalElement, Map<String, String>>> _hashMap_69 = new HashMap<String, Pair<LogicalElement, Map<String, String>>>();
+    this.logicalElements = _hashMap_69;
+    HashMap<String, Pair<Entity, Map<String, String>>> _hashMap_70 = new HashMap<String, Pair<Entity, Map<String, String>>>();
+    this.entities = _hashMap_70;
+    HashMap<String, Pair<AspectKind, Map<String, String>>> _hashMap_71 = new HashMap<String, Pair<AspectKind, Map<String, String>>>();
+    this.aspectKinds = _hashMap_71;
+    HashMap<String, Pair<ConceptKind, Map<String, String>>> _hashMap_72 = new HashMap<String, Pair<ConceptKind, Map<String, String>>>();
+    this.conceptKinds = _hashMap_72;
+    HashMap<String, Pair<EntityRelationship, Map<String, String>>> _hashMap_73 = new HashMap<String, Pair<EntityRelationship, Map<String, String>>>();
+    this.entityRelationships = _hashMap_73;
+    HashMap<String, Pair<ConceptualRelationship, Map<String, String>>> _hashMap_74 = new HashMap<String, Pair<ConceptualRelationship, Map<String, String>>>();
+    this.conceptualRelationships = _hashMap_74;
+    HashMap<String, Pair<DataRange, Map<String, String>>> _hashMap_75 = new HashMap<String, Pair<DataRange, Map<String, String>>>();
+    this.dataRanges = _hashMap_75;
+    HashMap<String, Pair<DataRelationshipToScalar, Map<String, String>>> _hashMap_76 = new HashMap<String, Pair<DataRelationshipToScalar, Map<String, String>>>();
+    this.dataRelationshipToScalars = _hashMap_76;
+    HashMap<String, Pair<DataRelationshipToStructure, Map<String, String>>> _hashMap_77 = new HashMap<String, Pair<DataRelationshipToStructure, Map<String, String>>>();
+    this.dataRelationshipToStructures = _hashMap_77;
+    HashMap<String, Pair<Predicate, Map<String, String>>> _hashMap_78 = new HashMap<String, Pair<Predicate, Map<String, String>>>();
+    this.predicates = _hashMap_78;
+    HashMap<String, Pair<RestrictableRelationship, Map<String, String>>> _hashMap_79 = new HashMap<String, Pair<RestrictableRelationship, Map<String, String>>>();
+    this.restrictableRelationships = _hashMap_79;
+    HashMap<String, Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>> _hashMap_80 = new HashMap<String, Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>>();
+    this.restrictionStructuredDataPropertyContexts = _hashMap_80;
+    HashMap<String, Pair<TerminologyBox, Map<String, String>>> _hashMap_81 = new HashMap<String, Pair<TerminologyBox, Map<String, String>>>();
+    this.terminologyBoxes = _hashMap_81;
+    HashMap<String, Pair<ConceptTreeDisjunction, Map<String, String>>> _hashMap_82 = new HashMap<String, Pair<ConceptTreeDisjunction, Map<String, String>>>();
+    this.conceptTreeDisjunctions = _hashMap_82;
+    HashMap<String, Pair<ConceptualEntitySingletonInstance, Map<String, String>>> _hashMap_83 = new HashMap<String, Pair<ConceptualEntitySingletonInstance, Map<String, String>>>();
+    this.conceptualEntitySingletonInstances = _hashMap_83;
+    HashMap<String, Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>>> _hashMap_84 = new HashMap<String, Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>>>();
+    this.singletonInstanceStructuredDataPropertyContexts = _hashMap_84;
   }
   
   public static void save(final Extent e, final ZipArchiveOutputStream zos) {
@@ -922,8 +1112,26 @@ public class OMLSpecificationTables {
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_64 = new ZipArchiveEntry("InstanceRelationshipValueRestrictions.json");
+      ZipArchiveEntry _zipArchiveEntry_64 = new ZipArchiveEntry("InstanceRelationshipExistentialRangeRestrictions.json");
       entry = _zipArchiveEntry_64;
+      entry.setTime(0L);
+      zos.putArchiveEntry(entry);
+      try {
+        zos.write(OMLSpecificationTables.instanceRelationshipExistentialRangeRestrictionsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
+      ZipArchiveEntry _zipArchiveEntry_65 = new ZipArchiveEntry("InstanceRelationshipUniversalRangeRestrictions.json");
+      entry = _zipArchiveEntry_65;
+      entry.setTime(0L);
+      zos.putArchiveEntry(entry);
+      try {
+        zos.write(OMLSpecificationTables.instanceRelationshipUniversalRangeRestrictionsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
+      ZipArchiveEntry _zipArchiveEntry_66 = new ZipArchiveEntry("InstanceRelationshipValueRestrictions.json");
+      entry = _zipArchiveEntry_66;
       entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
@@ -3237,20 +3445,112 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
+  protected static byte[] instanceRelationshipExistentialRangeRestrictionsByteArray(final Extent e) {
+    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    final PrintWriter pw = new PrintWriter(bos);
+    final Consumer<InstanceRelationshipExistentialRangeRestriction> _function = (InstanceRelationshipExistentialRangeRestriction it) -> {
+      pw.print("{");
+      pw.print("\"uuid\":");
+      pw.print("\"");
+      pw.print(it.uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"descriptionBoxUUID\":");
+      pw.print("\"");
+      pw.print(it.descriptionBox().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"domainUUID\":");
+      pw.print("\"");
+      pw.print(it.getDomain().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"rangeUUID\":");
+      pw.print("\"");
+      pw.print(it.getRange().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRelationshipUUID\":");
+      pw.print("\"");
+      pw.print(it.getRestrictedRelationship().uuid());
+      pw.print("\"");
+      pw.println("}");
+    };
+    OMLTables.instanceRelationshipExistentialRangeRestrictions(e).forEach(_function);
+    pw.close();
+    return bos.toByteArray();
+  }
+  
+  protected static byte[] instanceRelationshipUniversalRangeRestrictionsByteArray(final Extent e) {
+    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    final PrintWriter pw = new PrintWriter(bos);
+    final Consumer<InstanceRelationshipUniversalRangeRestriction> _function = (InstanceRelationshipUniversalRangeRestriction it) -> {
+      pw.print("{");
+      pw.print("\"uuid\":");
+      pw.print("\"");
+      pw.print(it.uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"descriptionBoxUUID\":");
+      pw.print("\"");
+      pw.print(it.descriptionBox().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"domainUUID\":");
+      pw.print("\"");
+      pw.print(it.getDomain().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"rangeUUID\":");
+      pw.print("\"");
+      pw.print(it.getRange().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRelationshipUUID\":");
+      pw.print("\"");
+      pw.print(it.getRestrictedRelationship().uuid());
+      pw.print("\"");
+      pw.println("}");
+    };
+    OMLTables.instanceRelationshipUniversalRangeRestrictions(e).forEach(_function);
+    pw.close();
+    return bos.toByteArray();
+  }
+  
   protected static byte[] instanceRelationshipValueRestrictionsByteArray(final Extent e) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method instanceRelationshipValueRestrictions(Extent) is undefined for the type Class<OMLTables>"
-      + "\nThe method uuid() is undefined for the type Object"
-      + "\nThe method descriptionBox() is undefined for the type Object"
-      + "\nThe method or field domain is undefined for the type Object"
-      + "\nThe method or field range is undefined for the type Object"
-      + "\nThe method or field restrictedRelationship is undefined for the type Object"
-      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
-      + "\nforEach cannot be resolved"
-      + "\nuuid cannot be resolved"
-      + "\nuuid cannot be resolved"
-      + "\nuuid cannot be resolved"
-      + "\nuuid cannot be resolved");
+    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    final PrintWriter pw = new PrintWriter(bos);
+    final Consumer<InstanceRelationshipValueRestriction> _function = (InstanceRelationshipValueRestriction it) -> {
+      pw.print("{");
+      pw.print("\"uuid\":");
+      pw.print("\"");
+      pw.print(it.uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"descriptionBoxUUID\":");
+      pw.print("\"");
+      pw.print(it.descriptionBox().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"domainUUID\":");
+      pw.print("\"");
+      pw.print(it.getDomain().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"rangeUUID\":");
+      pw.print("\"");
+      pw.print(it.getRange().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRelationshipUUID\":");
+      pw.print("\"");
+      pw.print(it.getRestrictedRelationship().uuid());
+      pw.print("\"");
+      pw.println("}");
+    };
+    OMLTables.instanceRelationshipValueRestrictions(e).forEach(_function);
+    pw.close();
+    return bos.toByteArray();
   }
   
   /**
@@ -3483,6 +3783,12 @@ public class OMLSpecificationTables {
                   break;
                 case "CardinalityRestrictedReifiedRelationships.json":
                   tables.readCardinalityRestrictedReifiedRelationships(ext, lines);
+                  break;
+                case "InstanceRelationshipExistentialRangeRestrictions.json":
+                  tables.readInstanceRelationshipExistentialRangeRestrictions(ext, lines);
+                  break;
+                case "InstanceRelationshipUniversalRangeRestrictions.json":
+                  tables.readInstanceRelationshipUniversalRangeRestrictions(ext, lines);
                   break;
                 case "InstanceRelationshipValueRestrictions.json":
                   tables.readInstanceRelationshipValueRestrictions(ext, lines);
@@ -4778,11 +5084,52 @@ public class OMLSpecificationTables {
     }
   }
   
+  protected void readInstanceRelationshipExistentialRangeRestrictions(final Extent ext, final ArrayList<String> lines) {
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final InstanceRelationshipExistentialRangeRestriction oml = this.omlDescriptionsFactory.createInstanceRelationshipExistentialRangeRestriction();
+        final String uuid = kv.remove("uuid");
+        final Pair<InstanceRelationshipExistentialRangeRestriction, Map<String, String>> pair = new Pair<InstanceRelationshipExistentialRangeRestriction, Map<String, String>>(oml, kv);
+        this.instanceRelationshipExistentialRangeRestrictions.put(uuid, pair);
+        this.includeInstanceRelationshipExistentialRangeRestrictions(uuid, oml);
+      }
+    }
+  }
+  
+  protected void readInstanceRelationshipUniversalRangeRestrictions(final Extent ext, final ArrayList<String> lines) {
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final InstanceRelationshipUniversalRangeRestriction oml = this.omlDescriptionsFactory.createInstanceRelationshipUniversalRangeRestriction();
+        final String uuid = kv.remove("uuid");
+        final Pair<InstanceRelationshipUniversalRangeRestriction, Map<String, String>> pair = new Pair<InstanceRelationshipUniversalRangeRestriction, Map<String, String>>(oml, kv);
+        this.instanceRelationshipUniversalRangeRestrictions.put(uuid, pair);
+        this.includeInstanceRelationshipUniversalRangeRestrictions(uuid, oml);
+      }
+    }
+  }
+  
   protected void readInstanceRelationshipValueRestrictions(final Extent ext, final ArrayList<String> lines) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nInstanceRelationshipValueRestriction cannot be resolved to a type."
-      + "\nThe field OMLSpecificationTables.instanceRelationshipValueRestrictions refers to the missing type InstanceRelationshipValueRestriction"
-      + "\nThe method includeInstanceRelationshipValueRestrictions(String, InstanceRelationshipValueRestriction) from the type OMLSpecificationTables refers to the missing type InstanceRelationshipValueRestriction");
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final InstanceRelationshipValueRestriction oml = this.omlDescriptionsFactory.createInstanceRelationshipValueRestriction();
+        final String uuid = kv.remove("uuid");
+        final Pair<InstanceRelationshipValueRestriction, Map<String, String>> pair = new Pair<InstanceRelationshipValueRestriction, Map<String, String>>(oml, kv);
+        this.instanceRelationshipValueRestrictions.put(uuid, pair);
+        this.includeInstanceRelationshipValueRestrictions(uuid, oml);
+      }
+    }
   }
   
   protected <U extends Object, V extends U> Boolean includeMap(final Map<String, Pair<U, Map<String, String>>> uMap, final Map<String, Pair<V, Map<String, String>>> vMap) {
@@ -5364,15 +5711,598 @@ public class OMLSpecificationTables {
     this.predicates.put(uuid, _pair_4);
   }
   
-  protected void includeInstanceRelationshipValueRestrictions(final String uuid, final /* InstanceRelationshipValueRestriction */Object oml) {
+  protected void includeInstanceRelationshipExistentialRangeRestrictions(final String uuid, final InstanceRelationshipExistentialRangeRestriction oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeInstanceRelationshipUniversalRangeRestrictions(final String uuid, final InstanceRelationshipUniversalRangeRestriction oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeInstanceRelationshipValueRestrictions(final String uuid, final InstanceRelationshipValueRestriction oml) {
     Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
     Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
     this.logicalElements.put(uuid, _pair);
   }
   
   protected void resolve(final ResourceSet rs, final OMLZipResource r) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field OMLSpecificationTables.instanceRelationshipValueRestrictions refers to the missing type InstanceRelationshipValueRestriction");
+    URI _uRI = r.getURI();
+    String _plus = ("Resolve: " + _uRI);
+    System.out.println(_plus);
+    final long t0 = System.currentTimeMillis();
+    Boolean _includeMap = this.<LogicalElement, TerminologyGraph>includeMap(this.logicalElements, this.terminologyGraphs);
+    if ((_includeMap).booleanValue()) {
+      System.out.println("+ logicalElements, terminologyGraphs");
+    }
+    Boolean _includeMap_1 = this.<LogicalElement, Bundle>includeMap(this.logicalElements, this.bundles);
+    if ((_includeMap_1).booleanValue()) {
+      System.out.println("+ logicalElements, bundles");
+    }
+    Boolean _includeMap_2 = this.<LogicalElement, DescriptionBox>includeMap(this.logicalElements, this.descriptionBoxes);
+    if ((_includeMap_2).booleanValue()) {
+      System.out.println("+ logicalElements, descriptionBoxes");
+    }
+    Boolean _includeMap_3 = this.<LogicalElement, Aspect>includeMap(this.logicalElements, this.aspects);
+    if ((_includeMap_3).booleanValue()) {
+      System.out.println("+ logicalElements, aspects");
+    }
+    Boolean _includeMap_4 = this.<LogicalElement, Concept>includeMap(this.logicalElements, this.concepts);
+    if ((_includeMap_4).booleanValue()) {
+      System.out.println("+ logicalElements, concepts");
+    }
+    Boolean _includeMap_5 = this.<LogicalElement, Scalar>includeMap(this.logicalElements, this.scalars);
+    if ((_includeMap_5).booleanValue()) {
+      System.out.println("+ logicalElements, scalars");
+    }
+    Boolean _includeMap_6 = this.<LogicalElement, Structure>includeMap(this.logicalElements, this.structures);
+    if ((_includeMap_6).booleanValue()) {
+      System.out.println("+ logicalElements, structures");
+    }
+    Boolean _includeMap_7 = this.<LogicalElement, ConceptDesignationTerminologyAxiom>includeMap(this.logicalElements, this.conceptDesignationTerminologyAxioms);
+    if ((_includeMap_7).booleanValue()) {
+      System.out.println("+ logicalElements, conceptDesignationTerminologyAxioms");
+    }
+    Boolean _includeMap_8 = this.<LogicalElement, TerminologyExtensionAxiom>includeMap(this.logicalElements, this.terminologyExtensionAxioms);
+    if ((_includeMap_8).booleanValue()) {
+      System.out.println("+ logicalElements, terminologyExtensionAxioms");
+    }
+    Boolean _includeMap_9 = this.<LogicalElement, TerminologyNestingAxiom>includeMap(this.logicalElements, this.terminologyNestingAxioms);
+    if ((_includeMap_9).booleanValue()) {
+      System.out.println("+ logicalElements, terminologyNestingAxioms");
+    }
+    Boolean _includeMap_10 = this.<LogicalElement, BundledTerminologyAxiom>includeMap(this.logicalElements, this.bundledTerminologyAxioms);
+    if ((_includeMap_10).booleanValue()) {
+      System.out.println("+ logicalElements, bundledTerminologyAxioms");
+    }
+    Boolean _includeMap_11 = this.<LogicalElement, DescriptionBoxExtendsClosedWorldDefinitions>includeMap(this.logicalElements, this.descriptionBoxExtendsClosedWorldDefinitions);
+    if ((_includeMap_11).booleanValue()) {
+      System.out.println("+ logicalElements, descriptionBoxExtendsClosedWorldDefinitions");
+    }
+    Boolean _includeMap_12 = this.<LogicalElement, DescriptionBoxRefinement>includeMap(this.logicalElements, this.descriptionBoxRefinements);
+    if ((_includeMap_12).booleanValue()) {
+      System.out.println("+ logicalElements, descriptionBoxRefinements");
+    }
+    Boolean _includeMap_13 = this.<LogicalElement, BinaryScalarRestriction>includeMap(this.logicalElements, this.binaryScalarRestrictions);
+    if ((_includeMap_13).booleanValue()) {
+      System.out.println("+ logicalElements, binaryScalarRestrictions");
+    }
+    Boolean _includeMap_14 = this.<LogicalElement, IRIScalarRestriction>includeMap(this.logicalElements, this.iriScalarRestrictions);
+    if ((_includeMap_14).booleanValue()) {
+      System.out.println("+ logicalElements, iriScalarRestrictions");
+    }
+    Boolean _includeMap_15 = this.<LogicalElement, NumericScalarRestriction>includeMap(this.logicalElements, this.numericScalarRestrictions);
+    if ((_includeMap_15).booleanValue()) {
+      System.out.println("+ logicalElements, numericScalarRestrictions");
+    }
+    Boolean _includeMap_16 = this.<LogicalElement, PlainLiteralScalarRestriction>includeMap(this.logicalElements, this.plainLiteralScalarRestrictions);
+    if ((_includeMap_16).booleanValue()) {
+      System.out.println("+ logicalElements, plainLiteralScalarRestrictions");
+    }
+    Boolean _includeMap_17 = this.<LogicalElement, ScalarOneOfRestriction>includeMap(this.logicalElements, this.scalarOneOfRestrictions);
+    if ((_includeMap_17).booleanValue()) {
+      System.out.println("+ logicalElements, scalarOneOfRestrictions");
+    }
+    Boolean _includeMap_18 = this.<LogicalElement, ScalarOneOfLiteralAxiom>includeMap(this.logicalElements, this.scalarOneOfLiteralAxioms);
+    if ((_includeMap_18).booleanValue()) {
+      System.out.println("+ logicalElements, scalarOneOfLiteralAxioms");
+    }
+    Boolean _includeMap_19 = this.<LogicalElement, StringScalarRestriction>includeMap(this.logicalElements, this.stringScalarRestrictions);
+    if ((_includeMap_19).booleanValue()) {
+      System.out.println("+ logicalElements, stringScalarRestrictions");
+    }
+    Boolean _includeMap_20 = this.<LogicalElement, SynonymScalarRestriction>includeMap(this.logicalElements, this.synonymScalarRestrictions);
+    if ((_includeMap_20).booleanValue()) {
+      System.out.println("+ logicalElements, synonymScalarRestrictions");
+    }
+    Boolean _includeMap_21 = this.<LogicalElement, TimeScalarRestriction>includeMap(this.logicalElements, this.timeScalarRestrictions);
+    if ((_includeMap_21).booleanValue()) {
+      System.out.println("+ logicalElements, timeScalarRestrictions");
+    }
+    Boolean _includeMap_22 = this.<LogicalElement, EntityScalarDataProperty>includeMap(this.logicalElements, this.entityScalarDataProperties);
+    if ((_includeMap_22).booleanValue()) {
+      System.out.println("+ logicalElements, entityScalarDataProperties");
+    }
+    Boolean _includeMap_23 = this.<LogicalElement, EntityStructuredDataProperty>includeMap(this.logicalElements, this.entityStructuredDataProperties);
+    if ((_includeMap_23).booleanValue()) {
+      System.out.println("+ logicalElements, entityStructuredDataProperties");
+    }
+    Boolean _includeMap_24 = this.<LogicalElement, ScalarDataProperty>includeMap(this.logicalElements, this.scalarDataProperties);
+    if ((_includeMap_24).booleanValue()) {
+      System.out.println("+ logicalElements, scalarDataProperties");
+    }
+    Boolean _includeMap_25 = this.<LogicalElement, StructuredDataProperty>includeMap(this.logicalElements, this.structuredDataProperties);
+    if ((_includeMap_25).booleanValue()) {
+      System.out.println("+ logicalElements, structuredDataProperties");
+    }
+    Boolean _includeMap_26 = this.<LogicalElement, ReifiedRelationship>includeMap(this.logicalElements, this.reifiedRelationships);
+    if ((_includeMap_26).booleanValue()) {
+      System.out.println("+ logicalElements, reifiedRelationships");
+    }
+    Boolean _includeMap_27 = this.<LogicalElement, ReifiedRelationshipRestriction>includeMap(this.logicalElements, this.reifiedRelationshipRestrictions);
+    if ((_includeMap_27).booleanValue()) {
+      System.out.println("+ logicalElements, reifiedRelationshipRestrictions");
+    }
+    Boolean _includeMap_28 = this.<LogicalElement, ForwardProperty>includeMap(this.logicalElements, this.forwardProperties);
+    if ((_includeMap_28).booleanValue()) {
+      System.out.println("+ logicalElements, forwardProperties");
+    }
+    Boolean _includeMap_29 = this.<LogicalElement, InverseProperty>includeMap(this.logicalElements, this.inverseProperties);
+    if ((_includeMap_29).booleanValue()) {
+      System.out.println("+ logicalElements, inverseProperties");
+    }
+    Boolean _includeMap_30 = this.<LogicalElement, UnreifiedRelationship>includeMap(this.logicalElements, this.unreifiedRelationships);
+    if ((_includeMap_30).booleanValue()) {
+      System.out.println("+ logicalElements, unreifiedRelationships");
+    }
+    Boolean _includeMap_31 = this.<LogicalElement, ChainRule>includeMap(this.logicalElements, this.chainRules);
+    if ((_includeMap_31).booleanValue()) {
+      System.out.println("+ logicalElements, chainRules");
+    }
+    Boolean _includeMap_32 = this.<LogicalElement, RuleBodySegment>includeMap(this.logicalElements, this.ruleBodySegments);
+    if ((_includeMap_32).booleanValue()) {
+      System.out.println("+ logicalElements, ruleBodySegments");
+    }
+    Boolean _includeMap_33 = this.<LogicalElement, SegmentPredicate>includeMap(this.logicalElements, this.segmentPredicates);
+    if ((_includeMap_33).booleanValue()) {
+      System.out.println("+ logicalElements, segmentPredicates");
+    }
+    Boolean _includeMap_34 = this.<LogicalElement, EntityExistentialRestrictionAxiom>includeMap(this.logicalElements, this.entityExistentialRestrictionAxioms);
+    if ((_includeMap_34).booleanValue()) {
+      System.out.println("+ logicalElements, entityExistentialRestrictionAxioms");
+    }
+    Boolean _includeMap_35 = this.<LogicalElement, EntityUniversalRestrictionAxiom>includeMap(this.logicalElements, this.entityUniversalRestrictionAxioms);
+    if ((_includeMap_35).booleanValue()) {
+      System.out.println("+ logicalElements, entityUniversalRestrictionAxioms");
+    }
+    Boolean _includeMap_36 = this.<LogicalElement, EntityScalarDataPropertyExistentialRestrictionAxiom>includeMap(this.logicalElements, this.entityScalarDataPropertyExistentialRestrictionAxioms);
+    if ((_includeMap_36).booleanValue()) {
+      System.out.println("+ logicalElements, entityScalarDataPropertyExistentialRestrictionAxioms");
+    }
+    Boolean _includeMap_37 = this.<LogicalElement, EntityScalarDataPropertyParticularRestrictionAxiom>includeMap(this.logicalElements, this.entityScalarDataPropertyParticularRestrictionAxioms);
+    if ((_includeMap_37).booleanValue()) {
+      System.out.println("+ logicalElements, entityScalarDataPropertyParticularRestrictionAxioms");
+    }
+    Boolean _includeMap_38 = this.<LogicalElement, EntityScalarDataPropertyUniversalRestrictionAxiom>includeMap(this.logicalElements, this.entityScalarDataPropertyUniversalRestrictionAxioms);
+    if ((_includeMap_38).booleanValue()) {
+      System.out.println("+ logicalElements, entityScalarDataPropertyUniversalRestrictionAxioms");
+    }
+    Boolean _includeMap_39 = this.<LogicalElement, EntityStructuredDataPropertyParticularRestrictionAxiom>includeMap(this.logicalElements, this.entityStructuredDataPropertyParticularRestrictionAxioms);
+    if ((_includeMap_39).booleanValue()) {
+      System.out.println("+ logicalElements, entityStructuredDataPropertyParticularRestrictionAxioms");
+    }
+    Boolean _includeMap_40 = this.<LogicalElement, RestrictionStructuredDataPropertyTuple>includeMap(this.logicalElements, this.restrictionStructuredDataPropertyTuples);
+    if ((_includeMap_40).booleanValue()) {
+      System.out.println("+ logicalElements, restrictionStructuredDataPropertyTuples");
+    }
+    Boolean _includeMap_41 = this.<LogicalElement, RestrictionScalarDataPropertyValue>includeMap(this.logicalElements, this.restrictionScalarDataPropertyValues);
+    if ((_includeMap_41).booleanValue()) {
+      System.out.println("+ logicalElements, restrictionScalarDataPropertyValues");
+    }
+    Boolean _includeMap_42 = this.<LogicalElement, AspectSpecializationAxiom>includeMap(this.logicalElements, this.aspectSpecializationAxioms);
+    if ((_includeMap_42).booleanValue()) {
+      System.out.println("+ logicalElements, aspectSpecializationAxioms");
+    }
+    Boolean _includeMap_43 = this.<LogicalElement, ConceptSpecializationAxiom>includeMap(this.logicalElements, this.conceptSpecializationAxioms);
+    if ((_includeMap_43).booleanValue()) {
+      System.out.println("+ logicalElements, conceptSpecializationAxioms");
+    }
+    Boolean _includeMap_44 = this.<LogicalElement, ReifiedRelationshipSpecializationAxiom>includeMap(this.logicalElements, this.reifiedRelationshipSpecializationAxioms);
+    if ((_includeMap_44).booleanValue()) {
+      System.out.println("+ logicalElements, reifiedRelationshipSpecializationAxioms");
+    }
+    Boolean _includeMap_45 = this.<LogicalElement, SubDataPropertyOfAxiom>includeMap(this.logicalElements, this.subDataPropertyOfAxioms);
+    if ((_includeMap_45).booleanValue()) {
+      System.out.println("+ logicalElements, subDataPropertyOfAxioms");
+    }
+    Boolean _includeMap_46 = this.<LogicalElement, SubObjectPropertyOfAxiom>includeMap(this.logicalElements, this.subObjectPropertyOfAxioms);
+    if ((_includeMap_46).booleanValue()) {
+      System.out.println("+ logicalElements, subObjectPropertyOfAxioms");
+    }
+    Boolean _includeMap_47 = this.<LogicalElement, RootConceptTaxonomyAxiom>includeMap(this.logicalElements, this.rootConceptTaxonomyAxioms);
+    if ((_includeMap_47).booleanValue()) {
+      System.out.println("+ logicalElements, rootConceptTaxonomyAxioms");
+    }
+    Boolean _includeMap_48 = this.<LogicalElement, AnonymousConceptUnionAxiom>includeMap(this.logicalElements, this.anonymousConceptUnionAxioms);
+    if ((_includeMap_48).booleanValue()) {
+      System.out.println("+ logicalElements, anonymousConceptUnionAxioms");
+    }
+    Boolean _includeMap_49 = this.<LogicalElement, SpecificDisjointConceptAxiom>includeMap(this.logicalElements, this.specificDisjointConceptAxioms);
+    if ((_includeMap_49).booleanValue()) {
+      System.out.println("+ logicalElements, specificDisjointConceptAxioms");
+    }
+    Boolean _includeMap_50 = this.<LogicalElement, ConceptInstance>includeMap(this.logicalElements, this.conceptInstances);
+    if ((_includeMap_50).booleanValue()) {
+      System.out.println("+ logicalElements, conceptInstances");
+    }
+    Boolean _includeMap_51 = this.<LogicalElement, ReifiedRelationshipInstance>includeMap(this.logicalElements, this.reifiedRelationshipInstances);
+    if ((_includeMap_51).booleanValue()) {
+      System.out.println("+ logicalElements, reifiedRelationshipInstances");
+    }
+    Boolean _includeMap_52 = this.<LogicalElement, ReifiedRelationshipInstanceDomain>includeMap(this.logicalElements, this.reifiedRelationshipInstanceDomains);
+    if ((_includeMap_52).booleanValue()) {
+      System.out.println("+ logicalElements, reifiedRelationshipInstanceDomains");
+    }
+    Boolean _includeMap_53 = this.<LogicalElement, ReifiedRelationshipInstanceRange>includeMap(this.logicalElements, this.reifiedRelationshipInstanceRanges);
+    if ((_includeMap_53).booleanValue()) {
+      System.out.println("+ logicalElements, reifiedRelationshipInstanceRanges");
+    }
+    Boolean _includeMap_54 = this.<LogicalElement, UnreifiedRelationshipInstanceTuple>includeMap(this.logicalElements, this.unreifiedRelationshipInstanceTuples);
+    if ((_includeMap_54).booleanValue()) {
+      System.out.println("+ logicalElements, unreifiedRelationshipInstanceTuples");
+    }
+    Boolean _includeMap_55 = this.<LogicalElement, SingletonInstanceStructuredDataPropertyValue>includeMap(this.logicalElements, this.singletonInstanceStructuredDataPropertyValues);
+    if ((_includeMap_55).booleanValue()) {
+      System.out.println("+ logicalElements, singletonInstanceStructuredDataPropertyValues");
+    }
+    Boolean _includeMap_56 = this.<LogicalElement, SingletonInstanceScalarDataPropertyValue>includeMap(this.logicalElements, this.singletonInstanceScalarDataPropertyValues);
+    if ((_includeMap_56).booleanValue()) {
+      System.out.println("+ logicalElements, singletonInstanceScalarDataPropertyValues");
+    }
+    Boolean _includeMap_57 = this.<LogicalElement, StructuredDataPropertyTuple>includeMap(this.logicalElements, this.structuredDataPropertyTuples);
+    if ((_includeMap_57).booleanValue()) {
+      System.out.println("+ logicalElements, structuredDataPropertyTuples");
+    }
+    Boolean _includeMap_58 = this.<LogicalElement, ScalarDataPropertyValue>includeMap(this.logicalElements, this.scalarDataPropertyValues);
+    if ((_includeMap_58).booleanValue()) {
+      System.out.println("+ logicalElements, scalarDataPropertyValues");
+    }
+    Boolean _includeMap_59 = this.<LogicalElement, CardinalityRestrictedAspect>includeMap(this.logicalElements, this.cardinalityRestrictedAspects);
+    if ((_includeMap_59).booleanValue()) {
+      System.out.println("+ logicalElements, cardinalityRestrictedAspects");
+    }
+    Boolean _includeMap_60 = this.<LogicalElement, CardinalityRestrictedConcept>includeMap(this.logicalElements, this.cardinalityRestrictedConcepts);
+    if ((_includeMap_60).booleanValue()) {
+      System.out.println("+ logicalElements, cardinalityRestrictedConcepts");
+    }
+    Boolean _includeMap_61 = this.<LogicalElement, CardinalityRestrictedReifiedRelationship>includeMap(this.logicalElements, this.cardinalityRestrictedReifiedRelationships);
+    if ((_includeMap_61).booleanValue()) {
+      System.out.println("+ logicalElements, cardinalityRestrictedReifiedRelationships");
+    }
+    Boolean _includeMap_62 = this.<LogicalElement, InstanceRelationshipExistentialRangeRestriction>includeMap(this.logicalElements, this.instanceRelationshipExistentialRangeRestrictions);
+    if ((_includeMap_62).booleanValue()) {
+      System.out.println("+ logicalElements, instanceRelationshipExistentialRangeRestrictions");
+    }
+    Boolean _includeMap_63 = this.<LogicalElement, InstanceRelationshipUniversalRangeRestriction>includeMap(this.logicalElements, this.instanceRelationshipUniversalRangeRestrictions);
+    if ((_includeMap_63).booleanValue()) {
+      System.out.println("+ logicalElements, instanceRelationshipUniversalRangeRestrictions");
+    }
+    Boolean _includeMap_64 = this.<LogicalElement, InstanceRelationshipValueRestriction>includeMap(this.logicalElements, this.instanceRelationshipValueRestrictions);
+    if ((_includeMap_64).booleanValue()) {
+      System.out.println("+ logicalElements, instanceRelationshipValueRestrictions");
+    }
+    Boolean _includeMap_65 = this.<Entity, Aspect>includeMap(this.entities, this.aspects);
+    if ((_includeMap_65).booleanValue()) {
+      System.out.println("+ entities, aspects");
+    }
+    Boolean _includeMap_66 = this.<Entity, Concept>includeMap(this.entities, this.concepts);
+    if ((_includeMap_66).booleanValue()) {
+      System.out.println("+ entities, concepts");
+    }
+    Boolean _includeMap_67 = this.<Entity, ReifiedRelationship>includeMap(this.entities, this.reifiedRelationships);
+    if ((_includeMap_67).booleanValue()) {
+      System.out.println("+ entities, reifiedRelationships");
+    }
+    Boolean _includeMap_68 = this.<Entity, ReifiedRelationshipRestriction>includeMap(this.entities, this.reifiedRelationshipRestrictions);
+    if ((_includeMap_68).booleanValue()) {
+      System.out.println("+ entities, reifiedRelationshipRestrictions");
+    }
+    Boolean _includeMap_69 = this.<Entity, CardinalityRestrictedAspect>includeMap(this.entities, this.cardinalityRestrictedAspects);
+    if ((_includeMap_69).booleanValue()) {
+      System.out.println("+ entities, cardinalityRestrictedAspects");
+    }
+    Boolean _includeMap_70 = this.<Entity, CardinalityRestrictedConcept>includeMap(this.entities, this.cardinalityRestrictedConcepts);
+    if ((_includeMap_70).booleanValue()) {
+      System.out.println("+ entities, cardinalityRestrictedConcepts");
+    }
+    Boolean _includeMap_71 = this.<Entity, CardinalityRestrictedReifiedRelationship>includeMap(this.entities, this.cardinalityRestrictedReifiedRelationships);
+    if ((_includeMap_71).booleanValue()) {
+      System.out.println("+ entities, cardinalityRestrictedReifiedRelationships");
+    }
+    Boolean _includeMap_72 = this.<AspectKind, Aspect>includeMap(this.aspectKinds, this.aspects);
+    if ((_includeMap_72).booleanValue()) {
+      System.out.println("+ aspectKinds, aspects");
+    }
+    Boolean _includeMap_73 = this.<AspectKind, CardinalityRestrictedAspect>includeMap(this.aspectKinds, this.cardinalityRestrictedAspects);
+    if ((_includeMap_73).booleanValue()) {
+      System.out.println("+ aspectKinds, cardinalityRestrictedAspects");
+    }
+    Boolean _includeMap_74 = this.<ConceptKind, Concept>includeMap(this.conceptKinds, this.concepts);
+    if ((_includeMap_74).booleanValue()) {
+      System.out.println("+ conceptKinds, concepts");
+    }
+    Boolean _includeMap_75 = this.<ConceptKind, CardinalityRestrictedConcept>includeMap(this.conceptKinds, this.cardinalityRestrictedConcepts);
+    if ((_includeMap_75).booleanValue()) {
+      System.out.println("+ conceptKinds, cardinalityRestrictedConcepts");
+    }
+    Boolean _includeMap_76 = this.<EntityRelationship, ReifiedRelationship>includeMap(this.entityRelationships, this.reifiedRelationships);
+    if ((_includeMap_76).booleanValue()) {
+      System.out.println("+ entities, reifiedRelationships");
+    }
+    Boolean _includeMap_77 = this.<EntityRelationship, ReifiedRelationshipRestriction>includeMap(this.entityRelationships, this.reifiedRelationshipRestrictions);
+    if ((_includeMap_77).booleanValue()) {
+      System.out.println("+ entities, reifiedRelationshipRestrictions");
+    }
+    Boolean _includeMap_78 = this.<EntityRelationship, UnreifiedRelationship>includeMap(this.entityRelationships, this.unreifiedRelationships);
+    if ((_includeMap_78).booleanValue()) {
+      System.out.println("+ entities, unreifiedRelationships");
+    }
+    Boolean _includeMap_79 = this.<EntityRelationship, CardinalityRestrictedReifiedRelationship>includeMap(this.entityRelationships, this.cardinalityRestrictedReifiedRelationships);
+    if ((_includeMap_79).booleanValue()) {
+      System.out.println("+ entities, cardinalityRestrictedReifiedRelationships");
+    }
+    Boolean _includeMap_80 = this.<ConceptualRelationship, ReifiedRelationship>includeMap(this.conceptualRelationships, this.reifiedRelationships);
+    if ((_includeMap_80).booleanValue()) {
+      System.out.println("+ entities, reifiedRelationships");
+    }
+    Boolean _includeMap_81 = this.<ConceptualRelationship, ReifiedRelationshipRestriction>includeMap(this.conceptualRelationships, this.reifiedRelationshipRestrictions);
+    if ((_includeMap_81).booleanValue()) {
+      System.out.println("+ entities, reifiedRelationshipRestrictions");
+    }
+    Boolean _includeMap_82 = this.<ConceptualRelationship, CardinalityRestrictedReifiedRelationship>includeMap(this.conceptualRelationships, this.cardinalityRestrictedReifiedRelationships);
+    if ((_includeMap_82).booleanValue()) {
+      System.out.println("+ entities, cardinalityRestrictedReifiedRelationships");
+    }
+    Boolean _includeMap_83 = this.<DataRange, Scalar>includeMap(this.dataRanges, this.scalars);
+    if ((_includeMap_83).booleanValue()) {
+      System.out.println("+ entities, scalars");
+    }
+    Boolean _includeMap_84 = this.<DataRange, BinaryScalarRestriction>includeMap(this.dataRanges, this.binaryScalarRestrictions);
+    if ((_includeMap_84).booleanValue()) {
+      System.out.println("+ entities, binaryScalarRestrictions");
+    }
+    Boolean _includeMap_85 = this.<DataRange, IRIScalarRestriction>includeMap(this.dataRanges, this.iriScalarRestrictions);
+    if ((_includeMap_85).booleanValue()) {
+      System.out.println("+ entities, iriScalarRestrictions");
+    }
+    Boolean _includeMap_86 = this.<DataRange, NumericScalarRestriction>includeMap(this.dataRanges, this.numericScalarRestrictions);
+    if ((_includeMap_86).booleanValue()) {
+      System.out.println("+ entities, numericScalarRestrictions");
+    }
+    Boolean _includeMap_87 = this.<DataRange, PlainLiteralScalarRestriction>includeMap(this.dataRanges, this.plainLiteralScalarRestrictions);
+    if ((_includeMap_87).booleanValue()) {
+      System.out.println("+ entities, plainLiteralScalarRestrictions");
+    }
+    Boolean _includeMap_88 = this.<DataRange, ScalarOneOfRestriction>includeMap(this.dataRanges, this.scalarOneOfRestrictions);
+    if ((_includeMap_88).booleanValue()) {
+      System.out.println("+ entities, scalarOneOfRestrictions");
+    }
+    Boolean _includeMap_89 = this.<DataRange, StringScalarRestriction>includeMap(this.dataRanges, this.stringScalarRestrictions);
+    if ((_includeMap_89).booleanValue()) {
+      System.out.println("+ entities, stringScalarRestrictions");
+    }
+    Boolean _includeMap_90 = this.<DataRange, SynonymScalarRestriction>includeMap(this.dataRanges, this.synonymScalarRestrictions);
+    if ((_includeMap_90).booleanValue()) {
+      System.out.println("+ entities, synonymScalarRestrictions");
+    }
+    Boolean _includeMap_91 = this.<DataRange, TimeScalarRestriction>includeMap(this.dataRanges, this.timeScalarRestrictions);
+    if ((_includeMap_91).booleanValue()) {
+      System.out.println("+ entities, timeScalarRestrictions");
+    }
+    Boolean _includeMap_92 = this.<DataRelationshipToScalar, EntityScalarDataProperty>includeMap(this.dataRelationshipToScalars, this.entityScalarDataProperties);
+    if ((_includeMap_92).booleanValue()) {
+      System.out.println("+ entities, entityScalarDataProperties");
+    }
+    Boolean _includeMap_93 = this.<DataRelationshipToScalar, ScalarDataProperty>includeMap(this.dataRelationshipToScalars, this.scalarDataProperties);
+    if ((_includeMap_93).booleanValue()) {
+      System.out.println("+ entities, scalarDataProperties");
+    }
+    Boolean _includeMap_94 = this.<DataRelationshipToStructure, EntityStructuredDataProperty>includeMap(this.dataRelationshipToStructures, this.entityStructuredDataProperties);
+    if ((_includeMap_94).booleanValue()) {
+      System.out.println("+ entities, entityStructuredDataProperties");
+    }
+    Boolean _includeMap_95 = this.<DataRelationshipToStructure, StructuredDataProperty>includeMap(this.dataRelationshipToStructures, this.structuredDataProperties);
+    if ((_includeMap_95).booleanValue()) {
+      System.out.println("+ entities, structuredDataProperties");
+    }
+    Boolean _includeMap_96 = this.<Predicate, Aspect>includeMap(this.predicates, this.aspects);
+    if ((_includeMap_96).booleanValue()) {
+      System.out.println("+ entities, aspects");
+    }
+    Boolean _includeMap_97 = this.<Predicate, Concept>includeMap(this.predicates, this.concepts);
+    if ((_includeMap_97).booleanValue()) {
+      System.out.println("+ entities, concepts");
+    }
+    Boolean _includeMap_98 = this.<Predicate, ReifiedRelationship>includeMap(this.predicates, this.reifiedRelationships);
+    if ((_includeMap_98).booleanValue()) {
+      System.out.println("+ entities, reifiedRelationships");
+    }
+    Boolean _includeMap_99 = this.<Predicate, ReifiedRelationshipRestriction>includeMap(this.predicates, this.reifiedRelationshipRestrictions);
+    if ((_includeMap_99).booleanValue()) {
+      System.out.println("+ entities, reifiedRelationshipRestrictions");
+    }
+    Boolean _includeMap_100 = this.<Predicate, ForwardProperty>includeMap(this.predicates, this.forwardProperties);
+    if ((_includeMap_100).booleanValue()) {
+      System.out.println("+ entities, forwardProperties");
+    }
+    Boolean _includeMap_101 = this.<Predicate, InverseProperty>includeMap(this.predicates, this.inverseProperties);
+    if ((_includeMap_101).booleanValue()) {
+      System.out.println("+ entities, inverseProperties");
+    }
+    Boolean _includeMap_102 = this.<Predicate, UnreifiedRelationship>includeMap(this.predicates, this.unreifiedRelationships);
+    if ((_includeMap_102).booleanValue()) {
+      System.out.println("+ entities, unreifiedRelationships");
+    }
+    Boolean _includeMap_103 = this.<Predicate, CardinalityRestrictedAspect>includeMap(this.predicates, this.cardinalityRestrictedAspects);
+    if ((_includeMap_103).booleanValue()) {
+      System.out.println("+ entities, cardinalityRestrictedAspects");
+    }
+    Boolean _includeMap_104 = this.<Predicate, CardinalityRestrictedConcept>includeMap(this.predicates, this.cardinalityRestrictedConcepts);
+    if ((_includeMap_104).booleanValue()) {
+      System.out.println("+ entities, cardinalityRestrictedConcepts");
+    }
+    Boolean _includeMap_105 = this.<Predicate, CardinalityRestrictedReifiedRelationship>includeMap(this.predicates, this.cardinalityRestrictedReifiedRelationships);
+    if ((_includeMap_105).booleanValue()) {
+      System.out.println("+ entities, cardinalityRestrictedReifiedRelationships");
+    }
+    Boolean _includeMap_106 = this.<RestrictableRelationship, ForwardProperty>includeMap(this.restrictableRelationships, this.forwardProperties);
+    if ((_includeMap_106).booleanValue()) {
+      System.out.println("+ entities, forwardProperties");
+    }
+    Boolean _includeMap_107 = this.<RestrictableRelationship, InverseProperty>includeMap(this.restrictableRelationships, this.inverseProperties);
+    if ((_includeMap_107).booleanValue()) {
+      System.out.println("+ entities, inverseProperties");
+    }
+    Boolean _includeMap_108 = this.<RestrictableRelationship, UnreifiedRelationship>includeMap(this.restrictableRelationships, this.unreifiedRelationships);
+    if ((_includeMap_108).booleanValue()) {
+      System.out.println("+ entities, unreifiedRelationships");
+    }
+    Boolean _includeMap_109 = this.<RestrictionStructuredDataPropertyContext, EntityStructuredDataPropertyParticularRestrictionAxiom>includeMap(this.restrictionStructuredDataPropertyContexts, this.entityStructuredDataPropertyParticularRestrictionAxioms);
+    if ((_includeMap_109).booleanValue()) {
+      System.out.println("+ entities, entityStructuredDataPropertyParticularRestrictionAxioms");
+    }
+    Boolean _includeMap_110 = this.<RestrictionStructuredDataPropertyContext, RestrictionStructuredDataPropertyTuple>includeMap(this.restrictionStructuredDataPropertyContexts, this.restrictionStructuredDataPropertyTuples);
+    if ((_includeMap_110).booleanValue()) {
+      System.out.println("+ entities, restrictionStructuredDataPropertyTuples");
+    }
+    Boolean _includeMap_111 = this.<TerminologyBox, TerminologyGraph>includeMap(this.terminologyBoxes, this.terminologyGraphs);
+    if ((_includeMap_111).booleanValue()) {
+      System.out.println("+ entities, terminologyGraphs");
+    }
+    Boolean _includeMap_112 = this.<TerminologyBox, Bundle>includeMap(this.terminologyBoxes, this.bundles);
+    if ((_includeMap_112).booleanValue()) {
+      System.out.println("+ entities, bundles");
+    }
+    Boolean _includeMap_113 = this.<ConceptTreeDisjunction, RootConceptTaxonomyAxiom>includeMap(this.conceptTreeDisjunctions, this.rootConceptTaxonomyAxioms);
+    if ((_includeMap_113).booleanValue()) {
+      System.out.println("+ entities, rootConceptTaxonomyAxioms");
+    }
+    Boolean _includeMap_114 = this.<ConceptTreeDisjunction, AnonymousConceptUnionAxiom>includeMap(this.conceptTreeDisjunctions, this.anonymousConceptUnionAxioms);
+    if ((_includeMap_114).booleanValue()) {
+      System.out.println("+ entities, anonymousConceptUnionAxioms");
+    }
+    Boolean _includeMap_115 = this.<ConceptualEntitySingletonInstance, ConceptInstance>includeMap(this.conceptualEntitySingletonInstances, this.conceptInstances);
+    if ((_includeMap_115).booleanValue()) {
+      System.out.println("+ entities, conceptInstances");
+    }
+    Boolean _includeMap_116 = this.<ConceptualEntitySingletonInstance, ReifiedRelationshipInstance>includeMap(this.conceptualEntitySingletonInstances, this.reifiedRelationshipInstances);
+    if ((_includeMap_116).booleanValue()) {
+      System.out.println("+ entities, reifiedRelationshipInstances");
+    }
+    Boolean _includeMap_117 = this.<SingletonInstanceStructuredDataPropertyContext, SingletonInstanceStructuredDataPropertyValue>includeMap(this.singletonInstanceStructuredDataPropertyContexts, this.singletonInstanceStructuredDataPropertyValues);
+    if ((_includeMap_117).booleanValue()) {
+      System.out.println("+ entities, singletonInstanceStructuredDataPropertyValues");
+    }
+    Boolean _includeMap_118 = this.<SingletonInstanceStructuredDataPropertyContext, StructuredDataPropertyTuple>includeMap(this.singletonInstanceStructuredDataPropertyContexts, this.structuredDataPropertyTuples);
+    if ((_includeMap_118).booleanValue()) {
+      System.out.println("+ entities, structuredDataPropertyTuples");
+    }
+    int iterations = 0;
+    final ArrayList<Boolean> progress = new ArrayList<Boolean>(1);
+    final ArrayList<Boolean> allDone = new ArrayList<Boolean>(1);
+    progress.add(Boolean.valueOf(false));
+    allDone.add(Boolean.valueOf(false));
+    do {
+      {
+        progress.set(0, Boolean.valueOf(false));
+        allDone.set(0, Boolean.valueOf(true));
+        int _iterations = iterations;
+        iterations = (_iterations + 1);
+        System.out.println(("Resolve iterations: " + Integer.valueOf(iterations)));
+        this.resolveAnnotationProperties(rs, progress, allDone);
+        this.resolveAspects(rs, progress, allDone);
+        this.resolveConcepts(rs, progress, allDone);
+        this.resolveScalars(rs, progress, allDone);
+        this.resolveStructures(rs, progress, allDone);
+        this.resolveConceptDesignationTerminologyAxioms(rs, progress, allDone);
+        this.resolveTerminologyExtensionAxioms(rs, progress, allDone);
+        this.resolveTerminologyNestingAxioms(rs, progress, allDone);
+        this.resolveBundledTerminologyAxioms(rs, progress, allDone);
+        this.resolveDescriptionBoxExtendsClosedWorldDefinitions(rs, progress, allDone);
+        this.resolveDescriptionBoxRefinements(rs, progress, allDone);
+        this.resolveBinaryScalarRestrictions(rs, progress, allDone);
+        this.resolveIRIScalarRestrictions(rs, progress, allDone);
+        this.resolveNumericScalarRestrictions(rs, progress, allDone);
+        this.resolvePlainLiteralScalarRestrictions(rs, progress, allDone);
+        this.resolveScalarOneOfRestrictions(rs, progress, allDone);
+        this.resolveScalarOneOfLiteralAxioms(rs, progress, allDone);
+        this.resolveStringScalarRestrictions(rs, progress, allDone);
+        this.resolveSynonymScalarRestrictions(rs, progress, allDone);
+        this.resolveTimeScalarRestrictions(rs, progress, allDone);
+        this.resolveEntityScalarDataProperties(rs, progress, allDone);
+        this.resolveEntityStructuredDataProperties(rs, progress, allDone);
+        this.resolveScalarDataProperties(rs, progress, allDone);
+        this.resolveStructuredDataProperties(rs, progress, allDone);
+        this.resolveReifiedRelationships(rs, progress, allDone);
+        this.resolveReifiedRelationshipRestrictions(rs, progress, allDone);
+        this.resolveForwardProperties(rs, progress, allDone);
+        this.resolveInverseProperties(rs, progress, allDone);
+        this.resolveUnreifiedRelationships(rs, progress, allDone);
+        this.resolveChainRules(rs, progress, allDone);
+        this.resolveRuleBodySegments(rs, progress, allDone);
+        this.resolveSegmentPredicates(rs, progress, allDone);
+        this.resolveEntityExistentialRestrictionAxioms(rs, progress, allDone);
+        this.resolveEntityUniversalRestrictionAxioms(rs, progress, allDone);
+        this.resolveEntityScalarDataPropertyExistentialRestrictionAxioms(rs, progress, allDone);
+        this.resolveEntityScalarDataPropertyParticularRestrictionAxioms(rs, progress, allDone);
+        this.resolveEntityScalarDataPropertyUniversalRestrictionAxioms(rs, progress, allDone);
+        this.resolveEntityStructuredDataPropertyParticularRestrictionAxioms(rs, progress, allDone);
+        this.resolveRestrictionStructuredDataPropertyTuples(rs, progress, allDone);
+        this.resolveRestrictionScalarDataPropertyValues(rs, progress, allDone);
+        this.resolveAspectSpecializationAxioms(rs, progress, allDone);
+        this.resolveConceptSpecializationAxioms(rs, progress, allDone);
+        this.resolveReifiedRelationshipSpecializationAxioms(rs, progress, allDone);
+        this.resolveSubDataPropertyOfAxioms(rs, progress, allDone);
+        this.resolveSubObjectPropertyOfAxioms(rs, progress, allDone);
+        this.resolveRootConceptTaxonomyAxioms(rs, progress, allDone);
+        this.resolveAnonymousConceptUnionAxioms(rs, progress, allDone);
+        this.resolveSpecificDisjointConceptAxioms(rs, progress, allDone);
+        this.resolveConceptInstances(rs, progress, allDone);
+        this.resolveReifiedRelationshipInstances(rs, progress, allDone);
+        this.resolveReifiedRelationshipInstanceDomains(rs, progress, allDone);
+        this.resolveReifiedRelationshipInstanceRanges(rs, progress, allDone);
+        this.resolveUnreifiedRelationshipInstanceTuples(rs, progress, allDone);
+        this.resolveSingletonInstanceStructuredDataPropertyValues(rs, progress, allDone);
+        this.resolveSingletonInstanceScalarDataPropertyValues(rs, progress, allDone);
+        this.resolveStructuredDataPropertyTuples(rs, progress, allDone);
+        this.resolveScalarDataPropertyValues(rs, progress, allDone);
+        this.resolveAnnotationPropertyValues(rs, progress, allDone);
+        this.resolveCardinalityRestrictedAspects(rs, progress, allDone);
+        this.resolveCardinalityRestrictedConcepts(rs, progress, allDone);
+        this.resolveCardinalityRestrictedReifiedRelationships(rs, progress, allDone);
+        this.resolveInstanceRelationshipExistentialRangeRestrictions(rs, progress, allDone);
+        this.resolveInstanceRelationshipUniversalRangeRestrictions(rs, progress, allDone);
+        this.resolveInstanceRelationshipValueRestrictions(rs, progress, allDone);
+      }
+    } while((((!(allDone.get(0)).booleanValue()) && (!(progress.get(0)).booleanValue())) && (iterations < 10)));
+    if (((!(allDone.get(0)).booleanValue()) && (!(progress.get(0)).booleanValue()))) {
+      throw new IllegalArgumentException((("Failed to resolve cross references within " + Integer.valueOf(iterations)) + " iterations."));
+    }
+    long _currentTimeMillis = System.currentTimeMillis();
+    final long dt = (t0 - _currentTimeMillis);
+    final long ms = (dt % 1000);
+    final long s = (dt / 1000);
+    URI _uRI_1 = r.getURI();
+    String _plus_1 = ("Resolve: " + _uRI_1);
+    String _plus_2 = (_plus_1 + " in ");
+    String _plus_3 = (_plus_2 + Long.valueOf(s));
+    String _plus_4 = (_plus_3 + "s, ");
+    String _plus_5 = (_plus_4 + Long.valueOf(ms));
+    String _plus_6 = (_plus_5 + "ms");
+    System.out.println(_plus_6);
   }
   
   protected void resolveAnnotationProperties(final ResourceSet rs, final ArrayList<Boolean> progress, final ArrayList<Boolean> allDone) {
@@ -7386,14 +8316,124 @@ public class OMLSpecificationTables {
     this.cardinalityRestrictedReifiedRelationships.forEach(_function);
   }
   
+  protected void resolveInstanceRelationshipExistentialRangeRestrictions(final ResourceSet rs, final ArrayList<Boolean> progress, final ArrayList<Boolean> allDone) {
+    final BiConsumer<String, Pair<InstanceRelationshipExistentialRangeRestriction, Map<String, String>>> _function = (String uuid, Pair<InstanceRelationshipExistentialRangeRestriction, Map<String, String>> oml_kv) -> {
+      final InstanceRelationshipExistentialRangeRestriction oml = oml_kv.getKey();
+      final Map<String, String> kv = oml_kv.getValue();
+      boolean _isEmpty = kv.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        final String descriptionBoxXRef = kv.get("descriptionBoxUUID");
+        final Pair<DescriptionBox, Map<String, String>> descriptionBoxPair = this.descriptionBoxes.get(descriptionBoxXRef);
+        if ((null != descriptionBoxPair)) {
+          oml.setDescriptionBox(descriptionBoxPair.getKey());
+          kv.remove("descriptionBoxUUID");
+          progress.set(0, Boolean.valueOf(true));
+        }
+        final String domainXRef = kv.get("domainUUID");
+        final Pair<ConceptualEntitySingletonInstance, Map<String, String>> domainPair = this.conceptualEntitySingletonInstances.get(domainXRef);
+        if ((null != domainPair)) {
+          oml.setDomain(domainPair.getKey());
+          kv.remove("domainUUID");
+          progress.set(0, Boolean.valueOf(true));
+        }
+        final String rangeXRef = kv.get("rangeUUID");
+        final Pair<Entity, Map<String, String>> rangePair = this.entities.get(rangeXRef);
+        if ((null != rangePair)) {
+          oml.setRange(rangePair.getKey());
+          kv.remove("rangeUUID");
+          progress.set(0, Boolean.valueOf(true));
+        }
+        final String restrictedRelationshipXRef = kv.get("restrictedRelationshipUUID");
+        final Pair<RestrictableRelationship, Map<String, String>> restrictedRelationshipPair = this.restrictableRelationships.get(restrictedRelationshipXRef);
+        if ((null != restrictedRelationshipPair)) {
+          oml.setRestrictedRelationship(restrictedRelationshipPair.getKey());
+          kv.remove("restrictedRelationshipUUID");
+          progress.set(0, Boolean.valueOf(true));
+        }
+      }
+    };
+    this.instanceRelationshipExistentialRangeRestrictions.forEach(_function);
+  }
+  
+  protected void resolveInstanceRelationshipUniversalRangeRestrictions(final ResourceSet rs, final ArrayList<Boolean> progress, final ArrayList<Boolean> allDone) {
+    final BiConsumer<String, Pair<InstanceRelationshipUniversalRangeRestriction, Map<String, String>>> _function = (String uuid, Pair<InstanceRelationshipUniversalRangeRestriction, Map<String, String>> oml_kv) -> {
+      final InstanceRelationshipUniversalRangeRestriction oml = oml_kv.getKey();
+      final Map<String, String> kv = oml_kv.getValue();
+      boolean _isEmpty = kv.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        final String descriptionBoxXRef = kv.get("descriptionBoxUUID");
+        final Pair<DescriptionBox, Map<String, String>> descriptionBoxPair = this.descriptionBoxes.get(descriptionBoxXRef);
+        if ((null != descriptionBoxPair)) {
+          oml.setDescriptionBox(descriptionBoxPair.getKey());
+          kv.remove("descriptionBoxUUID");
+          progress.set(0, Boolean.valueOf(true));
+        }
+        final String domainXRef = kv.get("domainUUID");
+        final Pair<ConceptualEntitySingletonInstance, Map<String, String>> domainPair = this.conceptualEntitySingletonInstances.get(domainXRef);
+        if ((null != domainPair)) {
+          oml.setDomain(domainPair.getKey());
+          kv.remove("domainUUID");
+          progress.set(0, Boolean.valueOf(true));
+        }
+        final String rangeXRef = kv.get("rangeUUID");
+        final Pair<Entity, Map<String, String>> rangePair = this.entities.get(rangeXRef);
+        if ((null != rangePair)) {
+          oml.setRange(rangePair.getKey());
+          kv.remove("rangeUUID");
+          progress.set(0, Boolean.valueOf(true));
+        }
+        final String restrictedRelationshipXRef = kv.get("restrictedRelationshipUUID");
+        final Pair<RestrictableRelationship, Map<String, String>> restrictedRelationshipPair = this.restrictableRelationships.get(restrictedRelationshipXRef);
+        if ((null != restrictedRelationshipPair)) {
+          oml.setRestrictedRelationship(restrictedRelationshipPair.getKey());
+          kv.remove("restrictedRelationshipUUID");
+          progress.set(0, Boolean.valueOf(true));
+        }
+      }
+    };
+    this.instanceRelationshipUniversalRangeRestrictions.forEach(_function);
+  }
+  
   protected void resolveInstanceRelationshipValueRestrictions(final ResourceSet rs, final ArrayList<Boolean> progress, final ArrayList<Boolean> allDone) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nInstanceRelationshipValueRestriction cannot be resolved to a type."
-      + "\nThe field OMLSpecificationTables.instanceRelationshipValueRestrictions refers to the missing type InstanceRelationshipValueRestriction"
-      + "\ndescriptionBox cannot be resolved"
-      + "\ndomain cannot be resolved"
-      + "\nrange cannot be resolved"
-      + "\nrestrictedRelationship cannot be resolved");
+    final BiConsumer<String, Pair<InstanceRelationshipValueRestriction, Map<String, String>>> _function = (String uuid, Pair<InstanceRelationshipValueRestriction, Map<String, String>> oml_kv) -> {
+      final InstanceRelationshipValueRestriction oml = oml_kv.getKey();
+      final Map<String, String> kv = oml_kv.getValue();
+      boolean _isEmpty = kv.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        final String descriptionBoxXRef = kv.get("descriptionBoxUUID");
+        final Pair<DescriptionBox, Map<String, String>> descriptionBoxPair = this.descriptionBoxes.get(descriptionBoxXRef);
+        if ((null != descriptionBoxPair)) {
+          oml.setDescriptionBox(descriptionBoxPair.getKey());
+          kv.remove("descriptionBoxUUID");
+          progress.set(0, Boolean.valueOf(true));
+        }
+        final String domainXRef = kv.get("domainUUID");
+        final Pair<ConceptualEntitySingletonInstance, Map<String, String>> domainPair = this.conceptualEntitySingletonInstances.get(domainXRef);
+        if ((null != domainPair)) {
+          oml.setDomain(domainPair.getKey());
+          kv.remove("domainUUID");
+          progress.set(0, Boolean.valueOf(true));
+        }
+        final String rangeXRef = kv.get("rangeUUID");
+        final Pair<ConceptualEntitySingletonInstance, Map<String, String>> rangePair = this.conceptualEntitySingletonInstances.get(rangeXRef);
+        if ((null != rangePair)) {
+          oml.setRange(rangePair.getKey());
+          kv.remove("rangeUUID");
+          progress.set(0, Boolean.valueOf(true));
+        }
+        final String restrictedRelationshipXRef = kv.get("restrictedRelationshipUUID");
+        final Pair<RestrictableRelationship, Map<String, String>> restrictedRelationshipPair = this.restrictableRelationships.get(restrictedRelationshipXRef);
+        if ((null != restrictedRelationshipPair)) {
+          oml.setRestrictedRelationship(restrictedRelationshipPair.getKey());
+          kv.remove("restrictedRelationshipUUID");
+          progress.set(0, Boolean.valueOf(true));
+        }
+      }
+    };
+    this.instanceRelationshipValueRestrictions.forEach(_function);
   }
   
   protected Resource loadOMLZipResource(final ResourceSet rs, final URI uri) {
@@ -7529,15 +8569,822 @@ public class OMLSpecificationTables {
   }
   
   public void includeModule(final gov.nasa.jpl.imce.oml.model.common.Module m) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nInstanceRelationshipValueRestriction cannot be resolved to a type."
-      + "\nInstanceRelationshipValueRestriction cannot be resolved to a type."
-      + "\nThe method uuid() is undefined for the type EObject"
-      + "\nThe method uuid() is undefined for the type EObject"
-      + "\nType mismatch: cannot convert from EObject to LogicalElement"
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nThe field OMLSpecificationTables.instanceRelationshipValueRestrictions refers to the missing type InstanceRelationshipValueRestriction"
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nThe field OMLSpecificationTables.instanceRelationshipValueRestrictions refers to the missing type InstanceRelationshipValueRestriction");
+    if ((null != m)) {
+      final String iri = m.iri();
+      final String uuid = m.uuid();
+      this.iri2module.put(iri, m);
+      boolean _matched = false;
+      if (m instanceof TerminologyGraph) {
+        _matched=true;
+        Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+        Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(m, _emptyMap);
+        this.logicalElements.put(uuid, _pair);
+        Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+        Pair<TerminologyGraph, Map<String, String>> _pair_1 = new Pair<TerminologyGraph, Map<String, String>>(((TerminologyGraph)m), _emptyMap_1);
+        this.terminologyGraphs.put(uuid, _pair_1);
+        Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+        Pair<TerminologyBox, Map<String, String>> _pair_2 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)m), _emptyMap_2);
+        this.terminologyBoxes.put(uuid, _pair_2);
+        Map<String, String> _emptyMap_3 = Collections.<String, String>emptyMap();
+        Pair<TerminologyBox, Map<String, String>> _pair_3 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)m), _emptyMap_3);
+        this.terminologyBoxes.put(iri, _pair_3);
+      }
+      if (!_matched) {
+        if (m instanceof Bundle) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(m, _emptyMap);
+          this.logicalElements.put(uuid, _pair);
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<Bundle, Map<String, String>> _pair_1 = new Pair<Bundle, Map<String, String>>(((Bundle)m), _emptyMap_1);
+          this.bundles.put(uuid, _pair_1);
+          Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+          Pair<TerminologyBox, Map<String, String>> _pair_2 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)m), _emptyMap_2);
+          this.terminologyBoxes.put(uuid, _pair_2);
+          Map<String, String> _emptyMap_3 = Collections.<String, String>emptyMap();
+          Pair<TerminologyBox, Map<String, String>> _pair_3 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)m), _emptyMap_3);
+          this.terminologyBoxes.put(iri, _pair_3);
+        }
+      }
+      if (!_matched) {
+        if (m instanceof DescriptionBox) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(m, _emptyMap);
+          this.logicalElements.put(uuid, _pair);
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<DescriptionBox, Map<String, String>> _pair_1 = new Pair<DescriptionBox, Map<String, String>>(((DescriptionBox)m), _emptyMap_1);
+          this.descriptionBoxes.put(uuid, _pair_1);
+          Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+          Pair<DescriptionBox, Map<String, String>> _pair_2 = new Pair<DescriptionBox, Map<String, String>>(((DescriptionBox)m), _emptyMap_2);
+          this.descriptionBoxes.put(iri, _pair_2);
+        }
+      }
+      Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+      Pair<gov.nasa.jpl.imce.oml.model.common.Module, Map<String, String>> _pair = new Pair<gov.nasa.jpl.imce.oml.model.common.Module, Map<String, String>>(m, _emptyMap);
+      this.modules.put(uuid, _pair);
+      final Procedure1<EObject> _function = (EObject e) -> {
+        boolean _matched_1 = false;
+        if (e instanceof AnnotationProperty) {
+          _matched_1=true;
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          final Pair<AnnotationProperty, Map<String, String>> pair = new Pair<AnnotationProperty, Map<String, String>>(((AnnotationProperty)e), _emptyMap_1);
+          this.annotationProperties.put(((AnnotationProperty)e).uuid(), pair);
+        }
+        if (!_matched_1) {
+          if (e instanceof Aspect) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<Aspect, Map<String, String>> pair = new Pair<Aspect, Map<String, String>>(((Aspect)e), _emptyMap_1);
+            this.aspects.put(((Aspect)e).uuid(), pair);
+            String _uuid = ((Aspect)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof Concept) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<Concept, Map<String, String>> pair = new Pair<Concept, Map<String, String>>(((Concept)e), _emptyMap_1);
+            this.concepts.put(((Concept)e).uuid(), pair);
+            String _uuid = ((Concept)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof Scalar) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<Scalar, Map<String, String>> pair = new Pair<Scalar, Map<String, String>>(((Scalar)e), _emptyMap_1);
+            this.scalars.put(((Scalar)e).uuid(), pair);
+            String _uuid = ((Scalar)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof Structure) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<Structure, Map<String, String>> pair = new Pair<Structure, Map<String, String>>(((Structure)e), _emptyMap_1);
+            this.structures.put(((Structure)e).uuid(), pair);
+            String _uuid = ((Structure)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ConceptDesignationTerminologyAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ConceptDesignationTerminologyAxiom, Map<String, String>> pair = new Pair<ConceptDesignationTerminologyAxiom, Map<String, String>>(((ConceptDesignationTerminologyAxiom)e), _emptyMap_1);
+            this.conceptDesignationTerminologyAxioms.put(((ConceptDesignationTerminologyAxiom)e).uuid(), pair);
+            String _uuid = ((ConceptDesignationTerminologyAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof TerminologyExtensionAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<TerminologyExtensionAxiom, Map<String, String>> pair = new Pair<TerminologyExtensionAxiom, Map<String, String>>(((TerminologyExtensionAxiom)e), _emptyMap_1);
+            this.terminologyExtensionAxioms.put(((TerminologyExtensionAxiom)e).uuid(), pair);
+            String _uuid = ((TerminologyExtensionAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof TerminologyNestingAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<TerminologyNestingAxiom, Map<String, String>> pair = new Pair<TerminologyNestingAxiom, Map<String, String>>(((TerminologyNestingAxiom)e), _emptyMap_1);
+            this.terminologyNestingAxioms.put(((TerminologyNestingAxiom)e).uuid(), pair);
+            String _uuid = ((TerminologyNestingAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof BundledTerminologyAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<BundledTerminologyAxiom, Map<String, String>> pair = new Pair<BundledTerminologyAxiom, Map<String, String>>(((BundledTerminologyAxiom)e), _emptyMap_1);
+            this.bundledTerminologyAxioms.put(((BundledTerminologyAxiom)e).uuid(), pair);
+            String _uuid = ((BundledTerminologyAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof DescriptionBoxExtendsClosedWorldDefinitions) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>> pair = new Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>>(((DescriptionBoxExtendsClosedWorldDefinitions)e), _emptyMap_1);
+            this.descriptionBoxExtendsClosedWorldDefinitions.put(((DescriptionBoxExtendsClosedWorldDefinitions)e).uuid(), pair);
+            String _uuid = ((DescriptionBoxExtendsClosedWorldDefinitions)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof DescriptionBoxRefinement) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<DescriptionBoxRefinement, Map<String, String>> pair = new Pair<DescriptionBoxRefinement, Map<String, String>>(((DescriptionBoxRefinement)e), _emptyMap_1);
+            this.descriptionBoxRefinements.put(((DescriptionBoxRefinement)e).uuid(), pair);
+            String _uuid = ((DescriptionBoxRefinement)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof BinaryScalarRestriction) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<BinaryScalarRestriction, Map<String, String>> pair = new Pair<BinaryScalarRestriction, Map<String, String>>(((BinaryScalarRestriction)e), _emptyMap_1);
+            this.binaryScalarRestrictions.put(((BinaryScalarRestriction)e).uuid(), pair);
+            String _uuid = ((BinaryScalarRestriction)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof IRIScalarRestriction) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<IRIScalarRestriction, Map<String, String>> pair = new Pair<IRIScalarRestriction, Map<String, String>>(((IRIScalarRestriction)e), _emptyMap_1);
+            this.iriScalarRestrictions.put(((IRIScalarRestriction)e).uuid(), pair);
+            String _uuid = ((IRIScalarRestriction)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof NumericScalarRestriction) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<NumericScalarRestriction, Map<String, String>> pair = new Pair<NumericScalarRestriction, Map<String, String>>(((NumericScalarRestriction)e), _emptyMap_1);
+            this.numericScalarRestrictions.put(((NumericScalarRestriction)e).uuid(), pair);
+            String _uuid = ((NumericScalarRestriction)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof PlainLiteralScalarRestriction) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<PlainLiteralScalarRestriction, Map<String, String>> pair = new Pair<PlainLiteralScalarRestriction, Map<String, String>>(((PlainLiteralScalarRestriction)e), _emptyMap_1);
+            this.plainLiteralScalarRestrictions.put(((PlainLiteralScalarRestriction)e).uuid(), pair);
+            String _uuid = ((PlainLiteralScalarRestriction)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ScalarOneOfRestriction) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ScalarOneOfRestriction, Map<String, String>> pair = new Pair<ScalarOneOfRestriction, Map<String, String>>(((ScalarOneOfRestriction)e), _emptyMap_1);
+            this.scalarOneOfRestrictions.put(((ScalarOneOfRestriction)e).uuid(), pair);
+            String _uuid = ((ScalarOneOfRestriction)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ScalarOneOfLiteralAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ScalarOneOfLiteralAxiom, Map<String, String>> pair = new Pair<ScalarOneOfLiteralAxiom, Map<String, String>>(((ScalarOneOfLiteralAxiom)e), _emptyMap_1);
+            this.scalarOneOfLiteralAxioms.put(((ScalarOneOfLiteralAxiom)e).uuid(), pair);
+            String _uuid = ((ScalarOneOfLiteralAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof StringScalarRestriction) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<StringScalarRestriction, Map<String, String>> pair = new Pair<StringScalarRestriction, Map<String, String>>(((StringScalarRestriction)e), _emptyMap_1);
+            this.stringScalarRestrictions.put(((StringScalarRestriction)e).uuid(), pair);
+            String _uuid = ((StringScalarRestriction)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof SynonymScalarRestriction) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<SynonymScalarRestriction, Map<String, String>> pair = new Pair<SynonymScalarRestriction, Map<String, String>>(((SynonymScalarRestriction)e), _emptyMap_1);
+            this.synonymScalarRestrictions.put(((SynonymScalarRestriction)e).uuid(), pair);
+            String _uuid = ((SynonymScalarRestriction)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof TimeScalarRestriction) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<TimeScalarRestriction, Map<String, String>> pair = new Pair<TimeScalarRestriction, Map<String, String>>(((TimeScalarRestriction)e), _emptyMap_1);
+            this.timeScalarRestrictions.put(((TimeScalarRestriction)e).uuid(), pair);
+            String _uuid = ((TimeScalarRestriction)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof EntityScalarDataProperty) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<EntityScalarDataProperty, Map<String, String>> pair = new Pair<EntityScalarDataProperty, Map<String, String>>(((EntityScalarDataProperty)e), _emptyMap_1);
+            this.entityScalarDataProperties.put(((EntityScalarDataProperty)e).uuid(), pair);
+            String _uuid = ((EntityScalarDataProperty)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof EntityStructuredDataProperty) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<EntityStructuredDataProperty, Map<String, String>> pair = new Pair<EntityStructuredDataProperty, Map<String, String>>(((EntityStructuredDataProperty)e), _emptyMap_1);
+            this.entityStructuredDataProperties.put(((EntityStructuredDataProperty)e).uuid(), pair);
+            String _uuid = ((EntityStructuredDataProperty)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ScalarDataProperty) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ScalarDataProperty, Map<String, String>> pair = new Pair<ScalarDataProperty, Map<String, String>>(((ScalarDataProperty)e), _emptyMap_1);
+            this.scalarDataProperties.put(((ScalarDataProperty)e).uuid(), pair);
+            String _uuid = ((ScalarDataProperty)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof StructuredDataProperty) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<StructuredDataProperty, Map<String, String>> pair = new Pair<StructuredDataProperty, Map<String, String>>(((StructuredDataProperty)e), _emptyMap_1);
+            this.structuredDataProperties.put(((StructuredDataProperty)e).uuid(), pair);
+            String _uuid = ((StructuredDataProperty)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ReifiedRelationship) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ReifiedRelationship, Map<String, String>> pair = new Pair<ReifiedRelationship, Map<String, String>>(((ReifiedRelationship)e), _emptyMap_1);
+            this.reifiedRelationships.put(((ReifiedRelationship)e).uuid(), pair);
+            String _uuid = ((ReifiedRelationship)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ReifiedRelationshipRestriction) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ReifiedRelationshipRestriction, Map<String, String>> pair = new Pair<ReifiedRelationshipRestriction, Map<String, String>>(((ReifiedRelationshipRestriction)e), _emptyMap_1);
+            this.reifiedRelationshipRestrictions.put(((ReifiedRelationshipRestriction)e).uuid(), pair);
+            String _uuid = ((ReifiedRelationshipRestriction)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ForwardProperty) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ForwardProperty, Map<String, String>> pair = new Pair<ForwardProperty, Map<String, String>>(((ForwardProperty)e), _emptyMap_1);
+            this.forwardProperties.put(((ForwardProperty)e).uuid(), pair);
+            String _uuid = ((ForwardProperty)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof InverseProperty) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<InverseProperty, Map<String, String>> pair = new Pair<InverseProperty, Map<String, String>>(((InverseProperty)e), _emptyMap_1);
+            this.inverseProperties.put(((InverseProperty)e).uuid(), pair);
+            String _uuid = ((InverseProperty)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof UnreifiedRelationship) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<UnreifiedRelationship, Map<String, String>> pair = new Pair<UnreifiedRelationship, Map<String, String>>(((UnreifiedRelationship)e), _emptyMap_1);
+            this.unreifiedRelationships.put(((UnreifiedRelationship)e).uuid(), pair);
+            String _uuid = ((UnreifiedRelationship)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ChainRule) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ChainRule, Map<String, String>> pair = new Pair<ChainRule, Map<String, String>>(((ChainRule)e), _emptyMap_1);
+            this.chainRules.put(((ChainRule)e).uuid(), pair);
+            String _uuid = ((ChainRule)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof RuleBodySegment) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<RuleBodySegment, Map<String, String>> pair = new Pair<RuleBodySegment, Map<String, String>>(((RuleBodySegment)e), _emptyMap_1);
+            this.ruleBodySegments.put(((RuleBodySegment)e).uuid(), pair);
+            String _uuid = ((RuleBodySegment)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof SegmentPredicate) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<SegmentPredicate, Map<String, String>> pair = new Pair<SegmentPredicate, Map<String, String>>(((SegmentPredicate)e), _emptyMap_1);
+            this.segmentPredicates.put(((SegmentPredicate)e).uuid(), pair);
+            String _uuid = ((SegmentPredicate)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof EntityExistentialRestrictionAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<EntityExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityExistentialRestrictionAxiom, Map<String, String>>(((EntityExistentialRestrictionAxiom)e), _emptyMap_1);
+            this.entityExistentialRestrictionAxioms.put(((EntityExistentialRestrictionAxiom)e).uuid(), pair);
+            String _uuid = ((EntityExistentialRestrictionAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof EntityUniversalRestrictionAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<EntityUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityUniversalRestrictionAxiom, Map<String, String>>(((EntityUniversalRestrictionAxiom)e), _emptyMap_1);
+            this.entityUniversalRestrictionAxioms.put(((EntityUniversalRestrictionAxiom)e).uuid(), pair);
+            String _uuid = ((EntityUniversalRestrictionAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof EntityScalarDataPropertyExistentialRestrictionAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyExistentialRestrictionAxiom)e), _emptyMap_1);
+            this.entityScalarDataPropertyExistentialRestrictionAxioms.put(((EntityScalarDataPropertyExistentialRestrictionAxiom)e).uuid(), pair);
+            String _uuid = ((EntityScalarDataPropertyExistentialRestrictionAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof EntityScalarDataPropertyParticularRestrictionAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyParticularRestrictionAxiom)e), _emptyMap_1);
+            this.entityScalarDataPropertyParticularRestrictionAxioms.put(((EntityScalarDataPropertyParticularRestrictionAxiom)e).uuid(), pair);
+            String _uuid = ((EntityScalarDataPropertyParticularRestrictionAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof EntityScalarDataPropertyUniversalRestrictionAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyUniversalRestrictionAxiom)e), _emptyMap_1);
+            this.entityScalarDataPropertyUniversalRestrictionAxioms.put(((EntityScalarDataPropertyUniversalRestrictionAxiom)e).uuid(), pair);
+            String _uuid = ((EntityScalarDataPropertyUniversalRestrictionAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof EntityStructuredDataPropertyParticularRestrictionAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>> pair = new Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>(((EntityStructuredDataPropertyParticularRestrictionAxiom)e), _emptyMap_1);
+            this.entityStructuredDataPropertyParticularRestrictionAxioms.put(((EntityStructuredDataPropertyParticularRestrictionAxiom)e).uuid(), pair);
+            String _uuid = ((EntityStructuredDataPropertyParticularRestrictionAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof RestrictionStructuredDataPropertyTuple) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>> pair = new Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>(((RestrictionStructuredDataPropertyTuple)e), _emptyMap_1);
+            this.restrictionStructuredDataPropertyTuples.put(((RestrictionStructuredDataPropertyTuple)e).uuid(), pair);
+            String _uuid = ((RestrictionStructuredDataPropertyTuple)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof RestrictionScalarDataPropertyValue) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<RestrictionScalarDataPropertyValue, Map<String, String>> pair = new Pair<RestrictionScalarDataPropertyValue, Map<String, String>>(((RestrictionScalarDataPropertyValue)e), _emptyMap_1);
+            this.restrictionScalarDataPropertyValues.put(((RestrictionScalarDataPropertyValue)e).uuid(), pair);
+            String _uuid = ((RestrictionScalarDataPropertyValue)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof AspectSpecializationAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<AspectSpecializationAxiom, Map<String, String>> pair = new Pair<AspectSpecializationAxiom, Map<String, String>>(((AspectSpecializationAxiom)e), _emptyMap_1);
+            this.aspectSpecializationAxioms.put(((AspectSpecializationAxiom)e).uuid(), pair);
+            String _uuid = ((AspectSpecializationAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ConceptSpecializationAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ConceptSpecializationAxiom, Map<String, String>> pair = new Pair<ConceptSpecializationAxiom, Map<String, String>>(((ConceptSpecializationAxiom)e), _emptyMap_1);
+            this.conceptSpecializationAxioms.put(((ConceptSpecializationAxiom)e).uuid(), pair);
+            String _uuid = ((ConceptSpecializationAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ReifiedRelationshipSpecializationAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>> pair = new Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>(((ReifiedRelationshipSpecializationAxiom)e), _emptyMap_1);
+            this.reifiedRelationshipSpecializationAxioms.put(((ReifiedRelationshipSpecializationAxiom)e).uuid(), pair);
+            String _uuid = ((ReifiedRelationshipSpecializationAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof SubDataPropertyOfAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<SubDataPropertyOfAxiom, Map<String, String>> pair = new Pair<SubDataPropertyOfAxiom, Map<String, String>>(((SubDataPropertyOfAxiom)e), _emptyMap_1);
+            this.subDataPropertyOfAxioms.put(((SubDataPropertyOfAxiom)e).uuid(), pair);
+            String _uuid = ((SubDataPropertyOfAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof SubObjectPropertyOfAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<SubObjectPropertyOfAxiom, Map<String, String>> pair = new Pair<SubObjectPropertyOfAxiom, Map<String, String>>(((SubObjectPropertyOfAxiom)e), _emptyMap_1);
+            this.subObjectPropertyOfAxioms.put(((SubObjectPropertyOfAxiom)e).uuid(), pair);
+            String _uuid = ((SubObjectPropertyOfAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof RootConceptTaxonomyAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<RootConceptTaxonomyAxiom, Map<String, String>> pair = new Pair<RootConceptTaxonomyAxiom, Map<String, String>>(((RootConceptTaxonomyAxiom)e), _emptyMap_1);
+            this.rootConceptTaxonomyAxioms.put(((RootConceptTaxonomyAxiom)e).uuid(), pair);
+            String _uuid = ((RootConceptTaxonomyAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof AnonymousConceptUnionAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<AnonymousConceptUnionAxiom, Map<String, String>> pair = new Pair<AnonymousConceptUnionAxiom, Map<String, String>>(((AnonymousConceptUnionAxiom)e), _emptyMap_1);
+            this.anonymousConceptUnionAxioms.put(((AnonymousConceptUnionAxiom)e).uuid(), pair);
+            String _uuid = ((AnonymousConceptUnionAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof SpecificDisjointConceptAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<SpecificDisjointConceptAxiom, Map<String, String>> pair = new Pair<SpecificDisjointConceptAxiom, Map<String, String>>(((SpecificDisjointConceptAxiom)e), _emptyMap_1);
+            this.specificDisjointConceptAxioms.put(((SpecificDisjointConceptAxiom)e).uuid(), pair);
+            String _uuid = ((SpecificDisjointConceptAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ConceptInstance) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ConceptInstance, Map<String, String>> pair = new Pair<ConceptInstance, Map<String, String>>(((ConceptInstance)e), _emptyMap_1);
+            this.conceptInstances.put(((ConceptInstance)e).uuid(), pair);
+            String _uuid = ((ConceptInstance)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ReifiedRelationshipInstance) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ReifiedRelationshipInstance, Map<String, String>> pair = new Pair<ReifiedRelationshipInstance, Map<String, String>>(((ReifiedRelationshipInstance)e), _emptyMap_1);
+            this.reifiedRelationshipInstances.put(((ReifiedRelationshipInstance)e).uuid(), pair);
+            String _uuid = ((ReifiedRelationshipInstance)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ReifiedRelationshipInstanceDomain) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ReifiedRelationshipInstanceDomain, Map<String, String>> pair = new Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>(((ReifiedRelationshipInstanceDomain)e), _emptyMap_1);
+            this.reifiedRelationshipInstanceDomains.put(((ReifiedRelationshipInstanceDomain)e).uuid(), pair);
+            String _uuid = ((ReifiedRelationshipInstanceDomain)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ReifiedRelationshipInstanceRange) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ReifiedRelationshipInstanceRange, Map<String, String>> pair = new Pair<ReifiedRelationshipInstanceRange, Map<String, String>>(((ReifiedRelationshipInstanceRange)e), _emptyMap_1);
+            this.reifiedRelationshipInstanceRanges.put(((ReifiedRelationshipInstanceRange)e).uuid(), pair);
+            String _uuid = ((ReifiedRelationshipInstanceRange)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof UnreifiedRelationshipInstanceTuple) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>> pair = new Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>(((UnreifiedRelationshipInstanceTuple)e), _emptyMap_1);
+            this.unreifiedRelationshipInstanceTuples.put(((UnreifiedRelationshipInstanceTuple)e).uuid(), pair);
+            String _uuid = ((UnreifiedRelationshipInstanceTuple)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof SingletonInstanceStructuredDataPropertyValue) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>> pair = new Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>(((SingletonInstanceStructuredDataPropertyValue)e), _emptyMap_1);
+            this.singletonInstanceStructuredDataPropertyValues.put(((SingletonInstanceStructuredDataPropertyValue)e).uuid(), pair);
+            String _uuid = ((SingletonInstanceStructuredDataPropertyValue)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof SingletonInstanceScalarDataPropertyValue) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>> pair = new Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>(((SingletonInstanceScalarDataPropertyValue)e), _emptyMap_1);
+            this.singletonInstanceScalarDataPropertyValues.put(((SingletonInstanceScalarDataPropertyValue)e).uuid(), pair);
+            String _uuid = ((SingletonInstanceScalarDataPropertyValue)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof StructuredDataPropertyTuple) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<StructuredDataPropertyTuple, Map<String, String>> pair = new Pair<StructuredDataPropertyTuple, Map<String, String>>(((StructuredDataPropertyTuple)e), _emptyMap_1);
+            this.structuredDataPropertyTuples.put(((StructuredDataPropertyTuple)e).uuid(), pair);
+            String _uuid = ((StructuredDataPropertyTuple)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ScalarDataPropertyValue) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ScalarDataPropertyValue, Map<String, String>> pair = new Pair<ScalarDataPropertyValue, Map<String, String>>(((ScalarDataPropertyValue)e), _emptyMap_1);
+            this.scalarDataPropertyValues.put(((ScalarDataPropertyValue)e).uuid(), pair);
+            String _uuid = ((ScalarDataPropertyValue)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof AnnotationPropertyValue) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<AnnotationPropertyValue, Map<String, String>> pair = new Pair<AnnotationPropertyValue, Map<String, String>>(((AnnotationPropertyValue)e), _emptyMap_1);
+            this.annotationPropertyValues.put(((AnnotationPropertyValue)e).uuid(), pair);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof CardinalityRestrictedAspect) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<CardinalityRestrictedAspect, Map<String, String>> pair = new Pair<CardinalityRestrictedAspect, Map<String, String>>(((CardinalityRestrictedAspect)e), _emptyMap_1);
+            this.cardinalityRestrictedAspects.put(((CardinalityRestrictedAspect)e).uuid(), pair);
+            String _uuid = ((CardinalityRestrictedAspect)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof CardinalityRestrictedConcept) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<CardinalityRestrictedConcept, Map<String, String>> pair = new Pair<CardinalityRestrictedConcept, Map<String, String>>(((CardinalityRestrictedConcept)e), _emptyMap_1);
+            this.cardinalityRestrictedConcepts.put(((CardinalityRestrictedConcept)e).uuid(), pair);
+            String _uuid = ((CardinalityRestrictedConcept)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof CardinalityRestrictedReifiedRelationship) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<CardinalityRestrictedReifiedRelationship, Map<String, String>> pair = new Pair<CardinalityRestrictedReifiedRelationship, Map<String, String>>(((CardinalityRestrictedReifiedRelationship)e), _emptyMap_1);
+            this.cardinalityRestrictedReifiedRelationships.put(((CardinalityRestrictedReifiedRelationship)e).uuid(), pair);
+            String _uuid = ((CardinalityRestrictedReifiedRelationship)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof InstanceRelationshipExistentialRangeRestriction) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<InstanceRelationshipExistentialRangeRestriction, Map<String, String>> pair = new Pair<InstanceRelationshipExistentialRangeRestriction, Map<String, String>>(((InstanceRelationshipExistentialRangeRestriction)e), _emptyMap_1);
+            this.instanceRelationshipExistentialRangeRestrictions.put(((InstanceRelationshipExistentialRangeRestriction)e).uuid(), pair);
+            String _uuid = ((InstanceRelationshipExistentialRangeRestriction)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof InstanceRelationshipUniversalRangeRestriction) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<InstanceRelationshipUniversalRangeRestriction, Map<String, String>> pair = new Pair<InstanceRelationshipUniversalRangeRestriction, Map<String, String>>(((InstanceRelationshipUniversalRangeRestriction)e), _emptyMap_1);
+            this.instanceRelationshipUniversalRangeRestrictions.put(((InstanceRelationshipUniversalRangeRestriction)e).uuid(), pair);
+            String _uuid = ((InstanceRelationshipUniversalRangeRestriction)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof InstanceRelationshipValueRestriction) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<InstanceRelationshipValueRestriction, Map<String, String>> pair = new Pair<InstanceRelationshipValueRestriction, Map<String, String>>(((InstanceRelationshipValueRestriction)e), _emptyMap_1);
+            this.instanceRelationshipValueRestrictions.put(((InstanceRelationshipValueRestriction)e).uuid(), pair);
+            String _uuid = ((InstanceRelationshipValueRestriction)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid, _pair_1);
+          }
+        }
+      };
+      IteratorExtensions.<EObject>forEach(m.eAllContents(), _function);
+    }
   }
 }

@@ -161,7 +161,7 @@ public interface InstanceRelationshipValueRestriction extends TerminologyInstanc
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.descriptionBoxOfUnreifiedRelationshipInstanceTuple.get(this)'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.descriptionBoxOfInstanceRelationshipValueRestriction.get(this)'"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getDescriptionBox();'"
 	 * @generated
 	 */

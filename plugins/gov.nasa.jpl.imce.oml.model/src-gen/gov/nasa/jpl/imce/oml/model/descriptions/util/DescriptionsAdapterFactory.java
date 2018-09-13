@@ -149,6 +149,14 @@ public class DescriptionsAdapterFactory extends AdapterFactoryImpl {
 				return createInstanceRelationshipValueRestrictionAdapter();
 			}
 			@Override
+			public Adapter caseInstanceRelationshipExistentialRangeRestriction(InstanceRelationshipExistentialRangeRestriction object) {
+				return createInstanceRelationshipExistentialRangeRestrictionAdapter();
+			}
+			@Override
+			public Adapter caseInstanceRelationshipUniversalRangeRestriction(InstanceRelationshipUniversalRangeRestriction object) {
+				return createInstanceRelationshipUniversalRangeRestrictionAdapter();
+			}
+			@Override
 			public Adapter caseReifiedRelationshipInstance(ReifiedRelationshipInstance object) {
 				return createReifiedRelationshipInstanceAdapter();
 			}
@@ -415,6 +423,34 @@ public class DescriptionsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createInstanceRelationshipValueRestrictionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction <em>Instance Relationship Existential Range Restriction</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction
+	 * @generated
+	 */
+	public Adapter createInstanceRelationshipExistentialRangeRestrictionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction <em>Instance Relationship Universal Range Restriction</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction
+	 * @generated
+	 */
+	public Adapter createInstanceRelationshipUniversalRangeRestrictionAdapter() {
 		return null;
 	}
 

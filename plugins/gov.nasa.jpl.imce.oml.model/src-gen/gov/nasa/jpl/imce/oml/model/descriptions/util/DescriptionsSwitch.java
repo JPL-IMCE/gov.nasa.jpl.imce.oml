@@ -266,6 +266,34 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DescriptionsPackage.INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTION: {
+				InstanceRelationshipExistentialRangeRestriction instanceRelationshipExistentialRangeRestriction = (InstanceRelationshipExistentialRangeRestriction)theEObject;
+				T result = caseInstanceRelationshipExistentialRangeRestriction(instanceRelationshipExistentialRangeRestriction);
+				if (result == null) result = caseTerminologyInstanceAssertion(instanceRelationshipExistentialRangeRestriction);
+				if (result == null) result = caseElementCrossReferenceTuple(instanceRelationshipExistentialRangeRestriction);
+				if (result == null) result = caseModuleElement(instanceRelationshipExistentialRangeRestriction);
+				if (result == null) result = caseExtrinsicIdentityKind(instanceRelationshipExistentialRangeRestriction);
+				if (result == null) result = caseCrossReferencableKind(instanceRelationshipExistentialRangeRestriction);
+				if (result == null) result = caseLogicalElement(instanceRelationshipExistentialRangeRestriction);
+				if (result == null) result = caseIdentityKind(instanceRelationshipExistentialRangeRestriction);
+				if (result == null) result = caseCrossReferencabilityKind(instanceRelationshipExistentialRangeRestriction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DescriptionsPackage.INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTION: {
+				InstanceRelationshipUniversalRangeRestriction instanceRelationshipUniversalRangeRestriction = (InstanceRelationshipUniversalRangeRestriction)theEObject;
+				T result = caseInstanceRelationshipUniversalRangeRestriction(instanceRelationshipUniversalRangeRestriction);
+				if (result == null) result = caseTerminologyInstanceAssertion(instanceRelationshipUniversalRangeRestriction);
+				if (result == null) result = caseElementCrossReferenceTuple(instanceRelationshipUniversalRangeRestriction);
+				if (result == null) result = caseModuleElement(instanceRelationshipUniversalRangeRestriction);
+				if (result == null) result = caseExtrinsicIdentityKind(instanceRelationshipUniversalRangeRestriction);
+				if (result == null) result = caseCrossReferencableKind(instanceRelationshipUniversalRangeRestriction);
+				if (result == null) result = caseLogicalElement(instanceRelationshipUniversalRangeRestriction);
+				if (result == null) result = caseIdentityKind(instanceRelationshipUniversalRangeRestriction);
+				if (result == null) result = caseCrossReferencabilityKind(instanceRelationshipUniversalRangeRestriction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE: {
 				ReifiedRelationshipInstance reifiedRelationshipInstance = (ReifiedRelationshipInstance)theEObject;
 				T result = caseReifiedRelationshipInstance(reifiedRelationshipInstance);
@@ -519,6 +547,36 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseInstanceRelationshipValueRestriction(InstanceRelationshipValueRestriction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Instance Relationship Existential Range Restriction</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Instance Relationship Existential Range Restriction</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInstanceRelationshipExistentialRangeRestriction(InstanceRelationshipExistentialRangeRestriction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Instance Relationship Universal Range Restriction</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Instance Relationship Universal Range Restriction</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInstanceRelationshipUniversalRangeRestriction(InstanceRelationshipUniversalRangeRestriction object) {
 		return null;
 	}
 
