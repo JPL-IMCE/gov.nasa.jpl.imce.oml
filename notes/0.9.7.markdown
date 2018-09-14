@@ -1,0 +1,10 @@
+gov.nasa.jpl.imce.oml 0.9.7 adds new features to 0.9.6
+
+## Planned scope & Issues resolved:
+
+### [#301 Add support for OWL HasValue restriction on OML individuals.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/301)
+
+### [#302 Allow OML Rules to refer to either the forward or inverse of an OML ReifiedRelationship for the head.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/302)
+
+
+
