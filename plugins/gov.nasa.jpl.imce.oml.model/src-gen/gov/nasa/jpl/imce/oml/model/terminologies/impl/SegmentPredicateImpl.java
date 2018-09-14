@@ -437,34 +437,41 @@ public class SegmentPredicateImpl extends ElementCrossReferenceTupleImpl impleme
 		Term _elvis_1 = null;
 		Term _elvis_2 = null;
 		Term _elvis_3 = null;
+		Term _elvis_4 = null;
 		Predicate _predicate = this.getPredicate();
 		Term _term = null;
 		if (_predicate!=null) {
 			_term=_predicate.term();
 		}
 		if (_term != null) {
-			_elvis_3 = _term;
+			_elvis_4 = _term;
 		} else {
 			ReifiedRelationship _reifiedRelationshipSource = this.getReifiedRelationshipSource();
-			_elvis_3 = _reifiedRelationshipSource;
+			_elvis_4 = _reifiedRelationshipSource;
+		}
+		if (_elvis_4 != null) {
+			_elvis_3 = _elvis_4;
+		} else {
+			ReifiedRelationship _reifiedRelationshipInverseSource = this.getReifiedRelationshipInverseSource();
+			_elvis_3 = _reifiedRelationshipInverseSource;
 		}
 		if (_elvis_3 != null) {
 			_elvis_2 = _elvis_3;
 		} else {
-			ReifiedRelationship _reifiedRelationshipInverseSource = this.getReifiedRelationshipInverseSource();
-			_elvis_2 = _reifiedRelationshipInverseSource;
+			ReifiedRelationship _reifiedRelationshipTarget = this.getReifiedRelationshipTarget();
+			_elvis_2 = _reifiedRelationshipTarget;
 		}
 		if (_elvis_2 != null) {
 			_elvis_1 = _elvis_2;
 		} else {
-			ReifiedRelationship _reifiedRelationshipTarget = this.getReifiedRelationshipTarget();
-			_elvis_1 = _reifiedRelationshipTarget;
+			ReifiedRelationship _reifiedRelationshipInverseTarget = this.getReifiedRelationshipInverseTarget();
+			_elvis_1 = _reifiedRelationshipInverseTarget;
 		}
 		if (_elvis_1 != null) {
 			_elvis = _elvis_1;
 		} else {
-			ReifiedRelationship _reifiedRelationshipInverseTarget = this.getReifiedRelationshipInverseTarget();
-			_elvis = _reifiedRelationshipInverseTarget;
+			UnreifiedRelationship _unreifiedRelationshipInverse = this.getUnreifiedRelationshipInverse();
+			_elvis = _unreifiedRelationshipInverse;
 		}
 		return _elvis;
 	}

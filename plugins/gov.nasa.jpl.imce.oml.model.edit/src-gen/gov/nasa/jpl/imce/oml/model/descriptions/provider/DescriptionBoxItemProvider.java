@@ -112,6 +112,9 @@ public class DescriptionBoxItemProvider extends ModuleItemProvider {
 			childrenFeatures.add(DescriptionsPackage.Literals.DESCRIPTION_BOX__CLOSED_WORLD_DEFINITIONS);
 			childrenFeatures.add(DescriptionsPackage.Literals.DESCRIPTION_BOX__CONCEPT_INSTANCES);
 			childrenFeatures.add(DescriptionsPackage.Literals.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCES);
+			childrenFeatures.add(DescriptionsPackage.Literals.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_VALUE_RESTRICTIONS);
+			childrenFeatures.add(DescriptionsPackage.Literals.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTIONS);
+			childrenFeatures.add(DescriptionsPackage.Literals.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTIONS);
 			childrenFeatures.add(DescriptionsPackage.Literals.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_DOMAINS);
 			childrenFeatures.add(DescriptionsPackage.Literals.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_RANGES);
 			childrenFeatures.add(DescriptionsPackage.Literals.DESCRIPTION_BOX__UNREIFIED_RELATIONSHIP_INSTANCE_TUPLES);
@@ -179,6 +182,9 @@ public class DescriptionBoxItemProvider extends ModuleItemProvider {
 			case DescriptionsPackage.DESCRIPTION_BOX__CLOSED_WORLD_DEFINITIONS:
 			case DescriptionsPackage.DESCRIPTION_BOX__CONCEPT_INSTANCES:
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCES:
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_VALUE_RESTRICTIONS:
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTIONS:
+			case DescriptionsPackage.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTIONS:
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_DOMAINS:
 			case DescriptionsPackage.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_RANGES:
 			case DescriptionsPackage.DESCRIPTION_BOX__UNREIFIED_RELATIONSHIP_INSTANCE_TUPLES:
@@ -220,6 +226,21 @@ public class DescriptionBoxItemProvider extends ModuleItemProvider {
 			(createChildParameter
 				(DescriptionsPackage.Literals.DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCES,
 				 DescriptionsFactory.eINSTANCE.createReifiedRelationshipInstance()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DescriptionsPackage.Literals.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_VALUE_RESTRICTIONS,
+				 DescriptionsFactory.eINSTANCE.createInstanceRelationshipValueRestriction()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DescriptionsPackage.Literals.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTIONS,
+				 DescriptionsFactory.eINSTANCE.createInstanceRelationshipExistentialRangeRestriction()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DescriptionsPackage.Literals.DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTIONS,
+				 DescriptionsFactory.eINSTANCE.createInstanceRelationshipUniversalRangeRestriction()));
 
 		newChildDescriptors.add
 			(createChildParameter

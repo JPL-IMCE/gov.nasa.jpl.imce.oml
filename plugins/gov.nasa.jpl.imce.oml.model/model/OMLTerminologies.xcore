@@ -1111,7 +1111,7 @@ abstract class Rule extends Term {}
 @Glossary
 class ChainRule extends Rule {
 	
-	refers UnreifiedRelationship[1] head
+	refers RestrictableRelationship[1] head
 	
 	contains RuleBodySegment[1] firstSegment opposite rule
 	
@@ -1224,7 +1224,8 @@ class SegmentPredicate extends ElementCrossReferenceTuple {
 		reifiedRelationshipSource ?:
 		reifiedRelationshipInverseSource ?:
 		reifiedRelationshipTarget ?:
-		reifiedRelationshipInverseTarget
+		reifiedRelationshipInverseTarget ?:
+		unreifiedRelationshipInverse
 	}
 	
 	@NotSchema

@@ -33,6 +33,9 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange
@@ -243,7 +246,7 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 				
 			ChainRule:
 				if (reference == TerminologiesPackage.eINSTANCE.chainRule_Head)
-					scope = context.tbox.allUnreifiedRelationshipsScope
+					scope = context.tbox.allRestrictableRelationshipsScope
 					
 			SegmentPredicate:
 				if (reference == TerminologiesPackage.eINSTANCE.segmentPredicate_Predicate)
@@ -387,7 +390,31 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 			ReifiedRelationshipInstance:
 				if (reference == DescriptionsPackage.eINSTANCE.reifiedRelationshipInstance__ConceptualEntitySingletonClassifier)
 					scope = context.descriptionBox()?.allReifiedRelationshipScope
+						
+			InstanceRelationshipValueRestriction:
+				if (reference == DescriptionsPackage.eINSTANCE.instanceRelationshipValueRestriction_Domain)
+					scope = context.descriptionBox()?.allConceptualEntitySingletonInstanceScope
+				else if (reference == DescriptionsPackage.eINSTANCE.instanceRelationshipValueRestriction_Range)
+					scope = context.descriptionBox()?.allConceptualEntitySingletonInstanceScope
+				else if (reference == DescriptionsPackage.eINSTANCE.instanceRelationshipValueRestriction_RestrictedRelationship)
+					scope = context.descriptionBox()?.allRestrictableRelationshipsScope
+						
+			InstanceRelationshipExistentialRangeRestriction:
+				if (reference == DescriptionsPackage.eINSTANCE.instanceRelationshipExistentialRangeRestriction_Domain)
+					scope = context.descriptionBox()?.allConceptualEntitySingletonInstanceScope
+				else if (reference == DescriptionsPackage.eINSTANCE.instanceRelationshipExistentialRangeRestriction_Range)
+					scope = context.descriptionBox()?.allEntitiesScope
+				else if (reference == DescriptionsPackage.eINSTANCE.instanceRelationshipExistentialRangeRestriction_RestrictedRelationship)
+					scope = context.descriptionBox()?.allRestrictableRelationshipsScope
 					
+			InstanceRelationshipUniversalRangeRestriction:
+				if (reference == DescriptionsPackage.eINSTANCE.instanceRelationshipExistentialRangeRestriction_Domain)
+					scope = context.descriptionBox()?.allConceptualEntitySingletonInstanceScope
+				else if (reference == DescriptionsPackage.eINSTANCE.instanceRelationshipExistentialRangeRestriction_Range)
+					scope = context.descriptionBox()?.allEntitiesScope
+				else if (reference == DescriptionsPackage.eINSTANCE.instanceRelationshipExistentialRangeRestriction_RestrictedRelationship)
+					scope = context.descriptionBox()?.allRestrictableRelationshipsScope
+								
 			ReifiedRelationshipInstanceDomain:
 				if (reference == DescriptionsPackage.eINSTANCE.reifiedRelationshipInstanceDomain_ReifiedRelationshipInstance)
 					scope = context.descriptionBox()?.allReifiedRelationshipInstancesScope

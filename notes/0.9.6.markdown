@@ -18,6 +18,8 @@ gov.nasa.jpl.imce.oml 0.9.6 adds new features to 0.9.5
 
 ### [#299 Fix the OML grammar to allow a digit-leading character for an ID.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/299)
 
+### [#301 Add support for OWL HasValue restriction on OML individuals.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/301)
+
 ## Changes:
 
 ### OML Grammar:

@@ -77,6 +77,9 @@ DescriptionBox returns DescriptionBox:
 	( closedWorldDefinitions+=DescriptionBoxExtendsClosedWorldDefinitions |
 	  descriptionBoxRefinements+=DescriptionBoxRefinement |
 	  conceptInstances+=ConceptInstance |
+	  instanceRelationshipValueRestrictions+=InstanceRelationshipValueRestriction |
+	  instanceRelationshipExistentialRangeRestrictions+=InstanceRelationshipExistentialRangeRestriction |
+	  instanceRelationshipUniversalRangeRestrictions+=InstanceRelationshipUniversalRangeRestriction |
 	  reifiedRelationshipInstances+=ReifiedRelationshipInstance |
 	  reifiedRelationshipInstanceDomains+=ReifiedRelationshipInstanceDomain|
 	  reifiedRelationshipInstanceRanges+=ReifiedRelationshipInstanceRange |
@@ -347,7 +350,7 @@ Rule returns Rule:
 	ChainRule;
 	
 ChainRule returns ChainRule:
-	'rule' name=ID 'infers' head=[UnreifiedRelationship|Reference] 'if' firstSegment=RuleBodySegment;
+	'rule' name=ID 'infers' head=[RestrictableRelationship|Reference] 'if' firstSegment=RuleBodySegment;
 
 RuleBodySegment returns RuleBodySegment:
 	predicate=SegmentPredicate ('&&' nextSegment=RuleBodySegment)?;
@@ -630,6 +633,26 @@ ReifiedRelationshipInstance returns ReifiedRelationshipInstance:
 	( annotations+=AnnotationPropertyValue )*
 	'reifiedRelationshipInstance' '(' name=ID 'is-a' singletonConceptualRelationshipClassifier=[ConceptualRelationship|Reference] ')';
 
+InstanceRelationshipValueRestriction returns InstanceRelationshipValueRestriction:
+	( annotations+=AnnotationPropertyValue )*
+	domain=[ConceptualEntitySingletonInstance|Reference] 
+	'.' restrictedRelationship=[RestrictableRelationship|Reference] 
+	'=' range=[ConceptualEntitySingletonInstance|Reference];
+	
+InstanceRelationshipExistentialRangeRestriction returns InstanceRelationshipExistentialRangeRestriction:
+	( annotations+=AnnotationPropertyValue )*
+	'someEntities'
+	domain=[ConceptualEntitySingletonInstance|Reference] 
+	'.' restrictedRelationship=[RestrictableRelationship|Reference] 
+	'in' range=[Entity|Reference];
+	
+InstanceRelationshipUniversalRangeRestriction returns InstanceRelationshipUniversalRangeRestriction:
+	( annotations+=AnnotationPropertyValue )*
+	'allEntities'
+	domain=[ConceptualEntitySingletonInstance|Reference] 
+	'.' restrictedRelationship=[RestrictableRelationship|Reference] 
+	'in' range=[Entity|Reference];
+	
 ReifiedRelationshipInstanceDomain returns ReifiedRelationshipInstanceDomain:
 	( annotations+=AnnotationPropertyValue )*
 	'domain' 

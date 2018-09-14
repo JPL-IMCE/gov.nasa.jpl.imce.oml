@@ -37,6 +37,9 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange;
@@ -577,7 +580,7 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
           EReference _chainRule_Head = TerminologiesPackage.eINSTANCE.getChainRule_Head();
           boolean _equals = Objects.equal(reference, _chainRule_Head);
           if (_equals) {
-            scope = this._oMLScopeExtensions.allUnreifiedRelationshipsScope(((ChainRule)context).getTbox());
+            scope = this._oMLScopeExtensions.allRestrictableRelationshipsScope(((ChainRule)context).getTbox());
           }
         }
       }
@@ -1112,6 +1115,117 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
               _allReifiedRelationshipScope=this._oMLScopeExtensions.allReifiedRelationshipScope(_descriptionBox);
             }
             scope = _allReifiedRelationshipScope;
+          }
+        }
+      }
+      if (!_matched) {
+        if (context instanceof InstanceRelationshipValueRestriction) {
+          _matched=true;
+          EReference _instanceRelationshipValueRestriction_Domain = DescriptionsPackage.eINSTANCE.getInstanceRelationshipValueRestriction_Domain();
+          boolean _equals = Objects.equal(reference, _instanceRelationshipValueRestriction_Domain);
+          if (_equals) {
+            DescriptionBox _descriptionBox = ((InstanceRelationshipValueRestriction)context).descriptionBox();
+            IScope _allConceptualEntitySingletonInstanceScope = null;
+            if (_descriptionBox!=null) {
+              _allConceptualEntitySingletonInstanceScope=this._oMLScopeExtensions.allConceptualEntitySingletonInstanceScope(_descriptionBox);
+            }
+            scope = _allConceptualEntitySingletonInstanceScope;
+          } else {
+            EReference _instanceRelationshipValueRestriction_Range = DescriptionsPackage.eINSTANCE.getInstanceRelationshipValueRestriction_Range();
+            boolean _equals_1 = Objects.equal(reference, _instanceRelationshipValueRestriction_Range);
+            if (_equals_1) {
+              DescriptionBox _descriptionBox_1 = ((InstanceRelationshipValueRestriction)context).descriptionBox();
+              IScope _allConceptualEntitySingletonInstanceScope_1 = null;
+              if (_descriptionBox_1!=null) {
+                _allConceptualEntitySingletonInstanceScope_1=this._oMLScopeExtensions.allConceptualEntitySingletonInstanceScope(_descriptionBox_1);
+              }
+              scope = _allConceptualEntitySingletonInstanceScope_1;
+            } else {
+              EReference _instanceRelationshipValueRestriction_RestrictedRelationship = DescriptionsPackage.eINSTANCE.getInstanceRelationshipValueRestriction_RestrictedRelationship();
+              boolean _equals_2 = Objects.equal(reference, _instanceRelationshipValueRestriction_RestrictedRelationship);
+              if (_equals_2) {
+                DescriptionBox _descriptionBox_2 = ((InstanceRelationshipValueRestriction)context).descriptionBox();
+                IScope _allRestrictableRelationshipsScope = null;
+                if (_descriptionBox_2!=null) {
+                  _allRestrictableRelationshipsScope=this._oMLScopeExtensions.allRestrictableRelationshipsScope(_descriptionBox_2);
+                }
+                scope = _allRestrictableRelationshipsScope;
+              }
+            }
+          }
+        }
+      }
+      if (!_matched) {
+        if (context instanceof InstanceRelationshipExistentialRangeRestriction) {
+          _matched=true;
+          EReference _instanceRelationshipExistentialRangeRestriction_Domain = DescriptionsPackage.eINSTANCE.getInstanceRelationshipExistentialRangeRestriction_Domain();
+          boolean _equals = Objects.equal(reference, _instanceRelationshipExistentialRangeRestriction_Domain);
+          if (_equals) {
+            DescriptionBox _descriptionBox = ((InstanceRelationshipExistentialRangeRestriction)context).descriptionBox();
+            IScope _allConceptualEntitySingletonInstanceScope = null;
+            if (_descriptionBox!=null) {
+              _allConceptualEntitySingletonInstanceScope=this._oMLScopeExtensions.allConceptualEntitySingletonInstanceScope(_descriptionBox);
+            }
+            scope = _allConceptualEntitySingletonInstanceScope;
+          } else {
+            EReference _instanceRelationshipExistentialRangeRestriction_Range = DescriptionsPackage.eINSTANCE.getInstanceRelationshipExistentialRangeRestriction_Range();
+            boolean _equals_1 = Objects.equal(reference, _instanceRelationshipExistentialRangeRestriction_Range);
+            if (_equals_1) {
+              DescriptionBox _descriptionBox_1 = ((InstanceRelationshipExistentialRangeRestriction)context).descriptionBox();
+              IScope _allEntitiesScope = null;
+              if (_descriptionBox_1!=null) {
+                _allEntitiesScope=this._oMLScopeExtensions.allEntitiesScope(_descriptionBox_1);
+              }
+              scope = _allEntitiesScope;
+            } else {
+              EReference _instanceRelationshipExistentialRangeRestriction_RestrictedRelationship = DescriptionsPackage.eINSTANCE.getInstanceRelationshipExistentialRangeRestriction_RestrictedRelationship();
+              boolean _equals_2 = Objects.equal(reference, _instanceRelationshipExistentialRangeRestriction_RestrictedRelationship);
+              if (_equals_2) {
+                DescriptionBox _descriptionBox_2 = ((InstanceRelationshipExistentialRangeRestriction)context).descriptionBox();
+                IScope _allRestrictableRelationshipsScope = null;
+                if (_descriptionBox_2!=null) {
+                  _allRestrictableRelationshipsScope=this._oMLScopeExtensions.allRestrictableRelationshipsScope(_descriptionBox_2);
+                }
+                scope = _allRestrictableRelationshipsScope;
+              }
+            }
+          }
+        }
+      }
+      if (!_matched) {
+        if (context instanceof InstanceRelationshipUniversalRangeRestriction) {
+          _matched=true;
+          EReference _instanceRelationshipExistentialRangeRestriction_Domain = DescriptionsPackage.eINSTANCE.getInstanceRelationshipExistentialRangeRestriction_Domain();
+          boolean _equals = Objects.equal(reference, _instanceRelationshipExistentialRangeRestriction_Domain);
+          if (_equals) {
+            DescriptionBox _descriptionBox = ((InstanceRelationshipUniversalRangeRestriction)context).descriptionBox();
+            IScope _allConceptualEntitySingletonInstanceScope = null;
+            if (_descriptionBox!=null) {
+              _allConceptualEntitySingletonInstanceScope=this._oMLScopeExtensions.allConceptualEntitySingletonInstanceScope(_descriptionBox);
+            }
+            scope = _allConceptualEntitySingletonInstanceScope;
+          } else {
+            EReference _instanceRelationshipExistentialRangeRestriction_Range = DescriptionsPackage.eINSTANCE.getInstanceRelationshipExistentialRangeRestriction_Range();
+            boolean _equals_1 = Objects.equal(reference, _instanceRelationshipExistentialRangeRestriction_Range);
+            if (_equals_1) {
+              DescriptionBox _descriptionBox_1 = ((InstanceRelationshipUniversalRangeRestriction)context).descriptionBox();
+              IScope _allEntitiesScope = null;
+              if (_descriptionBox_1!=null) {
+                _allEntitiesScope=this._oMLScopeExtensions.allEntitiesScope(_descriptionBox_1);
+              }
+              scope = _allEntitiesScope;
+            } else {
+              EReference _instanceRelationshipExistentialRangeRestriction_RestrictedRelationship = DescriptionsPackage.eINSTANCE.getInstanceRelationshipExistentialRangeRestriction_RestrictedRelationship();
+              boolean _equals_2 = Objects.equal(reference, _instanceRelationshipExistentialRangeRestriction_RestrictedRelationship);
+              if (_equals_2) {
+                DescriptionBox _descriptionBox_2 = ((InstanceRelationshipUniversalRangeRestriction)context).descriptionBox();
+                IScope _allRestrictableRelationshipsScope = null;
+                if (_descriptionBox_2!=null) {
+                  _allRestrictableRelationshipsScope=this._oMLScopeExtensions.allRestrictableRelationshipsScope(_descriptionBox_2);
+                }
+                scope = _allRestrictableRelationshipsScope;
+              }
+            }
           }
         }
       }

@@ -71,12 +71,12 @@ public interface ChainRule extends Rule {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Head</em>' reference.
-	 * @see #setHead(UnreifiedRelationship)
+	 * @see #setHead(RestrictableRelationship)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getChainRule_Head()
 	 * @model required="true"
 	 * @generated
 	 */
-	UnreifiedRelationship getHead();
+	RestrictableRelationship getHead();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ChainRule#getHead <em>Head</em>}' reference.
@@ -86,7 +86,7 @@ public interface ChainRule extends Rule {
 	 * @see #getHead()
 	 * @generated
 	 */
-	void setHead(UnreifiedRelationship value);
+	void setHead(RestrictableRelationship value);
 
 	/**
 	 * Returns the value of the '<em><b>First Segment</b></em>' containment reference.

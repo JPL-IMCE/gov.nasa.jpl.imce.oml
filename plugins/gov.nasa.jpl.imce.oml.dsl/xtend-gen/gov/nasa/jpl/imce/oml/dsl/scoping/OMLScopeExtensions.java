@@ -1702,6 +1702,25 @@ public class OMLScopeExtensions {
     return _xblockexpression;
   }
   
+  public IScope allRestrictableRelationshipsScope(final DescriptionBox dbox) {
+    SimpleScope _xblockexpression = null;
+    {
+      final Iterable<TerminologyBox> tboxes = this._oMLExtensions.allImportedTerminologiesFromDescription(dbox);
+      final ArrayList<IEObjectDescription> result = Lists.<IEObjectDescription>newArrayList();
+      final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function = (TerminologyBox tbox) -> {
+        final Function<RestrictableRelationship, QualifiedName> _function_1 = (RestrictableRelationship importedThing) -> {
+          return this.<RestrictableRelationship>importedResourceNameFunction(Pair.<TerminologyBox, RestrictableRelationship>of(tbox, importedThing));
+        };
+        return Scopes.<RestrictableRelationship>scopedElementsFor(
+          this._oMLExtensions.localRestrictableRelationships(tbox), _function_1);
+      };
+      final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function));
+      Iterables.<IEObjectDescription>addAll(result, inc);
+      _xblockexpression = new SimpleScope(result);
+    }
+    return _xblockexpression;
+  }
+  
   private IScope computeAllRestrictableRelationships(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<RestrictableRelationship>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localRestrictableRelationships(it);
@@ -2078,6 +2097,25 @@ public class OMLScopeExtensions {
         };
         return Scopes.<ConceptualRelationship>scopedElementsFor(
           this._oMLExtensions.localReifiedRelationships(tbox), _function_1);
+      };
+      final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function));
+      Iterables.<IEObjectDescription>addAll(result, inc);
+      _xblockexpression = new SimpleScope(result);
+    }
+    return _xblockexpression;
+  }
+  
+  public IScope allEntitiesScope(final DescriptionBox dbox) {
+    SimpleScope _xblockexpression = null;
+    {
+      final Iterable<TerminologyBox> tboxes = this._oMLExtensions.allImportedTerminologiesFromDescription(dbox);
+      final ArrayList<IEObjectDescription> result = Lists.<IEObjectDescription>newArrayList();
+      final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function = (TerminologyBox tbox) -> {
+        final Function<Entity, QualifiedName> _function_1 = (Entity importedThing) -> {
+          return this.<Entity>importedResourceNameFunction(Pair.<TerminologyBox, Entity>of(tbox, importedThing));
+        };
+        return Scopes.<Entity>scopedElementsFor(
+          this._oMLExtensions.localEntities(tbox), _function_1);
       };
       final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function));
       Iterables.<IEObjectDescription>addAll(result, inc);

@@ -133,7 +133,7 @@ public class OMLRuleTest4 {
       _builder.append("\t");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("rule pqr infers Foo:r if Foo:A && Foo:p && Foo:B && inv(Foo:q)");
+      _builder.append("rule pqr infers Foo:p if Foo:A && Foo:p && Foo:B && inv(Foo:q)");
       _builder.newLine();
       _builder.newLine();
       _builder.append("\t");
@@ -197,7 +197,7 @@ public class OMLRuleTest4 {
       };
       final ChainRule r1 = IterableExtensions.<ChainRule>head(IterableExtensions.<ChainRule>filter(rules, _function_6));
       Assert.assertNotNull(r1);
-      Assert.assertEquals(r1.getHead(), R);
+      Assert.assertEquals(r1.getHead(), P.getForwardProperty());
       final RuleBodySegment tail11 = r1.getFirstSegment();
       Assert.assertNotNull(tail11);
       Assert.assertEquals(tail11.getPredicate().termPredicate(), A);
@@ -209,7 +209,7 @@ public class OMLRuleTest4 {
       Assert.assertEquals(tail13.getPredicate().termPredicate(), B);
       final RuleBodySegment tail14 = tail13.getNextSegment();
       Assert.assertNotNull(tail14);
-      Assert.assertEquals(tail14.getPredicate().termPredicate(), Q);
+      Assert.assertEquals(tail14.getPredicate().getUnreifiedRelationshipInverse(), Q);
       Assert.assertNull(tail14.getNextSegment());
       final Function1<ChainRule, Boolean> _function_7 = (ChainRule it) -> {
         String _name = it.name();

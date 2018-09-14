@@ -269,6 +269,75 @@ public class DescriptionsItemProviderAdapterFactory extends DescriptionsAdapterF
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InstanceRelationshipValueRestrictionItemProvider instanceRelationshipValueRestrictionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInstanceRelationshipValueRestrictionAdapter() {
+		if (instanceRelationshipValueRestrictionItemProvider == null) {
+			instanceRelationshipValueRestrictionItemProvider = new InstanceRelationshipValueRestrictionItemProvider(this);
+		}
+
+		return instanceRelationshipValueRestrictionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InstanceRelationshipExistentialRangeRestrictionItemProvider instanceRelationshipExistentialRangeRestrictionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInstanceRelationshipExistentialRangeRestrictionAdapter() {
+		if (instanceRelationshipExistentialRangeRestrictionItemProvider == null) {
+			instanceRelationshipExistentialRangeRestrictionItemProvider = new InstanceRelationshipExistentialRangeRestrictionItemProvider(this);
+		}
+
+		return instanceRelationshipExistentialRangeRestrictionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InstanceRelationshipUniversalRangeRestrictionItemProvider instanceRelationshipUniversalRangeRestrictionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInstanceRelationshipUniversalRangeRestrictionAdapter() {
+		if (instanceRelationshipUniversalRangeRestrictionItemProvider == null) {
+			instanceRelationshipUniversalRangeRestrictionItemProvider = new InstanceRelationshipUniversalRangeRestrictionItemProvider(this);
+		}
+
+		return instanceRelationshipUniversalRangeRestrictionItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -467,6 +536,9 @@ public class DescriptionsItemProviderAdapterFactory extends DescriptionsAdapterF
 		if (structuredDataPropertyTupleItemProvider != null) structuredDataPropertyTupleItemProvider.dispose();
 		if (scalarDataPropertyValueItemProvider != null) scalarDataPropertyValueItemProvider.dispose();
 		if (conceptInstanceItemProvider != null) conceptInstanceItemProvider.dispose();
+		if (instanceRelationshipValueRestrictionItemProvider != null) instanceRelationshipValueRestrictionItemProvider.dispose();
+		if (instanceRelationshipExistentialRangeRestrictionItemProvider != null) instanceRelationshipExistentialRangeRestrictionItemProvider.dispose();
+		if (instanceRelationshipUniversalRangeRestrictionItemProvider != null) instanceRelationshipUniversalRangeRestrictionItemProvider.dispose();
 		if (reifiedRelationshipInstanceItemProvider != null) reifiedRelationshipInstanceItemProvider.dispose();
 		if (reifiedRelationshipInstanceDomainItemProvider != null) reifiedRelationshipInstanceDomainItemProvider.dispose();
 		if (reifiedRelationshipInstanceRangeItemProvider != null) reifiedRelationshipInstanceRangeItemProvider.dispose();
