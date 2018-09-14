@@ -4175,7 +4175,7 @@ ruleChainRule returns [EObject current=null]
 					}
 				}
 				{
-					newCompositeNode(grammarAccess.getChainRuleAccess().getHeadUnreifiedRelationshipCrossReference_3_0());
+					newCompositeNode(grammarAccess.getChainRuleAccess().getHeadRestrictableRelationshipCrossReference_3_0());
 				}
 				ruleReference
 				{

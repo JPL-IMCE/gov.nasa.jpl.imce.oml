@@ -21817,13 +21817,13 @@ rule__ChainRule__HeadAssignment_3
 	}
 :
 	(
-		{ before(grammarAccess.getChainRuleAccess().getHeadUnreifiedRelationshipCrossReference_3_0()); }
+		{ before(grammarAccess.getChainRuleAccess().getHeadRestrictableRelationshipCrossReference_3_0()); }
 		(
-			{ before(grammarAccess.getChainRuleAccess().getHeadUnreifiedRelationshipReferenceParserRuleCall_3_0_1()); }
+			{ before(grammarAccess.getChainRuleAccess().getHeadRestrictableRelationshipReferenceParserRuleCall_3_0_1()); }
 			ruleReference
-			{ after(grammarAccess.getChainRuleAccess().getHeadUnreifiedRelationshipReferenceParserRuleCall_3_0_1()); }
+			{ after(grammarAccess.getChainRuleAccess().getHeadRestrictableRelationshipReferenceParserRuleCall_3_0_1()); }
 		)
-		{ after(grammarAccess.getChainRuleAccess().getHeadUnreifiedRelationshipCrossReference_3_0()); }
+		{ after(grammarAccess.getChainRuleAccess().getHeadRestrictableRelationshipCrossReference_3_0()); }
 	)
 ;
 finally {

@@ -597,7 +597,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ChainRule returns ChainRule
 	 *
 	 * Constraint:
-	 *     (name=ID head=[UnreifiedRelationship|Reference] firstSegment=RuleBodySegment)
+	 *     (name=ID head=[RestrictableRelationship|Reference] firstSegment=RuleBodySegment)
 	 */
 	protected void sequence_ChainRule(ISerializationContext context, ChainRule semanticObject) {
 		if (errorAcceptor != null) {
@@ -610,7 +610,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getChainRuleAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getChainRuleAccess().getHeadUnreifiedRelationshipReferenceParserRuleCall_3_0_1(), semanticObject.eGet(TerminologiesPackage.Literals.CHAIN_RULE__HEAD, false));
+		feeder.accept(grammarAccess.getChainRuleAccess().getHeadRestrictableRelationshipReferenceParserRuleCall_3_0_1(), semanticObject.eGet(TerminologiesPackage.Literals.CHAIN_RULE__HEAD, false));
 		feeder.accept(grammarAccess.getChainRuleAccess().getFirstSegmentRuleBodySegmentParserRuleCall_5_0(), semanticObject.getFirstSegment());
 		feeder.finish();
 	}

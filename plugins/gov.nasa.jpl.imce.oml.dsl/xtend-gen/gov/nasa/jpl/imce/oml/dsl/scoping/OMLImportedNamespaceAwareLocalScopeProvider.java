@@ -580,7 +580,7 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
           EReference _chainRule_Head = TerminologiesPackage.eINSTANCE.getChainRule_Head();
           boolean _equals = Objects.equal(reference, _chainRule_Head);
           if (_equals) {
-            scope = this._oMLScopeExtensions.allUnreifiedRelationshipsScope(((ChainRule)context).getTbox());
+            scope = this._oMLScopeExtensions.allRestrictableRelationshipsScope(((ChainRule)context).getTbox());
           }
         }
       }

@@ -2387,17 +2387,17 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cInfersKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cHeadAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cHeadUnreifiedRelationshipCrossReference_3_0 = (CrossReference)cHeadAssignment_3.eContents().get(0);
-		private final RuleCall cHeadUnreifiedRelationshipReferenceParserRuleCall_3_0_1 = (RuleCall)cHeadUnreifiedRelationshipCrossReference_3_0.eContents().get(1);
+		private final CrossReference cHeadRestrictableRelationshipCrossReference_3_0 = (CrossReference)cHeadAssignment_3.eContents().get(0);
+		private final RuleCall cHeadRestrictableRelationshipReferenceParserRuleCall_3_0_1 = (RuleCall)cHeadRestrictableRelationshipCrossReference_3_0.eContents().get(1);
 		private final Keyword cIfKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Assignment cFirstSegmentAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cFirstSegmentRuleBodySegmentParserRuleCall_5_0 = (RuleCall)cFirstSegmentAssignment_5.eContents().get(0);
 		
 		//ChainRule:
-		//	'rule' name=ID 'infers' head=[UnreifiedRelationship|Reference] 'if' firstSegment=RuleBodySegment;
+		//	'rule' name=ID 'infers' head=[RestrictableRelationship|Reference] 'if' firstSegment=RuleBodySegment;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'rule' name=ID 'infers' head=[UnreifiedRelationship|Reference] 'if' firstSegment=RuleBodySegment
+		//'rule' name=ID 'infers' head=[RestrictableRelationship|Reference] 'if' firstSegment=RuleBodySegment
 		public Group getGroup() { return cGroup; }
 		
 		//'rule'
@@ -2412,14 +2412,14 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'infers'
 		public Keyword getInfersKeyword_2() { return cInfersKeyword_2; }
 		
-		//head=[UnreifiedRelationship|Reference]
+		//head=[RestrictableRelationship|Reference]
 		public Assignment getHeadAssignment_3() { return cHeadAssignment_3; }
 		
-		//[UnreifiedRelationship|Reference]
-		public CrossReference getHeadUnreifiedRelationshipCrossReference_3_0() { return cHeadUnreifiedRelationshipCrossReference_3_0; }
+		//[RestrictableRelationship|Reference]
+		public CrossReference getHeadRestrictableRelationshipCrossReference_3_0() { return cHeadRestrictableRelationshipCrossReference_3_0; }
 		
 		//Reference
-		public RuleCall getHeadUnreifiedRelationshipReferenceParserRuleCall_3_0_1() { return cHeadUnreifiedRelationshipReferenceParserRuleCall_3_0_1; }
+		public RuleCall getHeadRestrictableRelationshipReferenceParserRuleCall_3_0_1() { return cHeadRestrictableRelationshipReferenceParserRuleCall_3_0_1; }
 		
 		//'if'
 		public Keyword getIfKeyword_4() { return cIfKeyword_4; }
@@ -7131,7 +7131,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ChainRule:
-	//	'rule' name=ID 'infers' head=[UnreifiedRelationship|Reference] 'if' firstSegment=RuleBodySegment;
+	//	'rule' name=ID 'infers' head=[RestrictableRelationship|Reference] 'if' firstSegment=RuleBodySegment;
 	public ChainRuleElements getChainRuleAccess() {
 		return pChainRule;
 	}

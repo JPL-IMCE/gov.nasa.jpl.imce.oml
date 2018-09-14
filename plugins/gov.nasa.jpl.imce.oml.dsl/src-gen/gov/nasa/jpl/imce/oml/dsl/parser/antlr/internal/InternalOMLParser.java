@@ -10279,7 +10279,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             					}
             				
 
-            					newCompositeNode(grammarAccess.getChainRuleAccess().getHeadUnreifiedRelationshipCrossReference_3_0());
+            					newCompositeNode(grammarAccess.getChainRuleAccess().getHeadRestrictableRelationshipCrossReference_3_0());
             				
             pushFollow(FOLLOW_51);
             ruleReference();

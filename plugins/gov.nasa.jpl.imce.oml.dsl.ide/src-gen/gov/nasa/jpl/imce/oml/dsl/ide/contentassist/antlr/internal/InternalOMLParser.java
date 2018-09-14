@@ -66746,21 +66746,21 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:21819:2: ( ( ruleReference ) )
             // InternalOML.g:21820:3: ( ruleReference )
             {
-             before(grammarAccess.getChainRuleAccess().getHeadUnreifiedRelationshipCrossReference_3_0()); 
+             before(grammarAccess.getChainRuleAccess().getHeadRestrictableRelationshipCrossReference_3_0()); 
             // InternalOML.g:21821:3: ( ruleReference )
             // InternalOML.g:21822:4: ruleReference
             {
-             before(grammarAccess.getChainRuleAccess().getHeadUnreifiedRelationshipReferenceParserRuleCall_3_0_1()); 
+             before(grammarAccess.getChainRuleAccess().getHeadRestrictableRelationshipReferenceParserRuleCall_3_0_1()); 
             pushFollow(FOLLOW_2);
             ruleReference();
 
             state._fsp--;
 
-             after(grammarAccess.getChainRuleAccess().getHeadUnreifiedRelationshipReferenceParserRuleCall_3_0_1()); 
+             after(grammarAccess.getChainRuleAccess().getHeadRestrictableRelationshipReferenceParserRuleCall_3_0_1()); 
 
             }
 
-             after(grammarAccess.getChainRuleAccess().getHeadUnreifiedRelationshipCrossReference_3_0()); 
+             after(grammarAccess.getChainRuleAccess().getHeadRestrictableRelationshipCrossReference_3_0()); 
 
             }
 

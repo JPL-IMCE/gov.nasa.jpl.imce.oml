@@ -19,9 +19,9 @@
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -54,7 +54,7 @@ public class ChainRuleImpl extends RuleImpl implements ChainRule {
 	 * @generated
 	 * @ordered
 	 */
-	protected UnreifiedRelationship head;
+	protected RestrictableRelationship head;
 
 	/**
 	 * The cached value of the '{@link #getFirstSegment() <em>First Segment</em>}' containment reference.
@@ -90,10 +90,10 @@ public class ChainRuleImpl extends RuleImpl implements ChainRule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public UnreifiedRelationship getHead() {
+	public RestrictableRelationship getHead() {
 		if (head != null && head.eIsProxy()) {
 			InternalEObject oldHead = (InternalEObject)head;
-			head = (UnreifiedRelationship)eResolveProxy(oldHead);
+			head = (RestrictableRelationship)eResolveProxy(oldHead);
 			if (head != oldHead) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.CHAIN_RULE__HEAD, oldHead, head));
@@ -107,7 +107,7 @@ public class ChainRuleImpl extends RuleImpl implements ChainRule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public UnreifiedRelationship basicGetHead() {
+	public RestrictableRelationship basicGetHead() {
 		return head;
 	}
 
@@ -116,8 +116,8 @@ public class ChainRuleImpl extends RuleImpl implements ChainRule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setHead(UnreifiedRelationship newHead) {
-		UnreifiedRelationship oldHead = head;
+	public void setHead(RestrictableRelationship newHead) {
+		RestrictableRelationship oldHead = head;
 		head = newHead;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.CHAIN_RULE__HEAD, oldHead, head));
@@ -222,7 +222,7 @@ public class ChainRuleImpl extends RuleImpl implements ChainRule {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case TerminologiesPackage.CHAIN_RULE__HEAD:
-				setHead((UnreifiedRelationship)newValue);
+				setHead((RestrictableRelationship)newValue);
 				return;
 			case TerminologiesPackage.CHAIN_RULE__FIRST_SEGMENT:
 				setFirstSegment((RuleBodySegment)newValue);
@@ -240,7 +240,7 @@ public class ChainRuleImpl extends RuleImpl implements ChainRule {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case TerminologiesPackage.CHAIN_RULE__HEAD:
-				setHead((UnreifiedRelationship)null);
+				setHead((RestrictableRelationship)null);
 				return;
 			case TerminologiesPackage.CHAIN_RULE__FIRST_SEGMENT:
 				setFirstSegment((RuleBodySegment)null);
