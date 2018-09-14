@@ -1454,7 +1454,7 @@ CREATE TABLE IF NOT EXISTS `OML`.`CR` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
   `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
   `name` TEXT NOT NULL COMMENT 'LocalName',
-  `headUUID` CHAR(36) NOT NULL COMMENT 'URs (UnreifiedRelationship)',
+  `headUUID` CHAR(36) NOT NULL COMMENT 'RestrictableRels (RestrictableRelationship)',
   
   CONSTRAINT `fk_CR_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
@@ -1464,7 +1464,7 @@ CREATE TABLE IF NOT EXISTS `OML`.`CR` (
   
   CONSTRAINT `fk_CR_headUUID`
     FOREIGN KEY (`headUUID`)
-    REFERENCES `OML`.`URs`(`uuid`)
+    REFERENCES `OML`.`RestrictableRels`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   

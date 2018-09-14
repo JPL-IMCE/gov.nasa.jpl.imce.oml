@@ -5947,7 +5947,7 @@ class OMLSpecificationTables {
   	    	progress.set(0, true)
   	    }
   	    val String headXRef = kv.get("headUUID")
-  	    val Pair<UnreifiedRelationship, Map<String, String>> headPair = unreifiedRelationships.get(headXRef)
+  	    val Pair<RestrictableRelationship, Map<String, String>> headPair = restrictableRelationships.get(headXRef)
   	    if (null !== headPair) {
   	    	oml.head = headPair.key
   	    	kv.remove("headUUID")

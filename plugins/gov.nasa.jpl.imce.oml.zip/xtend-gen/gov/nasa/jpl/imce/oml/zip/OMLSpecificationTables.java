@@ -7245,7 +7245,7 @@ public class OMLSpecificationTables {
           progress.set(0, Boolean.valueOf(true));
         }
         final String headXRef = kv.get("headUUID");
-        final Pair<UnreifiedRelationship, Map<String, String>> headPair = this.unreifiedRelationships.get(headXRef);
+        final Pair<RestrictableRelationship, Map<String, String>> headPair = this.restrictableRelationships.get(headXRef);
         if ((null != headPair)) {
           oml.setHead(headPair.getKey());
           kv.remove("headUUID");
