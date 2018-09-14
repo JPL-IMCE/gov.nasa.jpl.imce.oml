@@ -246,7 +246,7 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 				
 			ChainRule:
 				if (reference == TerminologiesPackage.eINSTANCE.chainRule_Head)
-					scope = context.tbox.allUnreifiedRelationshipsScope
+					scope = context.tbox.allRestrictableRelationshipsScope
 					
 			SegmentPredicate:
 				if (reference == TerminologiesPackage.eINSTANCE.segmentPredicate_Predicate)

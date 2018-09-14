@@ -77,7 +77,7 @@ open terminology <http://example.org/Foo> {
 		target=C
 	}
 	
-	rule pqr infers Foo:r if Foo:A && Foo:p && Foo:B && inv(Foo:q)
+	rule pqr infers Foo:p if Foo:A && Foo:p && Foo:B && inv(Foo:q)
 
 	rule psr infers Foo:r if Foo:A && Foo:fromP && Foo:P && Foo:s
 
@@ -123,7 +123,7 @@ open terminology <http://example.org/Foo> {
 		val r1 = rules.filter[name() == "pqr"].head
 		assertNotNull(r1)
 		
-		assertEquals(r1.getHead, R)
+		assertEquals(r1.getHead, P.forwardProperty)
 		val tail11 = r1.getFirstSegment
 		assertNotNull(tail11)
 		
@@ -135,12 +135,11 @@ open terminology <http://example.org/Foo> {
 		
 		val tail13 = tail12.getNextSegment
 		assertNotNull(tail13)
-		
 		assertEquals(tail13.getPredicate.termPredicate, B)
 		
 		val tail14 = tail13.getNextSegment
 		assertNotNull(tail14)
-		assertEquals(tail14.getPredicate.termPredicate, Q)
+		assertEquals(tail14.getPredicate.unreifiedRelationshipInverse, Q)
 		
 		assertNull(tail14.getNextSegment)
 		

@@ -350,7 +350,7 @@ Rule returns Rule:
 	ChainRule;
 	
 ChainRule returns ChainRule:
-	'rule' name=ID 'infers' head=[UnreifiedRelationship|Reference] 'if' firstSegment=RuleBodySegment;
+	'rule' name=ID 'infers' head=[RestrictableRelationship|Reference] 'if' firstSegment=RuleBodySegment;
 
 RuleBodySegment returns RuleBodySegment:
 	predicate=SegmentPredicate ('&&' nextSegment=RuleBodySegment)?;
