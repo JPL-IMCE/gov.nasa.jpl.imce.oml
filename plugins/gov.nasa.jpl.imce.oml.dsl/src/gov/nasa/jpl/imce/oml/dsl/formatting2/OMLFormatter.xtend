@@ -31,7 +31,9 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance
@@ -167,6 +169,7 @@ class OMLFormatter extends AbstractFormatter2 {
 		descriptionBox.descriptionBoxRefinements.forEach[format.append[setNewLines(2)]]
 		descriptionBox.conceptInstances.forEach[format.append[setNewLines(2)]]
 		descriptionBox.reifiedRelationshipInstances.forEach[format.append[setNewLines(2)]]
+		descriptionBox.instanceRelationshipEnumerationRestrictions.forEach[format.append[setNewLines(2)]]
 		descriptionBox.instanceRelationshipExistentialRangeRestrictions.forEach[format.append[setNewLines(2)]]
 		descriptionBox.instanceRelationshipUniversalRangeRestrictions.forEach[format.append[setNewLines(2)]]
 		descriptionBox.instanceRelationshipValueRestrictions.forEach[format.append[setNewLines(2)]]
@@ -238,6 +241,7 @@ class OMLFormatter extends AbstractFormatter2 {
 		val lcurly = prr.regionFor.keyword('{')
 		val rcurly = prr.regionFor.keyword('}')
 		lcurly.prepend[oneSpace]
+		lcurly.append[newLine]
 		lcurly.append[newLine]
 		interior(lcurly, rcurly)[indent]
 		
@@ -760,6 +764,25 @@ class OMLFormatter extends AbstractFormatter2 {
 		i.regionFor.keyword(')').append[oneSpace]
 	}
 
+	def dispatch void format(InstanceRelationshipEnumerationRestriction i, extension IFormattableDocument document) {
+		i.annotations.forEach[format.append[setNewLines(1)]]
+		i.regionFor.keyword('.').surround[noSpace]
+		i.regionFor.keyword('in').surround[oneSpace]
+		
+		val lcurly = i.regionFor.keyword('{')
+		val rcurly = i.regionFor.keyword('}')
+		lcurly.prepend[oneSpace]
+		lcurly.append[newLine]
+		rcurly.prepend[newLine]
+		interior(lcurly, rcurly)[indent]
+		
+		i.references.forEach[format.append[setNewLines(1)]]
+	}
+	
+	def dispatch void format(InstanceRelationshipOneOfRestriction i, extension IFormattableDocument document) {
+		i.annotations.forEach[format.append[setNewLines(1)]]
+	}
+	
 	def dispatch void format(InstanceRelationshipValueRestriction i, extension IFormattableDocument document) {
 		i.annotations.forEach[format.append[setNewLines(1)]]
 		i.regionFor.keyword('.').surround[noSpace]

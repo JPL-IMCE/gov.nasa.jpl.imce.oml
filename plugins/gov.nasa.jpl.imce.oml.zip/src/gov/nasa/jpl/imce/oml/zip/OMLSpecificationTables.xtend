@@ -206,7 +206,9 @@ class OMLSpecificationTables {
   protected val Map<String, Pair<CardinalityRestrictedAspect, Map<String,String>>> cardinalityRestrictedAspects
   protected val Map<String, Pair<CardinalityRestrictedConcept, Map<String,String>>> cardinalityRestrictedConcepts
   protected val Map<String, Pair<CardinalityRestrictedReifiedRelationship, Map<String,String>>> cardinalityRestrictedReifiedRelationships
+  protected val Map<String, Pair<InstanceRelationshipEnumerationRestriction, Map<String,String>>> instanceRelationshipEnumerationRestrictions
   protected val Map<String, Pair<InstanceRelationshipExistentialRangeRestriction, Map<String,String>>> instanceRelationshipExistentialRangeRestrictions
+  protected val Map<String, Pair<InstanceRelationshipOneOfRestriction, Map<String,String>>> instanceRelationshipOneOfRestrictions
   protected val Map<String, Pair<InstanceRelationshipUniversalRangeRestriction, Map<String,String>>> instanceRelationshipUniversalRangeRestrictions
   protected val Map<String, Pair<InstanceRelationshipValueRestriction, Map<String,String>>> instanceRelationshipValueRestrictions
 
@@ -317,7 +319,9 @@ class OMLSpecificationTables {
   	cardinalityRestrictedAspects = new HashMap<String, Pair<CardinalityRestrictedAspect, Map<String,String>>>()
   	cardinalityRestrictedConcepts = new HashMap<String, Pair<CardinalityRestrictedConcept, Map<String,String>>>()
   	cardinalityRestrictedReifiedRelationships = new HashMap<String, Pair<CardinalityRestrictedReifiedRelationship, Map<String,String>>>()
+  	instanceRelationshipEnumerationRestrictions = new HashMap<String, Pair<InstanceRelationshipEnumerationRestriction, Map<String,String>>>()
   	instanceRelationshipExistentialRangeRestrictions = new HashMap<String, Pair<InstanceRelationshipExistentialRangeRestriction, Map<String,String>>>()
+  	instanceRelationshipOneOfRestrictions = new HashMap<String, Pair<InstanceRelationshipOneOfRestriction, Map<String,String>>>()
   	instanceRelationshipUniversalRangeRestrictions = new HashMap<String, Pair<InstanceRelationshipUniversalRangeRestriction, Map<String,String>>>()
   	instanceRelationshipValueRestrictions = new HashMap<String, Pair<InstanceRelationshipValueRestriction, Map<String,String>>>()
   
@@ -918,12 +922,30 @@ class OMLSpecificationTables {
     } finally {
       zos.closeArchiveEntry()
     }
+    // InstanceRelationshipEnumerationRestriction
+    entry = new ZipArchiveEntry("InstanceRelationshipEnumerationRestrictions.json")
+    entry.time = 0L
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(instanceRelationshipEnumerationRestrictionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // InstanceRelationshipExistentialRangeRestriction
     entry = new ZipArchiveEntry("InstanceRelationshipExistentialRangeRestrictions.json")
     entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(instanceRelationshipExistentialRangeRestrictionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // InstanceRelationshipOneOfRestriction
+    entry = new ZipArchiveEntry("InstanceRelationshipOneOfRestrictions.json")
+    entry.time = 0L
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(instanceRelationshipOneOfRestrictionsByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
@@ -3056,6 +3078,36 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
+  protected static def byte[] instanceRelationshipEnumerationRestrictionsByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.instanceRelationshipEnumerationRestrictions(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"descriptionBoxUUID\":")
+      pw.print("\"")
+      pw.print(it.descriptionBox().uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"domainUUID\":")
+      pw.print("\"")
+      pw.print(it.domain.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedRelationshipUUID\":")
+      pw.print("\"")
+      pw.print(it.restrictedRelationship.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
   protected static def byte[] instanceRelationshipExistentialRangeRestrictionsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
@@ -3084,6 +3136,31 @@ class OMLSpecificationTables {
       pw.print("\"restrictedRelationshipUUID\":")
       pw.print("\"")
       pw.print(it.restrictedRelationship.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  protected static def byte[] instanceRelationshipOneOfRestrictionsByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.instanceRelationshipOneOfRestrictions(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"rangeUUID\":")
+      pw.print("\"")
+      pw.print(it.range.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"enumerationUUID\":")
+      pw.print("\"")
+      pw.print(it.enumeration.uuid())
       pw.print("\"")
       pw.println("}")
     ]
@@ -3319,8 +3396,12 @@ class OMLSpecificationTables {
   	    				tables.readCardinalityRestrictedConcepts(ext, lines)
   	    			case "CardinalityRestrictedReifiedRelationships.json":
   	    				tables.readCardinalityRestrictedReifiedRelationships(ext, lines)
+  	    			case "InstanceRelationshipEnumerationRestrictions.json":
+  	    				tables.readInstanceRelationshipEnumerationRestrictions(ext, lines)
   	    			case "InstanceRelationshipExistentialRangeRestrictions.json":
   	    				tables.readInstanceRelationshipExistentialRangeRestrictions(ext, lines)
+  	    			case "InstanceRelationshipOneOfRestrictions.json":
+  	    				tables.readInstanceRelationshipOneOfRestrictions(ext, lines)
   	    			case "InstanceRelationshipUniversalRangeRestrictions.json":
   	    				tables.readInstanceRelationshipUniversalRangeRestrictions(ext, lines)
   	    			case "InstanceRelationshipValueRestrictions.json":
@@ -4299,6 +4380,18 @@ class OMLSpecificationTables {
   	}
   }
   
+  protected def void readInstanceRelationshipEnumerationRestrictions(Extent ext, ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	while (!kvs.empty) {
+  	  val kv = kvs.remove(kvs.size - 1)
+  	  val oml = createInstanceRelationshipEnumerationRestriction()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<InstanceRelationshipEnumerationRestriction, Map<String,String>>(oml, kv)
+  	  instanceRelationshipEnumerationRestrictions.put(uuid, pair)
+  	  includeInstanceRelationshipEnumerationRestrictions(uuid, oml)
+  	}
+  }
+  
   protected def void readInstanceRelationshipExistentialRangeRestrictions(Extent ext, ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	while (!kvs.empty) {
@@ -4308,6 +4401,18 @@ class OMLSpecificationTables {
   	  val pair = new Pair<InstanceRelationshipExistentialRangeRestriction, Map<String,String>>(oml, kv)
   	  instanceRelationshipExistentialRangeRestrictions.put(uuid, pair)
   	  includeInstanceRelationshipExistentialRangeRestrictions(uuid, oml)
+  	}
+  }
+  
+  protected def void readInstanceRelationshipOneOfRestrictions(Extent ext, ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	while (!kvs.empty) {
+  	  val kv = kvs.remove(kvs.size - 1)
+  	  val oml = createInstanceRelationshipOneOfRestriction()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<InstanceRelationshipOneOfRestriction, Map<String,String>>(oml, kv)
+  	  instanceRelationshipOneOfRestrictions.put(uuid, pair)
+  	  includeInstanceRelationshipOneOfRestrictions(uuid, oml)
   	}
   }
   
@@ -4662,7 +4767,15 @@ class OMLSpecificationTables {
   	predicates.put(uuid, new Pair<Predicate, Map<String, String>>(oml, Collections.emptyMap))
   	
   }
+  protected def void includeInstanceRelationshipEnumerationRestrictions(String uuid, InstanceRelationshipEnumerationRestriction oml) {
+  	logicalElements.put(uuid, new Pair<LogicalElement, Map<String, String>>(oml, Collections.emptyMap))
+  	
+  }
   protected def void includeInstanceRelationshipExistentialRangeRestrictions(String uuid, InstanceRelationshipExistentialRangeRestriction oml) {
+  	logicalElements.put(uuid, new Pair<LogicalElement, Map<String, String>>(oml, Collections.emptyMap))
+  	
+  }
+  protected def void includeInstanceRelationshipOneOfRestrictions(String uuid, InstanceRelationshipOneOfRestriction oml) {
   	logicalElements.put(uuid, new Pair<LogicalElement, Map<String, String>>(oml, Collections.emptyMap))
   	
   }
@@ -4866,8 +4979,14 @@ class OMLSpecificationTables {
     if (includeMap(logicalElements, cardinalityRestrictedReifiedRelationships)) {
     	System.out.println("+ logicalElements, cardinalityRestrictedReifiedRelationships")
     }
+    if (includeMap(logicalElements, instanceRelationshipEnumerationRestrictions)) {
+    	System.out.println("+ logicalElements, instanceRelationshipEnumerationRestrictions")
+    }
     if (includeMap(logicalElements, instanceRelationshipExistentialRangeRestrictions)) {
     	System.out.println("+ logicalElements, instanceRelationshipExistentialRangeRestrictions")
+    }
+    if (includeMap(logicalElements, instanceRelationshipOneOfRestrictions)) {
+    	System.out.println("+ logicalElements, instanceRelationshipOneOfRestrictions")
     }
     if (includeMap(logicalElements, instanceRelationshipUniversalRangeRestrictions)) {
     	System.out.println("+ logicalElements, instanceRelationshipUniversalRangeRestrictions")
@@ -5139,7 +5258,9 @@ class OMLSpecificationTables {
     	resolveCardinalityRestrictedAspects(rs, progress, allDone)
     	resolveCardinalityRestrictedConcepts(rs, progress, allDone)
     	resolveCardinalityRestrictedReifiedRelationships(rs, progress, allDone)
+    	resolveInstanceRelationshipEnumerationRestrictions(rs, progress, allDone)
     	resolveInstanceRelationshipExistentialRangeRestrictions(rs, progress, allDone)
+    	resolveInstanceRelationshipOneOfRestrictions(rs, progress, allDone)
     	resolveInstanceRelationshipUniversalRangeRestrictions(rs, progress, allDone)
     	resolveInstanceRelationshipValueRestrictions(rs, progress, allDone)
     } while (!allDone.get(0) && !progress.get(0) && iterations < 10)
@@ -6955,6 +7076,37 @@ class OMLSpecificationTables {
   	]
   }
   
+  protected def void resolveInstanceRelationshipEnumerationRestrictions(ResourceSet rs, ArrayList<Boolean> progress, ArrayList<Boolean> allDone) {
+  	
+  	instanceRelationshipEnumerationRestrictions.forEach[uuid, oml_kv |
+  	  val InstanceRelationshipEnumerationRestriction oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String descriptionBoxXRef = kv.get("descriptionBoxUUID")
+  	    val Pair<DescriptionBox, Map<String, String>> descriptionBoxPair = descriptionBoxes.get(descriptionBoxXRef)
+  	    if (null !== descriptionBoxPair) {
+  	    	oml.descriptionBox = descriptionBoxPair.key
+  	    	kv.remove("descriptionBoxUUID")
+  	    	progress.set(0, true)
+  	    }
+  	    val String domainXRef = kv.get("domainUUID")
+  	    val Pair<ConceptualEntitySingletonInstance, Map<String, String>> domainPair = conceptualEntitySingletonInstances.get(domainXRef)
+  	    if (null !== domainPair) {
+  	    	oml.domain = domainPair.key
+  	    	kv.remove("domainUUID")
+  	    	progress.set(0, true)
+  	    }
+  	    val String restrictedRelationshipXRef = kv.get("restrictedRelationshipUUID")
+  	    val Pair<RestrictableRelationship, Map<String, String>> restrictedRelationshipPair = restrictableRelationships.get(restrictedRelationshipXRef)
+  	    if (null !== restrictedRelationshipPair) {
+  	    	oml.restrictedRelationship = restrictedRelationshipPair.key
+  	    	kv.remove("restrictedRelationshipUUID")
+  	    	progress.set(0, true)
+  	    }
+  	  }
+  	]
+  }
+  
   protected def void resolveInstanceRelationshipExistentialRangeRestrictions(ResourceSet rs, ArrayList<Boolean> progress, ArrayList<Boolean> allDone) {
   	
   	instanceRelationshipExistentialRangeRestrictions.forEach[uuid, oml_kv |
@@ -6987,6 +7139,30 @@ class OMLSpecificationTables {
   	    if (null !== restrictedRelationshipPair) {
   	    	oml.restrictedRelationship = restrictedRelationshipPair.key
   	    	kv.remove("restrictedRelationshipUUID")
+  	    	progress.set(0, true)
+  	    }
+  	  }
+  	]
+  }
+  
+  protected def void resolveInstanceRelationshipOneOfRestrictions(ResourceSet rs, ArrayList<Boolean> progress, ArrayList<Boolean> allDone) {
+  	
+  	instanceRelationshipOneOfRestrictions.forEach[uuid, oml_kv |
+  	  val InstanceRelationshipOneOfRestriction oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String rangeXRef = kv.get("rangeUUID")
+  	    val Pair<ConceptualEntitySingletonInstance, Map<String, String>> rangePair = conceptualEntitySingletonInstances.get(rangeXRef)
+  	    if (null !== rangePair) {
+  	    	oml.range = rangePair.key
+  	    	kv.remove("rangeUUID")
+  	    	progress.set(0, true)
+  	    }
+  	    val String enumerationXRef = kv.get("enumerationUUID")
+  	    val Pair<InstanceRelationshipEnumerationRestriction, Map<String, String>> enumerationPair = instanceRelationshipEnumerationRestrictions.get(enumerationXRef)
+  	    if (null !== enumerationPair) {
+  	    	oml.enumeration = enumerationPair.key
+  	    	kv.remove("enumerationUUID")
   	    	progress.set(0, true)
   	    }
   	  }
@@ -7455,9 +7631,19 @@ class OMLSpecificationTables {
   	        cardinalityRestrictedReifiedRelationships.put(e.uuid(), pair)
   	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	      }
+  	      InstanceRelationshipEnumerationRestriction: {
+  	        val pair = new Pair<InstanceRelationshipEnumerationRestriction, Map<String,String>>(e, Collections.emptyMap)
+  	        instanceRelationshipEnumerationRestrictions.put(e.uuid(), pair)
+  	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	      }
   	      InstanceRelationshipExistentialRangeRestriction: {
   	        val pair = new Pair<InstanceRelationshipExistentialRangeRestriction, Map<String,String>>(e, Collections.emptyMap)
   	        instanceRelationshipExistentialRangeRestrictions.put(e.uuid(), pair)
+  	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	      }
+  	      InstanceRelationshipOneOfRestriction: {
+  	        val pair = new Pair<InstanceRelationshipOneOfRestriction, Map<String,String>>(e, Collections.emptyMap)
+  	        instanceRelationshipOneOfRestrictions.put(e.uuid(), pair)
   	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	      }
   	      InstanceRelationshipUniversalRangeRestriction: {
