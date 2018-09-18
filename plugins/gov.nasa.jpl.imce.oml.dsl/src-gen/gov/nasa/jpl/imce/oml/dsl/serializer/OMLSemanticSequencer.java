@@ -43,7 +43,9 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance;
@@ -198,8 +200,14 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case DescriptionsPackage.DESCRIPTION_BOX_REFINEMENT:
 				sequence_DescriptionBoxRefinement(context, (DescriptionBoxRefinement) semanticObject); 
 				return; 
+			case DescriptionsPackage.INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION:
+				sequence_InstanceRelationshipEnumerationRestriction(context, (InstanceRelationshipEnumerationRestriction) semanticObject); 
+				return; 
 			case DescriptionsPackage.INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTION:
 				sequence_InstanceRelationshipExistentialRangeRestriction(context, (InstanceRelationshipExistentialRangeRestriction) semanticObject); 
+				return; 
+			case DescriptionsPackage.INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION:
+				sequence_InstanceRelationshipOneOfRestriction(context, (InstanceRelationshipOneOfRestriction) semanticObject); 
 				return; 
 			case DescriptionsPackage.INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTION:
 				sequence_InstanceRelationshipUniversalRangeRestriction(context, (InstanceRelationshipUniversalRangeRestriction) semanticObject); 
@@ -712,6 +720,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *             closedWorldDefinitions+=DescriptionBoxExtendsClosedWorldDefinitions | 
 	 *             descriptionBoxRefinements+=DescriptionBoxRefinement | 
 	 *             conceptInstances+=ConceptInstance | 
+	 *             instanceRelationshipEnumerationRestrictions+=InstanceRelationshipEnumerationRestriction | 
 	 *             instanceRelationshipValueRestrictions+=InstanceRelationshipValueRestriction | 
 	 *             instanceRelationshipExistentialRangeRestrictions+=InstanceRelationshipExistentialRangeRestriction | 
 	 *             instanceRelationshipUniversalRangeRestrictions+=InstanceRelationshipUniversalRangeRestriction | 
@@ -934,6 +943,23 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     InstanceRelationshipEnumerationRestriction returns InstanceRelationshipEnumerationRestriction
+	 *
+	 * Constraint:
+	 *     (
+	 *         annotations+=AnnotationPropertyValue* 
+	 *         domain=[ConceptualEntitySingletonInstance|Reference] 
+	 *         restrictedRelationship=[RestrictableRelationship|Reference] 
+	 *         references+=InstanceRelationshipOneOfRestriction*
+	 *     )
+	 */
+	protected void sequence_InstanceRelationshipEnumerationRestriction(ISerializationContext context, InstanceRelationshipEnumerationRestriction semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     InstanceRelationshipExistentialRangeRestriction returns InstanceRelationshipExistentialRangeRestriction
 	 *
 	 * Constraint:
@@ -945,6 +971,18 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     )
 	 */
 	protected void sequence_InstanceRelationshipExistentialRangeRestriction(ISerializationContext context, InstanceRelationshipExistentialRangeRestriction semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     InstanceRelationshipOneOfRestriction returns InstanceRelationshipOneOfRestriction
+	 *
+	 * Constraint:
+	 *     (annotations+=AnnotationPropertyValue* range=[ConceptualEntitySingletonInstance|Reference])
+	 */
+	protected void sequence_InstanceRelationshipOneOfRestriction(ISerializationContext context, InstanceRelationshipOneOfRestriction semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

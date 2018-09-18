@@ -35,7 +35,9 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance;
@@ -353,62 +355,69 @@ public class OMLFormatter extends AbstractFormatter2 {
       document.<ReifiedRelationshipInstance>append(document.<ReifiedRelationshipInstance>format(it), _function_12);
     };
     descriptionBox.getReifiedRelationshipInstances().forEach(_function_11);
-    final Consumer<InstanceRelationshipExistentialRangeRestriction> _function_12 = (InstanceRelationshipExistentialRangeRestriction it) -> {
+    final Consumer<InstanceRelationshipEnumerationRestriction> _function_12 = (InstanceRelationshipEnumerationRestriction it) -> {
       final Procedure1<IHiddenRegionFormatter> _function_13 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<InstanceRelationshipExistentialRangeRestriction>append(document.<InstanceRelationshipExistentialRangeRestriction>format(it), _function_13);
+      document.<InstanceRelationshipEnumerationRestriction>append(document.<InstanceRelationshipEnumerationRestriction>format(it), _function_13);
     };
-    descriptionBox.getInstanceRelationshipExistentialRangeRestrictions().forEach(_function_12);
-    final Consumer<InstanceRelationshipUniversalRangeRestriction> _function_13 = (InstanceRelationshipUniversalRangeRestriction it) -> {
+    descriptionBox.getInstanceRelationshipEnumerationRestrictions().forEach(_function_12);
+    final Consumer<InstanceRelationshipExistentialRangeRestriction> _function_13 = (InstanceRelationshipExistentialRangeRestriction it) -> {
       final Procedure1<IHiddenRegionFormatter> _function_14 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<InstanceRelationshipUniversalRangeRestriction>append(document.<InstanceRelationshipUniversalRangeRestriction>format(it), _function_14);
+      document.<InstanceRelationshipExistentialRangeRestriction>append(document.<InstanceRelationshipExistentialRangeRestriction>format(it), _function_14);
     };
-    descriptionBox.getInstanceRelationshipUniversalRangeRestrictions().forEach(_function_13);
-    final Consumer<InstanceRelationshipValueRestriction> _function_14 = (InstanceRelationshipValueRestriction it) -> {
+    descriptionBox.getInstanceRelationshipExistentialRangeRestrictions().forEach(_function_13);
+    final Consumer<InstanceRelationshipUniversalRangeRestriction> _function_14 = (InstanceRelationshipUniversalRangeRestriction it) -> {
       final Procedure1<IHiddenRegionFormatter> _function_15 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<InstanceRelationshipValueRestriction>append(document.<InstanceRelationshipValueRestriction>format(it), _function_15);
+      document.<InstanceRelationshipUniversalRangeRestriction>append(document.<InstanceRelationshipUniversalRangeRestriction>format(it), _function_15);
     };
-    descriptionBox.getInstanceRelationshipValueRestrictions().forEach(_function_14);
-    final Consumer<ReifiedRelationshipInstanceDomain> _function_15 = (ReifiedRelationshipInstanceDomain it) -> {
+    descriptionBox.getInstanceRelationshipUniversalRangeRestrictions().forEach(_function_14);
+    final Consumer<InstanceRelationshipValueRestriction> _function_15 = (InstanceRelationshipValueRestriction it) -> {
       final Procedure1<IHiddenRegionFormatter> _function_16 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<ReifiedRelationshipInstanceDomain>append(document.<ReifiedRelationshipInstanceDomain>format(it), _function_16);
+      document.<InstanceRelationshipValueRestriction>append(document.<InstanceRelationshipValueRestriction>format(it), _function_16);
     };
-    descriptionBox.getReifiedRelationshipInstanceDomains().forEach(_function_15);
-    final Consumer<ReifiedRelationshipInstanceRange> _function_16 = (ReifiedRelationshipInstanceRange it) -> {
+    descriptionBox.getInstanceRelationshipValueRestrictions().forEach(_function_15);
+    final Consumer<ReifiedRelationshipInstanceDomain> _function_16 = (ReifiedRelationshipInstanceDomain it) -> {
       final Procedure1<IHiddenRegionFormatter> _function_17 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<ReifiedRelationshipInstanceRange>append(document.<ReifiedRelationshipInstanceRange>format(it), _function_17);
+      document.<ReifiedRelationshipInstanceDomain>append(document.<ReifiedRelationshipInstanceDomain>format(it), _function_17);
     };
-    descriptionBox.getReifiedRelationshipInstanceRanges().forEach(_function_16);
-    final Consumer<UnreifiedRelationshipInstanceTuple> _function_17 = (UnreifiedRelationshipInstanceTuple it) -> {
+    descriptionBox.getReifiedRelationshipInstanceDomains().forEach(_function_16);
+    final Consumer<ReifiedRelationshipInstanceRange> _function_17 = (ReifiedRelationshipInstanceRange it) -> {
       final Procedure1<IHiddenRegionFormatter> _function_18 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<UnreifiedRelationshipInstanceTuple>append(document.<UnreifiedRelationshipInstanceTuple>format(it), _function_18);
+      document.<ReifiedRelationshipInstanceRange>append(document.<ReifiedRelationshipInstanceRange>format(it), _function_18);
     };
-    descriptionBox.getUnreifiedRelationshipInstanceTuples().forEach(_function_17);
-    final Consumer<SingletonInstanceScalarDataPropertyValue> _function_18 = (SingletonInstanceScalarDataPropertyValue it) -> {
+    descriptionBox.getReifiedRelationshipInstanceRanges().forEach(_function_17);
+    final Consumer<UnreifiedRelationshipInstanceTuple> _function_18 = (UnreifiedRelationshipInstanceTuple it) -> {
       final Procedure1<IHiddenRegionFormatter> _function_19 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<SingletonInstanceScalarDataPropertyValue>append(document.<SingletonInstanceScalarDataPropertyValue>format(it), _function_19);
+      document.<UnreifiedRelationshipInstanceTuple>append(document.<UnreifiedRelationshipInstanceTuple>format(it), _function_19);
     };
-    descriptionBox.getSingletonScalarDataPropertyValues().forEach(_function_18);
-    final Consumer<SingletonInstanceStructuredDataPropertyValue> _function_19 = (SingletonInstanceStructuredDataPropertyValue it) -> {
+    descriptionBox.getUnreifiedRelationshipInstanceTuples().forEach(_function_18);
+    final Consumer<SingletonInstanceScalarDataPropertyValue> _function_19 = (SingletonInstanceScalarDataPropertyValue it) -> {
       final Procedure1<IHiddenRegionFormatter> _function_20 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<SingletonInstanceStructuredDataPropertyValue>append(document.<SingletonInstanceStructuredDataPropertyValue>format(it), _function_20);
+      document.<SingletonInstanceScalarDataPropertyValue>append(document.<SingletonInstanceScalarDataPropertyValue>format(it), _function_20);
     };
-    descriptionBox.getSingletonStructuredDataPropertyValues().forEach(_function_19);
+    descriptionBox.getSingletonScalarDataPropertyValues().forEach(_function_19);
+    final Consumer<SingletonInstanceStructuredDataPropertyValue> _function_20 = (SingletonInstanceStructuredDataPropertyValue it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_21 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(2);
+      };
+      document.<SingletonInstanceStructuredDataPropertyValue>append(document.<SingletonInstanceStructuredDataPropertyValue>format(it), _function_21);
+    };
+    descriptionBox.getSingletonStructuredDataPropertyValues().forEach(_function_20);
   }
   
   protected void _format(final Aspect aspect, @Extension final IFormattableDocument document) {
@@ -606,17 +615,21 @@ public class OMLFormatter extends AbstractFormatter2 {
     };
     document.append(lcurly, _function_3);
     final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
-      it.indent();
-    };
-    document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_4);
-    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(prr).keyword("source"), _function_5);
+    document.append(lcurly, _function_4);
+    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+      it.indent();
+    };
+    document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_5);
     final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(prr).keyword("target"), _function_6);
+    document.prepend(this.textRegionExtensions.regionFor(prr).keyword("source"), _function_6);
+    final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(this.textRegionExtensions.regionFor(prr).keyword("target"), _function_7);
   }
   
   protected void _format(final CardinalityRestrictedReifiedRelationship rr, @Extension final IFormattableDocument document) {
@@ -2253,6 +2266,59 @@ public class OMLFormatter extends AbstractFormatter2 {
     document.append(this.textRegionExtensions.regionFor(i).keyword(")"), _function_5);
   }
   
+  protected void _format(final InstanceRelationshipEnumerationRestriction i, @Extension final IFormattableDocument document) {
+    final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(1);
+      };
+      document.<AnnotationPropertyValue>append(document.<AnnotationPropertyValue>format(it), _function_1);
+    };
+    i.getAnnotations().forEach(_function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(i).keyword("."), _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(i).keyword("in"), _function_2);
+    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(i).keyword("{");
+    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(i).keyword("}");
+    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.prepend(lcurly, _function_3);
+    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.append(lcurly, _function_4);
+    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(rcurly, _function_5);
+    final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
+      it.indent();
+    };
+    document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_6);
+    final Consumer<InstanceRelationshipOneOfRestriction> _function_7 = (InstanceRelationshipOneOfRestriction it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(1);
+      };
+      document.<InstanceRelationshipOneOfRestriction>append(document.<InstanceRelationshipOneOfRestriction>format(it), _function_8);
+    };
+    i.getReferences().forEach(_function_7);
+  }
+  
+  protected void _format(final InstanceRelationshipOneOfRestriction i, @Extension final IFormattableDocument document) {
+    final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(1);
+      };
+      document.<AnnotationPropertyValue>append(document.<AnnotationPropertyValue>format(it), _function_1);
+    };
+    i.getAnnotations().forEach(_function);
+  }
+  
   protected void _format(final InstanceRelationshipValueRestriction i, @Extension final IFormattableDocument document) {
     final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue it) -> {
       final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it_1) -> {
@@ -2460,6 +2526,9 @@ public class OMLFormatter extends AbstractFormatter2 {
     } else if (t instanceof DescriptionBox) {
       _format((DescriptionBox)t, document);
       return;
+    } else if (t instanceof InstanceRelationshipEnumerationRestriction) {
+      _format((InstanceRelationshipEnumerationRestriction)t, document);
+      return;
     } else if (t instanceof InstanceRelationshipExistentialRangeRestriction) {
       _format((InstanceRelationshipExistentialRangeRestriction)t, document);
       return;
@@ -2480,6 +2549,9 @@ public class OMLFormatter extends AbstractFormatter2 {
       return;
     } else if (t instanceof AnnotationPropertyValue) {
       _format((AnnotationPropertyValue)t, document);
+      return;
+    } else if (t instanceof InstanceRelationshipOneOfRestriction) {
+      _format((InstanceRelationshipOneOfRestriction)t, document);
       return;
     } else if (t instanceof ScalarDataPropertyValue) {
       _format((ScalarDataPropertyValue)t, document);

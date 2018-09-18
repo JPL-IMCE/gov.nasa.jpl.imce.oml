@@ -29,7 +29,9 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRelationship;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionKind;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsFactory;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance;
@@ -145,6 +147,20 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 	 * @generated
 	 */
 	private EClass conceptInstanceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass instanceRelationshipEnumerationRestrictionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass instanceRelationshipOneOfRestrictionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -327,7 +343,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDescriptionBox_InstanceRelationshipValueRestrictions() {
+	public EReference getDescriptionBox_InstanceRelationshipEnumerationRestrictions() {
 		return (EReference)descriptionBoxEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -336,7 +352,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDescriptionBox_InstanceRelationshipExistentialRangeRestrictions() {
+	public EReference getDescriptionBox_InstanceRelationshipValueRestrictions() {
 		return (EReference)descriptionBoxEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -345,7 +361,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDescriptionBox_InstanceRelationshipUniversalRangeRestrictions() {
+	public EReference getDescriptionBox_InstanceRelationshipExistentialRangeRestrictions() {
 		return (EReference)descriptionBoxEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -354,7 +370,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDescriptionBox_ReifiedRelationshipInstanceDomains() {
+	public EReference getDescriptionBox_InstanceRelationshipUniversalRangeRestrictions() {
 		return (EReference)descriptionBoxEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -363,7 +379,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDescriptionBox_ReifiedRelationshipInstanceRanges() {
+	public EReference getDescriptionBox_ReifiedRelationshipInstanceDomains() {
 		return (EReference)descriptionBoxEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -372,7 +388,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDescriptionBox_UnreifiedRelationshipInstanceTuples() {
+	public EReference getDescriptionBox_ReifiedRelationshipInstanceRanges() {
 		return (EReference)descriptionBoxEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -381,7 +397,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDescriptionBox_SingletonScalarDataPropertyValues() {
+	public EReference getDescriptionBox_UnreifiedRelationshipInstanceTuples() {
 		return (EReference)descriptionBoxEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -390,8 +406,17 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDescriptionBox_SingletonStructuredDataPropertyValues() {
+	public EReference getDescriptionBox_SingletonScalarDataPropertyValues() {
 		return (EReference)descriptionBoxEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDescriptionBox_SingletonStructuredDataPropertyValues() {
+		return (EReference)descriptionBoxEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -1011,6 +1036,132 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getInstanceRelationshipEnumerationRestriction() {
+		return instanceRelationshipEnumerationRestrictionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInstanceRelationshipEnumerationRestriction_DescriptionBox() {
+		return (EReference)instanceRelationshipEnumerationRestrictionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInstanceRelationshipEnumerationRestriction_Domain() {
+		return (EReference)instanceRelationshipEnumerationRestrictionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInstanceRelationshipEnumerationRestriction_RestrictedRelationship() {
+		return (EReference)instanceRelationshipEnumerationRestrictionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInstanceRelationshipEnumerationRestriction_References() {
+		return (EReference)instanceRelationshipEnumerationRestrictionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInstanceRelationshipEnumerationRestriction__DescriptionBox() {
+		return instanceRelationshipEnumerationRestrictionEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInstanceRelationshipEnumerationRestriction__Uuid() {
+		return instanceRelationshipEnumerationRestrictionEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInstanceRelationshipEnumerationRestriction__ModuleContext() {
+		return instanceRelationshipEnumerationRestrictionEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInstanceRelationshipEnumerationRestriction__AllNestedElements() {
+		return instanceRelationshipEnumerationRestrictionEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInstanceRelationshipOneOfRestriction() {
+		return instanceRelationshipOneOfRestrictionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInstanceRelationshipOneOfRestriction_Enumeration() {
+		return (EReference)instanceRelationshipOneOfRestrictionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInstanceRelationshipOneOfRestriction_Range() {
+		return (EReference)instanceRelationshipOneOfRestrictionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInstanceRelationshipOneOfRestriction__Uuid() {
+		return instanceRelationshipOneOfRestrictionEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInstanceRelationshipOneOfRestriction__AllNestedElements() {
+		return instanceRelationshipOneOfRestrictionEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInstanceRelationshipValueRestriction() {
 		return instanceRelationshipValueRestrictionEClass;
 	}
@@ -1571,6 +1722,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		createEReference(descriptionBoxEClass, DESCRIPTION_BOX__CLOSED_WORLD_DEFINITIONS);
 		createEReference(descriptionBoxEClass, DESCRIPTION_BOX__CONCEPT_INSTANCES);
 		createEReference(descriptionBoxEClass, DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCES);
+		createEReference(descriptionBoxEClass, DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTIONS);
 		createEReference(descriptionBoxEClass, DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_VALUE_RESTRICTIONS);
 		createEReference(descriptionBoxEClass, DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTIONS);
 		createEReference(descriptionBoxEClass, DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTIONS);
@@ -1658,6 +1810,22 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		createEOperation(conceptInstanceEClass, CONCEPT_INSTANCE___CONCEPTUAL_ENTITY_SINGLETON_CLASSIFIER);
 		createEOperation(conceptInstanceEClass, CONCEPT_INSTANCE___DESCRIPTION_BOX);
 		createEOperation(conceptInstanceEClass, CONCEPT_INSTANCE___ALL_NESTED_ELEMENTS);
+
+		instanceRelationshipEnumerationRestrictionEClass = createEClass(INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION);
+		createEReference(instanceRelationshipEnumerationRestrictionEClass, INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION__DESCRIPTION_BOX);
+		createEReference(instanceRelationshipEnumerationRestrictionEClass, INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION__DOMAIN);
+		createEReference(instanceRelationshipEnumerationRestrictionEClass, INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION__RESTRICTED_RELATIONSHIP);
+		createEReference(instanceRelationshipEnumerationRestrictionEClass, INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION__REFERENCES);
+		createEOperation(instanceRelationshipEnumerationRestrictionEClass, INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION___DESCRIPTION_BOX);
+		createEOperation(instanceRelationshipEnumerationRestrictionEClass, INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION___UUID);
+		createEOperation(instanceRelationshipEnumerationRestrictionEClass, INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION___MODULE_CONTEXT);
+		createEOperation(instanceRelationshipEnumerationRestrictionEClass, INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION___ALL_NESTED_ELEMENTS);
+
+		instanceRelationshipOneOfRestrictionEClass = createEClass(INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION);
+		createEReference(instanceRelationshipOneOfRestrictionEClass, INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION__ENUMERATION);
+		createEReference(instanceRelationshipOneOfRestrictionEClass, INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION__RANGE);
+		createEOperation(instanceRelationshipOneOfRestrictionEClass, INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION___UUID);
+		createEOperation(instanceRelationshipOneOfRestrictionEClass, INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION___ALL_NESTED_ELEMENTS);
 
 		instanceRelationshipValueRestrictionEClass = createEClass(INSTANCE_RELATIONSHIP_VALUE_RESTRICTION);
 		createEReference(instanceRelationshipValueRestrictionEClass, INSTANCE_RELATIONSHIP_VALUE_RESTRICTION__DESCRIPTION_BOX);
@@ -1777,6 +1945,9 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		conceptualEntitySingletonInstanceEClass.getESuperTypes().add(this.getTerminologyInstanceAssertion());
 		conceptualEntitySingletonInstanceEClass.getESuperTypes().add(theCommonPackage.getResource());
 		conceptInstanceEClass.getESuperTypes().add(this.getConceptualEntitySingletonInstance());
+		instanceRelationshipEnumerationRestrictionEClass.getESuperTypes().add(this.getTerminologyInstanceAssertion());
+		instanceRelationshipEnumerationRestrictionEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
+		instanceRelationshipOneOfRestrictionEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
 		instanceRelationshipValueRestrictionEClass.getESuperTypes().add(this.getTerminologyInstanceAssertion());
 		instanceRelationshipValueRestrictionEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
 		instanceRelationshipExistentialRangeRestrictionEClass.getESuperTypes().add(this.getTerminologyInstanceAssertion());
@@ -1798,6 +1969,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		initEReference(getDescriptionBox_ClosedWorldDefinitions(), this.getDescriptionBoxExtendsClosedWorldDefinitions(), this.getDescriptionBoxExtendsClosedWorldDefinitions_DescriptionBox(), "closedWorldDefinitions", null, 0, -1, DescriptionBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDescriptionBox_ConceptInstances(), this.getConceptInstance(), this.getConceptInstance_DescriptionBox(), "conceptInstances", null, 0, -1, DescriptionBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDescriptionBox_ReifiedRelationshipInstances(), this.getReifiedRelationshipInstance(), this.getReifiedRelationshipInstance_DescriptionBox(), "reifiedRelationshipInstances", null, 0, -1, DescriptionBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDescriptionBox_InstanceRelationshipEnumerationRestrictions(), this.getInstanceRelationshipEnumerationRestriction(), this.getInstanceRelationshipEnumerationRestriction_DescriptionBox(), "instanceRelationshipEnumerationRestrictions", null, 0, -1, DescriptionBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDescriptionBox_InstanceRelationshipValueRestrictions(), this.getInstanceRelationshipValueRestriction(), this.getInstanceRelationshipValueRestriction_DescriptionBox(), "instanceRelationshipValueRestrictions", null, 0, -1, DescriptionBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDescriptionBox_InstanceRelationshipExistentialRangeRestrictions(), this.getInstanceRelationshipExistentialRangeRestriction(), this.getInstanceRelationshipExistentialRangeRestriction_DescriptionBox(), "instanceRelationshipExistentialRangeRestrictions", null, 0, -1, DescriptionBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDescriptionBox_InstanceRelationshipUniversalRangeRestrictions(), this.getInstanceRelationshipUniversalRangeRestriction(), this.getInstanceRelationshipUniversalRangeRestriction_DescriptionBox(), "instanceRelationshipUniversalRangeRestrictions", null, 0, -1, DescriptionBox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1920,6 +2092,28 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		initEOperation(getConceptInstance__DescriptionBox(), this.getDescriptionBox(), "descriptionBox", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getConceptInstance__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(instanceRelationshipEnumerationRestrictionEClass, InstanceRelationshipEnumerationRestriction.class, "InstanceRelationshipEnumerationRestriction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInstanceRelationshipEnumerationRestriction_DescriptionBox(), this.getDescriptionBox(), this.getDescriptionBox_InstanceRelationshipEnumerationRestrictions(), "descriptionBox", null, 1, 1, InstanceRelationshipEnumerationRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInstanceRelationshipEnumerationRestriction_Domain(), this.getConceptualEntitySingletonInstance(), null, "domain", null, 1, 1, InstanceRelationshipEnumerationRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInstanceRelationshipEnumerationRestriction_RestrictedRelationship(), theTerminologiesPackage.getRestrictableRelationship(), null, "restrictedRelationship", null, 1, 1, InstanceRelationshipEnumerationRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInstanceRelationshipEnumerationRestriction_References(), this.getInstanceRelationshipOneOfRestriction(), this.getInstanceRelationshipOneOfRestriction_Enumeration(), "references", null, 0, -1, InstanceRelationshipEnumerationRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getInstanceRelationshipEnumerationRestriction__DescriptionBox(), this.getDescriptionBox(), "descriptionBox", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getInstanceRelationshipEnumerationRestriction__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getInstanceRelationshipEnumerationRestriction__ModuleContext(), theCommonPackage.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getInstanceRelationshipEnumerationRestriction__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(instanceRelationshipOneOfRestrictionEClass, InstanceRelationshipOneOfRestriction.class, "InstanceRelationshipOneOfRestriction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInstanceRelationshipOneOfRestriction_Enumeration(), this.getInstanceRelationshipEnumerationRestriction(), this.getInstanceRelationshipEnumerationRestriction_References(), "enumeration", null, 1, 1, InstanceRelationshipOneOfRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getInstanceRelationshipOneOfRestriction_Range(), this.getConceptualEntitySingletonInstance(), null, "range", null, 1, 1, InstanceRelationshipOneOfRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getInstanceRelationshipOneOfRestriction__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getInstanceRelationshipOneOfRestriction__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(instanceRelationshipValueRestrictionEClass, InstanceRelationshipValueRestriction.class, "InstanceRelationshipValueRestriction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInstanceRelationshipValueRestriction_DescriptionBox(), this.getDescriptionBox(), this.getDescriptionBox_InstanceRelationshipValueRestrictions(), "descriptionBox", null, 1, 1, InstanceRelationshipValueRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2122,6 +2316,16 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		   new String[] {
 		   });
 		addAnnotation
+		  (instanceRelationshipEnumerationRestrictionEClass,
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (instanceRelationshipOneOfRestrictionEClass,
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
 		  (instanceRelationshipValueRestrictionEClass,
 		   source,
 		   new String[] {
@@ -2176,7 +2380,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		  (getDescriptionBox__ModuleElements(),
 		   source,
 		   new String[] {
-			   "code", "extent.lookupConceptInstances(this) ++\n\t\textent.lookupReifiedRelationshipInstances(this) ++\n\t\textent.lookupInstanceRelationshipValueRestrictions(this) ++\n\t\textent.lookupReifiedRelationshipInstanceDomains(this) ++\n\t\textent.lookupReifiedRelationshipInstanceRanges(this) ++\n\t\textent.lookupUnreifiedRelationshipInstanceTuples(this) ++\n\t\textent.lookupSingletonScalarDataPropertyValues(this) ++\n\t\textent.lookupSingletonStructuredDataPropertyValues(this)"
+			   "code", "extent.lookupConceptInstances(this) ++\n\t\textent.lookupReifiedRelationshipInstances(this) ++\n\t\textent.lookupInstanceRelationshipEnumerationRestrictions(this) ++\n\t\textent.lookupInstanceRelationshipValueRestrictions(this) ++\n\t\textent.lookupInstanceRelationshipExistentialRangeRestrictions(this) ++\n\t\textent.lookupInstanceRelationshipUniversalRangeRestrictions(this) ++\n\t\textent.lookupReifiedRelationshipInstanceDomains(this) ++\n\t\textent.lookupReifiedRelationshipInstanceRanges(this) ++\n\t\textent.lookupUnreifiedRelationshipInstanceTuples(this) ++\n\t\textent.lookupSingletonScalarDataPropertyValues(this) ++\n\t\textent.lookupSingletonStructuredDataPropertyValues(this)"
 		   });
 		addAnnotation
 		  (getDescriptionBoxExtendsClosedWorldDefinitions__DescriptionDomain(),
@@ -2246,6 +2450,24 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		   });
 		addAnnotation
 		  (getConceptInstance__AllNestedElements(),
+		   source,
+		   new String[] {
+			   "code", "scala.collection.immutable.Set.empty[resolver.api.LogicalElement]"
+		   });
+		addAnnotation
+		  (getInstanceRelationshipEnumerationRestriction__DescriptionBox(),
+		   source,
+		   new String[] {
+			   "code", "extent.descriptionBoxOfInstanceRelationshipEnumerationRestriction.get(this)"
+		   });
+		addAnnotation
+		  (getInstanceRelationshipEnumerationRestriction__AllNestedElements(),
+		   source,
+		   new String[] {
+			   "code", "references"
+		   });
+		addAnnotation
+		  (getInstanceRelationshipOneOfRestriction__AllNestedElements(),
 		   source,
 		   new String[] {
 			   "code", "scala.collection.immutable.Set.empty[resolver.api.LogicalElement]"
@@ -2381,6 +2603,12 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 			   "kind", "Set"
 		   });
 		addAnnotation
+		  (getDescriptionBox_InstanceRelationshipEnumerationRestrictions(),
+		   source,
+		   new String[] {
+			   "kind", "Set"
+		   });
+		addAnnotation
 		  (getDescriptionBox_InstanceRelationshipValueRestrictions(),
 		   source,
 		   new String[] {
@@ -2460,6 +2688,24 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		   });
 		addAnnotation
 		  (getConceptInstance__AllNestedElements(),
+		   source,
+		   new String[] {
+			   "kind", "Set"
+		   });
+		addAnnotation
+		  (getInstanceRelationshipEnumerationRestriction__AllNestedElements(),
+		   source,
+		   new String[] {
+			   "kind", "Set"
+		   });
+		addAnnotation
+		  (getInstanceRelationshipEnumerationRestriction_References(),
+		   source,
+		   new String[] {
+			   "kind", "Set"
+		   });
+		addAnnotation
+		  (getInstanceRelationshipOneOfRestriction__AllNestedElements(),
 		   source,
 		   new String[] {
 			   "kind", "Set"
@@ -2638,6 +2884,26 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		   });
 		addAnnotation
 		  (getConceptInstance__AllNestedElements(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getInstanceRelationshipEnumerationRestriction__DescriptionBox(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getInstanceRelationshipEnumerationRestriction__ModuleContext(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getInstanceRelationshipEnumerationRestriction__AllNestedElements(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getInstanceRelationshipOneOfRestriction__AllNestedElements(),
 		   source,
 		   new String[] {
 		   });
@@ -2927,6 +3193,36 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		   new String[] {
 		   });
 		addAnnotation
+		  (getInstanceRelationshipEnumerationRestriction__DescriptionBox(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getInstanceRelationshipEnumerationRestriction__Uuid(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getInstanceRelationshipEnumerationRestriction__ModuleContext(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getInstanceRelationshipEnumerationRestriction__AllNestedElements(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getInstanceRelationshipOneOfRestriction__Uuid(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getInstanceRelationshipOneOfRestriction__AllNestedElements(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
 		  (getInstanceRelationshipValueRestriction__DescriptionBox(),
 		   source,
 		   new String[] {
@@ -3137,6 +3433,11 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		   new String[] {
 		   });
 		addAnnotation
+		  (getDescriptionBox_InstanceRelationshipEnumerationRestrictions(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
 		  (getDescriptionBox_InstanceRelationshipValueRestrictions(),
 		   source,
 		   new String[] {
@@ -3218,6 +3519,16 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		   });
 		addAnnotation
 		  (scalarDataPropertyValueEClass,
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (instanceRelationshipEnumerationRestrictionEClass,
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (instanceRelationshipOneOfRestrictionEClass,
 		   source,
 		   new String[] {
 		   });
@@ -3332,6 +3643,16 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		   new String[] {
 		   });
 		addAnnotation
+		  (getInstanceRelationshipEnumerationRestriction__Uuid(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getInstanceRelationshipOneOfRestriction__Uuid(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
 		  (getInstanceRelationshipValueRestriction__Uuid(),
 		   source,
 		   new String[] {
@@ -3403,6 +3724,16 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		   });
 		addAnnotation
 		  (getConceptInstance_DescriptionBox(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getInstanceRelationshipEnumerationRestriction_DescriptionBox(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getInstanceRelationshipOneOfRestriction_Enumeration(),
 		   source,
 		   new String[] {
 		   });

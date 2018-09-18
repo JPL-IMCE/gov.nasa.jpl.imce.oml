@@ -28,7 +28,7 @@ package gov.nasa.jpl.imce.oml.model.common;
  * An OML ElementCrossReferenceTuple is an abstraction for a kind of OML Element
  * categorized as a OML CrossReferencableKind and OML ExtrinsicIdentityKind
  * where the extrinsic identity criteria is precisely
- * a tuple of at least 2 cross references to other OML IdentityKind(s)
+ * a tuple of at least 1 cross reference to an OML IdentityKind
  * and nothing else.
  * <!-- end-model-doc -->
  *

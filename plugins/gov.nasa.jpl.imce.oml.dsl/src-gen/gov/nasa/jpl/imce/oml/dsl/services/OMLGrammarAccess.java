@@ -377,24 +377,26 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDescriptionBoxRefinementsDescriptionBoxRefinementParserRuleCall_6_1_0 = (RuleCall)cDescriptionBoxRefinementsAssignment_6_1.eContents().get(0);
 		private final Assignment cConceptInstancesAssignment_6_2 = (Assignment)cAlternatives_6.eContents().get(2);
 		private final RuleCall cConceptInstancesConceptInstanceParserRuleCall_6_2_0 = (RuleCall)cConceptInstancesAssignment_6_2.eContents().get(0);
-		private final Assignment cInstanceRelationshipValueRestrictionsAssignment_6_3 = (Assignment)cAlternatives_6.eContents().get(3);
-		private final RuleCall cInstanceRelationshipValueRestrictionsInstanceRelationshipValueRestrictionParserRuleCall_6_3_0 = (RuleCall)cInstanceRelationshipValueRestrictionsAssignment_6_3.eContents().get(0);
-		private final Assignment cInstanceRelationshipExistentialRangeRestrictionsAssignment_6_4 = (Assignment)cAlternatives_6.eContents().get(4);
-		private final RuleCall cInstanceRelationshipExistentialRangeRestrictionsInstanceRelationshipExistentialRangeRestrictionParserRuleCall_6_4_0 = (RuleCall)cInstanceRelationshipExistentialRangeRestrictionsAssignment_6_4.eContents().get(0);
-		private final Assignment cInstanceRelationshipUniversalRangeRestrictionsAssignment_6_5 = (Assignment)cAlternatives_6.eContents().get(5);
-		private final RuleCall cInstanceRelationshipUniversalRangeRestrictionsInstanceRelationshipUniversalRangeRestrictionParserRuleCall_6_5_0 = (RuleCall)cInstanceRelationshipUniversalRangeRestrictionsAssignment_6_5.eContents().get(0);
-		private final Assignment cReifiedRelationshipInstancesAssignment_6_6 = (Assignment)cAlternatives_6.eContents().get(6);
-		private final RuleCall cReifiedRelationshipInstancesReifiedRelationshipInstanceParserRuleCall_6_6_0 = (RuleCall)cReifiedRelationshipInstancesAssignment_6_6.eContents().get(0);
-		private final Assignment cReifiedRelationshipInstanceDomainsAssignment_6_7 = (Assignment)cAlternatives_6.eContents().get(7);
-		private final RuleCall cReifiedRelationshipInstanceDomainsReifiedRelationshipInstanceDomainParserRuleCall_6_7_0 = (RuleCall)cReifiedRelationshipInstanceDomainsAssignment_6_7.eContents().get(0);
-		private final Assignment cReifiedRelationshipInstanceRangesAssignment_6_8 = (Assignment)cAlternatives_6.eContents().get(8);
-		private final RuleCall cReifiedRelationshipInstanceRangesReifiedRelationshipInstanceRangeParserRuleCall_6_8_0 = (RuleCall)cReifiedRelationshipInstanceRangesAssignment_6_8.eContents().get(0);
-		private final Assignment cUnreifiedRelationshipInstanceTuplesAssignment_6_9 = (Assignment)cAlternatives_6.eContents().get(9);
-		private final RuleCall cUnreifiedRelationshipInstanceTuplesUnreifiedRelationshipInstanceTupleParserRuleCall_6_9_0 = (RuleCall)cUnreifiedRelationshipInstanceTuplesAssignment_6_9.eContents().get(0);
-		private final Assignment cSingletonScalarDataPropertyValuesAssignment_6_10 = (Assignment)cAlternatives_6.eContents().get(10);
-		private final RuleCall cSingletonScalarDataPropertyValuesSingletonInstanceScalarDataPropertyValueParserRuleCall_6_10_0 = (RuleCall)cSingletonScalarDataPropertyValuesAssignment_6_10.eContents().get(0);
-		private final Assignment cSingletonStructuredDataPropertyValuesAssignment_6_11 = (Assignment)cAlternatives_6.eContents().get(11);
-		private final RuleCall cSingletonStructuredDataPropertyValuesSingletonInstanceStructuredDataPropertyValueParserRuleCall_6_11_0 = (RuleCall)cSingletonStructuredDataPropertyValuesAssignment_6_11.eContents().get(0);
+		private final Assignment cInstanceRelationshipEnumerationRestrictionsAssignment_6_3 = (Assignment)cAlternatives_6.eContents().get(3);
+		private final RuleCall cInstanceRelationshipEnumerationRestrictionsInstanceRelationshipEnumerationRestrictionParserRuleCall_6_3_0 = (RuleCall)cInstanceRelationshipEnumerationRestrictionsAssignment_6_3.eContents().get(0);
+		private final Assignment cInstanceRelationshipValueRestrictionsAssignment_6_4 = (Assignment)cAlternatives_6.eContents().get(4);
+		private final RuleCall cInstanceRelationshipValueRestrictionsInstanceRelationshipValueRestrictionParserRuleCall_6_4_0 = (RuleCall)cInstanceRelationshipValueRestrictionsAssignment_6_4.eContents().get(0);
+		private final Assignment cInstanceRelationshipExistentialRangeRestrictionsAssignment_6_5 = (Assignment)cAlternatives_6.eContents().get(5);
+		private final RuleCall cInstanceRelationshipExistentialRangeRestrictionsInstanceRelationshipExistentialRangeRestrictionParserRuleCall_6_5_0 = (RuleCall)cInstanceRelationshipExistentialRangeRestrictionsAssignment_6_5.eContents().get(0);
+		private final Assignment cInstanceRelationshipUniversalRangeRestrictionsAssignment_6_6 = (Assignment)cAlternatives_6.eContents().get(6);
+		private final RuleCall cInstanceRelationshipUniversalRangeRestrictionsInstanceRelationshipUniversalRangeRestrictionParserRuleCall_6_6_0 = (RuleCall)cInstanceRelationshipUniversalRangeRestrictionsAssignment_6_6.eContents().get(0);
+		private final Assignment cReifiedRelationshipInstancesAssignment_6_7 = (Assignment)cAlternatives_6.eContents().get(7);
+		private final RuleCall cReifiedRelationshipInstancesReifiedRelationshipInstanceParserRuleCall_6_7_0 = (RuleCall)cReifiedRelationshipInstancesAssignment_6_7.eContents().get(0);
+		private final Assignment cReifiedRelationshipInstanceDomainsAssignment_6_8 = (Assignment)cAlternatives_6.eContents().get(8);
+		private final RuleCall cReifiedRelationshipInstanceDomainsReifiedRelationshipInstanceDomainParserRuleCall_6_8_0 = (RuleCall)cReifiedRelationshipInstanceDomainsAssignment_6_8.eContents().get(0);
+		private final Assignment cReifiedRelationshipInstanceRangesAssignment_6_9 = (Assignment)cAlternatives_6.eContents().get(9);
+		private final RuleCall cReifiedRelationshipInstanceRangesReifiedRelationshipInstanceRangeParserRuleCall_6_9_0 = (RuleCall)cReifiedRelationshipInstanceRangesAssignment_6_9.eContents().get(0);
+		private final Assignment cUnreifiedRelationshipInstanceTuplesAssignment_6_10 = (Assignment)cAlternatives_6.eContents().get(10);
+		private final RuleCall cUnreifiedRelationshipInstanceTuplesUnreifiedRelationshipInstanceTupleParserRuleCall_6_10_0 = (RuleCall)cUnreifiedRelationshipInstanceTuplesAssignment_6_10.eContents().get(0);
+		private final Assignment cSingletonScalarDataPropertyValuesAssignment_6_11 = (Assignment)cAlternatives_6.eContents().get(11);
+		private final RuleCall cSingletonScalarDataPropertyValuesSingletonInstanceScalarDataPropertyValueParserRuleCall_6_11_0 = (RuleCall)cSingletonScalarDataPropertyValuesAssignment_6_11.eContents().get(0);
+		private final Assignment cSingletonStructuredDataPropertyValuesAssignment_6_12 = (Assignment)cAlternatives_6.eContents().get(12);
+		private final RuleCall cSingletonStructuredDataPropertyValuesSingletonInstanceStructuredDataPropertyValueParserRuleCall_6_12_0 = (RuleCall)cSingletonStructuredDataPropertyValuesAssignment_6_12.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//DescriptionBox:
@@ -403,6 +405,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//	kind=DescriptionKind 'descriptionBox' iri=IRI
 		//	'{' (closedWorldDefinitions+=DescriptionBoxExtendsClosedWorldDefinitions |
 		//	descriptionBoxRefinements+=DescriptionBoxRefinement | conceptInstances+=ConceptInstance |
+		//	instanceRelationshipEnumerationRestrictions+=InstanceRelationshipEnumerationRestriction |
 		//	instanceRelationshipValueRestrictions+=InstanceRelationshipValueRestriction |
 		//	instanceRelationshipExistentialRangeRestrictions+=InstanceRelationshipExistentialRangeRestriction |
 		//	instanceRelationshipUniversalRangeRestrictions+=InstanceRelationshipUniversalRangeRestriction |
@@ -418,6 +421,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//annotationProperties+=AnnotationProperty* annotations+=AnnotationPropertyValue* kind=DescriptionKind 'descriptionBox'
 		//iri=IRI '{' (closedWorldDefinitions+=DescriptionBoxExtendsClosedWorldDefinitions |
 		//descriptionBoxRefinements+=DescriptionBoxRefinement | conceptInstances+=ConceptInstance |
+		//instanceRelationshipEnumerationRestrictions+=InstanceRelationshipEnumerationRestriction |
 		//instanceRelationshipValueRestrictions+=InstanceRelationshipValueRestriction |
 		//instanceRelationshipExistentialRangeRestrictions+=InstanceRelationshipExistentialRangeRestriction |
 		//instanceRelationshipUniversalRangeRestrictions+=InstanceRelationshipUniversalRangeRestriction |
@@ -461,6 +465,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//(closedWorldDefinitions+=DescriptionBoxExtendsClosedWorldDefinitions |
 		//descriptionBoxRefinements+=DescriptionBoxRefinement | conceptInstances+=ConceptInstance |
+		//instanceRelationshipEnumerationRestrictions+=InstanceRelationshipEnumerationRestriction |
 		//instanceRelationshipValueRestrictions+=InstanceRelationshipValueRestriction |
 		//instanceRelationshipExistentialRangeRestrictions+=InstanceRelationshipExistentialRangeRestriction |
 		//instanceRelationshipUniversalRangeRestrictions+=InstanceRelationshipUniversalRangeRestriction |
@@ -490,59 +495,65 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//ConceptInstance
 		public RuleCall getConceptInstancesConceptInstanceParserRuleCall_6_2_0() { return cConceptInstancesConceptInstanceParserRuleCall_6_2_0; }
 		
+		//instanceRelationshipEnumerationRestrictions+=InstanceRelationshipEnumerationRestriction
+		public Assignment getInstanceRelationshipEnumerationRestrictionsAssignment_6_3() { return cInstanceRelationshipEnumerationRestrictionsAssignment_6_3; }
+		
+		//InstanceRelationshipEnumerationRestriction
+		public RuleCall getInstanceRelationshipEnumerationRestrictionsInstanceRelationshipEnumerationRestrictionParserRuleCall_6_3_0() { return cInstanceRelationshipEnumerationRestrictionsInstanceRelationshipEnumerationRestrictionParserRuleCall_6_3_0; }
+		
 		//instanceRelationshipValueRestrictions+=InstanceRelationshipValueRestriction
-		public Assignment getInstanceRelationshipValueRestrictionsAssignment_6_3() { return cInstanceRelationshipValueRestrictionsAssignment_6_3; }
+		public Assignment getInstanceRelationshipValueRestrictionsAssignment_6_4() { return cInstanceRelationshipValueRestrictionsAssignment_6_4; }
 		
 		//InstanceRelationshipValueRestriction
-		public RuleCall getInstanceRelationshipValueRestrictionsInstanceRelationshipValueRestrictionParserRuleCall_6_3_0() { return cInstanceRelationshipValueRestrictionsInstanceRelationshipValueRestrictionParserRuleCall_6_3_0; }
+		public RuleCall getInstanceRelationshipValueRestrictionsInstanceRelationshipValueRestrictionParserRuleCall_6_4_0() { return cInstanceRelationshipValueRestrictionsInstanceRelationshipValueRestrictionParserRuleCall_6_4_0; }
 		
 		//instanceRelationshipExistentialRangeRestrictions+=InstanceRelationshipExistentialRangeRestriction
-		public Assignment getInstanceRelationshipExistentialRangeRestrictionsAssignment_6_4() { return cInstanceRelationshipExistentialRangeRestrictionsAssignment_6_4; }
+		public Assignment getInstanceRelationshipExistentialRangeRestrictionsAssignment_6_5() { return cInstanceRelationshipExistentialRangeRestrictionsAssignment_6_5; }
 		
 		//InstanceRelationshipExistentialRangeRestriction
-		public RuleCall getInstanceRelationshipExistentialRangeRestrictionsInstanceRelationshipExistentialRangeRestrictionParserRuleCall_6_4_0() { return cInstanceRelationshipExistentialRangeRestrictionsInstanceRelationshipExistentialRangeRestrictionParserRuleCall_6_4_0; }
+		public RuleCall getInstanceRelationshipExistentialRangeRestrictionsInstanceRelationshipExistentialRangeRestrictionParserRuleCall_6_5_0() { return cInstanceRelationshipExistentialRangeRestrictionsInstanceRelationshipExistentialRangeRestrictionParserRuleCall_6_5_0; }
 		
 		//instanceRelationshipUniversalRangeRestrictions+=InstanceRelationshipUniversalRangeRestriction
-		public Assignment getInstanceRelationshipUniversalRangeRestrictionsAssignment_6_5() { return cInstanceRelationshipUniversalRangeRestrictionsAssignment_6_5; }
+		public Assignment getInstanceRelationshipUniversalRangeRestrictionsAssignment_6_6() { return cInstanceRelationshipUniversalRangeRestrictionsAssignment_6_6; }
 		
 		//InstanceRelationshipUniversalRangeRestriction
-		public RuleCall getInstanceRelationshipUniversalRangeRestrictionsInstanceRelationshipUniversalRangeRestrictionParserRuleCall_6_5_0() { return cInstanceRelationshipUniversalRangeRestrictionsInstanceRelationshipUniversalRangeRestrictionParserRuleCall_6_5_0; }
+		public RuleCall getInstanceRelationshipUniversalRangeRestrictionsInstanceRelationshipUniversalRangeRestrictionParserRuleCall_6_6_0() { return cInstanceRelationshipUniversalRangeRestrictionsInstanceRelationshipUniversalRangeRestrictionParserRuleCall_6_6_0; }
 		
 		//reifiedRelationshipInstances+=ReifiedRelationshipInstance
-		public Assignment getReifiedRelationshipInstancesAssignment_6_6() { return cReifiedRelationshipInstancesAssignment_6_6; }
+		public Assignment getReifiedRelationshipInstancesAssignment_6_7() { return cReifiedRelationshipInstancesAssignment_6_7; }
 		
 		//ReifiedRelationshipInstance
-		public RuleCall getReifiedRelationshipInstancesReifiedRelationshipInstanceParserRuleCall_6_6_0() { return cReifiedRelationshipInstancesReifiedRelationshipInstanceParserRuleCall_6_6_0; }
+		public RuleCall getReifiedRelationshipInstancesReifiedRelationshipInstanceParserRuleCall_6_7_0() { return cReifiedRelationshipInstancesReifiedRelationshipInstanceParserRuleCall_6_7_0; }
 		
 		//reifiedRelationshipInstanceDomains+=ReifiedRelationshipInstanceDomain
-		public Assignment getReifiedRelationshipInstanceDomainsAssignment_6_7() { return cReifiedRelationshipInstanceDomainsAssignment_6_7; }
+		public Assignment getReifiedRelationshipInstanceDomainsAssignment_6_8() { return cReifiedRelationshipInstanceDomainsAssignment_6_8; }
 		
 		//ReifiedRelationshipInstanceDomain
-		public RuleCall getReifiedRelationshipInstanceDomainsReifiedRelationshipInstanceDomainParserRuleCall_6_7_0() { return cReifiedRelationshipInstanceDomainsReifiedRelationshipInstanceDomainParserRuleCall_6_7_0; }
+		public RuleCall getReifiedRelationshipInstanceDomainsReifiedRelationshipInstanceDomainParserRuleCall_6_8_0() { return cReifiedRelationshipInstanceDomainsReifiedRelationshipInstanceDomainParserRuleCall_6_8_0; }
 		
 		//reifiedRelationshipInstanceRanges+=ReifiedRelationshipInstanceRange
-		public Assignment getReifiedRelationshipInstanceRangesAssignment_6_8() { return cReifiedRelationshipInstanceRangesAssignment_6_8; }
+		public Assignment getReifiedRelationshipInstanceRangesAssignment_6_9() { return cReifiedRelationshipInstanceRangesAssignment_6_9; }
 		
 		//ReifiedRelationshipInstanceRange
-		public RuleCall getReifiedRelationshipInstanceRangesReifiedRelationshipInstanceRangeParserRuleCall_6_8_0() { return cReifiedRelationshipInstanceRangesReifiedRelationshipInstanceRangeParserRuleCall_6_8_0; }
+		public RuleCall getReifiedRelationshipInstanceRangesReifiedRelationshipInstanceRangeParserRuleCall_6_9_0() { return cReifiedRelationshipInstanceRangesReifiedRelationshipInstanceRangeParserRuleCall_6_9_0; }
 		
 		//unreifiedRelationshipInstanceTuples+=UnreifiedRelationshipInstanceTuple
-		public Assignment getUnreifiedRelationshipInstanceTuplesAssignment_6_9() { return cUnreifiedRelationshipInstanceTuplesAssignment_6_9; }
+		public Assignment getUnreifiedRelationshipInstanceTuplesAssignment_6_10() { return cUnreifiedRelationshipInstanceTuplesAssignment_6_10; }
 		
 		//UnreifiedRelationshipInstanceTuple
-		public RuleCall getUnreifiedRelationshipInstanceTuplesUnreifiedRelationshipInstanceTupleParserRuleCall_6_9_0() { return cUnreifiedRelationshipInstanceTuplesUnreifiedRelationshipInstanceTupleParserRuleCall_6_9_0; }
+		public RuleCall getUnreifiedRelationshipInstanceTuplesUnreifiedRelationshipInstanceTupleParserRuleCall_6_10_0() { return cUnreifiedRelationshipInstanceTuplesUnreifiedRelationshipInstanceTupleParserRuleCall_6_10_0; }
 		
 		//singletonScalarDataPropertyValues+=SingletonInstanceScalarDataPropertyValue
-		public Assignment getSingletonScalarDataPropertyValuesAssignment_6_10() { return cSingletonScalarDataPropertyValuesAssignment_6_10; }
+		public Assignment getSingletonScalarDataPropertyValuesAssignment_6_11() { return cSingletonScalarDataPropertyValuesAssignment_6_11; }
 		
 		//SingletonInstanceScalarDataPropertyValue
-		public RuleCall getSingletonScalarDataPropertyValuesSingletonInstanceScalarDataPropertyValueParserRuleCall_6_10_0() { return cSingletonScalarDataPropertyValuesSingletonInstanceScalarDataPropertyValueParserRuleCall_6_10_0; }
+		public RuleCall getSingletonScalarDataPropertyValuesSingletonInstanceScalarDataPropertyValueParserRuleCall_6_11_0() { return cSingletonScalarDataPropertyValuesSingletonInstanceScalarDataPropertyValueParserRuleCall_6_11_0; }
 		
 		//singletonStructuredDataPropertyValues+=SingletonInstanceStructuredDataPropertyValue
-		public Assignment getSingletonStructuredDataPropertyValuesAssignment_6_11() { return cSingletonStructuredDataPropertyValuesAssignment_6_11; }
+		public Assignment getSingletonStructuredDataPropertyValuesAssignment_6_12() { return cSingletonStructuredDataPropertyValuesAssignment_6_12; }
 		
 		//SingletonInstanceStructuredDataPropertyValue
-		public RuleCall getSingletonStructuredDataPropertyValuesSingletonInstanceStructuredDataPropertyValueParserRuleCall_6_11_0() { return cSingletonStructuredDataPropertyValuesSingletonInstanceStructuredDataPropertyValueParserRuleCall_6_11_0; }
+		public RuleCall getSingletonStructuredDataPropertyValuesSingletonInstanceStructuredDataPropertyValueParserRuleCall_6_12_0() { return cSingletonStructuredDataPropertyValuesSingletonInstanceStructuredDataPropertyValueParserRuleCall_6_12_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
@@ -5194,6 +5205,110 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//')'
 		public Keyword getRightParenthesisKeyword_6() { return cRightParenthesisKeyword_6; }
 	}
+	public class InstanceRelationshipEnumerationRestrictionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.InstanceRelationshipEnumerationRestriction");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
+		private final Assignment cDomainAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cDomainConceptualEntitySingletonInstanceCrossReference_1_0 = (CrossReference)cDomainAssignment_1.eContents().get(0);
+		private final RuleCall cDomainConceptualEntitySingletonInstanceReferenceParserRuleCall_1_0_1 = (RuleCall)cDomainConceptualEntitySingletonInstanceCrossReference_1_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cRestrictedRelationshipAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final CrossReference cRestrictedRelationshipRestrictableRelationshipCrossReference_3_0 = (CrossReference)cRestrictedRelationshipAssignment_3.eContents().get(0);
+		private final RuleCall cRestrictedRelationshipRestrictableRelationshipReferenceParserRuleCall_3_0_1 = (RuleCall)cRestrictedRelationshipRestrictableRelationshipCrossReference_3_0.eContents().get(1);
+		private final Keyword cInKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cReferencesAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cReferencesInstanceRelationshipOneOfRestrictionParserRuleCall_6_0 = (RuleCall)cReferencesAssignment_6.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		
+		//InstanceRelationshipEnumerationRestriction:
+		//	annotations+=AnnotationPropertyValue*
+		//	domain=[ConceptualEntitySingletonInstance|Reference]
+		//	'.' restrictedRelationship=[RestrictableRelationship|Reference]
+		//	'in' '{' references+=InstanceRelationshipOneOfRestriction* '}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//annotations+=AnnotationPropertyValue* domain=[ConceptualEntitySingletonInstance|Reference] '.'
+		//restrictedRelationship=[RestrictableRelationship|Reference] 'in' '{' references+=InstanceRelationshipOneOfRestriction*
+		//'}'
+		public Group getGroup() { return cGroup; }
+		
+		//annotations+=AnnotationPropertyValue*
+		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
+		
+		//AnnotationPropertyValue
+		public RuleCall getAnnotationsAnnotationPropertyValueParserRuleCall_0_0() { return cAnnotationsAnnotationPropertyValueParserRuleCall_0_0; }
+		
+		//domain=[ConceptualEntitySingletonInstance|Reference]
+		public Assignment getDomainAssignment_1() { return cDomainAssignment_1; }
+		
+		//[ConceptualEntitySingletonInstance|Reference]
+		public CrossReference getDomainConceptualEntitySingletonInstanceCrossReference_1_0() { return cDomainConceptualEntitySingletonInstanceCrossReference_1_0; }
+		
+		//Reference
+		public RuleCall getDomainConceptualEntitySingletonInstanceReferenceParserRuleCall_1_0_1() { return cDomainConceptualEntitySingletonInstanceReferenceParserRuleCall_1_0_1; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_2() { return cFullStopKeyword_2; }
+		
+		//restrictedRelationship=[RestrictableRelationship|Reference]
+		public Assignment getRestrictedRelationshipAssignment_3() { return cRestrictedRelationshipAssignment_3; }
+		
+		//[RestrictableRelationship|Reference]
+		public CrossReference getRestrictedRelationshipRestrictableRelationshipCrossReference_3_0() { return cRestrictedRelationshipRestrictableRelationshipCrossReference_3_0; }
+		
+		//Reference
+		public RuleCall getRestrictedRelationshipRestrictableRelationshipReferenceParserRuleCall_3_0_1() { return cRestrictedRelationshipRestrictableRelationshipReferenceParserRuleCall_3_0_1; }
+		
+		//'in'
+		public Keyword getInKeyword_4() { return cInKeyword_4; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
+		
+		//references+=InstanceRelationshipOneOfRestriction*
+		public Assignment getReferencesAssignment_6() { return cReferencesAssignment_6; }
+		
+		//InstanceRelationshipOneOfRestriction
+		public RuleCall getReferencesInstanceRelationshipOneOfRestrictionParserRuleCall_6_0() { return cReferencesInstanceRelationshipOneOfRestrictionParserRuleCall_6_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
+	}
+	public class InstanceRelationshipOneOfRestrictionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.InstanceRelationshipOneOfRestriction");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
+		private final Assignment cRangeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cRangeConceptualEntitySingletonInstanceCrossReference_1_0 = (CrossReference)cRangeAssignment_1.eContents().get(0);
+		private final RuleCall cRangeConceptualEntitySingletonInstanceReferenceParserRuleCall_1_0_1 = (RuleCall)cRangeConceptualEntitySingletonInstanceCrossReference_1_0.eContents().get(1);
+		
+		//InstanceRelationshipOneOfRestriction:
+		//	annotations+=AnnotationPropertyValue*
+		//	range=[ConceptualEntitySingletonInstance|Reference];
+		@Override public ParserRule getRule() { return rule; }
+		
+		//annotations+=AnnotationPropertyValue* range=[ConceptualEntitySingletonInstance|Reference]
+		public Group getGroup() { return cGroup; }
+		
+		//annotations+=AnnotationPropertyValue*
+		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
+		
+		//AnnotationPropertyValue
+		public RuleCall getAnnotationsAnnotationPropertyValueParserRuleCall_0_0() { return cAnnotationsAnnotationPropertyValueParserRuleCall_0_0; }
+		
+		//range=[ConceptualEntitySingletonInstance|Reference]
+		public Assignment getRangeAssignment_1() { return cRangeAssignment_1; }
+		
+		//[ConceptualEntitySingletonInstance|Reference]
+		public CrossReference getRangeConceptualEntitySingletonInstanceCrossReference_1_0() { return cRangeConceptualEntitySingletonInstanceCrossReference_1_0; }
+		
+		//Reference
+		public RuleCall getRangeConceptualEntitySingletonInstanceReferenceParserRuleCall_1_0_1() { return cRangeConceptualEntitySingletonInstanceReferenceParserRuleCall_1_0_1; }
+	}
 	public class InstanceRelationshipValueRestrictionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.InstanceRelationshipValueRestriction");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -6238,6 +6353,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	private final ScalarDataPropertyValueElements pScalarDataPropertyValue;
 	private final ConceptInstanceElements pConceptInstance;
 	private final ReifiedRelationshipInstanceElements pReifiedRelationshipInstance;
+	private final InstanceRelationshipEnumerationRestrictionElements pInstanceRelationshipEnumerationRestriction;
+	private final InstanceRelationshipOneOfRestrictionElements pInstanceRelationshipOneOfRestriction;
 	private final InstanceRelationshipValueRestrictionElements pInstanceRelationshipValueRestriction;
 	private final InstanceRelationshipExistentialRangeRestrictionElements pInstanceRelationshipExistentialRangeRestriction;
 	private final InstanceRelationshipUniversalRangeRestrictionElements pInstanceRelationshipUniversalRangeRestriction;
@@ -6423,6 +6540,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pScalarDataPropertyValue = new ScalarDataPropertyValueElements();
 		this.pConceptInstance = new ConceptInstanceElements();
 		this.pReifiedRelationshipInstance = new ReifiedRelationshipInstanceElements();
+		this.pInstanceRelationshipEnumerationRestriction = new InstanceRelationshipEnumerationRestrictionElements();
+		this.pInstanceRelationshipOneOfRestriction = new InstanceRelationshipOneOfRestrictionElements();
 		this.pInstanceRelationshipValueRestriction = new InstanceRelationshipValueRestrictionElements();
 		this.pInstanceRelationshipExistentialRangeRestriction = new InstanceRelationshipExistentialRangeRestrictionElements();
 		this.pInstanceRelationshipUniversalRangeRestriction = new InstanceRelationshipUniversalRangeRestrictionElements();
@@ -6627,6 +6746,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//	kind=DescriptionKind 'descriptionBox' iri=IRI
 	//	'{' (closedWorldDefinitions+=DescriptionBoxExtendsClosedWorldDefinitions |
 	//	descriptionBoxRefinements+=DescriptionBoxRefinement | conceptInstances+=ConceptInstance |
+	//	instanceRelationshipEnumerationRestrictions+=InstanceRelationshipEnumerationRestriction |
 	//	instanceRelationshipValueRestrictions+=InstanceRelationshipValueRestriction |
 	//	instanceRelationshipExistentialRangeRestrictions+=InstanceRelationshipExistentialRangeRestriction |
 	//	instanceRelationshipUniversalRangeRestrictions+=InstanceRelationshipUniversalRangeRestriction |
@@ -7652,6 +7772,30 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getReifiedRelationshipInstanceRule() {
 		return getReifiedRelationshipInstanceAccess().getRule();
+	}
+	
+	//InstanceRelationshipEnumerationRestriction:
+	//	annotations+=AnnotationPropertyValue*
+	//	domain=[ConceptualEntitySingletonInstance|Reference]
+	//	'.' restrictedRelationship=[RestrictableRelationship|Reference]
+	//	'in' '{' references+=InstanceRelationshipOneOfRestriction* '}';
+	public InstanceRelationshipEnumerationRestrictionElements getInstanceRelationshipEnumerationRestrictionAccess() {
+		return pInstanceRelationshipEnumerationRestriction;
+	}
+	
+	public ParserRule getInstanceRelationshipEnumerationRestrictionRule() {
+		return getInstanceRelationshipEnumerationRestrictionAccess().getRule();
+	}
+	
+	//InstanceRelationshipOneOfRestriction:
+	//	annotations+=AnnotationPropertyValue*
+	//	range=[ConceptualEntitySingletonInstance|Reference];
+	public InstanceRelationshipOneOfRestrictionElements getInstanceRelationshipOneOfRestrictionAccess() {
+		return pInstanceRelationshipOneOfRestriction;
+	}
+	
+	public ParserRule getInstanceRelationshipOneOfRestrictionRule() {
+		return getInstanceRelationshipOneOfRestrictionAccess().getRule();
 	}
 	
 	//InstanceRelationshipValueRestriction:

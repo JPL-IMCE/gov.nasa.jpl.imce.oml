@@ -81,6 +81,8 @@ public class DescriptionsFactoryImpl extends EFactoryImpl implements Description
 			case DescriptionsPackage.STRUCTURED_DATA_PROPERTY_TUPLE: return createStructuredDataPropertyTuple();
 			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE: return createScalarDataPropertyValue();
 			case DescriptionsPackage.CONCEPT_INSTANCE: return createConceptInstance();
+			case DescriptionsPackage.INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION: return createInstanceRelationshipEnumerationRestriction();
+			case DescriptionsPackage.INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION: return createInstanceRelationshipOneOfRestriction();
 			case DescriptionsPackage.INSTANCE_RELATIONSHIP_VALUE_RESTRICTION: return createInstanceRelationshipValueRestriction();
 			case DescriptionsPackage.INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTION: return createInstanceRelationshipExistentialRangeRestriction();
 			case DescriptionsPackage.INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTION: return createInstanceRelationshipUniversalRangeRestriction();
@@ -201,6 +203,26 @@ public class DescriptionsFactoryImpl extends EFactoryImpl implements Description
 	public ConceptInstance createConceptInstance() {
 		ConceptInstanceImpl conceptInstance = new ConceptInstanceImpl();
 		return conceptInstance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InstanceRelationshipEnumerationRestriction createInstanceRelationshipEnumerationRestriction() {
+		InstanceRelationshipEnumerationRestrictionImpl instanceRelationshipEnumerationRestriction = new InstanceRelationshipEnumerationRestrictionImpl();
+		return instanceRelationshipEnumerationRestriction;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InstanceRelationshipOneOfRestriction createInstanceRelationshipOneOfRestriction() {
+		InstanceRelationshipOneOfRestrictionImpl instanceRelationshipOneOfRestriction = new InstanceRelationshipOneOfRestrictionImpl();
+		return instanceRelationshipOneOfRestriction;
 	}
 
 	/**

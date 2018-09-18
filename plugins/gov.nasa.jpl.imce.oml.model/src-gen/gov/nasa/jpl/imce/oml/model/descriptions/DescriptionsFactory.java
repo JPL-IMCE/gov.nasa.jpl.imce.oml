@@ -110,6 +110,24 @@ public interface DescriptionsFactory extends EFactory {
 	ConceptInstance createConceptInstance();
 
 	/**
+	 * Returns a new object of class '<em>Instance Relationship Enumeration Restriction</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Instance Relationship Enumeration Restriction</em>'.
+	 * @generated
+	 */
+	InstanceRelationshipEnumerationRestriction createInstanceRelationshipEnumerationRestriction();
+
+	/**
+	 * Returns a new object of class '<em>Instance Relationship One Of Restriction</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Instance Relationship One Of Restriction</em>'.
+	 * @generated
+	 */
+	InstanceRelationshipOneOfRestriction createInstanceRelationshipOneOfRestriction();
+
+	/**
 	 * Returns a new object of class '<em>Instance Relationship Value Restriction</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

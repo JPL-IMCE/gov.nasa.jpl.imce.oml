@@ -178,13 +178,22 @@ public interface DescriptionsPackage extends EPackage {
 	int DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCES = CommonPackage.MODULE_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Instance Relationship Enumeration Restrictions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTIONS = CommonPackage.MODULE_FEATURE_COUNT + 5;
+
+	/**
 	 * The feature id for the '<em><b>Instance Relationship Value Restrictions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_VALUE_RESTRICTIONS = CommonPackage.MODULE_FEATURE_COUNT + 5;
+	int DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_VALUE_RESTRICTIONS = CommonPackage.MODULE_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Instance Relationship Existential Range Restrictions</b></em>' containment reference list.
@@ -193,7 +202,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTIONS = CommonPackage.MODULE_FEATURE_COUNT + 6;
+	int DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTIONS = CommonPackage.MODULE_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Instance Relationship Universal Range Restrictions</b></em>' containment reference list.
@@ -202,7 +211,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTIONS = CommonPackage.MODULE_FEATURE_COUNT + 7;
+	int DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTIONS = CommonPackage.MODULE_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Reified Relationship Instance Domains</b></em>' containment reference list.
@@ -211,7 +220,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_DOMAINS = CommonPackage.MODULE_FEATURE_COUNT + 8;
+	int DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_DOMAINS = CommonPackage.MODULE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Reified Relationship Instance Ranges</b></em>' containment reference list.
@@ -220,7 +229,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_RANGES = CommonPackage.MODULE_FEATURE_COUNT + 9;
+	int DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCE_RANGES = CommonPackage.MODULE_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Unreified Relationship Instance Tuples</b></em>' containment reference list.
@@ -229,7 +238,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DESCRIPTION_BOX__UNREIFIED_RELATIONSHIP_INSTANCE_TUPLES = CommonPackage.MODULE_FEATURE_COUNT + 10;
+	int DESCRIPTION_BOX__UNREIFIED_RELATIONSHIP_INSTANCE_TUPLES = CommonPackage.MODULE_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Singleton Scalar Data Property Values</b></em>' containment reference list.
@@ -238,7 +247,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DESCRIPTION_BOX__SINGLETON_SCALAR_DATA_PROPERTY_VALUES = CommonPackage.MODULE_FEATURE_COUNT + 11;
+	int DESCRIPTION_BOX__SINGLETON_SCALAR_DATA_PROPERTY_VALUES = CommonPackage.MODULE_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Singleton Structured Data Property Values</b></em>' containment reference list.
@@ -247,7 +256,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DESCRIPTION_BOX__SINGLETON_STRUCTURED_DATA_PROPERTY_VALUES = CommonPackage.MODULE_FEATURE_COUNT + 12;
+	int DESCRIPTION_BOX__SINGLETON_STRUCTURED_DATA_PROPERTY_VALUES = CommonPackage.MODULE_FEATURE_COUNT + 13;
 
 	/**
 	 * The number of structural features of the '<em>Description Box</em>' class.
@@ -256,7 +265,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DESCRIPTION_BOX_FEATURE_COUNT = CommonPackage.MODULE_FEATURE_COUNT + 13;
+	int DESCRIPTION_BOX_FEATURE_COUNT = CommonPackage.MODULE_FEATURE_COUNT + 14;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -1593,6 +1602,215 @@ public interface DescriptionsPackage extends EPackage {
 	int CONCEPT_INSTANCE_OPERATION_COUNT = CONCEPTUAL_ENTITY_SINGLETON_INSTANCE_OPERATION_COUNT + 3;
 
 	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.InstanceRelationshipEnumerationRestrictionImpl <em>Instance Relationship Enumeration Restriction</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.impl.InstanceRelationshipEnumerationRestrictionImpl
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionsPackageImpl#getInstanceRelationshipEnumerationRestriction()
+	 * @generated
+	 */
+	int INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION = 12;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION__UUID = TERMINOLOGY_INSTANCE_ASSERTION__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION__ANNOTATIONS = TERMINOLOGY_INSTANCE_ASSERTION__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Description Box</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION__DESCRIPTION_BOX = TERMINOLOGY_INSTANCE_ASSERTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Domain</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION__DOMAIN = TERMINOLOGY_INSTANCE_ASSERTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Relationship</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION__RESTRICTED_RELATIONSHIP = TERMINOLOGY_INSTANCE_ASSERTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>References</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION__REFERENCES = TERMINOLOGY_INSTANCE_ASSERTION_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Instance Relationship Enumeration Restriction</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION_FEATURE_COUNT = TERMINOLOGY_INSTANCE_ASSERTION_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Description Box</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION___DESCRIPTION_BOX = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION___UUID = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION___MODULE_CONTEXT = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION___ALL_NESTED_ELEMENTS = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Instance Relationship Enumeration Restriction</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION_OPERATION_COUNT = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.InstanceRelationshipOneOfRestrictionImpl <em>Instance Relationship One Of Restriction</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.impl.InstanceRelationshipOneOfRestrictionImpl
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionsPackageImpl#getInstanceRelationshipOneOfRestriction()
+	 * @generated
+	 */
+	int INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION = 13;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION__UUID = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION__ANNOTATIONS = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Enumeration</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION__ENUMERATION = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Range</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION__RANGE = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Instance Relationship One Of Restriction</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION_FEATURE_COUNT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION___MODULE_CONTEXT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION___UUID = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION___ALL_NESTED_ELEMENTS = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Instance Relationship One Of Restriction</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION_OPERATION_COUNT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.InstanceRelationshipValueRestrictionImpl <em>Instance Relationship Value Restriction</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1600,7 +1818,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionsPackageImpl#getInstanceRelationshipValueRestriction()
 	 * @generated
 	 */
-	int INSTANCE_RELATIONSHIP_VALUE_RESTRICTION = 12;
+	int INSTANCE_RELATIONSHIP_VALUE_RESTRICTION = 14;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -1718,7 +1936,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionsPackageImpl#getInstanceRelationshipExistentialRangeRestriction()
 	 * @generated
 	 */
-	int INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTION = 13;
+	int INSTANCE_RELATIONSHIP_EXISTENTIAL_RANGE_RESTRICTION = 15;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -1836,7 +2054,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionsPackageImpl#getInstanceRelationshipUniversalRangeRestriction()
 	 * @generated
 	 */
-	int INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTION = 14;
+	int INSTANCE_RELATIONSHIP_UNIVERSAL_RANGE_RESTRICTION = 16;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -1954,7 +2172,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionsPackageImpl#getReifiedRelationshipInstance()
 	 * @generated
 	 */
-	int REIFIED_RELATIONSHIP_INSTANCE = 15;
+	int REIFIED_RELATIONSHIP_INSTANCE = 17;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2099,7 +2317,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionsPackageImpl#getReifiedRelationshipInstanceDomain()
 	 * @generated
 	 */
-	int REIFIED_RELATIONSHIP_INSTANCE_DOMAIN = 16;
+	int REIFIED_RELATIONSHIP_INSTANCE_DOMAIN = 18;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2208,7 +2426,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionsPackageImpl#getReifiedRelationshipInstanceRange()
 	 * @generated
 	 */
-	int REIFIED_RELATIONSHIP_INSTANCE_RANGE = 17;
+	int REIFIED_RELATIONSHIP_INSTANCE_RANGE = 19;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2317,7 +2535,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionsPackageImpl#getUnreifiedRelationshipInstanceTuple()
 	 * @generated
 	 */
-	int UNREIFIED_RELATIONSHIP_INSTANCE_TUPLE = 18;
+	int UNREIFIED_RELATIONSHIP_INSTANCE_TUPLE = 20;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2435,7 +2653,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionsPackageImpl#getDescriptionKind()
 	 * @generated
 	 */
-	int DESCRIPTION_KIND = 19;
+	int DESCRIPTION_KIND = 21;
 
 
 	/**
@@ -2502,6 +2720,17 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDescriptionBox_ReifiedRelationshipInstances();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox#getInstanceRelationshipEnumerationRestrictions <em>Instance Relationship Enumeration Restrictions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Instance Relationship Enumeration Restrictions</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox#getInstanceRelationshipEnumerationRestrictions()
+	 * @see #getDescriptionBox()
+	 * @generated
+	 */
+	EReference getDescriptionBox_InstanceRelationshipEnumerationRestrictions();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox#getInstanceRelationshipValueRestrictions <em>Instance Relationship Value Restrictions</em>}'.
@@ -3294,6 +3523,152 @@ public interface DescriptionsPackage extends EPackage {
 	EOperation getConceptInstance__AllNestedElements();
 
 	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction <em>Instance Relationship Enumeration Restriction</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Instance Relationship Enumeration Restriction</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction
+	 * @generated
+	 */
+	EClass getInstanceRelationshipEnumerationRestriction();
+
+	/**
+	 * Returns the meta object for the container reference '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction#getDescriptionBox <em>Description Box</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Description Box</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction#getDescriptionBox()
+	 * @see #getInstanceRelationshipEnumerationRestriction()
+	 * @generated
+	 */
+	EReference getInstanceRelationshipEnumerationRestriction_DescriptionBox();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction#getDomain <em>Domain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Domain</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction#getDomain()
+	 * @see #getInstanceRelationshipEnumerationRestriction()
+	 * @generated
+	 */
+	EReference getInstanceRelationshipEnumerationRestriction_Domain();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction#getRestrictedRelationship <em>Restricted Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Restricted Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction#getRestrictedRelationship()
+	 * @see #getInstanceRelationshipEnumerationRestriction()
+	 * @generated
+	 */
+	EReference getInstanceRelationshipEnumerationRestriction_RestrictedRelationship();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction#getReferences <em>References</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>References</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction#getReferences()
+	 * @see #getInstanceRelationshipEnumerationRestriction()
+	 * @generated
+	 */
+	EReference getInstanceRelationshipEnumerationRestriction_References();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction#descriptionBox() <em>Description Box</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Description Box</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction#descriptionBox()
+	 * @generated
+	 */
+	EOperation getInstanceRelationshipEnumerationRestriction__DescriptionBox();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction#uuid()
+	 * @generated
+	 */
+	EOperation getInstanceRelationshipEnumerationRestriction__Uuid();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction#moduleContext()
+	 * @generated
+	 */
+	EOperation getInstanceRelationshipEnumerationRestriction__ModuleContext();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction#allNestedElements()
+	 * @generated
+	 */
+	EOperation getInstanceRelationshipEnumerationRestriction__AllNestedElements();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction <em>Instance Relationship One Of Restriction</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Instance Relationship One Of Restriction</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction
+	 * @generated
+	 */
+	EClass getInstanceRelationshipOneOfRestriction();
+
+	/**
+	 * Returns the meta object for the container reference '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction#getEnumeration <em>Enumeration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Enumeration</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction#getEnumeration()
+	 * @see #getInstanceRelationshipOneOfRestriction()
+	 * @generated
+	 */
+	EReference getInstanceRelationshipOneOfRestriction_Enumeration();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction#getRange <em>Range</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Range</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction#getRange()
+	 * @see #getInstanceRelationshipOneOfRestriction()
+	 * @generated
+	 */
+	EReference getInstanceRelationshipOneOfRestriction_Range();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction#uuid()
+	 * @generated
+	 */
+	EOperation getInstanceRelationshipOneOfRestriction__Uuid();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction#allNestedElements()
+	 * @generated
+	 */
+	EOperation getInstanceRelationshipOneOfRestriction__AllNestedElements();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction <em>Instance Relationship Value Restriction</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3981,6 +4356,14 @@ public interface DescriptionsPackage extends EPackage {
 		EReference DESCRIPTION_BOX__REIFIED_RELATIONSHIP_INSTANCES = eINSTANCE.getDescriptionBox_ReifiedRelationshipInstances();
 
 		/**
+		 * The meta object literal for the '<em><b>Instance Relationship Enumeration Restrictions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DESCRIPTION_BOX__INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTIONS = eINSTANCE.getDescriptionBox_InstanceRelationshipEnumerationRestrictions();
+
+		/**
 		 * The meta object literal for the '<em><b>Instance Relationship Value Restrictions</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4609,6 +4992,122 @@ public interface DescriptionsPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation CONCEPT_INSTANCE___ALL_NESTED_ELEMENTS = eINSTANCE.getConceptInstance__AllNestedElements();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.InstanceRelationshipEnumerationRestrictionImpl <em>Instance Relationship Enumeration Restriction</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.descriptions.impl.InstanceRelationshipEnumerationRestrictionImpl
+		 * @see gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionsPackageImpl#getInstanceRelationshipEnumerationRestriction()
+		 * @generated
+		 */
+		EClass INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION = eINSTANCE.getInstanceRelationshipEnumerationRestriction();
+
+		/**
+		 * The meta object literal for the '<em><b>Description Box</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION__DESCRIPTION_BOX = eINSTANCE.getInstanceRelationshipEnumerationRestriction_DescriptionBox();
+
+		/**
+		 * The meta object literal for the '<em><b>Domain</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION__DOMAIN = eINSTANCE.getInstanceRelationshipEnumerationRestriction_Domain();
+
+		/**
+		 * The meta object literal for the '<em><b>Restricted Relationship</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION__RESTRICTED_RELATIONSHIP = eINSTANCE.getInstanceRelationshipEnumerationRestriction_RestrictedRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>References</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION__REFERENCES = eINSTANCE.getInstanceRelationshipEnumerationRestriction_References();
+
+		/**
+		 * The meta object literal for the '<em><b>Description Box</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION___DESCRIPTION_BOX = eINSTANCE.getInstanceRelationshipEnumerationRestriction__DescriptionBox();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION___UUID = eINSTANCE.getInstanceRelationshipEnumerationRestriction__Uuid();
+
+		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION___MODULE_CONTEXT = eINSTANCE.getInstanceRelationshipEnumerationRestriction__ModuleContext();
+
+		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION___ALL_NESTED_ELEMENTS = eINSTANCE.getInstanceRelationshipEnumerationRestriction__AllNestedElements();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.InstanceRelationshipOneOfRestrictionImpl <em>Instance Relationship One Of Restriction</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.descriptions.impl.InstanceRelationshipOneOfRestrictionImpl
+		 * @see gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionsPackageImpl#getInstanceRelationshipOneOfRestriction()
+		 * @generated
+		 */
+		EClass INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION = eINSTANCE.getInstanceRelationshipOneOfRestriction();
+
+		/**
+		 * The meta object literal for the '<em><b>Enumeration</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION__ENUMERATION = eINSTANCE.getInstanceRelationshipOneOfRestriction_Enumeration();
+
+		/**
+		 * The meta object literal for the '<em><b>Range</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION__RANGE = eINSTANCE.getInstanceRelationshipOneOfRestriction_Range();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION___UUID = eINSTANCE.getInstanceRelationshipOneOfRestriction__Uuid();
+
+		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION___ALL_NESTED_ELEMENTS = eINSTANCE.getInstanceRelationshipOneOfRestriction__AllNestedElements();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.InstanceRelationshipValueRestrictionImpl <em>Instance Relationship Value Restriction</em>}' class.
