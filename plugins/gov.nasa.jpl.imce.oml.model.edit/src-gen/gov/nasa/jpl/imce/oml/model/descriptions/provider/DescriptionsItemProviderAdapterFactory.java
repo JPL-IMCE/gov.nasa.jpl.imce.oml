@@ -269,6 +269,52 @@ public class DescriptionsItemProviderAdapterFactory extends DescriptionsAdapterF
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InstanceRelationshipEnumerationRestrictionItemProvider instanceRelationshipEnumerationRestrictionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInstanceRelationshipEnumerationRestrictionAdapter() {
+		if (instanceRelationshipEnumerationRestrictionItemProvider == null) {
+			instanceRelationshipEnumerationRestrictionItemProvider = new InstanceRelationshipEnumerationRestrictionItemProvider(this);
+		}
+
+		return instanceRelationshipEnumerationRestrictionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InstanceRelationshipOneOfRestrictionItemProvider instanceRelationshipOneOfRestrictionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInstanceRelationshipOneOfRestrictionAdapter() {
+		if (instanceRelationshipOneOfRestrictionItemProvider == null) {
+			instanceRelationshipOneOfRestrictionItemProvider = new InstanceRelationshipOneOfRestrictionItemProvider(this);
+		}
+
+		return instanceRelationshipOneOfRestrictionItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -536,6 +582,8 @@ public class DescriptionsItemProviderAdapterFactory extends DescriptionsAdapterF
 		if (structuredDataPropertyTupleItemProvider != null) structuredDataPropertyTupleItemProvider.dispose();
 		if (scalarDataPropertyValueItemProvider != null) scalarDataPropertyValueItemProvider.dispose();
 		if (conceptInstanceItemProvider != null) conceptInstanceItemProvider.dispose();
+		if (instanceRelationshipEnumerationRestrictionItemProvider != null) instanceRelationshipEnumerationRestrictionItemProvider.dispose();
+		if (instanceRelationshipOneOfRestrictionItemProvider != null) instanceRelationshipOneOfRestrictionItemProvider.dispose();
 		if (instanceRelationshipValueRestrictionItemProvider != null) instanceRelationshipValueRestrictionItemProvider.dispose();
 		if (instanceRelationshipExistentialRangeRestrictionItemProvider != null) instanceRelationshipExistentialRangeRestrictionItemProvider.dispose();
 		if (instanceRelationshipUniversalRangeRestrictionItemProvider != null) instanceRelationshipUniversalRangeRestrictionItemProvider.dispose();

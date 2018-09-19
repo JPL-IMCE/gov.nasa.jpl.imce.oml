@@ -252,6 +252,32 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DescriptionsPackage.INSTANCE_RELATIONSHIP_ENUMERATION_RESTRICTION: {
+				InstanceRelationshipEnumerationRestriction instanceRelationshipEnumerationRestriction = (InstanceRelationshipEnumerationRestriction)theEObject;
+				T result = caseInstanceRelationshipEnumerationRestriction(instanceRelationshipEnumerationRestriction);
+				if (result == null) result = caseTerminologyInstanceAssertion(instanceRelationshipEnumerationRestriction);
+				if (result == null) result = caseElementCrossReferenceTuple(instanceRelationshipEnumerationRestriction);
+				if (result == null) result = caseModuleElement(instanceRelationshipEnumerationRestriction);
+				if (result == null) result = caseExtrinsicIdentityKind(instanceRelationshipEnumerationRestriction);
+				if (result == null) result = caseCrossReferencableKind(instanceRelationshipEnumerationRestriction);
+				if (result == null) result = caseLogicalElement(instanceRelationshipEnumerationRestriction);
+				if (result == null) result = caseIdentityKind(instanceRelationshipEnumerationRestriction);
+				if (result == null) result = caseCrossReferencabilityKind(instanceRelationshipEnumerationRestriction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DescriptionsPackage.INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION: {
+				InstanceRelationshipOneOfRestriction instanceRelationshipOneOfRestriction = (InstanceRelationshipOneOfRestriction)theEObject;
+				T result = caseInstanceRelationshipOneOfRestriction(instanceRelationshipOneOfRestriction);
+				if (result == null) result = caseElementCrossReferenceTuple(instanceRelationshipOneOfRestriction);
+				if (result == null) result = caseExtrinsicIdentityKind(instanceRelationshipOneOfRestriction);
+				if (result == null) result = caseCrossReferencableKind(instanceRelationshipOneOfRestriction);
+				if (result == null) result = caseLogicalElement(instanceRelationshipOneOfRestriction);
+				if (result == null) result = caseIdentityKind(instanceRelationshipOneOfRestriction);
+				if (result == null) result = caseCrossReferencabilityKind(instanceRelationshipOneOfRestriction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case DescriptionsPackage.INSTANCE_RELATIONSHIP_VALUE_RESTRICTION: {
 				InstanceRelationshipValueRestriction instanceRelationshipValueRestriction = (InstanceRelationshipValueRestriction)theEObject;
 				T result = caseInstanceRelationshipValueRestriction(instanceRelationshipValueRestriction);
@@ -532,6 +558,36 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseConceptInstance(ConceptInstance object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Instance Relationship Enumeration Restriction</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Instance Relationship Enumeration Restriction</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInstanceRelationshipEnumerationRestriction(InstanceRelationshipEnumerationRestriction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Instance Relationship One Of Restriction</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Instance Relationship One Of Restriction</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInstanceRelationshipOneOfRestriction(InstanceRelationshipOneOfRestriction object) {
 		return null;
 	}
 

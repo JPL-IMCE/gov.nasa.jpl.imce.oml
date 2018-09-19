@@ -53,6 +53,11 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionKind
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange
@@ -67,6 +72,10 @@ import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictionKind
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom
@@ -82,10 +91,10 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.Predicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple
@@ -112,13 +121,6 @@ import java.util.List
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 import java.util.stream.Collectors
-import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect
-import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept
-import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship
-import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictionKind
-import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction
-import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction
-import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction
 
 /**
  * OMLTables is a collection of extension queries for OML Extent and conversion methods for OML values.
@@ -520,6 +522,21 @@ class OMLTables {
   	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
+  static def List<InstanceRelationshipEnumerationRestriction> instanceRelationshipEnumerationRestrictions(Extent e) {
+  	val List<InstanceRelationshipEnumerationRestriction> result = new ArrayList<InstanceRelationshipEnumerationRestriction>()
+  	e.descriptionBoxes.forEach[dbox | result.addAll(dbox.instanceRelationshipEnumerationRestrictions)]
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
+  }
+  
+  static def List<InstanceRelationshipOneOfRestriction> instanceRelationshipOneOfRestrictions(Extent e) {
+  	val List<InstanceRelationshipOneOfRestriction> result = new ArrayList<InstanceRelationshipOneOfRestriction>()
+  	e.descriptionBoxes.forEach[dbox | 
+  		dbox.instanceRelationshipEnumerationRestrictions.forEach[r |
+  			result.addAll(r.references)
+  		]
+  	]
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
+  }
   static def List<InstanceRelationshipValueRestriction> instanceRelationshipValueRestrictions(Extent e) {
   	val List<InstanceRelationshipValueRestriction> result = new ArrayList<InstanceRelationshipValueRestriction>()
   	e.descriptionBoxes.forEach[dbox | result.addAll(dbox.instanceRelationshipValueRestrictions)]

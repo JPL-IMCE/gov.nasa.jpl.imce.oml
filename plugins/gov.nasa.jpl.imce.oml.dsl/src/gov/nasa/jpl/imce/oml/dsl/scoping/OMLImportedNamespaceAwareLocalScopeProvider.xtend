@@ -33,6 +33,8 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction
@@ -391,6 +393,16 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 				if (reference == DescriptionsPackage.eINSTANCE.reifiedRelationshipInstance__ConceptualEntitySingletonClassifier)
 					scope = context.descriptionBox()?.allReifiedRelationshipScope
 						
+			InstanceRelationshipEnumerationRestriction:
+				if (reference == DescriptionsPackage.eINSTANCE.instanceRelationshipEnumerationRestriction_Domain)
+					scope = context.descriptionBox()?.allConceptualEntitySingletonInstanceScope
+				else if (reference == DescriptionsPackage.eINSTANCE.instanceRelationshipEnumerationRestriction_RestrictedRelationship)
+					scope = context.descriptionBox()?.allRestrictableRelationshipsScope
+				
+			InstanceRelationshipOneOfRestriction:
+				if (reference == DescriptionsPackage.eINSTANCE.instanceRelationshipOneOfRestriction_Range)
+					scope = context.enumeration?.descriptionBox()?.allConceptualEntitySingletonInstanceScope
+					
 			InstanceRelationshipValueRestriction:
 				if (reference == DescriptionsPackage.eINSTANCE.instanceRelationshipValueRestriction_Domain)
 					scope = context.descriptionBox()?.allConceptualEntitySingletonInstanceScope

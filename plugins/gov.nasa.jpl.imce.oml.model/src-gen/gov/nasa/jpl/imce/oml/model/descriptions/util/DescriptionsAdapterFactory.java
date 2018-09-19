@@ -145,6 +145,14 @@ public class DescriptionsAdapterFactory extends AdapterFactoryImpl {
 				return createConceptInstanceAdapter();
 			}
 			@Override
+			public Adapter caseInstanceRelationshipEnumerationRestriction(InstanceRelationshipEnumerationRestriction object) {
+				return createInstanceRelationshipEnumerationRestrictionAdapter();
+			}
+			@Override
+			public Adapter caseInstanceRelationshipOneOfRestriction(InstanceRelationshipOneOfRestriction object) {
+				return createInstanceRelationshipOneOfRestrictionAdapter();
+			}
+			@Override
 			public Adapter caseInstanceRelationshipValueRestriction(InstanceRelationshipValueRestriction object) {
 				return createInstanceRelationshipValueRestrictionAdapter();
 			}
@@ -409,6 +417,34 @@ public class DescriptionsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConceptInstanceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction <em>Instance Relationship Enumeration Restriction</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction
+	 * @generated
+	 */
+	public Adapter createInstanceRelationshipEnumerationRestrictionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction <em>Instance Relationship One Of Restriction</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction
+	 * @generated
+	 */
+	public Adapter createInstanceRelationshipOneOfRestrictionAdapter() {
 		return null;
 	}
 

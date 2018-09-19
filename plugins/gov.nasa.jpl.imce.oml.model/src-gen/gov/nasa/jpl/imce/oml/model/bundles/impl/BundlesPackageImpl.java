@@ -851,7 +851,7 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 		  (getAnonymousConceptUnionAxiom__AllNestedElements(),
 		   source,
 		   new String[] {
-			   "code", "scala.collection.immutable.Set.empty[resolver.api.ElementCrossReferenceTuple]"
+			   "code", "extent.lookupDisjunctions(this).flatMap{ d => scala.collection.immutable.Set.empty[resolver.api.LogicalElement] + d ++ d.allNestedElements() }"
 		   });
 		addAnnotation
 		  (getRootConceptTaxonomyAxiom__BundleContainer(),

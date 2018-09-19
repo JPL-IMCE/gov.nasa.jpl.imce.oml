@@ -115,7 +115,9 @@ USE `OML` ;
 -- EUxRAx                                 EntityUniversalRestrictionAxioms
 -- FwdProps                               ForwardProperties
 -- IRIScRs                                IRIScalarRestrictions
+-- IRelEnumerationRs                      InstanceRelationshipEnumerationRestrictions
 -- IRelExRangeRs                          InstanceRelationshipExistentialRangeRestrictions
+-- IRelOneOfRs                            InstanceRelationshipOneOfRestrictions
 -- IRelUxRangeRs                          InstanceRelationshipUniversalRangeRestrictions
 -- IRelValRs                              InstanceRelationshipValueRestrictions
 -- InvProps                               InverseProperties
@@ -2463,6 +2465,37 @@ CREATE TABLE IF NOT EXISTS `OML`.`CardinalityRestRRs` (
 COMMENT = 'Concrete Information Table CardinalityRestrictedReifiedRelationships';
 
 -- -----------------------------------------------------
+-- Table `OML`.`IRelEnumerationRs`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`IRelEnumerationRs` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `descriptionBoxUUID` CHAR(36) NOT NULL COMMENT 'DBoxes (DescriptionBox)',
+  `domainUUID` CHAR(36) NOT NULL COMMENT 'CualESI (ConceptualEntitySingletonInstance)',
+  `restrictedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RestrictableRels (RestrictableRelationship)',
+  
+  CONSTRAINT `fk_IRelEnumerationRs_descriptionBoxUUID`
+    FOREIGN KEY (`descriptionBoxUUID`)
+    REFERENCES `OML`.`DBoxes`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_IRelEnumerationRs_domainUUID`
+    FOREIGN KEY (`domainUUID`)
+    REFERENCES `OML`.`CualESI`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_IRelEnumerationRs_restrictedRelationshipUUID`
+    FOREIGN KEY (`restrictedRelationshipUUID`)
+    REFERENCES `OML`.`RestrictableRels`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table InstanceRelationshipEnumerationRestrictions';
+
+-- -----------------------------------------------------
 -- Table `OML`.`IRelExRangeRs`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OML`.`IRelExRangeRs` (
@@ -2499,6 +2532,30 @@ CREATE TABLE IF NOT EXISTS `OML`.`IRelExRangeRs` (
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )
 COMMENT = 'Concrete Information Table InstanceRelationshipExistentialRangeRestrictions';
+
+-- -----------------------------------------------------
+-- Table `OML`.`IRelOneOfRs`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`IRelOneOfRs` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `rangeUUID` CHAR(36) NOT NULL COMMENT 'CualESI (ConceptualEntitySingletonInstance)',
+  `enumerationUUID` CHAR(36) NOT NULL COMMENT 'IRelEnumerationRs (InstanceRelationshipEnumerationRestriction)',
+  
+  CONSTRAINT `fk_IRelOneOfRs_rangeUUID`
+    FOREIGN KEY (`rangeUUID`)
+    REFERENCES `OML`.`CualESI`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_IRelOneOfRs_enumerationUUID`
+    FOREIGN KEY (`enumerationUUID`)
+    REFERENCES `OML`.`IRelEnumerationRs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table InstanceRelationshipOneOfRestrictions';
 
 -- -----------------------------------------------------
 -- Table `OML`.`IRelUxRangeRs`
@@ -6177,6 +6234,54 @@ delete from `OML`.`Terms`;
 END$$
 
 -- -----------------------------------------------------
+-- Concrete Information Table `OML`.`IRelEnumerationRs` (InstanceRelationshipEnumerationRestrictions)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`IRelEnumerationRs_AFTER_INSERT` AFTER INSERT ON `IRelEnumerationRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if InstanceRelationshipEnumerationRestrictions(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if InstanceRelationshipEnumerationRestrictions(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if InstanceRelationshipEnumerationRestrictions(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if InstanceRelationshipEnumerationRestrictions(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if InstanceRelationshipEnumerationRestrictions(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if InstanceRelationshipEnumerationRestrictions(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if InstanceRelationshipEnumerationRestrictions(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- TerminologyInstanceAssertions(x) if InstanceRelationshipEnumerationRestrictions(x)
+insert into `OML`.`TlgyIAsts`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`IRelEnumerationRs_AFTER_DELETE` AFTER DELETE ON `IRelEnumerationRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if InstanceRelationshipEnumerationRestrictions(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if InstanceRelationshipEnumerationRestrictions(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if InstanceRelationshipEnumerationRestrictions(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if InstanceRelationshipEnumerationRestrictions(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if InstanceRelationshipEnumerationRestrictions(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if InstanceRelationshipEnumerationRestrictions(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if InstanceRelationshipEnumerationRestrictions(x)
+delete from `OML`.`ModElts`;
+-- TerminologyInstanceAssertions(x) if InstanceRelationshipEnumerationRestrictions(x)
+delete from `OML`.`TlgyIAsts`;
+END$$
+
+-- -----------------------------------------------------
 -- Concrete Information Table `OML`.`IRelExRangeRs` (InstanceRelationshipExistentialRangeRestrictions)
 -- -----------------------------------------------------
 
@@ -6222,6 +6327,46 @@ delete from `OML`.`LogEs`;
 delete from `OML`.`ModElts`;
 -- TerminologyInstanceAssertions(x) if InstanceRelationshipExistentialRangeRestrictions(x)
 delete from `OML`.`TlgyIAsts`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`IRelOneOfRs` (InstanceRelationshipOneOfRestrictions)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`IRelOneOfRs_AFTER_INSERT` AFTER INSERT ON `IRelOneOfRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if InstanceRelationshipOneOfRestrictions(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if InstanceRelationshipOneOfRestrictions(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if InstanceRelationshipOneOfRestrictions(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if InstanceRelationshipOneOfRestrictions(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if InstanceRelationshipOneOfRestrictions(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if InstanceRelationshipOneOfRestrictions(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`IRelOneOfRs_AFTER_DELETE` AFTER DELETE ON `IRelOneOfRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if InstanceRelationshipOneOfRestrictions(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if InstanceRelationshipOneOfRestrictions(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if InstanceRelationshipOneOfRestrictions(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if InstanceRelationshipOneOfRestrictions(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if InstanceRelationshipOneOfRestrictions(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if InstanceRelationshipOneOfRestrictions(x)
+delete from `OML`.`LogEs`;
 END$$
 
 -- -----------------------------------------------------

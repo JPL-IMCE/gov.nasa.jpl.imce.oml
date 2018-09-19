@@ -105,6 +105,10 @@ class DescriptionBox extends Module {
 	
 	@CopyConstructor
 	@Collection(kind="Set")
+	contains InstanceRelationshipEnumerationRestriction[] instanceRelationshipEnumerationRestrictions opposite descriptionBox
+	
+	@CopyConstructor
+	@Collection(kind="Set")
 	contains InstanceRelationshipValueRestriction[] instanceRelationshipValueRestrictions opposite descriptionBox
 	
 	@CopyConstructor
@@ -149,7 +153,10 @@ class DescriptionBox extends Module {
 	
 	@Scala(code="extent.lookupConceptInstances(this) ++
 		extent.lookupReifiedRelationshipInstances(this) ++
+		extent.lookupInstanceRelationshipEnumerationRestrictions(this) ++
 		extent.lookupInstanceRelationshipValueRestrictions(this) ++
+		extent.lookupInstanceRelationshipExistentialRangeRestrictions(this) ++
+		extent.lookupInstanceRelationshipUniversalRangeRestrictions(this) ++
 		extent.lookupReifiedRelationshipInstanceDomains(this) ++
 		extent.lookupReifiedRelationshipInstanceRanges(this) ++
 		extent.lookupUnreifiedRelationshipInstanceTuples(this) ++
@@ -162,7 +169,10 @@ class DescriptionBox extends Module {
 		val mes = new BasicEList<ModuleElement>()
 		mes.addAll(conceptInstances)
 		mes.addAll(reifiedRelationshipInstances)
+		mes.addAll(instanceRelationshipEnumerationRestrictions)
 		mes.addAll(instanceRelationshipValueRestrictions)
+		mes.addAll(instanceRelationshipExistentialRangeRestrictions)
+		mes.addAll(instanceRelationshipUniversalRangeRestrictions)
 		mes.addAll(reifiedRelationshipInstanceDomains)
 		mes.addAll(reifiedRelationshipInstanceRanges)
 		mes.addAll(unreifiedRelationshipInstanceTuples)
@@ -524,6 +534,94 @@ class ConceptInstance extends ConceptualEntitySingletonInstance {
 	@ImplicitExtent
 	@NotSchema
 	op DescriptionBox[?] descriptionBox() { getDescriptionBox }
+	
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
+}
+
+/*
+ * An OML InstanceRelationshipEnumerationRestriction specifies an OWL ObjectAllValuesFrom 
+ * about an OML Relationship involving an OML ConceptualEntitySingletonInstance
+ * playing the domain role and a list of OML ConceptualEntitySingletonInstance for
+ * an OWL ObjectOneOf enumeration playing the range role.
+ */
+@Glossary
+@DerivedUUID
+class InstanceRelationshipEnumerationRestriction extends TerminologyInstanceAssertion, ElementCrossReferenceTuple {
+	
+	@Factory
+	container DescriptionBox[1] descriptionBox opposite instanceRelationshipEnumerationRestrictions
+	
+	refers ConceptualEntitySingletonInstance[1] domain
+	
+	refers RestrictableRelationship[1] restrictedRelationship
+	
+	@Collection(kind="Set")
+	contains InstanceRelationshipOneOfRestriction[] references opposite enumeration
+	
+	@Scala(code="extent.descriptionBoxOfInstanceRelationshipEnumerationRestriction.get(this)")
+	@ImplicitExtent
+	@NotSchema
+	op DescriptionBox[?] descriptionBox() { getDescriptionBox }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"InstanceRelationshipEnumerationRestriction", 
+		"descriptionBox" -> descriptionBox()?.uuid()?.toString(),
+		"domain" -> domain?.uuid()?.toString(),
+		"restrictedRelationship" -> restrictedRelationship?.uuid()?.toString()
+		)?.toString
+	}
+	
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] moduleContext() { descriptionBox() }
+	
+	@Scala(code="extent.instanceRelationshipEnumerationRestrictionOfInstanceRelationshipOneOfRestriction.collect {
+				case (oneOf, enumRestriction) if enumRestriction == this => oneOf
+			}.to[scala.collection.immutable.Set]")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op LogicalElement[] allNestedElements() {
+		val nes = new BasicEList<LogicalElement>()
+		nes.addAll(references)
+		nes
+	}
+}
+
+/*
+ * An InstanceRelationshipOneOfRestriction is a reference to an OML ConceptualEntitySingletonInstance
+ * playing the role of an enumerated individual for the range of an OML InstanceRelationshipValueRestriction.
+ */
+@Glossary
+@DerivedUUID
+class InstanceRelationshipOneOfRestriction extends ElementCrossReferenceTuple {
+	
+	@Factory
+	container InstanceRelationshipEnumerationRestriction[1] enumeration opposite references
+	
+	refers ConceptualEntitySingletonInstance[1] range
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"InstanceRelationshipOneOfRestriction", 
+		"enumeration" -> enumeration?.uuid()?.toString(),
+		"range" -> range?.uuid()?.toString()
+		)?.toString
+	}
+	
+	@Scala(code="extent.instanceRelationshipEnumerationRestrictionOfInstanceRelationshipOneOfRestriction.get(this).flatMap(_.descriptionBox())")
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] moduleContext() { enumeration?.descriptionBox() }
 	
 	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
 	@Collection(kind="Set")
