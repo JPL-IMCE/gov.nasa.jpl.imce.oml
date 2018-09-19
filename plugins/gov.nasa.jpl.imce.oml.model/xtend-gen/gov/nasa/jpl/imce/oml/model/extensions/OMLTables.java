@@ -58,7 +58,9 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionKind;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance;
@@ -925,6 +927,35 @@ public class OMLTables {
       };
       OMLTables.descriptionBoxes(e).forEach(_function);
       _xblockexpression = result.parallelStream().sorted(OMLTables.<InstanceRelationshipUniversalRangeRestriction>crossReferencabilityComparator()).collect(Collectors.<InstanceRelationshipUniversalRangeRestriction>toList());
+    }
+    return _xblockexpression;
+  }
+  
+  public static List<InstanceRelationshipEnumerationRestriction> instanceRelationshipEnumerationRestrictions(final Extent e) {
+    List<InstanceRelationshipEnumerationRestriction> _xblockexpression = null;
+    {
+      final List<InstanceRelationshipEnumerationRestriction> result = new ArrayList<InstanceRelationshipEnumerationRestriction>();
+      final Consumer<DescriptionBox> _function = (DescriptionBox dbox) -> {
+        result.addAll(dbox.getInstanceRelationshipEnumerationRestrictions());
+      };
+      OMLTables.descriptionBoxes(e).forEach(_function);
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<InstanceRelationshipEnumerationRestriction>crossReferencabilityComparator()).collect(Collectors.<InstanceRelationshipEnumerationRestriction>toList());
+    }
+    return _xblockexpression;
+  }
+  
+  public static List<InstanceRelationshipOneOfRestriction> instanceRelationshipOneOfRestrictions(final Extent e) {
+    List<InstanceRelationshipOneOfRestriction> _xblockexpression = null;
+    {
+      final List<InstanceRelationshipOneOfRestriction> result = new ArrayList<InstanceRelationshipOneOfRestriction>();
+      final Consumer<DescriptionBox> _function = (DescriptionBox dbox) -> {
+        final Consumer<InstanceRelationshipEnumerationRestriction> _function_1 = (InstanceRelationshipEnumerationRestriction r) -> {
+          result.addAll(r.getReferences());
+        };
+        dbox.getInstanceRelationshipEnumerationRestrictions().forEach(_function_1);
+      };
+      OMLTables.descriptionBoxes(e).forEach(_function);
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<InstanceRelationshipOneOfRestriction>crossReferencabilityComparator()).collect(Collectors.<InstanceRelationshipOneOfRestriction>toList());
     }
     return _xblockexpression;
   }
