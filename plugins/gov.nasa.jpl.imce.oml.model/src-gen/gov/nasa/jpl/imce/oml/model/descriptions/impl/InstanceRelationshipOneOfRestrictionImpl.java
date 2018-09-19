@@ -23,6 +23,7 @@ import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.impl.ElementCrossReferenceTupleImpl;
 
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance;
+import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction;
@@ -221,6 +222,20 @@ public class InstanceRelationshipOneOfRestrictionImpl extends ElementCrossRefere
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public gov.nasa.jpl.imce.oml.model.common.Module moduleContext() {
+		InstanceRelationshipEnumerationRestriction _enumeration = this.getEnumeration();
+		DescriptionBox _descriptionBox = null;
+		if (_enumeration!=null) {
+			_descriptionBox=_enumeration.descriptionBox();
+		}
+		return _descriptionBox;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<LogicalElement> allNestedElements() {
 		return ECollections.<LogicalElement>emptyEList();
 	}
@@ -349,6 +364,8 @@ public class InstanceRelationshipOneOfRestrictionImpl extends ElementCrossRefere
 		switch (operationID) {
 			case DescriptionsPackage.INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION___UUID:
 				return uuid();
+			case DescriptionsPackage.INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION___MODULE_CONTEXT:
+				return moduleContext();
 			case DescriptionsPackage.INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION___ALL_NESTED_ELEMENTS:
 				return allNestedElements();
 		}

@@ -113,6 +113,16 @@ public interface InstanceRelationshipOneOfRestriction extends ElementCrossRefere
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.instanceRelationshipEnumerationRestrictionOfInstanceRelationshipOneOfRestriction.get(this).flatMap(_.descriptionBox())'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction%&gt; _enumeration = this.getEnumeration();\n&lt;%gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox%&gt; _descriptionBox = null;\nif (_enumeration!=null)\n{\n\t_descriptionBox=_enumeration.descriptionBox();\n}\nreturn _descriptionBox;'"
+	 * @generated
+	 */
+	gov.nasa.jpl.imce.oml.model.common.Module moduleContext();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='scala.collection.immutable.Set.empty[resolver.api.LogicalElement]'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return &lt;%org.eclipse.emf.common.util.ECollections%&gt;.&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.LogicalElement%&gt;&gt;emptyEList();'"

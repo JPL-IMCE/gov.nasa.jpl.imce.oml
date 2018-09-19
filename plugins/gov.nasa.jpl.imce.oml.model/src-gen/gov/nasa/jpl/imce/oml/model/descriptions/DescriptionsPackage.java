@@ -1775,15 +1775,6 @@ public interface DescriptionsPackage extends EPackage {
 	int INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION_FEATURE_COUNT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>Module Context</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION___MODULE_CONTEXT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE___MODULE_CONTEXT;
-
-	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1793,13 +1784,22 @@ public interface DescriptionsPackage extends EPackage {
 	int INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION___UUID = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION___MODULE_CONTEXT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 1;
+
+	/**
 	 * The operation id for the '<em>All Nested Elements</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION___ALL_NESTED_ELEMENTS = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 1;
+	int INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION___ALL_NESTED_ELEMENTS = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Instance Relationship One Of Restriction</em>' class.
@@ -1808,7 +1808,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION_OPERATION_COUNT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 2;
+	int INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION_OPERATION_COUNT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.InstanceRelationshipValueRestrictionImpl <em>Instance Relationship Value Restriction</em>}' class.
@@ -3659,6 +3659,16 @@ public interface DescriptionsPackage extends EPackage {
 	EOperation getInstanceRelationshipOneOfRestriction__Uuid();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction#moduleContext()
+	 * @generated
+	 */
+	EOperation getInstanceRelationshipOneOfRestriction__ModuleContext();
+
+	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction#allNestedElements() <em>All Nested Elements</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5100,6 +5110,14 @@ public interface DescriptionsPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION___UUID = eINSTANCE.getInstanceRelationshipOneOfRestriction__Uuid();
+
+		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION___MODULE_CONTEXT = eINSTANCE.getInstanceRelationshipOneOfRestriction__ModuleContext();
 
 		/**
 		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.

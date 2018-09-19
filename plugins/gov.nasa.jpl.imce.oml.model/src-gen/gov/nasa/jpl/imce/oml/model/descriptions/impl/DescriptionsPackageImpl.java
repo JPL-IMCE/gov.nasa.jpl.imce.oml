@@ -1153,8 +1153,17 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getInstanceRelationshipOneOfRestriction__AllNestedElements() {
+	public EOperation getInstanceRelationshipOneOfRestriction__ModuleContext() {
 		return instanceRelationshipOneOfRestrictionEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInstanceRelationshipOneOfRestriction__AllNestedElements() {
+		return instanceRelationshipOneOfRestrictionEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -1825,6 +1834,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		createEReference(instanceRelationshipOneOfRestrictionEClass, INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION__ENUMERATION);
 		createEReference(instanceRelationshipOneOfRestrictionEClass, INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION__RANGE);
 		createEOperation(instanceRelationshipOneOfRestrictionEClass, INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION___UUID);
+		createEOperation(instanceRelationshipOneOfRestrictionEClass, INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION___MODULE_CONTEXT);
 		createEOperation(instanceRelationshipOneOfRestrictionEClass, INSTANCE_RELATIONSHIP_ONE_OF_RESTRICTION___ALL_NESTED_ELEMENTS);
 
 		instanceRelationshipValueRestrictionEClass = createEClass(INSTANCE_RELATIONSHIP_VALUE_RESTRICTION);
@@ -2112,6 +2122,8 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		initEReference(getInstanceRelationshipOneOfRestriction_Range(), this.getConceptualEntitySingletonInstance(), null, "range", null, 1, 1, InstanceRelationshipOneOfRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getInstanceRelationshipOneOfRestriction__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getInstanceRelationshipOneOfRestriction__ModuleContext(), theCommonPackage.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getInstanceRelationshipOneOfRestriction__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
@@ -2464,7 +2476,13 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		  (getInstanceRelationshipEnumerationRestriction__AllNestedElements(),
 		   source,
 		   new String[] {
-			   "code", "references"
+			   "code", "extent.instanceRelationshipEnumerationRestrictionOfInstanceRelationshipOneOfRestriction.collect {\n\t\t\t\tcase (oneOf, enumRestriction) if enumRestriction == this => oneOf\n\t\t\t}.to[scala.collection.immutable.Set]"
+		   });
+		addAnnotation
+		  (getInstanceRelationshipOneOfRestriction__ModuleContext(),
+		   source,
+		   new String[] {
+			   "code", "extent.instanceRelationshipEnumerationRestrictionOfInstanceRelationshipOneOfRestriction.get(this).flatMap(_.descriptionBox())"
 		   });
 		addAnnotation
 		  (getInstanceRelationshipOneOfRestriction__AllNestedElements(),
@@ -2903,6 +2921,11 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		   new String[] {
 		   });
 		addAnnotation
+		  (getInstanceRelationshipOneOfRestriction__ModuleContext(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
 		  (getInstanceRelationshipOneOfRestriction__AllNestedElements(),
 		   source,
 		   new String[] {
@@ -3214,6 +3237,11 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		   });
 		addAnnotation
 		  (getInstanceRelationshipOneOfRestriction__Uuid(),
+		   source,
+		   new String[] {
+		   });
+		addAnnotation
+		  (getInstanceRelationshipOneOfRestriction__ModuleContext(),
 		   source,
 		   new String[] {
 		   });

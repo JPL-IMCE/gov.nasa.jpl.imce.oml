@@ -183,7 +183,7 @@ public interface InstanceRelationshipEnumerationRestriction extends TerminologyI
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='references'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.instanceRelationshipEnumerationRestrictionOfInstanceRelationshipOneOfRestriction.collect {\n\t\t\t\tcase (oneOf, enumRestriction) if enumRestriction == this =&gt; oneOf\n\t\t\t}.to[scala.collection.immutable.Set]'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.LogicalElement%&gt;&gt; _xblockexpression = null;\n{\n\tfinal &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.LogicalElement%&gt;&gt; nes = new &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.LogicalElement%&gt;&gt;();\n\tnes.addAll(this.getReferences());\n\t_xblockexpression = nes;\n}\nreturn _xblockexpression;'"
 	 * @generated
