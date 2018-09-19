@@ -60,6 +60,8 @@ import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstanc
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipValueRestriction
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction
 import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction
