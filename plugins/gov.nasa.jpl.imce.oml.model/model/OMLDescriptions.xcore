@@ -582,7 +582,9 @@ class InstanceRelationshipEnumerationRestriction extends TerminologyInstanceAsse
 	@ImplicitExtent
 	op Module[?] moduleContext() { descriptionBox() }
 	
-	@Scala(code="references")
+	@Scala(code="extent.instanceRelationshipEnumerationRestrictionOfInstanceRelationshipOneOfRestriction.collect {
+				case (oneOf, enumRestriction) if enumRestriction == this => oneOf
+			}.to[scala.collection.immutable.Set]")
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
@@ -615,6 +617,11 @@ class InstanceRelationshipOneOfRestriction extends ElementCrossReferenceTuple {
 		"range" -> range?.uuid()?.toString()
 		)?.toString
 	}
+	
+	@Scala(code="extent.instanceRelationshipEnumerationRestrictionOfInstanceRelationshipOneOfRestriction.get(this).flatMap(_.descriptionBox())")
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] moduleContext() { enumeration?.descriptionBox() }
 	
 	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
 	@Collection(kind="Set")
