@@ -50,11 +50,16 @@ import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstanc
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange
 import gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue
 import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue
+import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyContext
 import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyValue
 import gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple
 import gov.nasa.jpl.imce.oml.model.descriptions.UnreifiedRelationshipInstanceTuple
@@ -69,6 +74,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect
 import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept
 import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule
+import gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom
@@ -123,6 +129,8 @@ import java.util.ArrayList
 import java.util.Comparator
 import java.util.HashSet
 import java.util.UUID
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 import org.apache.xml.resolver.CatalogManager
 import org.apache.xml.resolver.tools.CatalogResolver
 import org.eclipse.emf.common.CommonPlugin
@@ -136,9 +144,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.xtext.xbase.lib.Functions.Function1
 
 import static com.google.common.base.Preconditions.checkNotNull
-import gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship
-import java.util.regex.Pattern
-import java.util.regex.Matcher
 
 class OMLExtensions {
 
@@ -1232,6 +1237,42 @@ class OMLExtensions {
 	}
 	
 	protected static def dispatch void normalizeSubElements(TerminologyBoxStatement e) {
+	}
+	
+	protected static def dispatch void normalizeSubElements(SingletonInstanceScalarDataPropertyValue e) {
+	}
+	
+	protected static def dispatch void normalizeSubElements(SingletonInstanceStructuredDataPropertyContext e) {
+		sortInplaceBy(e.structuredPropertyTuples, [sortingCriteria])
+		sortInplaceBy(e.scalarDataPropertyValues, [sortingCriteria])
+	}
+	
+	protected static def dispatch void normalizeSubElements(ScalarDataPropertyValue e) {
+	}
+	
+	protected static def dispatch void normalizeSubElements(ConceptualEntitySingletonInstance e) {
+	}
+	
+	protected static def dispatch void normalizeSubElements(InstanceRelationshipEnumerationRestriction e) {
+		sortInplaceBy(e.references, [sortingCriteria])
+	}
+	
+	protected static def dispatch void normalizeSubElements(InstanceRelationshipOneOfRestriction e) {
+	}
+	
+	protected static def dispatch void normalizeSubElements(InstanceRelationshipExistentialRangeRestriction e) {
+	}
+	
+	protected static def dispatch void normalizeSubElements(InstanceRelationshipUniversalRangeRestriction e) {
+	}
+
+	protected static def dispatch void normalizeSubElements(ReifiedRelationshipInstanceDomain e) {
+	}
+	
+	protected static def dispatch void normalizeSubElements(ReifiedRelationshipInstanceRange e) {
+	}
+	
+	protected static def dispatch void normalizeSubElements(UnreifiedRelationshipInstanceTuple e) {
 	}
 	
 	static val terminologyBoxStatementComparator = new Comparator<TerminologyBoxStatement> {
