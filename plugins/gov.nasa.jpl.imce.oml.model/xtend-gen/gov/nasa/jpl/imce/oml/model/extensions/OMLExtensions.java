@@ -54,6 +54,10 @@ import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstanc
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipEnumerationRestriction;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipExistentialRangeRestriction;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipOneOfRestriction;
+import gov.nasa.jpl.imce.oml.model.descriptions.InstanceRelationshipUniversalRangeRestriction;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange;
@@ -2175,6 +2179,51 @@ public class OMLExtensions {
   protected static void _normalizeSubElements(final TerminologyBoxStatement e) {
   }
   
+  protected static void _normalizeSubElements(final SingletonInstanceScalarDataPropertyValue e) {
+  }
+  
+  protected static void _normalizeSubElements(final SingletonInstanceStructuredDataPropertyContext e) {
+    final Function1<StructuredDataPropertyTuple, String> _function = (StructuredDataPropertyTuple it) -> {
+      return OMLExtensions.sortingCriteria(it);
+    };
+    OMLExtensions.<StructuredDataPropertyTuple, String>sortInplaceBy(e.getStructuredPropertyTuples(), _function);
+    final Function1<ScalarDataPropertyValue, String> _function_1 = (ScalarDataPropertyValue it) -> {
+      return OMLExtensions.sortingCriteria(it);
+    };
+    OMLExtensions.<ScalarDataPropertyValue, String>sortInplaceBy(e.getScalarDataPropertyValues(), _function_1);
+  }
+  
+  protected static void _normalizeSubElements(final ScalarDataPropertyValue e) {
+  }
+  
+  protected static void _normalizeSubElements(final ConceptualEntitySingletonInstance e) {
+  }
+  
+  protected static void _normalizeSubElements(final InstanceRelationshipEnumerationRestriction e) {
+    final Function1<InstanceRelationshipOneOfRestriction, String> _function = (InstanceRelationshipOneOfRestriction it) -> {
+      return OMLExtensions.sortingCriteria(it);
+    };
+    OMLExtensions.<InstanceRelationshipOneOfRestriction, String>sortInplaceBy(e.getReferences(), _function);
+  }
+  
+  protected static void _normalizeSubElements(final InstanceRelationshipOneOfRestriction e) {
+  }
+  
+  protected static void _normalizeSubElements(final InstanceRelationshipExistentialRangeRestriction e) {
+  }
+  
+  protected static void _normalizeSubElements(final InstanceRelationshipUniversalRangeRestriction e) {
+  }
+  
+  protected static void _normalizeSubElements(final ReifiedRelationshipInstanceDomain e) {
+  }
+  
+  protected static void _normalizeSubElements(final ReifiedRelationshipInstanceRange e) {
+  }
+  
+  protected static void _normalizeSubElements(final UnreifiedRelationshipInstanceTuple e) {
+  }
+  
   private final static Comparator<TerminologyBoxStatement> terminologyBoxStatementComparator = new Comparator<TerminologyBoxStatement>() {
     @Override
     public int compare(final TerminologyBoxStatement o1, final TerminologyBoxStatement o2) {
@@ -2990,8 +3039,41 @@ public class OMLExtensions {
     } else if (e instanceof SpecificDisjointConceptAxiom) {
       _normalizeSubElements((SpecificDisjointConceptAxiom)e);
       return;
+    } else if (e instanceof ConceptualEntitySingletonInstance) {
+      _normalizeSubElements((ConceptualEntitySingletonInstance)e);
+      return;
+    } else if (e instanceof InstanceRelationshipEnumerationRestriction) {
+      _normalizeSubElements((InstanceRelationshipEnumerationRestriction)e);
+      return;
+    } else if (e instanceof InstanceRelationshipExistentialRangeRestriction) {
+      _normalizeSubElements((InstanceRelationshipExistentialRangeRestriction)e);
+      return;
+    } else if (e instanceof InstanceRelationshipUniversalRangeRestriction) {
+      _normalizeSubElements((InstanceRelationshipUniversalRangeRestriction)e);
+      return;
+    } else if (e instanceof ReifiedRelationshipInstanceDomain) {
+      _normalizeSubElements((ReifiedRelationshipInstanceDomain)e);
+      return;
+    } else if (e instanceof ReifiedRelationshipInstanceRange) {
+      _normalizeSubElements((ReifiedRelationshipInstanceRange)e);
+      return;
+    } else if (e instanceof UnreifiedRelationshipInstanceTuple) {
+      _normalizeSubElements((UnreifiedRelationshipInstanceTuple)e);
+      return;
     } else if (e instanceof ModuleEdge) {
       _normalizeSubElements((ModuleEdge)e);
+      return;
+    } else if (e instanceof InstanceRelationshipOneOfRestriction) {
+      _normalizeSubElements((InstanceRelationshipOneOfRestriction)e);
+      return;
+    } else if (e instanceof ScalarDataPropertyValue) {
+      _normalizeSubElements((ScalarDataPropertyValue)e);
+      return;
+    } else if (e instanceof SingletonInstanceScalarDataPropertyValue) {
+      _normalizeSubElements((SingletonInstanceScalarDataPropertyValue)e);
+      return;
+    } else if (e instanceof SingletonInstanceStructuredDataPropertyContext) {
+      _normalizeSubElements((SingletonInstanceStructuredDataPropertyContext)e);
       return;
     } else if (e instanceof TerminologyBoxStatement) {
       _normalizeSubElements((TerminologyBoxStatement)e);
