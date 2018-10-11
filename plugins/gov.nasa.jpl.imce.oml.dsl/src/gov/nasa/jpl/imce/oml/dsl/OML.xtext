@@ -832,7 +832,7 @@ terminal fragment LETTER_DIGIT_PREFIX:					LETTER_DIGIT | '_';
 
 terminal fragment LETTER_DIGIT_SUFFIX:					LETTER_DIGIT | '_' | '-' | '.';
 
-terminal ABBREV_IRI:									LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX* ':' LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX*;
+terminal ABBREV_IRI:									LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX* ':' ( LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX* | '\'' LETTER_DIGIT_PREFIX (!'\'')* '\'' );
 	
 //----------------------------
 // https://www.w3.org/TR/xmlschema11-2/#language

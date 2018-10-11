@@ -8370,7 +8370,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal ABBREV_IRI:
-	//	LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX* ':' LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX*;
+	//	LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX* ':' (LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX* | '\'' LETTER_DIGIT_PREFIX
+	//	!'\''* '\'');
 	public TerminalRule getABBREV_IRIRule() {
 		return tABBREV_IRI;
 	}
