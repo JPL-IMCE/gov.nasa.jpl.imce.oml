@@ -713,28 +713,33 @@ class OMLExtensions {
 	}
 
 	def Iterable<TerminologyBox> allImportedTerminologiesFromDescription(DescriptionBox it) {
-		collectAllImportedTerminologiesFromDescription(Lists.newArrayList(it), Sets.newHashSet(), Sets.newHashSet())
+		collectAllImportedTerminologiesFromDescription(Lists.newArrayList(it), Sets.newHashSet(), Sets.newHashSet(), Sets.newHashSet())
 	}
 
 	final def Iterable<TerminologyBox> collectAllImportedTerminologiesFromDescription(
 		ArrayList<DescriptionBox> queue,
 		HashSet<TerminologyBox> acc,
-		HashSet<TerminologyBox> visited
+		HashSet<TerminologyBox> visitedTboxes,
+		HashSet<DescriptionBox> visitedDboxes
 	) {
 		if (queue.isEmpty)
 			return acc
 
 		val dbox = queue.head
 		queue.remove(dbox)
+		if (visitedDboxes.contains(dbox)) {
+			collectAllImportedTerminologiesFromDescription(queue, acc, visitedTboxes, visitedDboxes)
+		} else {
+			visitedDboxes.add(dbox)
+			val incd = dbox.descriptionBoxRefinements.map[refinedDescriptionBox]
+			queue.addAll(incd)
 
-		val incd = dbox.descriptionBoxRefinements.map[refinedDescriptionBox]
-		queue.addAll(incd)
+			val inct = dbox.closedWorldDefinitions.map[closedWorldDefinitions].map[allImportedTerminologies].flatten.reject[visitedTboxes.contains(it)]
+			acc.addAll(inct)
+			visitedTboxes.addAll(inct)
 
-		val inct = dbox.closedWorldDefinitions.map[closedWorldDefinitions].map[allImportedTerminologies].flatten.reject[visited.contains(it)]
-		acc.addAll(inct)
-		visited.addAll(inct)
-
-		collectAllImportedTerminologiesFromDescription(queue, acc, visited)
+			collectAllImportedTerminologiesFromDescription(queue, acc, visitedTboxes, visitedDboxes)	
+		}
 	}
 
 	def Iterable<DescriptionBox> allImportedDescriptions(DescriptionBox it) {

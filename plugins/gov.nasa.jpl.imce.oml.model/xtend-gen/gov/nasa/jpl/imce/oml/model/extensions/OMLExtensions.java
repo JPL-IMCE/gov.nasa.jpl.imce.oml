@@ -1017,10 +1017,10 @@ public class OMLExtensions {
   }
   
   public Iterable<TerminologyBox> allImportedTerminologiesFromDescription(final DescriptionBox it) {
-    return this.collectAllImportedTerminologiesFromDescription(Lists.<DescriptionBox>newArrayList(it), Sets.<TerminologyBox>newHashSet(), Sets.<TerminologyBox>newHashSet());
+    return this.collectAllImportedTerminologiesFromDescription(Lists.<DescriptionBox>newArrayList(it), Sets.<TerminologyBox>newHashSet(), Sets.<TerminologyBox>newHashSet(), Sets.<DescriptionBox>newHashSet());
   }
   
-  public final Iterable<TerminologyBox> collectAllImportedTerminologiesFromDescription(final ArrayList<DescriptionBox> queue, final HashSet<TerminologyBox> acc, final HashSet<TerminologyBox> visited) {
+  public final Iterable<TerminologyBox> collectAllImportedTerminologiesFromDescription(final ArrayList<DescriptionBox> queue, final HashSet<TerminologyBox> acc, final HashSet<TerminologyBox> visitedTboxes, final HashSet<DescriptionBox> visitedDboxes) {
     Iterable<TerminologyBox> _xblockexpression = null;
     {
       boolean _isEmpty = queue.isEmpty();
@@ -1029,24 +1029,36 @@ public class OMLExtensions {
       }
       final DescriptionBox dbox = IterableExtensions.<DescriptionBox>head(queue);
       queue.remove(dbox);
-      final Function1<DescriptionBoxRefinement, DescriptionBox> _function = (DescriptionBoxRefinement it) -> {
-        return it.getRefinedDescriptionBox();
-      };
-      final List<DescriptionBox> incd = ListExtensions.<DescriptionBoxRefinement, DescriptionBox>map(dbox.getDescriptionBoxRefinements(), _function);
-      queue.addAll(incd);
-      final Function1<DescriptionBoxExtendsClosedWorldDefinitions, TerminologyBox> _function_1 = (DescriptionBoxExtendsClosedWorldDefinitions it) -> {
-        return it.getClosedWorldDefinitions();
-      };
-      final Function1<TerminologyBox, Iterable<TerminologyBox>> _function_2 = (TerminologyBox it) -> {
-        return OMLExtensions.allImportedTerminologies(it);
-      };
-      final Function1<TerminologyBox, Boolean> _function_3 = (TerminologyBox it) -> {
-        return Boolean.valueOf(visited.contains(it));
-      };
-      final Iterable<TerminologyBox> inct = IterableExtensions.<TerminologyBox>reject(Iterables.<TerminologyBox>concat(ListExtensions.<TerminologyBox, Iterable<TerminologyBox>>map(ListExtensions.<DescriptionBoxExtendsClosedWorldDefinitions, TerminologyBox>map(dbox.getClosedWorldDefinitions(), _function_1), _function_2)), _function_3);
-      Iterables.<TerminologyBox>addAll(acc, inct);
-      Iterables.<TerminologyBox>addAll(visited, inct);
-      _xblockexpression = this.collectAllImportedTerminologiesFromDescription(queue, acc, visited);
+      Iterable<TerminologyBox> _xifexpression = null;
+      boolean _contains = visitedDboxes.contains(dbox);
+      if (_contains) {
+        _xifexpression = this.collectAllImportedTerminologiesFromDescription(queue, acc, visitedTboxes, visitedDboxes);
+      } else {
+        Iterable<TerminologyBox> _xblockexpression_1 = null;
+        {
+          visitedDboxes.add(dbox);
+          final Function1<DescriptionBoxRefinement, DescriptionBox> _function = (DescriptionBoxRefinement it) -> {
+            return it.getRefinedDescriptionBox();
+          };
+          final List<DescriptionBox> incd = ListExtensions.<DescriptionBoxRefinement, DescriptionBox>map(dbox.getDescriptionBoxRefinements(), _function);
+          queue.addAll(incd);
+          final Function1<DescriptionBoxExtendsClosedWorldDefinitions, TerminologyBox> _function_1 = (DescriptionBoxExtendsClosedWorldDefinitions it) -> {
+            return it.getClosedWorldDefinitions();
+          };
+          final Function1<TerminologyBox, Iterable<TerminologyBox>> _function_2 = (TerminologyBox it) -> {
+            return OMLExtensions.allImportedTerminologies(it);
+          };
+          final Function1<TerminologyBox, Boolean> _function_3 = (TerminologyBox it) -> {
+            return Boolean.valueOf(visitedTboxes.contains(it));
+          };
+          final Iterable<TerminologyBox> inct = IterableExtensions.<TerminologyBox>reject(Iterables.<TerminologyBox>concat(ListExtensions.<TerminologyBox, Iterable<TerminologyBox>>map(ListExtensions.<DescriptionBoxExtendsClosedWorldDefinitions, TerminologyBox>map(dbox.getClosedWorldDefinitions(), _function_1), _function_2)), _function_3);
+          Iterables.<TerminologyBox>addAll(acc, inct);
+          Iterables.<TerminologyBox>addAll(visitedTboxes, inct);
+          _xblockexpression_1 = this.collectAllImportedTerminologiesFromDescription(queue, acc, visitedTboxes, visitedDboxes);
+        }
+        _xifexpression = _xblockexpression_1;
+      }
+      _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
   }

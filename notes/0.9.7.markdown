@@ -10,3 +10,4 @@ gov.nasa.jpl.imce.oml 0.9.7 adds new features to 0.9.6
 
 ### [#309 Minor fixes](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/309)
 
+### [#312 StackOverflow vulnerability for OML description boxes with refinement cycles](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/312)
