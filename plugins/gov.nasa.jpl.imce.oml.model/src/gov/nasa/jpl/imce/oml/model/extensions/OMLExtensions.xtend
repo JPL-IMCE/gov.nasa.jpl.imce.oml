@@ -728,7 +728,9 @@ class OMLExtensions {
 		val dbox = queue.head
 		queue.remove(dbox)
 		if (visitedDboxes.contains(dbox)) {
-			collectAllImportedTerminologiesFromDescription(queue, acc, visitedTboxes, visitedDboxes)
+			val tail = new ArrayList<DescriptionBox>()
+			tail.addAll(queue.tail)
+			collectAllImportedTerminologiesFromDescription(tail, acc, visitedTboxes, visitedDboxes)
 		} else {
 			visitedDboxes.add(dbox)
 			val incd = dbox.descriptionBoxRefinements.map[refinedDescriptionBox]
