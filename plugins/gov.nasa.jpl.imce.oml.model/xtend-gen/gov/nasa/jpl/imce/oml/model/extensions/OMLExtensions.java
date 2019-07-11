@@ -1032,9 +1032,15 @@ public class OMLExtensions {
       Iterable<TerminologyBox> _xifexpression = null;
       boolean _contains = visitedDboxes.contains(dbox);
       if (_contains) {
-        _xifexpression = this.collectAllImportedTerminologiesFromDescription(queue, acc, visitedTboxes, visitedDboxes);
-      } else {
         Iterable<TerminologyBox> _xblockexpression_1 = null;
+        {
+          final ArrayList<DescriptionBox> tail = new ArrayList<DescriptionBox>();
+          Iterables.<DescriptionBox>addAll(tail, IterableExtensions.<DescriptionBox>tail(queue));
+          _xblockexpression_1 = this.collectAllImportedTerminologiesFromDescription(tail, acc, visitedTboxes, visitedDboxes);
+        }
+        _xifexpression = _xblockexpression_1;
+      } else {
+        Iterable<TerminologyBox> _xblockexpression_2 = null;
         {
           visitedDboxes.add(dbox);
           final Function1<DescriptionBoxRefinement, DescriptionBox> _function = (DescriptionBoxRefinement it) -> {
@@ -1054,9 +1060,9 @@ public class OMLExtensions {
           final Iterable<TerminologyBox> inct = IterableExtensions.<TerminologyBox>reject(Iterables.<TerminologyBox>concat(ListExtensions.<TerminologyBox, Iterable<TerminologyBox>>map(ListExtensions.<DescriptionBoxExtendsClosedWorldDefinitions, TerminologyBox>map(dbox.getClosedWorldDefinitions(), _function_1), _function_2)), _function_3);
           Iterables.<TerminologyBox>addAll(acc, inct);
           Iterables.<TerminologyBox>addAll(visitedTboxes, inct);
-          _xblockexpression_1 = this.collectAllImportedTerminologiesFromDescription(queue, acc, visitedTboxes, visitedDboxes);
+          _xblockexpression_2 = this.collectAllImportedTerminologiesFromDescription(queue, acc, visitedTboxes, visitedDboxes);
         }
-        _xifexpression = _xblockexpression_1;
+        _xifexpression = _xblockexpression_2;
       }
       _xblockexpression = _xifexpression;
     }
