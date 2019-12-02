@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: gov.nasa.jpl.imce.oml.model.edit;singleton:=true
 Automatic-Module-Name: gov.nasa.jpl.imce.oml.model.edit
-Bundle-Version: 0.9.6.qualifier
+Bundle-Version: 0.9.7.7
 Bundle-ClassPath: .
 Bundle-Activator: gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin$Implementation
 Bundle-Vendor: %providerName
