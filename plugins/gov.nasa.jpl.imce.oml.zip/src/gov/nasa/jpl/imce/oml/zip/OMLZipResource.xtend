@@ -263,7 +263,7 @@ class OMLZipResource extends ResourceImpl {
 	}
 
 	public static val Pattern KeyValue = Pattern.compile(
-		"\"([^\"]*)\":(null|\"(.*?)\"|\\{\"literalType\":\"[^\"]*\",\"value\":\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]\\}|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]),?")
+		"\"([^\"]*)\":(null|\"(.*?)\"|\\{\"literalType\":\"([^\"]*)\",\"value\":(\"[^\"]*\"|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\])\\}|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]),?")
 
 	protected static def ArrayList<Map<String, String>> lines2tuples(ArrayList<String> lines) {
 		val list = new ArrayList<Map<String, String>>()
@@ -276,7 +276,7 @@ class OMLZipResource extends ResourceImpl {
 			val m = KeyValue.matcher(keyValues)
 			while (m.find()) {
 				val key = m.group(1)
-				val value = m.group(3) ?: m.group(2)
+				val value = m.group(3) ?: m.group(2)	
 				map.put(key, value)
 			}
 			list.add(map)

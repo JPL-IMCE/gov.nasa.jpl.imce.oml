@@ -4295,19 +4295,19 @@ public class OMLSpecificationTables {
         final NumericScalarRestriction oml = this.omlTerminologiesFactory.createNumericScalarRestriction();
         final String uuid = kv.remove("uuid");
         final String minExclusive_value = kv.remove("minExclusive");
-        if (((null != minExclusive_value) && (minExclusive_value.length() > 0))) {
+        if ((((null != minExclusive_value) && (!Objects.equal("null", minExclusive_value))) && (minExclusive_value.length() > 0))) {
           oml.setMinExclusive(OMLTables.toLiteralNumber(minExclusive_value));
         }
         final String minInclusive_value = kv.remove("minInclusive");
-        if (((null != minInclusive_value) && (minInclusive_value.length() > 0))) {
+        if ((((null != minInclusive_value) && (!Objects.equal("null", minInclusive_value))) && (minInclusive_value.length() > 0))) {
           oml.setMinInclusive(OMLTables.toLiteralNumber(minInclusive_value));
         }
         final String maxExclusive_value = kv.remove("maxExclusive");
-        if (((null != maxExclusive_value) && (maxExclusive_value.length() > 0))) {
+        if ((((null != maxExclusive_value) && (!Objects.equal("null", maxExclusive_value))) && (maxExclusive_value.length() > 0))) {
           oml.setMaxExclusive(OMLTables.toLiteralNumber(maxExclusive_value));
         }
         final String maxInclusive_value = kv.remove("maxInclusive");
-        if (((null != maxInclusive_value) && (maxInclusive_value.length() > 0))) {
+        if ((((null != maxInclusive_value) && (!Objects.equal("null", maxInclusive_value))) && (maxInclusive_value.length() > 0))) {
           oml.setMaxInclusive(OMLTables.toLiteralNumber(maxInclusive_value));
         }
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
@@ -4449,19 +4449,19 @@ public class OMLSpecificationTables {
         final TimeScalarRestriction oml = this.omlTerminologiesFactory.createTimeScalarRestriction();
         final String uuid = kv.remove("uuid");
         final String minExclusive_value = kv.remove("minExclusive");
-        if (((null != minExclusive_value) && (minExclusive_value.length() > 0))) {
+        if ((((null != minExclusive_value) && (!Objects.equal("null", minExclusive_value))) && (minExclusive_value.length() > 0))) {
           oml.setMinExclusive(OMLTables.toLiteralDateTime(minExclusive_value));
         }
         final String minInclusive_value = kv.remove("minInclusive");
-        if (((null != minInclusive_value) && (minInclusive_value.length() > 0))) {
+        if ((((null != minInclusive_value) && (!Objects.equal("null", minInclusive_value))) && (minInclusive_value.length() > 0))) {
           oml.setMinInclusive(OMLTables.toLiteralDateTime(minInclusive_value));
         }
         final String maxExclusive_value = kv.remove("maxExclusive");
-        if (((null != maxExclusive_value) && (maxExclusive_value.length() > 0))) {
+        if ((((null != maxExclusive_value) && (!Objects.equal("null", maxExclusive_value))) && (maxExclusive_value.length() > 0))) {
           oml.setMaxExclusive(OMLTables.toLiteralDateTime(maxExclusive_value));
         }
         final String maxInclusive_value = kv.remove("maxInclusive");
-        if (((null != maxInclusive_value) && (maxInclusive_value.length() > 0))) {
+        if ((((null != maxInclusive_value) && (!Objects.equal("null", maxInclusive_value))) && (maxInclusive_value.length() > 0))) {
           oml.setMaxInclusive(OMLTables.toLiteralDateTime(maxInclusive_value));
         }
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
