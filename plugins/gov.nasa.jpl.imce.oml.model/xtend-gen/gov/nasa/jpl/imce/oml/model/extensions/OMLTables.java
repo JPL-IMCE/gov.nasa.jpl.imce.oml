@@ -1467,6 +1467,10 @@ public class OMLTables {
           _xifexpression_1 = m.group(3);
         }
         final String stringArray = _xifexpression_1;
+        boolean _equals = Objects.equal("\"\"", stringArray);
+        if (_equals) {
+          return "";
+        }
         boolean _startsWith = stringArray.startsWith("[");
         boolean _not = (!_startsWith);
         if (_not) {
@@ -1492,16 +1496,16 @@ public class OMLTables {
         while (a.find()) {
           {
             final String part = a.group(1);
-            boolean _equals = Objects.equal("\\\\n", part);
-            if (_equals) {
+            boolean _equals_1 = Objects.equal("\\\\n", part);
+            if (_equals_1) {
               buffer.append(OMLTables.NEWLINE);
             } else {
-              boolean _equals_1 = Objects.equal("\\\\r", part);
-              if (_equals_1) {
+              boolean _equals_2 = Objects.equal("\\\\r", part);
+              if (_equals_2) {
                 buffer.append(OMLTables.LINEFEED);
               } else {
-                boolean _equals_2 = Objects.equal("\\\"", part);
-                if (_equals_2) {
+                boolean _equals_3 = Objects.equal("\\\"", part);
+                if (_equals_3) {
                   buffer.append(OMLTables.QUOTE);
                 } else {
                   buffer.append(part);
@@ -1819,9 +1823,15 @@ public class OMLTables {
       switch (value) {
         case "<=":
           return CardinalityRestrictionKind.MIN;
+        case "MinCardinalityRestriction":
+          return CardinalityRestrictionKind.MIN;
         case ">=":
           return CardinalityRestrictionKind.MAX;
+        case "MaxCardinalityRestriction":
+          return CardinalityRestrictionKind.MAX;
         case "==":
+          return CardinalityRestrictionKind.EXACT;
+        case "ExactCardinalityRestriction":
           return CardinalityRestrictionKind.EXACT;
         default:
           throw new IllegalArgumentException((value + " is not a legal CardinalityRestrictionKind"));

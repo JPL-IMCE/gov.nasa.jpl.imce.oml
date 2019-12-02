@@ -783,6 +783,8 @@ class OMLTables {
 			m.group(4)
 		else {
 			val stringArray = if (null === m.group(2) || m.group(2).empty) m.group(1) else m.group(3)
+			if ("\"\"" == stringArray)
+				return ""
 			if (!stringArray.startsWith("["))
 				throw new IllegalArgumentException('''toValue(«stringArray») should start with '['. ''')
 			if (!stringArray.endsWith("]"))
@@ -942,9 +944,15 @@ class OMLTables {
   	switch value {
   		case "<=":
   			return CardinalityRestrictionKind.MIN
+  		case "MinCardinalityRestriction":
+  			return CardinalityRestrictionKind.MIN
   		case ">=":
   			return CardinalityRestrictionKind.MAX
+  		case "MaxCardinalityRestriction":
+  			return CardinalityRestrictionKind.MAX
   		case "==":
+  			return CardinalityRestrictionKind.EXACT
+  		case "ExactCardinalityRestriction":
   			return CardinalityRestrictionKind.EXACT
   		default:
   			throw new IllegalArgumentException(value +" is not a legal CardinalityRestrictionKind")
