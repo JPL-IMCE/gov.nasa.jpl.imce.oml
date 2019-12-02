@@ -13,3 +13,5 @@ gov.nasa.jpl.imce.oml 0.9.7 adds new features to 0.9.6
 ### [#312 StackOverflow vulnerability for OML description boxes with refinement cycles](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/312)
 
 ### [#315 StackOverflow in OMLExtensions.collectAllImportedTerminologiesFromDescription](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/315)
+
+### [#318 Serialization bug for parsing OMLZip NumericalScalarRestrictions](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/318)

@@ -524,7 +524,7 @@ public class OMLZipResource extends ResourceImpl {
   }
   
   public final static Pattern KeyValue = Pattern.compile(
-    "\"([^\"]*)\":(null|\"(.*?)\"|\\{\"literalType\":\"[^\"]*\",\"value\":\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]\\}|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]),?");
+    "\"([^\"]*)\":(null|\"(.*?)\"|\\{\"literalType\":\"([^\"]*)\",\"value\":(\"[^\"]*\"|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\])\\}|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]),?");
   
   protected static ArrayList<Map<String, String>> lines2tuples(final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();
