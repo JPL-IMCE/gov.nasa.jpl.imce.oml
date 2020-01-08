@@ -39,6 +39,24 @@ class OMLZip1Test extends OMLSaveLoadComparisonTest {
         concept1.name = "Concept1"
         concept1.tbox = tbox1
         
+        val scalar1 = createScalar
+        scalar1.name = "integer"
+        scalar1.tbox = tbox1
+        
+        val scalarDP1 = createEntityScalarDataProperty
+        scalarDP1.name = "p1"
+        scalarDP1.domain = concept1
+        scalarDP1.range = scalar1
+        scalarDP1.tbox = tbox1
+        scalarDP1.isIdentityCriteria = true
+        
+        val scalarDP2 = createEntityScalarDataProperty
+        scalarDP2.name = "p2"
+        scalarDP2.domain = concept1
+        scalarDP2.range = scalar1
+        scalarDP2.tbox = tbox1
+        scalarDP2.isIdentityCriteria = false
+        
         return #[ new Pair<URI,Extent>(URI.createURI(tbox1.iri()), extent) ]
 	}
 	

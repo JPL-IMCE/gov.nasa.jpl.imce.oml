@@ -523,8 +523,14 @@ public class OMLZipResource extends ResourceImpl {
     }
   }
   
-  public final static Pattern KeyValue = Pattern.compile(
-    "\"([^\"]*)\":(null|\"(.*?)\"|\\{\"literalType\":\"([^\"]*)\",\"value\":(\"[^\"]*\"|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\])\\}|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]),?");
+  public final static Pattern KeyValue = new Function0<Pattern>() {
+    public Pattern apply() {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("\"([^\"]*)\":(true|false|null|\"(.*?)\"|\\{\"literalType\":\"([^\"]*)\",\"value\":(\"[^\"]*\"|\\[\"(\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\"|\\n|\\r|[^\"]*?)\")*\\])\\}|\\[\"(\\\\\"|\\n|\\r|[^\"]*?)\"(,\"(\\\\\"|\\n|\\r|[^\"]*?)\")*\\]),?");
+      Pattern _compile = Pattern.compile(_builder.toString());
+      return _compile;
+    }
+  }.apply();
   
   protected static ArrayList<Map<String, String>> lines2tuples(final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();

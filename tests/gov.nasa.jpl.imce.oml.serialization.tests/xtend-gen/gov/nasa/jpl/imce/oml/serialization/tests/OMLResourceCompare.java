@@ -98,7 +98,7 @@ public class OMLResourceCompare {
       String _plus_3 = (_plus_2 + " toplevel elements (there should be 1)");
       throw new IllegalArgumentException(_plus_3);
     }
-    final EObject top2 = r1.getContents().get(0);
+    final EObject top2 = r2.getContents().get(0);
     OMLResourceCompare.compare("/", top1, top2);
   }
   

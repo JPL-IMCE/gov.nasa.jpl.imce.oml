@@ -18,14 +18,14 @@
 package gov.nasa.jpl.imce.oml.serialization.tests
 
 import gov.nasa.jpl.imce.oml.model.common.Extent
-import gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue
+import gov.nasa.jpl.imce.oml.model.datatypes.RawStringValue
+import gov.nasa.jpl.imce.oml.model.extensions.OMLTables
+import gov.nasa.jpl.imce.oml.zip.OMLZipResource
 import org.eclipse.emf.common.util.URI
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.BlockJUnit4ClassRunner
-import gov.nasa.jpl.imce.oml.model.extensions.OMLTables
-import gov.nasa.jpl.imce.oml.zip.OMLZipResource
 
 @RunWith(BlockJUnit4ClassRunner)
 class OMLZip2Test extends OMLSaveLoadComparisonTest {
@@ -51,8 +51,8 @@ class OMLZip2Test extends OMLSaveLoadComparisonTest {
 		on.axiom = s2
 		on.valueType = s2
 
-		val onValue = createLiteralQuotedString
-		onValue.string = new QuotedStringValue('''on,
+		val onValue = createLiteralRawString
+		onValue.string = new RawStringValue('''on,
 		"on",
 		true''')
 		on.value = onValue
@@ -60,11 +60,12 @@ class OMLZip2Test extends OMLSaveLoadComparisonTest {
 		val off = createScalarOneOfLiteralAxiom
 		off.tbox = tbox1
 		off.axiom = s2
-		// off.valueType = s2
-		val offValue = createLiteralQuotedString
-		offValue.string = new QuotedStringValue('''
+		off.valueType = s2
+		
+		val offValue = createLiteralRawString
+		offValue.string = new RawStringValue('''
 			
-			This is ""on""
+			This is "on"
 			
 			Ceci est "true"
 		''')
@@ -133,18 +134,25 @@ class OMLZip2Test extends OMLSaveLoadComparisonTest {
 
 	@Test
 	def void test2() {
+		show('''"value":["\n"]''')
 		show('''"value":["\\n"]''')
+		show('''"value":["\n","This is ","\"","\"","on"]''')
+		show('''"value":["\n","This is ","\"","\"","on","\n","and on..."]''')
+		show('''"value":["\\n","This is ","\"","\"","on"]''')
+		show('''"value":["\\n","This is ","\"","\"","on","\n","and on..."]''')
 		show('''"value":["\\r"]''')
 		show('''"value":["\""]''')
 		show('''"value":["abc"]''')
 		show('''"value":["abc","def"]''')
 
+		show('''"value":["\n","This is ","\"","\"","on","\"","\"","\n","\n","Ceci est ","\"","true","\"","\n"]''')
 		show('''"value":["\\n","This is ","\"","\"","on","\"","\"","\\n","\\n","Ceci est ","\"","true","\"","\\n"]''')
-		show('''"value":["\\n","This is ","\"","\"","on"]''')
 		show('''"value":["\\n","This is ","\"","\""]''')
 		show('''"value":["\\n","\\n"]''')
 		show('''"value":["abc","\\r"]''')
 		show('''"value":"OpenWorldDefiniions"''')
+		show('''"value":true''')
+		show('''"value":false''')
 		
 		value('''{"literalType":"string","value":["\"","def"]}''')
 		value('''{"literalType":"int","value":"42"}''')

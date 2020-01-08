@@ -775,8 +775,8 @@ class OMLTables {
 	return lit
   }
   
-  public static val Pattern LiteralNumberOrValue = Pattern.compile("(\\{\"literalType\":\"(.*)\",\"value\":(\"(.*)\"|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\])\\}|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\])")
-  public static val Pattern StringArray = Pattern.compile("\"(\\\\\\\"|\\n|\\r|[^\"]+?)\",?")
+  public static val Pattern LiteralNumberOrValue = Pattern.compile('''(\{"literalType":"(.*)","value":("(.*)"|\["(\\"|\n|\r|[^"]*?)"(,"(\\"|\n|\r|[^"]*?)")*\])\}|\["(\\"|\n|\r|[^"]+?)"(,"(\\"|\n|\r|[^"]*?)")*\])''')
+  public static val Pattern StringArray = Pattern.compile('''"(\\"|\n|\r|[^"]+?)",?''')
   
   static def String toValue(Matcher m) {
 		if (null !== m.group(4) && !m.group(4).empty)
@@ -793,11 +793,11 @@ class OMLTables {
 			val a = StringArray.matcher(stringArray.substring(1, stringArray.length-1))
 			while (a.find()) {
 				val part = a.group(1)
-				if ("\\\\n" == part)
+				if ('''\n''' == part)
 					buffer.append(NEWLINE)
-				else if ("\\\\r" == part)
+				else if ('''\r''' == part)
 					buffer.append(LINEFEED)
-				else if ("\\\"" == part)
+				else if ('''\"''' == part)
 					buffer.append(QUOTE)
 				else
 					buffer.append(part)

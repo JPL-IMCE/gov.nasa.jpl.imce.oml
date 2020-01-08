@@ -17,3 +17,5 @@ gov.nasa.jpl.imce.oml 0.9.7 adds new features to 0.9.6
 ### [#318 Serialization bug for parsing OMLZip NumericalScalarRestrictions](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/318)
 
 ### [#320 Serialization problem with cardinality restrictions](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/320)
+
+### [#322 OMLZip handling of entity scalar data properties](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/322)
