@@ -22,10 +22,10 @@ import gov.nasa.jpl.imce.oml.model.datatypes.RawStringValue
 import gov.nasa.jpl.imce.oml.model.extensions.OMLTables
 import gov.nasa.jpl.imce.oml.zip.OMLZipResource
 import org.eclipse.emf.common.util.URI
+import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.BlockJUnit4ClassRunner
-import org.junit.Assert
 
 @RunWith(BlockJUnit4ClassRunner)
 class OMLZip2Test extends OMLSaveLoadComparisonTest {
