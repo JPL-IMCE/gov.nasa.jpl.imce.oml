@@ -74,7 +74,7 @@ class OMLResourceCompare {
 		
 		if (1 != r2.contents.size)
 			throw new IllegalArgumentException("resourceCompare(r2 has "+r2.contents.size+" toplevel elements (there should be 1)")
-		val top2 = r1.contents.get(0)
+		val top2 = r2.contents.get(0)
 		
 		compare("/", top1, top2)
 	}

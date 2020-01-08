@@ -130,6 +130,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionExtensions;
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
@@ -1449,9 +1450,23 @@ public class OMLTables {
     return lit;
   }
   
-  public final static Pattern LiteralNumberOrValue = Pattern.compile("(\\{\"literalType\":\"(.*)\",\"value\":(\"(.*)\"|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\])\\}|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\])");
+  public final static Pattern LiteralNumberOrValue = new Function0<Pattern>() {
+    public Pattern apply() {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("(\\{\"literalType\":\"(.*)\",\"value\":(\"(.*)\"|\\[\"(\\\\\"|\\n|\\r|[^\"]*?)\"(,\"(\\\\\"|\\n|\\r|[^\"]*?)\")*\\])\\}|\\[\"(\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\"|\\n|\\r|[^\"]*?)\")*\\])");
+      Pattern _compile = Pattern.compile(_builder.toString());
+      return _compile;
+    }
+  }.apply();
   
-  public final static Pattern StringArray = Pattern.compile("\"(\\\\\\\"|\\n|\\r|[^\"]+?)\",?");
+  public final static Pattern StringArray = new Function0<Pattern>() {
+    public Pattern apply() {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("\"(\\\\\"|\\n|\\r|[^\"]+?)\",?");
+      Pattern _compile = Pattern.compile(_builder.toString());
+      return _compile;
+    }
+  }.apply();
   
   public static String toValue(final Matcher m) {
     String _xifexpression = null;
@@ -1496,15 +1511,21 @@ public class OMLTables {
         while (a.find()) {
           {
             final String part = a.group(1);
-            boolean _equals_1 = Objects.equal("\\\\n", part);
+            StringConcatenation _builder_2 = new StringConcatenation();
+            _builder_2.append("\\n");
+            boolean _equals_1 = Objects.equal(_builder_2.toString(), part);
             if (_equals_1) {
               buffer.append(OMLTables.NEWLINE);
             } else {
-              boolean _equals_2 = Objects.equal("\\\\r", part);
+              StringConcatenation _builder_3 = new StringConcatenation();
+              _builder_3.append("\\r");
+              boolean _equals_2 = Objects.equal(_builder_3.toString(), part);
               if (_equals_2) {
                 buffer.append(OMLTables.LINEFEED);
               } else {
-                boolean _equals_3 = Objects.equal("\\\"", part);
+                StringConcatenation _builder_4 = new StringConcatenation();
+                _builder_4.append("\\\"");
+                boolean _equals_3 = Objects.equal(_builder_4.toString(), part);
                 if (_equals_3) {
                   buffer.append(OMLTables.QUOTE);
                 } else {
