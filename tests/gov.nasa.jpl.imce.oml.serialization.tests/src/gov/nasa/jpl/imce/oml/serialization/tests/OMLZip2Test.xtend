@@ -157,6 +157,7 @@ class OMLZip2Test extends OMLSaveLoadComparisonTest {
 		value('''{"literalType":"string","value":["\"","def"]}''')
 		value('''{"literalType":"int","value":"42"}''')
 		value('''["\"","def"]''')
+		value('''[""]''')
 		
 		array('''"\\n","This is ","\"","\"","on","\"","\"","\\n","\\n","Ceci est ","\"","true","\"","\\n"''')
 		array('''"\\n","This is ","\"","\"","on"''')

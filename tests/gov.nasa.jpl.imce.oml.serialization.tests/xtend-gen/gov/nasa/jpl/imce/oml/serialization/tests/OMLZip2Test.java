@@ -246,17 +246,20 @@ public class OMLZip2Test extends OMLSaveLoadComparisonTest {
     _builder_20.append("[\"\\\"\",\"def\"]");
     this.value(_builder_20.toString());
     StringConcatenation _builder_21 = new StringConcatenation();
-    _builder_21.append("\"\\\\n\",\"This is \",\"\\\"\",\"\\\"\",\"on\",\"\\\"\",\"\\\"\",\"\\\\n\",\"\\\\n\",\"Ceci est \",\"\\\"\",\"true\",\"\\\"\",\"\\\\n\"");
-    this.array(_builder_21.toString());
+    _builder_21.append("[\"\"]");
+    this.value(_builder_21.toString());
     StringConcatenation _builder_22 = new StringConcatenation();
-    _builder_22.append("\"\\\\n\",\"This is \",\"\\\"\",\"\\\"\",\"on\"");
+    _builder_22.append("\"\\\\n\",\"This is \",\"\\\"\",\"\\\"\",\"on\",\"\\\"\",\"\\\"\",\"\\\\n\",\"\\\\n\",\"Ceci est \",\"\\\"\",\"true\",\"\\\"\",\"\\\\n\"");
     this.array(_builder_22.toString());
     StringConcatenation _builder_23 = new StringConcatenation();
-    _builder_23.append("\"\\\\n\",\"This is \",\"\\\"\",\"\\\"\"");
+    _builder_23.append("\"\\\\n\",\"This is \",\"\\\"\",\"\\\"\",\"on\"");
     this.array(_builder_23.toString());
     StringConcatenation _builder_24 = new StringConcatenation();
-    _builder_24.append("\"\\\"\",\"def\"");
+    _builder_24.append("\"\\\\n\",\"This is \",\"\\\"\",\"\\\"\"");
     this.array(_builder_24.toString());
+    StringConcatenation _builder_25 = new StringConcatenation();
+    _builder_25.append("\"\\\"\",\"def\"");
+    this.array(_builder_25.toString());
   }
   
   @Test
