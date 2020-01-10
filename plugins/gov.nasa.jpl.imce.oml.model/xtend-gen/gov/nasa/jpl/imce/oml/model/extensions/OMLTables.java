@@ -1453,7 +1453,7 @@ public class OMLTables {
   public final static Pattern LiteralNumberOrValue = new Function0<Pattern>() {
     public Pattern apply() {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("(\\{\"literalType\":\"(.*)\",\"value\":(\"(.*)\"|\\[\"(\\\\\"|\\n|\\r|[^\"]*?)\"(,\"(\\\\\"|\\n|\\r|[^\"]*?)\")*\\])\\}|\\[\"(\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\"|\\n|\\r|[^\"]*?)\")*\\])");
+      _builder.append("(\\{\"literalType\":\"(.*)\",\"value\":(\"(.*)\"|\\[\"(\\\\\"|\\n|\\r|[^\"]*?)\"(,\"(\\\\\"|\\n|\\r|[^\"]*?)\")*\\])\\}|\\[\"(\\\\\"|\\n|\\r|[^\"]*?)\"(,\"(\\\\\"|\\n|\\r|[^\"]*?)\")*\\])");
       Pattern _compile = Pattern.compile(_builder.toString());
       return _compile;
     }
