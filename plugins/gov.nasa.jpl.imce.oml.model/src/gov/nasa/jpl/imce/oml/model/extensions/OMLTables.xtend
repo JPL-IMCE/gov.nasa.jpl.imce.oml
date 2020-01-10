@@ -775,7 +775,9 @@ class OMLTables {
 	return lit
   }
   
+
   public static val Pattern LiteralNumberOrValue = Pattern.compile('''(\{"literalType":"(.*)","value":("(.*)"|\["(\\"|\n|\r|[^"]*?)"(,"(\\"|\n|\r|[^"]*?)")*\])\}|\["(\\"|\n|\r|[^"]*?)"(,"(\\"|\n|\r|[^"]*?)")*\])''')
+
   public static val Pattern StringArray = Pattern.compile('''"(\\"|\n|\r|[^"]+?)",?''')
   
   static def String toValue(Matcher m) {
