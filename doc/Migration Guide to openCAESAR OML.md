@@ -1,6 +1,3 @@
-# Legacy OML to New ([openCAESAR](https://opencaesar.github.io/oml/
-)) OML Mapping
-
 ## Legacy OML (v0.9.7.5)
 
 ### Abstract syntax:
